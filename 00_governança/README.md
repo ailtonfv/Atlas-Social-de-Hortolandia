@@ -1,44 +1,3 @@
-# 00 — Governança e Direção Arquitetural
-
----
-
-## 1. Princípios Arquiteturais
-
-- Pessoa → Família → Território como eixo estruturante  
-- Separação entre ambiente conceitual e ambiente técnico  
-- Evolução incremental (MVP → Escala)  
-- Interoperabilidade como direção central  
-- Arquitetura independente de sistemas legados  
-
----
-
-## 2. LGPD e Ética de Dados
-
-- Nenhum dado pessoal armazenado no repositório  
-- Uso exclusivo de amostras sintéticas  
-- Estrutura preparada para controle de acesso  
-- Rastreabilidade e auditabilidade  
-
----
-
-## 3. Escopo do MVP
-
-- 3 dimensões principais  
-- 1 fato central  
-- 3 indicadores estratégicos  
-- 1 dashboard simples  
-- 1 documento técnico  
-
----
-
-## 4. Premissas
-
-- Não dependência inicial de convênios federais  
-- Prioridade para bases municipais disponíveis  
-- Arquitetura preparada para futura integração via API
-
----
-
 # Diretrizes Estratégicas — Registro de Decisões
 **Data:** 27/02/2026  
 **Responsável:** Ailton Vendramini  
@@ -82,29 +41,50 @@ Hoje a Secretaria de Inclusão não consegue responder com precisão:
 - Qual é a renda total da família considerando todos os benefícios
 - Se essa renda já ultrapassa o critério de elegibilidade do CadÚnico
 
+### Unidade mínima de análise: a PESSOA
+
+A cadeia analítica começa sempre pela **Pessoa** — não pela família. A família é uma agregação de pessoas. Isso importa porque:
+
+- O BPC é concedido por **pessoa** (não por família)
+- A deficiência pertence a uma **pessoa** específica
+- A inserção no mercado formal acontece com uma **pessoa** com CPF
+- A duplicação de benefício é cometida por uma **pessoa** identificável
+
+```
+Pessoa (CPF)
+  └── pertence a → Família
+        └── reside em → Território
+              └── acessa → Programas e Benefícios
+```
+
 ### O que o sistema deve permitir
 
-**Visão por família:**
+**Visão por pessoa e família:**
 ```
-Família X — Bairro Y — CRAS Z
-├── Bolsa Família: R$ 600/mês
-├── BPC (membro com deficiência): R$ 1.412/mês
-├── Cesta básica: 1x/mês
-├── Criança na rede pública: sim
-├── Adulto no ACERTE: sim
-├── Renda per capita total estimada: R$ X
-└── Situação em relação ao critério CadÚnico: dentro / limiar / acima
+Pessoa → CPF → Família X — Bairro Y — CRAS Z
+├── Pessoa A (responsável familiar)
+│   └── ACERTE: em curso
+├── Pessoa B (membro — deficiência)
+│   └── BPC: R$ 1.412/mês
+├── Pessoa C (criança)
+│   └── Vaga na rede pública: sim
+├── Família (unidade)
+│   ├── Bolsa Família: R$ 600/mês
+│   └── Cesta básica: 1x/mês
+└── Renda per capita total estimada: R$ X
+    └── Situação: dentro / limiar / acima do critério CadÚnico
 ```
 
 **Visão por programa:**
-- Quantas famílias estão no Programa X
-- Quantos benefícios distintos cada família acessa
+- Quantas pessoas e famílias estão no Programa X
+- Quantos benefícios distintos cada pessoa acessa
 - Cruzamento: quem está em múltiplos programas
+- Quais pessoas acumulam benefícios indevidamente (duplicação por CPF)
 
 ### A pergunta estratégica central
-> Quando essa família deve ou pode sair do CadÚnico?
+> Quando essa pessoa — e sua família — deve ou pode sair do CadÚnico?
 
-Não é expulsão — é **emancipação planejada**. O sistema precisa identificar famílias que já atingiram condições de saída e acompanhar sua transição para autonomia.
+Não é expulsão — é **emancipação planejada**. O sistema precisa identificar pessoas que já atingiram condições de transição e acompanhar sua saída para autonomia.
 
 ### Integração com Secretaria de Desenvolvimento Econômico
 Esta diretriz conecta diretamente a Secretaria de Inclusão com a Secretaria de Desenvolvimento Econômico. O fluxo proposto:
@@ -173,11 +153,12 @@ Essa pergunta simples, respondida com dados reais, já justifica o projeto intei
 | Diretriz | Problema que resolve | Fase de implementação |
 |---|---|---|
 | Staging | Rastreabilidade e auditabilidade do dado bruto | MVP — modelagem lógica |
-| Visão de benefícios por família | Gestão integrada e emancipação planejada | Fase 2 — enriquecimento |
+| Visão de benefícios por **pessoa** e família | Gestão integrada e emancipação planejada | Fase 2 — enriquecimento |
 | Controle de duplicação e subatendimento | Eficiência e equidade na distribuição de benefícios | MVP — primeiros indicadores |
+
+> **Princípio permanente:** A unidade mínima de análise é sempre a **Pessoa**. A Família é uma agregação de pessoas. O Território é o espaço onde vivem. Tudo começa com a Pessoa.
 
 ---
 
 *Registro gerado a partir de discussão estratégica em 27/02/2026.*  
 *Estas diretrizes orientam as decisões técnicas das próximas fases do projeto.*
-
