@@ -1,10 +1,11 @@
 # DIM_PROGRAMA — Catálogo de Programas Municipais de Hortolândia
-**Versão:** 03  
+**Versão:** 04  
 **Data de atualização:** 01/03/2026  
-**Versão anterior:** 02 (28/02/2026)  
+**Versão anterior:** 03 (01/03/2026)  
 **Fonte primária:** Levantamento documental 2023–2024 (Ailton Vendramini)  
 **Atualizações v02:** Ciclo jornalístico — Tribuna Liberal, edições 21/02, 24/02 e 01/03/2026  
 **Atualizações v03:** Site oficial Prefeitura de Hortolândia — varredura sistemática de secretarias em 01/03/2026  
+**Atualizações v04:** Ciclo jornalístico — Tribuna Liberal, edições 31/12/2025, 03/01/2026, 16/01/2026, 17/01/2026  
 **Responsável:** Ailton Vendramini / Claude (Anthropic)  
 **Repositório:** Projeto CadÚnico — Hortolândia
 
@@ -14,10 +15,10 @@
 
 Este catálogo foi extraído a partir de um levantamento documental cobrindo o 2º semestre de 2023 e o 1º semestre de 2024, complementado pelos tópicos de Assistência Social, Direitos Humanos e Empregabilidade do mesmo documento.
 
-A partir da v02, o catálogo incorpora atualizações obtidas por leitura sistemática do jornal Tribuna Liberal (radar jornalístico). A partir da v03, incorpora também varredura direta do site oficial da Prefeitura de Hortolândia.
+A partir da v02, o catálogo incorpora atualizações obtidas pela leitura sistemática do jornal Tribuna Liberal (radar jornalístico). A partir da v03, incorporamos também varredura direta do site oficial da Prefeitura de Hortolândia. A v04 consolida o ciclo jornalístico de final de dezembro/2025 a meados de janeiro/2026.
 
-**Classificação funcional:**
-- **Tipo A — Serviço Direto:** gera atendimento registrável → candidato a `FATO_ATENDIMENTO`
+**Tipo funcional:**
+- **Tipo A — Serviço Direto:** gera atendimento registrável → candidato a FATO_ATENDIMENTO
 - **Tipo B — Política Articulada:** define diretrizes, articula setores, não gera atendimento direto
 
 ---
@@ -59,11 +60,11 @@ observacoes
 - **Observações:** Serviço principal do CRAS. Escuta, encaminhamentos, fortalecimento de vínculos.
 
 #### Endereços dos CRAS
-*(Fonte: Secretaria de Inclusão e Desenvolvimento Social — atualizado em 02/06/2025)*
-*(⚠️ Loteamentos de abrangência por CRAS estão em processo de padronização — ver dim_territorio_cras_v01.md)*
+*(Fonte: Secretaria de Inclusão e Desenvolvimento Social — atualizado em 02/06/2025)*  
+⚠️ Loteamentos de abrangência por CRAS estão em processo de padronização — ver dim_territorio_cras_v01.md
 
 | # | Unidade | Homenageado | Endereço | Telefone |
-|---|---------|------------|---------|---------|
+|---|---------|-------------|----------|----------|
 | 1 | CRAS Jardim Santa Clara | — | Rua Estados Unidos, 217, Jd. Santa Clara do Lago II | 3865-1133 / 3897-2519 |
 | 2 | CRAS Jardim Amanda | — | Av. Tarsila do Amaral, 540, Jd. Amanda II | 3819-7619 / 3865-7276 |
 | 3 | CRAS Jardim Novo Ângulo | — | Rua Francisco Bereta, 330, Jd. Novo Ângulo | 3809-1945 / 3845-7629 |
@@ -82,7 +83,7 @@ observacoes
 - **Nível de proteção:** Básica
 - **Origem:** Municipal
 - **Endereço:** Rua Guido Rosolém, 177, Jardim Rosolém
-- **Observações:** Transformado de CRAS para CCS em 2021 com foco em atividades socioeducativas, cultura, arte, esporte e inclusão digital. ⚠️ O endereço (Rua Guido Rosolém, 177) consta na planilha oficial de 02/06/2025 como CRAS Rosolém — Joel Alves Assunção. Verificar se o CCS permanece como equipamento distinto ou foi reintegrado ao CRAS.
+- **Observações:** Transformado de CRAS para CCS em 2021 com foco em atividades socioeducativas, cultura, arte, esporte e inclusão digital. ⚠️ O endereço (Rua Guido Rosolém, 177) consta na planilha oficial de 02/06/2025 como CRAS Rosolém — Joel Alves Assunção. Verifique se o CCS permanece como equipamento distinto ou foi reintegrado ao CRAS.
 
 ---
 
@@ -132,7 +133,7 @@ observacoes
 - **Gatilho de acionamento:** Defesa Civil (199) aciona SUAS após evento
 - **Entregas documentadas:** Água potável, cestas básicas, cobertores, colchões, produtos de limpeza
 - **Evento de referência (v02):** Chuva de 26/02/2026 — 16 famílias acolhidas: Jd. Ricardo (8), Jd. Sumarezinho (5), Jd. Adelaide (2), Jd. Santa Clara do Lago (1)
-- **Observações:** (Incluído na v02 — fonte: Tribuna Liberal 01/03/2026) Estrutura de FATO_ATENDIMENTO aplicável com data, território e quantidade de famílias.
+- **Observações:** *(Incluído na v02 — fonte: Tribuna Liberal 01/03/2026)* Estrutura de FATO_ATENDIMENTO aplicável com dados, território e quantidade de famílias.
 
 ---
 
@@ -143,7 +144,7 @@ observacoes
 - **Vínculo CadÚnico:** A confirmar
 - **Nível de proteção:** Especial
 - **Origem:** Municipal
-- **Observações:** (Incluído na v03 — fonte: site oficial, página "Todos os Serviços", categoria "60+"). Interface direta com o cadastro municipal de PCD e com o CadÚnico. Verificar departamento executor (Dep. Assistência Social ou Dep. Direitos Humanos/PCD).
+- **Observações:** *(Incluído na v03 — fonte: site oficial, página "Todos os Serviços", categoria "60+")* Interface direta com o cadastro municipal do PCD e com o CadÚnico. Verificar departamento executor.
 
 ---
 
@@ -154,7 +155,7 @@ observacoes
 - **Vínculo CadÚnico:** A confirmar
 - **Nível de proteção:** Especial
 - **Origem:** Federal (SUAS) / Municipal
-- **Observações:** (Incluído na v03 — fonte: site oficial, página "Todos os Serviços"). Distinto do PAEFI — foco específico em PCD e idoso. Verificar se é o mesmo que o "Serviço de Atendimento Domiciliar" acima ou equipamento/modalidade diferente.
+- **Observações:** *(Incluído na v03 — fonte: site oficial, página "Todos os Serviços")* Distinto do PAEFI — foco específico em PCD e idoso. ⚠️ Verifique se é o mesmo que o "Serviço de Atendimento Domiciliar" acima ou equipamento/modalidade diferente.
 
 ---
 
@@ -164,13 +165,13 @@ observacoes
 - **Tipo:** A — Serviço Direto
 - **Secretaria responsável:** Fundo Social de Solidariedade
 - **Secretarias parceiras:** Inclusão e Desenvolvimento Social, Saúde, Secretaria de Governo
-- **Público-alvo:** Gestantes a partir da 34ª semana que realizam pré-natal na rede municipal
+- **Público-alvo:** Gestantes a partir da 34ª semana que realizam o pré-natal na rede municipal
 - **Faixa etária:** Gestantes (todas as idades)
 - **Vínculo CadÚnico:** Parcial (atendidas pelos CRAS)
 - **Nível de proteção:** Básico/Intersetorial
 - **Origem:** Municipal — lançado outubro/2022
 - **Entregas acumuladas:** ~2.800 kits maternidade até abr/2024
-- **Observações:** Kit contém banheira, mantas, fraldas, lençóis, sabonete, creme, termômetro, bolsa, coletor de leite materno. Intersetorial com Saúde e Educação (EJA).
+- **Observações:** Kit contém banheira, mantas, fraldas, lençóis, sabonete, creme, proporção, bolsa, coletor de leite materno. Intersetorial com Saúde e Educação (EJA).
 
 ---
 
@@ -181,10 +182,10 @@ observacoes
 - **Público-alvo:** Moradores em situação de rua
 - **Vínculo CadÚnico:** Sim
 - **Nível de proteção:** Especial — Alta Complexidade / Intersetorial
-- **Origem:** Municipal — lançado dezembro/2023. Regulamentado pelo Decreto Federal 7.053/2009
+- **Origem:** Municipal — lançado em dezembro/2023. Regulamentado pelo Decreto Federal 7.053/2009
 - **Benefício:** Bolsa mensal de R$ 700 + previsão de cesta básica e auxílio aluguel
 - **Vagas iniciais:** 10 participantes
-- **Requisitos:** Assiduidade em atendimentos de saúde + participação no ACERTE + oficinas de planejamento financeiro
+- **Requisitos:** Assiduidade em atendimentos de saúde + participação no ACERTE + escritórios de planejamento financeiro
 - **Observações:** Bolsistas trabalham nos CRAS como auxiliares. Vinculado ao Centro POP, CREAS e Casa de Passagem.
 
 ---
@@ -201,6 +202,18 @@ observacoes
 
 ---
 
+### Vila da Saúde *(NOVO — v04 | Em planejamento)*
+- **Tipo:** A — Serviço Direto (em planejamento)
+- **Secretaria responsável:** Saúde (a confirmar)
+- **Público-alvo:** População geral de Hortolândia
+- **Vínculo CadÚnico:** A confirmar
+- **Nível de proteção:** Saúde / Intersetorial
+- **Origem:** Municipal
+- **Status:** Em planejamento — anunciado pelo prefeito Zezé Gomes (Republicanos)
+- **Observações:** *(Incluído na v04 — fonte: Tribuna Liberal 03/01/2026, pg. 6)* Menção literal do prefeito: "Um dos meus grandes objetivos é avançar com a implantação da Vila da Saúde, fortalecendo uma rede de cuidado mais humana, moderna e acolhedora para a nossa população." Não há endereço, secretaria confirmada ou prazo definido. Registrar como intenção institucional declarada publicamente. Monitorar próximas edições.
+
+---
+
 ## Grupo 4 — Segurança Alimentar
 
 ### Banco de Alimentos de Hortolândia (BAH)
@@ -211,7 +224,7 @@ observacoes
 - **Nível de proteção:** Alimentar
 - **Origem:** Municipal — criado em 2007
 - **Alcance:** 19 organizações sociais / 1.762 pessoas beneficiadas (2024)
-- **Observações:** Parte do SISAN. Arrecada, seleciona, processa, armazena e distribui alimentos. Recebe produtos do PAA (agricultura familiar = 26% do volume).
+- **Observações:** Parte do SISAN. Arrecadar, selecionar, processar, armazenar e distribuir alimentos. Recebe produtos do PAA (agricultura familiar = 26% do volume).
 
 ---
 
@@ -257,7 +270,7 @@ observacoes
 - **Nível de proteção:** Alimentar / Produtiva
 - **Origem:** Municipal
 - **Localização:** Jardim Novo Ângulo
-- **Observações:** Oficinas culinárias com foco em geração de renda. Parceria com SENAI (ex: Petit Four). ⚠️ Verificar se é o mesmo equipamento que a "Cozinha Comunitária" listada no site oficial ou se são serviços distintos.
+- **Observações:** Oficinas culinárias com foco em geração de renda. Parceria com SENAI (ex: Petit Four). ⚠️ Verifique se é o mesmo equipamento que a "Cozinha Comunitária" listada no site oficial ou se são serviços diferentes.
 
 ---
 
@@ -268,7 +281,7 @@ observacoes
 - **Vínculo CadÚnico:** Indireto
 - **Nível de proteção:** Alimentar / Produtiva
 - **Origem:** Municipal
-- **Observações:** (Incluído na v03 — fonte: site oficial, serviços da Sec. Educação). ⚠️ Verificar se é o mesmo equipamento que a "Escola Comunitária" do Jd. Novo Ângulo ou se é serviço/localização distinta.
+- **Observações:** *(Incluído na v03 — fonte: site oficial, serviços da Sec. Educação)* ⚠️ Verifique se é o mesmo equipamento que a "Escola Comunitária" do Jd. Novo Ângulo ou se é serviço/localização distinto.
 
 ---
 
@@ -301,14 +314,14 @@ observacoes
 ### Minha Casa, Minha Vida — Hortolândia
 - **Tipo:** A — Serviço Direto
 - **Secretaria responsável:** Habitação
-- **Público-alvo:** Famílias em vulnerabilidade habitacional, selecionadas por pontuação (Portaria MCID nº 738/2024)
+- **Público-alvo:** Famílias em vulnerabilidade habitacional, selecionadas por classificação (Portaria MCID nº 738/2024)
 - **Vínculo CadÚnico:** Sim — critério de elegibilidade federal
 - **Nível de proteção:** Habitação
 - **Origem:** Federal
 - **Status (v02):** 400 unidades em construção no Jardim Amanda desde início de 2026. Previsão de entrega: 18 meses. Próxima etapa: mais 800 unidades.
 - **Processo seletivo:** 1.000 famílias pré-selecionadas → 520 selecionadas (400 titulares + 120 suplentes). Sistema de pontuação por prioridade, sem sorteio.
 - **Contato:** WhatsApp (19) 99635-4274 / Tel. (19) 3965-1400 ramais 7810, 7806, 7804, 7811
-- **Observações:** (Atualizado na v02 — fonte: Tribuna Liberal 24/02/2026) Território: Jardim Amanda → candidato a DIM_TERRITORIO.
+- **Observações:** *(Atualizado na v02 — fonte: Tribuna Liberal 24/02/2026)* Território: Jardim Amanda → candidato a DIM_TERRITORIO.
 
 ---
 
@@ -356,7 +369,7 @@ observacoes
 - **Vínculo CadÚnico:** Indireto (a confirmar — possível integração para público de baixa renda)
 - **Nível de proteção:** Produtivo
 - **Origem:** Estadual (Banco do Povo Paulista) / Municipal
-- **Observações:** (Incluído na v03 — fonte: site oficial, serviços da Sec. Desenvolvimento Econômico). Crédito popular para formalização e capital de giro. Integrado à Casa do Empreendedor. Verificar se há critério de renda ou vínculo com CadÚnico para acesso.
+- **Observações:** *(Incluído na v03 — fonte: site oficial, serviços da Sec. Desenvolvimento Econômico)* Crédito popular para formalização e capital de giro. Integrado à Casa do Empreendedor. ⚠️ Verifique se há critério de renda ou vínculo com CadÚnico para acesso.
 
 ---
 
@@ -381,13 +394,14 @@ observacoes
 - **Nível de proteção:** Produtivo
 - **Origem:** Municipal
 - **Cursos 2023:** Empreendedorismo, educação financeira, artesanato, auxiliar de RH, games, açougueiro, operador de logística, inspetor de qualidade (SENAI), IA em Nuvem
-- **Espaço:** "Capacita Hortolândia" — Rua Estados Unidos, 217, Jd. Santa Clara do Lago II
-- **Observações:** ⚠️ Mesmo endereço do CRAS Santa Clara — verificar se é o mesmo espaço físico.
+- **Cursos identificados jan/2026 (v04):** Alvenaria Estrutural (SENAI, 20 vagas, Remanso Campineiro), Assistente de RH (SENAI, CRAS Amanda / Av. Tarsila do Amaral, 540)
+- **Espaço base:** "Capacita Hortolândia" — Rua Estados Unidos, 217, Jd. Santa Clara do Lago II
+- **Observações:** *(Cursos jan/2026 incluídos na v04 — fonte: Tribuna Liberal 16/01/2026)* O Fundo Social opera fisicamente dentro do CRAS Amanda (Av. Tarsila do Amaral, 540) — não é secretaria paralela, mas executor que usa infraestrutura do SUAS. ⚠️ Mesmo endereço do CRAS Santa Clara para o Capacita Hortolândia — verifique se é o mesmo espaço físico ou apenas o mesmo logradouro.
 
 ---
 
 ### Projeto Escolinhas Esportivas
-- **Tipo:** A — Serviço Direto (confirmado com base na estrutura de atendimento identificada)
+- **Tipo:** A — Serviço Direto
 - **Secretaria responsável:** Esporte e Lazer
 - **Departamento executor:** Departamento de Esportes, Competições, Eventos e Lazer *(confirmado na v03 — site oficial)*
 - **Público-alvo:** População geral; destaque para pessoas com deficiência (~100 alunos PCD em 2026)
@@ -397,23 +411,26 @@ observacoes
 - **Modalidades:** 25 (karatê, judô, basquete, capoeira, balé, natação, futebol, lutas, entre outras)
 - **Alcance:** Mais de 7.000 atendimentos (treinos + alto rendimento)
 - **Parcerias PCD:** "Nadando com Daniel Dias" e "Luta pela Vida"
-- **Observações:** (Incluído na v02 — atualizado na v03.) Verificar integração do atendimento PCD com o cadastro municipal de PCD ou CadÚnico.
+- **Observações:** *(Incluído na v02 — atualizado na v03)* ⚠️ Verifique a integração do atendimento PCD com o cadastro municipal de PCD ou CadÚnico.
 
 ---
 
 ## Grupo 7 — Públicos Específicos / Direitos Humanos
-*(Vinculados ao **Departamento de Direitos Humanos e Políticas Públicas** — Secretaria de Governo)*
 
-> ✅ **Correção de nomenclatura (v03):** O nome oficial do departamento é **"Departamento de Direitos Humanos e Políticas Públicas"** (não apenas "Dep. Direitos Humanos"). Fonte: site oficial, página da Secretaria de Governo.
+*(Vinculados ao Departamento de Direitos Humanos e Políticas Públicas — Secretaria de Governo)*
+
+✅ **Correção de nomenclatura (v03):** O nome oficial do departamento é "Departamento de Direitos Humanos e Políticas Públicas" (não apenas "Dep. Direitos Humanos"). Fonte: site oficial, página da Secretaria de Governo.
 
 ---
 
 ### Cadastro e Políticas para PCD
 - **Tipo:** B — Política Articulada
 - **Secretaria responsável:** Governo (Dep. Direitos Humanos e Políticas Públicas)
+- **Departamento responsável (operacional):** Departamento de Políticas Públicas para a Pessoa Com Deficiência (DPCD)
+- **Gestora identificada (v04):** Quézia Garcia — Diretora do DPCD *(confirmado Tribuna Liberal 17/01/2026)*
 - **Público-alvo:** Pessoas com deficiência física, visual, auditiva, mental, motora, TEA, deficiências invisíveis
 - **Vínculo CadÚnico:** Indireto (mapeamento próprio iniciado ago/2023)
-- **Observações:** Cadastro municipal PCD iniciado ago/2023. Conselho Municipal da PCD (CMPD) biênio 2023-2025. ⚠️ Pendência v02: A Tribuna Liberal (01/03/2026) registra o "Departamento de Políticas Públicas para Pessoas com Deficiência" em ação operacional direta no atendimento emergencial de 26/02/2026 — verificar se possui programas próprios com FATO_ATENDIMENTO.
+- **Observações:** Cadastro municipal PCD iniciado ago/2023. Conselho Municipal da PCD (CMPD) biênio 2023–2025. *(v04: Quézia Garcia registrada no DIM_GESTOR)* ⚠️ Pendência v02 parcialmente resolvida: a Tribuna Liberal (01/03/2026) registra o DPCD em ação operacional direta no atendimento emergencial de 26/02/2026 — verifique se possui programas próprios com FATO_ATENDIMENTO.
 
 ---
 
@@ -456,24 +473,24 @@ observacoes
 
 ### CRAM — Centro de Referência de Atendimento à Mulher
 - **Tipo:** A — Serviço Direto
-- **Secretaria responsável:** Governo (**Departamento de Mulheres**) *(nomenclatura corrigida na v03)*
+- **Secretaria responsável:** Governo (Departamento de Mulheres) *(nomenclatura corrigida na v03)*
 - **Público-alvo:** Mulheres em situação de violência ou vulnerabilidade
 - **Vínculo CadÚnico:** Indireto
 - **Nível de proteção:** Especial
 
-> ✅ **Correção de nomenclatura (v03):** O nome oficial é **"Departamento de Mulheres"** (não "Dep. da Mulher"). Fonte: site oficial, página da Secretaria de Governo.
+✅ **Correção de nomenclatura (v03):** O nome oficial é "Departamento de Mulheres" (não "Dep. da Mulher"). Fonte: site oficial, página da Secretaria de Governo.
 
 ---
 
-### Viva Mais *(Pendência 4 resolvida na v03)*
+### Viva Mais *(Pendência 4 — Resolvida na v03)*
 - **Tipo:** A — Serviço Direto
-- **Secretaria responsável:** Governo (**Departamento de Relações Institucionais**) *(confirmado na v03)*
+- **Secretaria responsável:** Governo (Departamento de Relações Institucionais) *(confirmado na v03)*
 - **Público-alvo:** Comunidade geral
 - **Vínculo CadÚnico:** Indireto
 - **Nível de proteção:** N/A — Bem-estar / Cultural
 - **Origem:** Municipal
 - **Atividades confirmadas (site oficial):** Artes Plásticas e Desenho, Ballet Infantil, Crochê e Tricô, Violão e Viola, Dança do Ventre
-- **Observações:** (Pendência resolvida na v03 — fonte: site oficial, página "Todos os Serviços" e Secretaria de Governo.) Programa de atividades físicas e culturais coordenado pelo Dep. de Relações Institucionais. Verificar se gera registro de atendimento próprio.
+- **Observações:** *(Pendência resolvida na v03 — fonte: site oficial)* Programa de atividades físicas e culturais coordenado pelo Dep. de Relações Institucionais. ⚠️ Verifique se gera registro de atendimento próprio.
 
 ---
 
@@ -483,7 +500,7 @@ observacoes
 - **Público-alvo:** População transexual (~4.500 pessoas estimadas no município)
 - **Vínculo CadÚnico:** Indireto
 - **Nível de proteção:** Saúde / Direitos
-- **Localização:** CEI — Av. Thereza Ana Cecon Breda, 1115, Vila São Pedro
+- **Localização:** CEI – Av. Thereza Ana Cecon Breda, 1115, Vila São Pedro
 - **Início:** Janeiro/2024. 20 pacientes acompanhados inicialmente.
 
 ---
@@ -499,11 +516,10 @@ observacoes
 ---
 
 ## Grupo 8 — Formação Cultural *(NOVO — v03)*
-*(Vinculados à **Secretaria Municipal de Cultura**)*
 
-> **Critério de inclusão:** Programas de formação cultural com acesso universal e gratuito que atendem diretamente a população, com interface relevante para públicos em vulnerabilidade (juventude, terceira idade, inclusão). Registrados como bloco agrupado.
+*(Vinculados à Secretaria Municipal de Cultura)*
 
----
+**Critério de inclusão:** Programas de formação cultural com acesso universal e gratuito que atendem diretamente a população, com interface relevante para públicos em vulnerabilidade (juventude, terceira idade, inclusão). Registrados como bloco agrupado.
 
 ### Formações Culturais — Secretaria de Cultura (bloco)
 - **Tipo:** A — Serviço Direto
@@ -519,18 +535,35 @@ observacoes
   - Artes Visuais — Desenho artístico, fotografia, pintura em tela
   - Artes Urbanas — Poesia/batalha de rimas, DJ, grafitti
   - Literatura e Leitura — Contação de histórias, produção de texto, projetos de incentivo à leitura ("Achei um Livro Hortolândia", "Banca de Troca de Livros", "Gostou? Leva para Casa")
-  - Produção em Audiovisual — Web rádio, inicialização cinematográfica
+  - Produção em Audiovisual — Web rádio, iniciação cinematográfica
   - Produção, Patrimônio e Memória — Viola, violão, catira, folia de reis
   - Cursos Livres — Coral Jovem, Ballet, Dança de Rua, Dança do Ventre, Capoeira, Jazz, Xilofone, Piano, Bateria, Violão, Canto Coral, Artes para Crianças, Contação de Histórias, Teatro, Circo, Oboé, entre outros
-- **Observações:** (Incluído na v03 — fonte: site oficial da Secretaria de Cultura + texto fornecido pelo usuário.) Volume expressivo de oferta cultural gratuita. Verificar se existe registro de matrículas/atendimentos que permitam modelagem em FATO_ATENDIMENTO.
+- **Observações:** *(Incluído na v03 — fonte: site oficial da Secretaria de Cultura + texto fornecido pelo usuário)* ⚠️ Verifique se existe registro de matrículas/atendimentos que permitam modelagem em FATO_ATENDIMENTO.
 
 ---
 
-## Grupo 9 — Governança e Conselhos
+## Grupo 9 — Serviços de Saúde com Interface SUAS *(NOVO — v04)*
+
+*(Serviços da área da Saúde com interface operacional documentada com o SUAS ou com públicos vulneráveis)*
+
+### SAMU Regional Hortolândia e Sumaré *(NOVO — v04)*
+- **Tipo:** A — Serviço Direto
+- **Secretaria responsável:** Saúde
+- **Gestor identificado (v04):** Renato Lopes Machado — Diretor de Atenção Hospitalar, Urgência e Emergência e Coordenador do SAMU Regional Hortolândia e Sumaré *(confirmado Tribuna Liberal 03/01/2026, pg. 6)*
+- **Público-alvo:** População geral em situação de urgência e emergência
+- **Vínculo CadÚnico:** Indireto
+- **Nível de proteção:** Saúde
+- **Origem:** Federal / Municipal
+- **Observações:** *(Incluído na v04 — fonte: Tribuna Liberal 03/01/2026)* Registrado para DIM_GESTOR. Interface com SUAS documentada via atendimentos emergenciais. Abrangência regional (Hortolândia + Sumaré).
+
+---
+
+## Grupo 10 — Governança e Conselhos
+
 *(Não são programas de atendimento — são instâncias de governança)*
 
 | Conselho | Sigla | Vínculo |
-|---------|-------|---------|
+|----------|-------|---------|
 | Conselho Municipal de Segurança Alimentar | COMSEA | Sec. Educação |
 | Câmara Intersetorial de Seg. Alimentar e Nutricional | CAISAN | Intersetorial (criada jan/2024) |
 | Conselho Municipal da Pessoa com Deficiência | CMPD | Sec. Governo / Dep. Direitos Humanos e Políticas Públicas |
@@ -547,7 +580,7 @@ observacoes
 ## Entidades parceiras (OSCs) identificadas
 
 | Entidade | Foco |
-|---------|------|
+|----------|------|
 | Instituto Esperançar | Abrigo Institucional (pop. rua) |
 | AMAAH | Autismo |
 | APAE | Deficiência intelectual |
@@ -561,7 +594,7 @@ observacoes
 
 ---
 
-## Dado de contexto — Mercado formal
+## Dado de contexto — Mercado formal e CadÚnico
 
 - Empregos formais no município: 49.100 (CAGED, jan–mar/2023)
 - Remuneração média formal: R$ 4.700 (acima da média estadual de R$ 3.700)
@@ -571,31 +604,60 @@ observacoes
 
 ---
 
+## Notas territoriais — Subcoberturas identificadas (v04)
+
+*(Dado para DIM_TERRITORIO — não são programas, mas registros territoriais de relevância analítica)*
+
+| Território | Situação identificada | Fonte |
+|------------|----------------------|-------|
+| Jardim São Bento | CadÚnico levado à UBS São Bento por distância do CRAS — território com subcoberta SUAS documentada | Tribuna Liberal 16/01/2026 |
+| Taquara Branca | CadÚnico levado à UBS Taquara Branca por distância do CRAS — território com subcoberta SUAS documentada | Tribuna Liberal 16/01/2026 |
+| Jardim Jatobá / Residencial Franceschini | Mais de 15 bairros afetados por odores da ETE Jatobá — contexto de saúde ambiental relevante para futuras camadas analíticas | Tribuna Liberal 03/01/2026 |
+| Jardim Amanda 2 | Origem da mãe do 1º bebê de 2026 e ocorrência de feminicídio (Nicolly Fernanda Pogere, 15 anos) em 2025 | Tribuna Liberal 03/01/2026 / 31/12/2025 |
+
+**Observação metodológica:** A ação do diretor Jesus José Ribeiro da Costa (Dep. Assistência Social) de levar o CadÚnico às UBSs São Bento e Taquara Branca valida empiricamente a hipótese central do projeto: existem territórios vulneráveis com subcoberta SUAS identificável. Dado candidato ao indicador "Cobertura Territorializada" do MVP.
+
+---
+
+## Notas DIM_GESTOR — Atualizações v04
+
+| Nome | Cargo | Secretaria/Dep. | Fonte |
+|------|-------|-----------------|-------|
+| Quézia Garcia | Diretora do DPCD | Dep. Políticas Públicas para a Pessoa Com Deficiência | Tribuna Liberal 17/01/2026 |
+| Renato Lopes Machado | Diretor de Atenção Hospitalar, Urgência e Emergência / Coordenador SAMU Regional | Saúde | Tribuna Liberal 03/01/2026 |
+| Jesus José Ribeiro da Costa | Diretor (Dep. Assistência Social) | Inclusão e Desenvolvimento Social | Tribuna Liberal 16/01/2026 |
+
+---
+
 ## Pendências e pontos a confirmar
 
-1. **Capacita Hortolândia** — mesmo endereço do CRAS Santa Clara (Rua Estados Unidos, 217). Verificar se é o mesmo espaço físico ou apenas o mesmo logradouro.
-2. ✅ **ACERTE** — secretaria responsável confirmada na v02: Secretaria de Governo, Dep. Relações Institucionais.
-3. **DECOLA Juventude** — incluída no e-book como programa de inserção produtiva para jovens. Não apareceu em material de 2023–2024 nem na varredura do site. Verificar status atual.
+1. **Capacita Hortolândia** — mesmo endereço do CRAS Santa Clara (Rua Estados Unidos, 217). Verifique se é o mesmo espaço físico ou apenas o mesmo logradouro.
+2. ✅ **ACERTE** — secretaria oficial confirmada na v02: Secretaria de Governo, Dep. Relações Institucionais.
+3. **DECOLA Juventude** — incluído no e-book como programa de inserção produtiva para jovens. Não apareceu em material de 2023–2024 nem na varredura do site. Verifique o status atual.
 4. ✅ **Viva Mais** — secretaria e departamento confirmados na v03: Secretaria de Governo, Dep. Relações Institucionais.
-5. **Cobertura territorial dos 7 CRAS** — cruzar com `loteamentosregiao.xls` para padronizar nomes.
+5. **Cobertura territorial dos 7 CRAS** — cruzar com loteamentosregiao.xls para padronizar nomes.
 6. **Conselho Tutelar x CRAS** — listas de bairros não coincidem com áreas dos CRAS. Mapeamento territorial necessário.
-7. **Departamento de PCD** — verificar se possui programas próprios com FATO_ATENDIMENTO (pendência da v02 ainda aberta).
-8. **Escolinhas Esportivas x CadÚnico** — verificar integração formal do atendimento PCD com cadastro municipal de PCD ou CadÚnico.
+7. **Departamento de PCD** — verifique se possui programas próprios com FATO_ATENDIMENTO (pendência da v02 ainda aberta; v04: gestora Quézia Garcia identificada).
+8. **Escolinhas Esportivas x CadÚnico** — verifique a integração formal do atendimento PCD com cadastro municipal de PCD ou CadÚnico.
 9. **Fatec em Hortolândia** — acompanhar definição dos cursos e início das operações (reunião de 26/02/2026).
-10. **Escola Comunitária x Cozinha Comunitária** — verificar se são o mesmo equipamento ou serviços/localizações distintas.
-11. **Serviço de Atendimento Domiciliar x Serviço de Proteção Especial para PCD/Idosos** — verificar se são programas distintos ou modalidades do mesmo serviço.
-12. **Banco do Povo** — verificar se há critério de renda ou vínculo com CadÚnico para acesso.
+10. **Escola Comunitária x Cozinha Comunitária** — verifique se são o mesmo equipamento ou serviços/localizações distintas.
+11. **Serviço de Atendimento Domiciliar x Serviço de Proteção Especial para PCD/Idosos** — verifique se são programas diferentes ou modalidades do mesmo serviço.
+12. **Banco do Povo** — verifique se há classificação de renda ou vínculo com CadÚnico para acesso.
 13. **Formações Culturais** — verificar se existe sistema de registro de matrículas/atendimentos para modelagem em FATO_ATENDIMENTO.
+14. **Vila da Saúde** — monitorar edições futuras para confirmar secretaria responsável, endereço e prazo de implantação.
+15. **SAMU Regional** — verificar interface formal com SUAS para modelagem em FATO_ATENDIMENTO.
+16. **Fundo Social — Cursos jan/2026** — confirmar se Alvenaria Estrutural (Remanso Campineiro) e Assistente de RH (CRAS Amanda) são ciclos regulares ou turmas pontuais.
 
 ---
 
 ## Log de alterações
 
 | Versão | Data | Alterações |
-|--------|------|------------|
+|--------|------|-----------|
 | v01 | 27/02/2026 | Criação do catálogo — levantamento documental 2023–2024 |
 | v02 | 28/02/2026 | Correção do ACERTE (Sec. Governo); inclusão do Atendimento Emergencial (evento 26/02/2026); atualização do MCMV (Jd. Amanda); inclusão das Escolinhas Esportivas; resolução pendência 2 (ACERTE) |
-| v03 | 01/03/2026 | Varredura site oficial (01/03/2026): inclusão de Viva Mais (pendência 4 resolvida), Serviço Atendimento Domiciliar PCD/Idosos, Serviço Proteção Especial PCD/Idosos, Banco do Povo, Cozinha Comunitária, bloco Formações Culturais (Grupo 8); correção de nomenclatura de dois departamentos (Dep. Direitos Humanos e Políticas Públicas; Dep. de Mulheres); confirmação do departamento executor das Escolinhas Esportivas; reorganização para 9 grupos; 4 novas pendências adicionadas |
+| v03 | 01/03/2026 | Varredura site oficial (01/03/2026): inclusão de Viva Mais (pendência 4 resolvida), Serviço de Atendimento Domiciliar PCD/Idosos, Serviço Proteção Especial PCD/Idosos, Banco do Povo, Cozinha Comunitária, bloco Formações Culturais (Grupo 8); correção de nomenclatura de dois departamentos; confirmação do departamento executor das Escolinhas Esportivas; reorganização para 9 grupos; 4 novas pendências adicionadas |
+| v04 | 01/03/2026 | Ciclo jornalístico dez/2025–jan/2026 (edições 31/12/2025, 03/01/2026, 16/01/2026, 17/01/2026): inclusão de Vila da Saúde (em planejamento, Grupo 3); inclusão do SAMU Regional (novo Grupo 9); atualização do Fundo Social com cursos de jan/2026 (Alvenaria Estrutural e Assistente de RH); inclusão de Quézia Garcia e Renato Lopes Machado no DIM_GESTOR; adição de Jesus José Ribeiro da Costa ao DIM_GESTOR; registro de subcoberturas territoriais (Jd. São Bento, Taquara Branca); reorganização para 10 grupos; 3 novas pendências adicionadas |
 
 ---
 
