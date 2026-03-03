@@ -1,6 +1,3 @@
-Aqui está. Copie e cole no GitHub como dim_norma_juridica_v01.md dentro de 01_modelagem_conceitual/:
-
-markdown
 # DIM_NORMA_JURIDICA — Marco Legal da Assistência Social
 **Versão:** 01
 **Data de criação:** 03/03/2026
