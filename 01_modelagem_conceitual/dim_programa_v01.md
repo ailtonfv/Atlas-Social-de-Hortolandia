@@ -3,7 +3,7 @@
 **Data de atualização:** 03/03/2026
 **Versão anterior:** 04 (01/03/2026)
 **Atualizações v05:** Varredura completa dos serviços da Secretaria de Inclusão e Desenvolvimento Social (site oficial, 02/03/2026) + mapeamento completo dos serviços da Secretaria de Desenvolvimento Econômico, Trabalho, Turismo e Inovação (site oficial, 02/03/2026)
-**Responsável:** Ailton Vendramini / Claude (Anthropic)
+**Responsável:** Ailton Vendramini
 **Repositório:** Projeto CadÚnico — Hortolândia
 
 ---
