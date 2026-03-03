@@ -1,4 +1,4 @@
-# DIM_TERRITORIO — Estrutura Territorial do Município
+# DIM_MUNICIPIO_REGIOES_LOTEAMENTOS_v01.md
 **Versão:** 01
 **Data de criação:** 03/03/2026
 **Responsável:** Ailton Vendramini / Claude (Anthropic)
