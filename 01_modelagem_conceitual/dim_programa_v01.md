@@ -255,7 +255,7 @@ Centro POP → Casa de Passagem → Abrigo
 - **Origem:** Municipal / Instituto Esperançar
 - **Base legal principal:** LOAS + CNAS 109/2009
 
-## Grupo 3 — Programas Municipais Específicos (Inclusão)
+  ## Grupo 3 — Programas Municipais Específicos (Inclusão)
 
 ### FUNDO SOCIAL — Atendimento Emergencial
 - **Tipo:** A — Serviço Direto
@@ -895,3 +895,91 @@ Centro POP → Casa de Passagem → Abrigo
 ---
 
 ## Trajetória típica de transição produtiva
+```
+CadÚnico (entrada)
+    ↓
+PAIF — acompanhamento familiar (CRAS)
+    ↓
+Projeto Capacita / Costura Industrial — qualificação
+    ↓
+PAT / SINE — intermediação de mão de obra
+    ↓
+BIFURCAÇÃO:
+  → Inserção formal (CAGED registra)
+  → OU Formalização MEI (Receita Federal registra)
+    ↓
+Banco do Povo — crédito produtivo (opcional)
+    ↓
+Saída do perfil CadÚnico
+(resultado_final = Emancipado em FATO_PARTICIPACAO_PROGRAMA)
+```
+
+---
+
+## Pendências abertas
+
+1. Confirmar distinção Projeto Capacita ×
+   Capacita Hortolândia (Fundo Social)
+2. Confirmar distinção Escola Comunitária ×
+   Cozinha Comunitária
+3. Confirmar se Serviço de Atendimento Domiciliar
+   e Serviço de Proteção Especial PCD/Idosos são
+   modalidades distintas
+4. Detalhar critério de acesso da Farmácia Solidária
+   — vinculação ao CadÚnico?
+5. Verificar se há registro de matrículas nas
+   Formações Culturais para FATO_ATENDIMENTO
+6. Confirmar vínculo CadÚnico para acesso ao
+   Banco do Povo
+7. DECOLA Juventude — verificar status atual
+8. Vila da Saúde — monitorar confirmação de
+   secretaria e prazo
+9. Cobertura territorial dos 7 CRAS — cruzar com
+   loteamentosregiao.xls
+10. Levantar leis municipais de criação dos CRAS,
+    Centro POP, ACERTE e Ressignifica para
+    DIM_NORMA_JURIDICA
+
+---
+
+## Entidades parceiras (OSCs) identificadas
+
+| Entidade | Foco |
+|----------|------|
+| Instituto Esperançar | Abrigo Institucional (pop. rua) |
+| AMAAH | Autismo |
+| APAE | Deficiência intelectual |
+| CADEFI / CENDEFI | Deficiência |
+| AHDV | Deficiência visual |
+| Instituto Pernas Voluntárias | PCD |
+| Todos Pelo Autismo | Autismo |
+| Luta pela Vida Hortolândia | PCD / esporte |
+| Associação dos Patrulheiros e Guarda Mirim | Juventude |
+| OSCs parceiras CRAS (12 entidades) | Projetos sociais |
+
+---
+
+## Dado de contexto — Mercado formal e CadÚnico
+
+- Empregos formais: 49.100 (CAGED, jan–mar/2023)
+- Remuneração média formal: R$ 4.700
+- CadÚnico out/2022: 29.698 famílias / 70.456 pessoas
+- CadÚnico dez/2025: ~73.000 pessoas
+- População estimada: ~240.000 habitantes
+
+---
+
+## Log de alterações
+
+| Versão | Data | Alterações |
+|--------|------|-----------|
+| v01 | 27/02/2026 | Criação do catálogo — levantamento documental 2023–2024 |
+| v02 | 28/02/2026 | Correção ACERTE; Atendimento Emergencial (26/02/2026); MCMV Jd. Amanda; Escolinhas Esportivas |
+| v03 | 01/03/2026 | Varredura site oficial: Viva Mais, Serviços PCD/Idosos, Banco do Povo, Cozinha Comunitária, Formações Culturais |
+| v04 | 01/03/2026 | Ciclo jornalístico dez/2025–jan/2026: Vila da Saúde, SAMU Regional, Fundo Social cursos jan/2026, subcoberturas territoriais |
+| v05 | 03/03/2026 | Varredura completa Secretaria de Inclusão (22 serviços); mapeamento Secretaria de Desenvolvimento Econômico (7 serviços); notas arquiteturais consolidadas |
+| v06 | 03/03/2026 | Adição do campo `base_legal_principal` em todos os programas; base legal dos conselhos (Grupo 10); pendência 10 adicionada; nota arquitetural 8 adicionada |
+
+---
+
+*Documento de registro interno. Uso restrito ao projeto.*
