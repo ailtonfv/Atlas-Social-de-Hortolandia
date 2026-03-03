@@ -1,4 +1,4 @@
-# DIM_DOMICILIO — Domicílio como Entidade Analítica
+# Dim Domicilios hortolandenses— Domicílio como Entidade Analítica
 **Versão:** 01
 **Data de criação:** 03/03/2026
 **Responsável:** Ailton Vendramini / Claude (Anthropic)
