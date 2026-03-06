@@ -2,7 +2,8 @@
 **Versão:** v01  
 **Fonte:** planilha_mapa_legislativo_hortolandia_v07.xlsx (04/03/2026)  
 **Responsável:** Ailton Vendramini / Claude (Anthropic)  
-**Data de geração:** 05/03/2026
+**Data de geração:** 05/03/2026  
+**Atualizado em:** 06/03/2026 — inclusão do Plano Diretor (NM009)
 
 ---
 
@@ -63,6 +64,7 @@ Vincula cada norma aos programas e serviços do DIM_PROGRAMAS_SOCIAIS quando apl
 | NM006 | Lei | 4.255 | 2024 | Transposição de dotações — R$ 431.407 | Inclui reforma do CRAM (contrato 14/2022) | Intersetorial — habitação × mulheres |
 | NM007 | Lei | 4.431 | 2025 | Crédito adicional suplementar — R$ 22,5 mi | Remanejamento orçamentário | Norma derivada do PL 44/2025 |
 | NM008 | Lei | 4.471 | 2025 | Crédito adicional suplementar — R$ 2,2 mi | Remanejamento orçamentário | Norma derivada do PL 122/2025 |
+| NM009 | Projeto de Lei | s/n | 2025 | Plano Diretor de Hortolândia (Revisão) | Revisão do Plano Diretor Municipal — macrozoneamento, estruturação territorial, políticas setoriais urbanas | ⏳ Em tramitação na Câmara. Texto Rev. 25/09. Relevância direta para o projeto: Art. 64 estabelece diretriz de integração das políticas públicas ao planejamento territorial e controle do adensamento para não sobrecarregar equipamentos públicos — respaldo normativo para o diagnóstico de subcobertura no Jardim Amanda e Primavera |
 
 ---
 
@@ -94,6 +96,7 @@ Vincula cada norma aos programas e serviços do DIM_PROGRAMAS_SOCIAIS quando apl
 | P04 | Confirmar base legal da Lei 3.911/2021 vs. Lei 408/1996 (relação hierárquica) | Média |
 | P05 | Detalhar normas estaduais com número e ano precisos | Baixa |
 | P06 | Confirmar vínculo CadÚnico para acesso à Farmácia Solidária | Baixa |
+| P07 | Monitorar aprovação do Plano Diretor na Câmara — atualizar NM009 com número e data de promulgação | Alta |
 
 ---
 
