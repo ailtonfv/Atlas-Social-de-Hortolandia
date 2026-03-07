@@ -1,7 +1,7 @@
 # DIM_GESTOR — Gestores Municipais de Hortolândia
-**Versão:** 05
+**Versão:** 06
 **Data de criação:** 28/02/2026
-**Data de atualização:** 02/03/2026
+**Data de atualização:** 07/03/2026
 **Fonte primária:** Documentos internos, relatórios quadrimestrais, ciclo jornalístico (Tribuna Liberal), site oficial da Prefeitura de Hortolândia, SAPL — Câmara Municipal de Hortolândia
 **Responsável:** Ailton Vendramini / Claude (Anthropic)
 **Repositório:** Projeto CadÚnico — Hortolândia
@@ -19,10 +19,10 @@ Esta tabela registra os gestores municipais de Hortolândia com relevância para
 - O campo `data_fim` permite substituições sem perda do histórico
 - Vereadores são autores de Projetos de Lei que criam ou modificam programas municipais — o vínculo legislativo permite rastrear a origem normativa dos programas catalogados no DIM_PROGRAMA
 
-**Fontes utilizadas (v05):**
+**Fontes utilizadas (v06):**
 - Relatório Quadrimestre de Saúde — 3º Quadrimestre 2025
-- Tribuna Liberal — edições de novembro/2025, dezembro/2025, janeiro e fevereiro/março de 2026
-- Documentos internos do projeto (reunião de 30/01/2026, nota técnica 02/02/2026, reunião 02/03/2026)
+- Tribuna Liberal — edições de novembro/2025, dezembro/2025, janeiro, fevereiro e março de 2026 (até 08/03/2026)
+- Documentos internos do projeto (reunião de 30/01/2026, nota técnica 02/02/2026, reunião de 02/03/2026)
 - Site oficial da Prefeitura de Hortolândia — varredura sistemática de secretarias em 01/03/2026 e 02/03/2026
 - SAPL — Câmara Municipal de Hortolândia (sapl.hortolandia.sp.leg.br) — 9ª Legislatura (2025–2028)
 
@@ -63,7 +63,7 @@ observacoes
 | id | Nome | Cargo | Secretaria | data_inicio | data_fim | Ativo | Fonte |
 |----|------|-------|------------|-------------|----------|-------|-------|
 | 003 | Maria dos Anjos Assis Barros | Secretária | Inclusão e Desenvolvimento Social | A confirmar | — | S | Jornal + Site Oficial (02/03/2026) |
-| 004 | Maria dos Anjos Assis Barros | Presidente | Fundo Social de Solidariedade | A confirmar | — | S | Jornal (acúmulo de função) |
+| 004 | Maria dos Anjos Assis Barros | Presidente | Fundo Social de Solidariedade | A confirmar | — | S | Jornal (acúmulo confirmado por declaração pública — Tribuna Liberal, 06/03/2026, pág. 9) |
 | 005 | Dênis André José Crupe | Secretário | Saúde | 15/05/2020 | — | S | Relatório Quadrimestral 3º Trim./2025 |
 | 006 | Dimas Corrêa Pádua | Secretário | Desenvolvimento Econômico, Trabalho, Turismo e Inovação | A confirmar | — | S | Jornal (Tribuna Liberal, 21/02/2026) + Site Oficial (02/03/2026) |
 | 007 | Eliane Nascimento | Secretária | Meio Ambiente, Desenvolvimento Sustentável e Assuntos Climáticos | A confirmar | — | S | Jornal (Tribuna Liberal, 21/02/2026) |
@@ -136,6 +136,9 @@ observacoes
 | 025 | Renato Lopes Machado | Diretor / Coordenador | Atenção Hospitalar, Urgência e Emergência / SAMU Regional Hortolândia e Sumaré (Sec. Saúde) | A confirmar | — | S | Jornal (Tribuna Liberal, 01/03/2026) |
 | 028 | Sidneia Aparecida dos Santos | Diretora | Dep. de Almoxarifado e Patrimônio | 14/11/2025 | — | S | Jornal (Tribuna Liberal, 14/11/2025) |
 | 029 | Marco Antônio Nascimento | Diretor | Dep. Administrativo Financeiro (Sec. Educação, Ciência e Tecnologia) | 14/11/2025 | — | S | Jornal (Tribuna Liberal, 14/11/2025) |
+| 062 | Josefa Teixeira | Diretora | Dep. de Políticas Públicas para a Mulher (Sec. Governo) | A confirmar | — | S | Jornal (Tribuna Liberal, 05/03/2026) |
+
+> 📌 **Nota — Josefa Teixeira (id 062):** Identificada como nova diretora do Departamento de Políticas Públicas para a Mulher (Secretaria de Governo) na edição de 05/03/2026 da Tribuna Liberal, no contexto do anúncio do Movimento Eles Por Elas. Nome completo e data formal de nomeação a confirmar via Diário Oficial.
 
 ---
 
@@ -155,6 +158,11 @@ observacoes
 |----|------|-------|----------------------|-------------|----------|-------|-------|
 | 011 | Mauro Selço Salvino de Mendonça | Presidente | Conselho Municipal de Saúde (CMS) | A confirmar | — | S | Relatório Quadrimestral 3º Trim./2025 |
 | 012 | Sunne Teixeira dos Santos | Presidente | Conselho Municipal de Meio Ambiente (CMMA) | A confirmar | — | S | Jornal (Tribuna Liberal, 21/02/2026) |
+| 063 | Madalena Santos | Presidente | Conselho Municipal dos Direitos da Mulher | A confirmar | — | S | Jornal (Tribuna Liberal, 05/03/2026) — a confirmar |
+
+> ⚠️ **Sunne Teixeira dos Santos:** registrada como Secretária Adjunta de Meio Ambiente (id 061) e como Presidente do Conselho Municipal de Meio Ambiente (id 012). Verificar acúmulo de função ou mudança de cargo.
+
+> 📌 **Nota — Madalena Santos (id 063):** Identificada como presidente do Conselho Municipal dos Direitos da Mulher na edição de 05/03/2026 da Tribuna Liberal, no contexto do anúncio do Movimento Eles Por Elas. Nome completo e data formal de posse a confirmar via Diário Oficial ou ata do conselho.
 
 ---
 
@@ -170,7 +178,7 @@ observacoes
 | 034 | Cesinha Brasil | Cícero César Brasil | PSB | S | — | A mapear | SAPL (01/03/2026) |
 | 035 | Nei Prazeres | Claudinei Prazeres de Barros | PP | S | — | A mapear | SAPL (01/03/2026) |
 | 036 | Clemilton Silva | Clemilton Alves da Silva | PL | S | — | A mapear | SAPL (01/03/2026) |
-| 037 | Clodoaldo | Clodoaldo Santos da Silva | PODE | S | — | A mapear | SAPL (01/03/2026) |
+| 037 | Clodoaldo | Clodoaldo Santos da Silva | PODE | S | — | Moção 42/2026 (Vacina Calixcoca — UFMG) | SAPL (01/03/2026) + Jornal (Tribuna Liberal, 06/03/2026) |
 | 038 | Daniel Laranjeira | Daniel Laranjeira | PSD | S | — | A mapear | SAPL (01/03/2026) |
 | 039 | Derli | Derli de Jesus Athanazio Bueno | PCdoB | S | Pres. Comissão Social | A mapear | SAPL (01/03/2026) — cod_autor: 97 |
 | 040 | Dionatan Domingues | Dionata Domingues | PP | S | — | A mapear | SAPL (01/03/2026) |
@@ -186,6 +194,8 @@ observacoes
 | 050 | Léo do LM | Leonardo Martins Moreira | PSB | N (fora de exercício) | — | mandato sob judice | SAPL (01/03/2026) |
 
 > 📌 **Nota — Lenivaldo Pauliuki:** Ex-vereador que migrou para o Executivo. Consta como autor de matérias legislativas no SAPL com histórico de PLs anteriores. Registrado no Executivo como id 018.
+
+> 📌 **Nota — Clodoaldo (id 037):** Autor da Moção 42/2026, aprovada pela Câmara Municipal, reconhecendo os pesquisadores da UFMG pelo desenvolvimento da vacina Calixcoca (imunoterapia contra cocaína/crack). Relevante para o contexto de saúde mental e dependência química no território.
 
 > 📌 **Prioridade de mapeamento de PLs (2025–2026):** Vereadores com maior volume de PLs apresentados: Régis da Serralheria (4 PLs + 1 PLC), Edivaldo (3 PLs), Zaca (3 PLs), Paulão (3 PLs), Derli (2 PLs), Nego (2 PLs), Nei Prazeres (2 PLs). Mapeamento de conteúdo pendente — visita ao jurídico da Câmara pendente.
 
@@ -209,7 +219,6 @@ observacoes
 | Finanças | Antônio Agnelo Bonadio | Eduardo Cesar Vaquero Marques |
 | Administração e Gestão de Pessoal | Ieda Manzano de Oliveira | Hortência Ribeiro Nunes |
 | Assuntos Jurídicos | Silvania Anizio da Silva | Lenita Sostena de Souza |
-
 | Mobilidade Urbana | Atílio Andre Pereira | Sandra Aparecida Zaith |
 | Obras | Sérgio Marasco Torrecillas | Renato Sarto |
 | Planejamento Urbano e Gestão Estratégica | Eduardo Marchetti Francisco | Andreia Missio |
@@ -237,6 +246,8 @@ observacoes
 10. **Site oficial da Prefeitura** — Atualizar observação quando o site corrigir a listagem do Vice-Prefeito (ainda exibia Cafú em 01/03/2026).
 11. **Adjunto de Habitação** — Cargo vago desde 14/11/2025. Monitorar nomeação.
 12. **Adjunto de Meio Ambiente** — Não identificado ainda.
+13. **Josefa Teixeira (id 062)** — Confirmar nome completo e data de nomeação via Diário Oficial.
+14. **Madalena Santos (id 063)** — Confirmar nome completo e data de posse no Conselho Municipal dos Direitos da Mulher via Diário Oficial ou ata do conselho.
 
 ---
 
@@ -249,6 +260,7 @@ observacoes
 | v03 | 01/03/2026 | Ciclo jornalístico jan/2026: 2 novos registros (ids 024–025) — Quézia Garcia (DPCD) e Renato Lopes Machado (SAMU Regional) |
 | v04 | 01/03/2026 | Operação Coffee Break (nov/2025): nomes completos corrigidos (ids 001 e 002); data_fim Cafú confirmado (14/11/2025); registros históricos exonerados (ids 026, 027, 030); nova categoria Vereadores com 20 registros (ids 031–050) — 9ª Legislatura via SAPL |
 | v05 | 02/03/2026 | Varredura sistemática do site oficial — páginas individuais de cada secretaria: 11 novos registros (ids 051–061): titulares e adjuntos de Administração, Assuntos Jurídicos, Mobilidade Urbana, Obras, Planejamento, Segurança Pública, Serviços Urbanos e Meio Ambiente; cobertura 17/17 secretarias; adjunto Habitação vago confirmado; pendências 11 e 12 abertas. Correções 03/03/2026: "Carrão" → "Carlão do Nova Europa" (id 033); Edivaldo = Presidente da Câmara (id 042); cod_autor SAPL adicionados: Derli=97, Roberta Diniz=111 |
+| v06 | 07/03/2026 | Ciclo jornalístico 04–08/03/2026: id 062 — Josefa Teixeira (Diretora Dep. Políticas da Mulher, nova nomeação, Tribuna Liberal 05/03/2026); id 063 — Madalena Santos (Presidente Conselho Direitos da Mulher, a confirmar, Tribuna Liberal 05/03/2026); id 004 — acumulação Maria dos Anjos confirmada por declaração pública (Tribuna Liberal 06/03/2026, pág. 9); id 037 — Clodoaldo: vinculo_programa atualizado com Moção 42/2026 (Vacina Calixcoca); pendências 13 e 14 abertas |
 
 ---
 
