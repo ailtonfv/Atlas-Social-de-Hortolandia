@@ -158,11 +158,9 @@ observacoes
 |----|------|-------|----------------------|-------------|----------|-------|-------|
 | 011 | Mauro Selço Salvino de Mendonça | Presidente | Conselho Municipal de Saúde (CMS) | A confirmar | — | S | Relatório Quadrimestral 3º Trim./2025 |
 | 012 | Sunne Teixeira dos Santos | Presidente | Conselho Municipal de Meio Ambiente (CMMA) | A confirmar | — | S | Jornal (Tribuna Liberal, 21/02/2026) |
-| 063 | Madalena Santos | Presidente | Conselho Municipal dos Direitos da Mulher | A confirmar | — | S | Jornal (Tribuna Liberal, 05/03/2026) — a confirmar |
-
 > ⚠️ **Sunne Teixeira dos Santos:** registrada como Secretária Adjunta de Meio Ambiente (id 061) e como Presidente do Conselho Municipal de Meio Ambiente (id 012). Verificar acúmulo de função ou mudança de cargo.
 
-> 📌 **Nota — Madalena Santos (id 063):** Identificada como presidente do Conselho Municipal dos Direitos da Mulher na edição de 05/03/2026 da Tribuna Liberal, no contexto do anúncio do Movimento Eles Por Elas. Nome completo e data formal de posse a confirmar via Diário Oficial ou ata do conselho.
+> 📌 **Nota metodológica — presidentes de conselhos:** Presidentes de conselhos municipais exercem papel de controle social, não de gestão do Executivo. Seus registros pertencem ao **DIM_COLEGIADOS**, não ao DIM_GESTOR. Referência: Madalena Santos (presidente do CMDM) registrada em DIM_COLEGIADOS, COL009.
 
 ---
 
@@ -247,7 +245,7 @@ observacoes
 11. **Adjunto de Habitação** — Cargo vago desde 14/11/2025. Monitorar nomeação.
 12. **Adjunto de Meio Ambiente** — Não identificado ainda.
 13. **Josefa Teixeira (id 062)** — Confirmar nome completo e data de nomeação via Diário Oficial.
-14. **Madalena Santos (id 063)** — Confirmar nome completo e data de posse no Conselho Municipal dos Direitos da Mulher via Diário Oficial ou ata do conselho.
+14. **Mauro Selço Salvino de Mendonça (id 011) e Sunne Teixeira dos Santos (id 012)** — Presidentes de conselhos registrados por exceção (identificados antes da decisão metodológica). Verificar se devem migrar para DIM_COLEGIADOS ou permanecer por acúmulo de função com o Executivo (Sunne = Secretária Adjunta).
 
 ---
 
@@ -260,7 +258,7 @@ observacoes
 | v03 | 01/03/2026 | Ciclo jornalístico jan/2026: 2 novos registros (ids 024–025) — Quézia Garcia (DPCD) e Renato Lopes Machado (SAMU Regional) |
 | v04 | 01/03/2026 | Operação Coffee Break (nov/2025): nomes completos corrigidos (ids 001 e 002); data_fim Cafú confirmado (14/11/2025); registros históricos exonerados (ids 026, 027, 030); nova categoria Vereadores com 20 registros (ids 031–050) — 9ª Legislatura via SAPL |
 | v05 | 02/03/2026 | Varredura sistemática do site oficial — páginas individuais de cada secretaria: 11 novos registros (ids 051–061): titulares e adjuntos de Administração, Assuntos Jurídicos, Mobilidade Urbana, Obras, Planejamento, Segurança Pública, Serviços Urbanos e Meio Ambiente; cobertura 17/17 secretarias; adjunto Habitação vago confirmado; pendências 11 e 12 abertas. Correções 03/03/2026: "Carrão" → "Carlão do Nova Europa" (id 033); Edivaldo = Presidente da Câmara (id 042); cod_autor SAPL adicionados: Derli=97, Roberta Diniz=111 |
-| v06 | 07/03/2026 | Ciclo jornalístico 04–08/03/2026: id 062 — Josefa Teixeira (Diretora Dep. Políticas da Mulher, nova nomeação, Tribuna Liberal 05/03/2026); id 063 — Madalena Santos (Presidente Conselho Direitos da Mulher, a confirmar, Tribuna Liberal 05/03/2026); id 004 — acumulação Maria dos Anjos confirmada por declaração pública (Tribuna Liberal 06/03/2026, pág. 9); id 037 — Clodoaldo: vinculo_programa atualizado com Moção 42/2026 (Vacina Calixcoca); pendências 13 e 14 abertas |
+| v06 | 07/03/2026 | Ciclo jornalístico 04–08/03/2026: id 062 — Josefa Teixeira (Diretora Dep. Políticas da Mulher, nova nomeação, Tribuna Liberal 05/03/2026); id 004 — acumulação Maria dos Anjos confirmada por declaração pública (Tribuna Liberal 06/03/2026, pág. 9); id 037 — Clodoaldo: vinculo_programa atualizado com Moção 42/2026 (Vacina Calixcoca); Madalena Santos (CMDM) migrada para DIM_COLEGIADOS COL009 — presidentes de conselhos pertencem ao controle social, não ao Executivo; decisão metodológica registrada; pendências 13 e 14 ajustadas |
 
 ---
 
