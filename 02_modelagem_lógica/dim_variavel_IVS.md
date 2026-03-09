@@ -1,8 +1,8 @@
 # DIM_VARIAVEL_IVS — Variáveis do Índice de Vulnerabilidade Social
-**Versão:** v01  
-**Data de criação:** 09/03/2026  
+**Versão:** v01r2  
+**Data de criação:** 2026-03-09  
 **Responsável:** Ailton Vendramini / Claude (Anthropic)  
-**Repositório:** pmh-arquitetura-dados-sociais / 02_modelagem_lógica
+**Repositório:** Atlas-Social-de-Hortolândia / 02_modelagem_lógica
 
 ---
 
@@ -113,7 +113,7 @@ replicará o peso IPEA.
 
 ---
 
-## Mapeamento IVS × Camadas do Modelo RAJIS
+## Mapeamento IVS × Camadas do Modelo — Atlas Social de Hortolândia
 
 | Camada analítica | Variáveis IVS cobertas |
 |-----------------|----------------------|
@@ -129,11 +129,10 @@ replicará o peso IPEA.
 |-------------|-------------------------------------|----------------------|
 | Infraestrutura Urbana | Agora a Casa é Sua, PHLIS, MCMV, Serviços Urbanos | `infraestrutura_urbana` |
 | Capital Humano | Programa Cuidar, Bolsa Creche, SCFV, Enfrentamento Trabalho Infantil | `capital_humano` |
-| Renda e Trabalho | ACERTE, PAT, Banco do Povo, Bolsa Família, BPC, DECOLA | `renda_trabalho` |
+| Renda e Trabalho | PAT, Banco do Povo, Bolsa Família, BPC, DECOLA | `renda_trabalho` |
 | Multidimensional | PAIF, PAEFI, Ressignifica Hortolândia, CRAS/CREAS | `multidimensional` |
 
-> Cross-reference completo: campo `dimensao_ivs` no DIM_PROGRAMA v09
-> (a gerar).
+> Cross-reference completo: campo `dimensao_ivs` no `dim_programas_sociais_v09.md`.
 
 ---
 
@@ -144,13 +143,13 @@ replicará o peso IPEA.
 Com base nas características conhecidas de Hortolândia
 (infraestrutura urbana relativamente desenvolvida; polo de emprego
 formal expressivo com 49.100 empregos formais e remuneração média
-de R$ 4.700; 73.000 pessoas no CadÚnico):
+de R$ 4.700; 72.424 pessoas no CadÚnico dez/2025):
 
 | Dimensão | Peso IPEA | Peso IVS-H (hipótese) | Justificativa |
 |----------|-----------|----------------------|---------------|
 | Infraestrutura Urbana | 33% | ~15–20% | Cobertura de água e coleta de lixo elevadas — baixo poder discriminatório local |
 | Capital Humano | 33% | ~40–45% | Reprodução intergeracional da pobreza é o desafio central — mães chefes, analfabetismo, crianças fora da escola |
-| Renda e Trabalho | 33% | ~35–40% | Tensão entre polo de emprego formal e 73.000 no CadÚnico — desemprego e informalidade são determinantes |
+| Renda e Trabalho | 33% | ~35–40% | Tensão entre polo de emprego formal e 72.424 no CadÚnico — desemprego e informalidade são determinantes |
 
 > ⚠️ **Estes pesos são hipótese inicial.** A calibração definitiva
 > do IVS-H será feita com base nos dados reais do CadÚnico dez/2025
@@ -179,10 +178,11 @@ de R$ 4.700; 73.000 pessoas no CadÚnico):
 
 | Versão | Data | Alterações |
 |--------|------|------------|
-| v01 | 09/03/2026 | Criação — 16 variáveis IVS mapeadas; disponibilidade por fonte municipal; calibração IVS-H inicial; mapeamento por camada analítica e por programa |
-| v01r | 09/03/2026 | Revisão — substituída entidade "Território" pela hierarquia correta do modelo: Loteamento / RP / Núcleo |
+| v01 | 2026-03-09 | Criação — 16 variáveis IVS mapeadas; disponibilidade por fonte municipal; calibração IVS-H inicial; mapeamento por camada analítica e por programa |
+| v01r | 2026-03-09 | Revisão — substituída entidade "Território" pela hierarquia correta do modelo: Loteamento / RP / Núcleo |
+| v01r2 | 2026-03-09 | Revisão — substituída referência "Modelo RAJIS" por "Atlas Social de Hortolândia"; número CadÚnico padronizado para 72.424; ACERTE removido do mapeamento de programas; datas em ISO 8601 |
 
 ---
 
-*Documento de modelagem conceitual — primeiro arquivo de
-02_modelagem_lógica. Uso interno do Projeto Atlas Social de Hortolândia.*
+*Documento de modelagem conceitual — 02_modelagem_lógica.*  
+*Uso interno — Atlas Social de Hortolândia.*
