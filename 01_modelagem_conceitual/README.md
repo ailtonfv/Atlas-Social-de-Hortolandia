@@ -6,28 +6,89 @@ A modelagem conceitual responde à pergunta: quais são as entidades do mundo re
 
 ---
 
+## Hierarquia territorial (DEFINITIVA)
+
+```
+Município
+  └── Regiões de Planejamento (6 RPs)
+        └── Loteamentos (141 oficiais)
+              └── Núcleo (agrupamento operacional — área de abrangência do CRAS)
+```
+
+> **Nota:** A entidade "Território" foi eliminada do modelo. O Núcleo não é uma divisão geográfica formal — é o conjunto de loteamentos cobertos por uma unidade de serviço (CRAS). Não existe `DIM_TERRITORIO` neste projeto.
+
+---
+
 ## Conteúdo atual
 
-### `dim_programa_v03.md`
-Catálogo dos programas municipais de assistência social, habitação, segurança alimentar, inserção produtiva, direitos humanos e formação cultural de Hortolândia.
+### Dimensões de pessoas e famílias
 
-Extraído a partir de levantamento documental cobrindo 2023–2024, atualizado incrementalmente via ciclo jornalístico (Tribuna Liberal) e varredura do site oficial da Prefeitura. Organizado em 9 grupos com mais de 35 programas catalogados. Para cada programa registra: secretaria responsável, departamento executor, público-alvo, vínculo com o CadÚnico, tipo de intervenção (serviço direto ou política articuladora) e nível de proteção social.
+#### `dim_pessoa_v01.md`
+Entidade central do modelo analítico. Representa cada indivíduo identificado por CPF e/ou NIS. Unidade mínima de análise — toda cadeia analítica começa pela Pessoa.
 
-Este catálogo é a base para a futura tabela `DIM_PROGRAMA` no banco de dados.
+#### `dim_familia_v01.md`
+Agregação de pessoas que compartilham domicílio e constam no CadÚnico sob um mesmo `cod_familiar_fam`. A família é a unidade de concessão de benefícios como Bolsa Família e cesta básica.
 
-### `dim_gestor_v02.md`
-Catálogo dos gestores municipais de Hortolândia com relevância para o projeto de inteligência territorial da assistência social.
+#### `dim_domicilios_hortolandenses.md`
+Atributos do domicílio: tipo, condição de ocupação, infraestrutura (água, esgoto, coleta de lixo). Interface com variáveis IVS da dimensão Infraestrutura Urbana.
 
-Cobre prefeito, vice-prefeito, secretários titulares, secretários adjuntos, diretores de departamentos estratégicos e presidentes de conselhos municipais. Inclui campo `ativo` para rastreamento de substituições sem perda de histórico.
+---
 
-Este catálogo é a base para a futura tabela `DIM_GESTOR` no banco de dados e alimenta o campo `secretaria_responsavel` do `DIM_PROGRAMA`.
+### Dimensões territoriais
 
-### `dim_territorio_cras_v01.md`
-Mapeamento dos 7 CRAS de Hortolândia com seus respectivos loteamentos de abrangência.
+#### `dim_municipio_regioes_loteamentos.md`
+Mapeamento completo da hierarquia territorial: município → 6 Regiões de Planejamento → 141 loteamentos oficiais. Fonte: base oficial SIG/PMH.
 
-Fonte: planilha oficial da Secretaria de Inclusão e Desenvolvimento Social, atualizada em 06/02/2026. Os nomes dos loteamentos estão em processo de padronização — serão ajustados no cruzamento com a base oficial de loteamentos do município.
+#### `dim_loteamento_v01.md` *(em construção)*
+Cada loteamento como unidade territorial de referência. Campos: `codbairro`, `nome_oficial`, `regiao_planejamento`, `nucleo_cras`. Base para geocodificação de endereços do CadÚnico.
 
-Este documento é a base para a futura tabela `DIM_TERRITORIO` no banco de dados.
+#### `dim_nucleo_v01.md`
+Os 7 núcleos operacionais — um por CRAS. Define quais loteamentos estão sob abrangência de cada unidade de serviço. Tabela de relacionamento: `REL_LOTEAMENTO_NUCLEO` (141 × 7).
+
+---
+
+### Dimensões institucionais
+
+#### `dim_unidades_de_atendimento.md`
+Equipamentos da rede socioassistencial: 7 CRAS, 1 CREAS, Centro POP, CRAM e unidades referenciadas. Inclui endereço, horário e serviços oferecidos.
+
+#### `dim_gestores_municipais_v06.md`
+62 registros. Cobre prefeito, vice-prefeito, secretários titulares, adjuntos, diretores estratégicos e presidentes de conselhos. Campo `ativo` para rastreamento histórico de substituições. Alimenta o campo `secretaria_responsavel` do `DIM_PROGRAMAS_SOCIAIS`.
+
+#### `dim_osc_v01.md`
+423 Organizações da Sociedade Civil registradas no município. Base para `REL_NORMA_ENTIDADE` e análise da rede de execução indireta de serviços.
+
+#### `dim_colegiados_v02.md`
+28 colegiados municipais: conselhos de direitos, conselhos gestores, comitês intersetoriais e fundos. Inclui campo `dimensao_ivs` e vinculação normativa. Alimenta a análise de governança participativa.
+
+#### `dim_vereador_hortolandia_v01.md`
+Câmara Municipal: vereadores eleitos, partidos, comissões. Base para rastreamento de matérias legislativas relevantes para a política socioassistencial.
+
+---
+
+### Dimensões de programas e normas
+
+#### `dim_programas_sociais_v09.md`
+**58 programas** catalogados. Cobre assistência social, habitação, segurança alimentar, inserção produtiva, direitos humanos e formação cultural. Campos principais: `esfera`, `id_orgao_executor`, `base_legal_principal`, `base_legal_municipal`, `dimensao_ivs`. O campo `dimensao_ivs` conecta cada programa ao IVS-H (Índice de Vulnerabilidade Social de Hortolândia), com valores: `infraestrutura_urbana` | `capital_humano` | `renda_trabalho` | `multidimensional` | `governanca`.
+
+#### `dim_normas_juridicas_v01.md`
+Arcabouço normativo da política socioassistencial: leis federais, estaduais e municipais. Vincula normas a programas, colegiados e concessões. Base para rastreabilidade e auditabilidade do sistema.
+
+#### `dim_materias_legislativas_municipais.md`
+Matérias legislativas da Câmara Municipal com impacto na política social. Base para monitoramento do ciclo normativo local.
+
+---
+
+### Tabelas fato *(esboço conceitual)*
+
+#### `fato_atendimento_v01.md`
+Registro de cada atendimento: pessoa, programa, unidade, data, tipo de serviço. Chave de cruzamento com SIGAS (futuro).
+
+#### `fato_concessao_beneficio_v01.md`
+Registro de cada concessão: pessoa, benefício, valor, período, norma vigente. Base para detecção de duplicação por CPF.
+
+#### `fato_participacao_programa_v01.md`
+Participação de pessoas e famílias em programas ao longo do tempo. Base para análise de trajetória e emancipação planejada.
 
 ---
 
@@ -45,14 +106,28 @@ Este documento é a base para a futura tabela `DIM_TERRITORIO` no banco de dados
 
 ---
 
-## O que vem a seguir nesta pasta
+## Pendências desta pasta
 
-- Mapeamento definitivo de loteamentos com grafia padronizada
-- Diagrama conceitual Pessoa → Família → Território → Programa
-- Definição formal das entidades e seus atributos principais
+| Pendência | Prioridade |
+|-----------|------------|
+| Popular `REL_LOTEAMENTO_NUCLEO` (141 loteamentos × 7 CRAS) | Alta |
+| Formalizar `DIM_LOTEAMENTO` com campo `codbairro` padronizado | Alta |
+| Construir `TAB_NORMALIZA_ENDERECO` para geocodificação do CadÚnico | Alta |
+| Popular `DIM_DOMICILIO` com campos CadÚnico V7 | Alta |
+| Confirmar RP dos 11 loteamentos de fronteira | Média |
 
 ---
 
 ## Relação com outras pastas
 
-Os documentos desta pasta alimentam diretamente a `02_modelagem_lógica`, onde as entidades conceituais se tornam tabelas com campos, tipos e relacionamentos definidos.
+| Pasta | Relação |
+|-------|---------|
+| `00_governança` | Recebe as diretrizes estratégicas e o arcabouço normativo que orientam as decisões conceituais |
+| `02_modelagem_lógica` | Recebe as entidades conceituais desta pasta e as transforma em tabelas com campos, tipos e relacionamentos formais (schema SQL) |
+| `03_indicadores_mvp` | Consome as dimensões e fatos para produzir o IVS-H e os indicadores operacionais |
+
+---
+
+*Última atualização: 09/03/2026 (v02)*  
+*Responsável: Ailton Vendramini / Claude (Anthropic)*  
+*Atualização v02: versões corrigidas, eliminação de DIM_TERRITORIO, adição de todos os arquivos existentes, hierarquia territorial definitiva, tabela de pendências.*
