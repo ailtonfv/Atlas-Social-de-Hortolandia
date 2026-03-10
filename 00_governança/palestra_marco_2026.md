@@ -34,7 +34,7 @@ A palestra tem dois objetivos simultâneos:
 > onde está a vulnerabilidade social?"*
 
 A resposta exige três elementos: **dados**, **integração institucional**
-e **visão territorial**.
+e **visão municipal**.
 
 ---
 
