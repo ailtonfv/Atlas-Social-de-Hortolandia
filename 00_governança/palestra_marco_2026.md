@@ -2,7 +2,7 @@
 ## Vulnerabilidade Social e Integração de Políticas Públicas em Hortolândia
 
 **Arquivo:** `00_governanca/palestra_marco_2026.md`  
-**Versão:** v01  
+**Versão:** v02  
 **Data:** 2026-03-10  
 **Responsável:** Ailton Vendramini  
 **Repositório:** Atlas-Social-de-Hortolândia
@@ -13,7 +13,7 @@
 
 Este documento registra a estrutura narrativa e o argumento institucional
 da palestra proposta para março de 2026, destinada a apresentar o projeto
-Atlas Social de Hortolândia.
+Atlas Social de Hortolândia ao prefeito e às secretarias municipais.
 
 A palestra tem dois objetivos simultâneos:
 
@@ -34,7 +34,7 @@ A palestra tem dois objetivos simultâneos:
 > onde está a vulnerabilidade social?"*
 
 A resposta exige três elementos: **dados**, **integração institucional**
-e **visão municipal**.
+e **visão territorial**.
 
 ---
 
@@ -176,6 +176,66 @@ Mesmas variáveis. Mesmas dimensões. **Pesos calibrados à realidade local.**
 
 ---
 
+**Slide 10a — IVS-IPEA × IVS-H: o que muda e por quê**
+
+*Lâmina de referência — pode ser impressa como material de apoio*
+
+---
+
+#### O que é igual
+
+| Elemento | IVS-IPEA | IVS-H |
+|---|---|---|
+| Número de variáveis | 16 | 16 |
+| Dimensões | 3 (IU / CH / RT) | 3 (IU / CH / RT) |
+| Base científica | IPEA, 2015 | IPEA, 2015 |
+| Comparabilidade intermunicipal | ✅ | ✅ (mantida via âncora IPEA) |
+
+---
+
+#### O que muda
+
+| Elemento | IVS-IPEA | IVS-H |
+|---|---|---|
+| Peso por dimensão | 33% cada | Calibrado à realidade local |
+| Peso por variável | 6,25% cada (uniforme) | Ajustado por poder discriminatório local |
+| Território de referência | Nacional / municipal agregado | Loteamento → RP → Núcleo |
+| Fonte de dados | Censo demográfico (IBGE) | CadÚnico + Censo 2022 + CAGED + Saúde/Educação |
+| Atualização | Decenal (Censo) | Contínua (CadÚnico atualizado) |
+
+---
+
+#### Calibração hipotética — por que esses pesos?
+
+| Dimensão | Peso IPEA | Peso IVS-H | Justificativa |
+|---|---|---|---|
+| Infraestrutura Urbana | 33% | **~15–20%** | Saneamento e coleta de lixo com alta cobertura — baixo poder discriminatório entre territórios de Hortolândia |
+| Capital Humano | 33% | **~40–45%** | Reprodução intergeracional da pobreza é o desafio central — mães chefes, analfabetismo, crianças fora da escola |
+| Renda e Trabalho | 33% | **~35–40%** | Tensão entre polo de emprego formal e 72.424 no CadÚnico — desemprego e informalidade são determinantes locais |
+
+---
+
+#### Disponibilidade imediata para o IVS-H
+
+Das 16 variáveis, **5 já estão disponíveis no CadÚnico dez/2025**:
+
+| Código | Variável | Dimensão |
+|---|---|---|
+| CH_05 | % mães chefes de família, sem fund. completo e filho < 15 anos | Capital Humano |
+| CH_06 | Taxa de analfabetismo — 15 anos ou mais | Capital Humano |
+| CH_07 | % crianças em domicílios sem nenhum morador com fund. completo | Capital Humano |
+| RT_01 | % pessoas com renda per capita ≤ ½ SM | Renda e Trabalho |
+| RT_04 | % domicílios com renda ≤ ½ SM dependentes de idosos | Renda e Trabalho |
+
+> Essas 5 variáveis permitem calcular um **IVS-H parcial** como primeiro
+> entregável analítico — antes de qualquer integração intersetorial.
+
+---
+
+> *Referência completa: `00_governanca/ivs_vs_ivsh_comparativo.md`*
+
+---
+
 ### Bloco 3 — O Modelo Territorial (Slides 11–15)
 
 **Slide 11 — Por que adaptar o índice?**
@@ -267,7 +327,7 @@ Saúde      Assistência  Habitação
 Assistência
 ```
 
-Quando o foco passa a ser o **núcleo e a vulnerabilidade**, as
+Quando o foco passa a ser o **território e a vulnerabilidade**, as
 secretarias deixam de atuar isoladamente e passam a cooperar em torno
 de famílias, territórios prioritários e problemas sociais concretos.
 
@@ -292,7 +352,7 @@ não com Big Data. Começa com **dados confiáveis**, não com promessa.
 Um sistema capaz de apoiar decisões como:
 
 - Onde concentrar políticas sociais
-- Quais núcleos precisam de maior atenção
+- Quais territórios precisam de maior atenção
 - Quais programas estão gerando impacto
 - Como comprovar redução de vulnerabilidade ao longo do tempo
 
@@ -303,7 +363,7 @@ Um sistema capaz de apoiar decisões como:
 **Slide 19 — Visão de futuro**
 
 Hortolândia pode construir um sistema de **Inteligência Social
-do Município** capaz de integrar:
+Territorial** capaz de integrar:
 
 - Dados sociais (CadÚnico, SIGAS)
 - Políticas públicas (programas mapeados)
@@ -312,7 +372,7 @@ do Município** capaz de integrar:
 
 ---
 
-**Slide 20 — O argumento**
+**Slide 20 — O argumento para o prefeito**
 
 Com menos de 3 anos de mandato, há uma janela de oportunidade:
 
@@ -370,10 +430,9 @@ Quando a vulnerabilidade passa a orientar o planejamento:
 | Versão | Data | Alterações |
 |---|---|---|
 | v01 | 2026-03-10 | Criação — estrutura de 21 slides a partir do Registro de Ideias de 08/03/2026 |
+| v02 | 2026-03-10 | Adição do Slide 10a — lâmina comparativa IVS-IPEA × IVS-H (o que é igual, o que muda, calibração hipotética e disponibilidade imediata) |
 
 ---
 
 *Documento de comunicação institucional — `00_governanca/`.*  
 *Atlas Social de Hortolândia.*
-
-
