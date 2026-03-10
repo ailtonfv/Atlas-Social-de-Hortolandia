@@ -1,7 +1,7 @@
 # DIM_VARIAVEL_IVS — Variáveis do Índice de Vulnerabilidade Social
 **Versão:** v01r2  
 **Data de criação:** 2026-03-09  
-**Responsável:** Ailton Vendramini / Claude (Anthropic)  
+**Responsável:** Ailton Vendramini / 
 **Repositório:** Atlas-Social-de-Hortolândia / 02_modelagem_lógica
 
 ---
