@@ -1,1 +1,30 @@
+# =============================================================================
+# .gitignore — Atlas Social de Hortolândia
+# =============================================================================
 
+# Banco de dados SQLite — fica local, não sobe para o repositório
+# O banco é gerado a partir dos scripts em 02_modelagem_lógica/
+06_banco_dados/*.db
+06_banco_dados/*.db-shm
+06_banco_dados/*.db-wal
+
+# Arquivos temporários de sistema
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Arquivos temporários de editores
+*.tmp
+*.bak
+*~
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.env
+
+# Dados brutos — nunca versionar microdados ou dados pessoais
+*.csv
+*.xlsx
+*.xls
