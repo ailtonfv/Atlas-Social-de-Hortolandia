@@ -1,15 +1,17 @@
 # DIM_PROGRAMA — Catálogo de Programas Sociais
-**Versão:** 09  
-**Data de atualização:** 09/03/2026  
-**Versão anterior:** 08 (07/03/2026)  
-**Atualizações v09:**
-- Adição do campo `dimensao_ivs` a todos os 55 programas
-- Campo fundamentado na DIM_VARIAVEL_IVS v01 e na metodologia IVS/IPEA (Atlas da Vulnerabilidade Social, 2015)
-- Valores possíveis: `infraestrutura_urbana` | `capital_humano` | `renda_trabalho` | `multidimensional`
-- Programas de governança/conselhos recebem valor `governanca` (dimensão transversal)
+**Versão:** 10  
+**Data de atualização:** 10/03/2026  
+**Versão anterior:** 09 (09/03/2026)  
+**Atualizações v10:**
+- Adição do programa **Fatec Hortolândia** (Grupo 6 — Inserção Produtiva e Qualificação) — status `ESTUDO DE VIABILIDADE`; reunião oficial realizada em 09/03/2026 na Câmara Municipal com Centro Paula Souza, prefeito Zezé Gomes e setor produtivo
+- Atualização do programa **Agora a Casa é Sua** (Grupo 5 — Habitação) — registro da conclusão do saneamento subterrâneo no Monte Sinai para ~650 famílias (cerimônia Sabesp/CDHU, 07/03/2026); 152 unidades habitacionais CDHU em construção
+- Atualização do **CRAM** (Grupo 7 — Públicos Específicos) — registro de dois casos de violência doméstica em 08/03/2026 (Dia da Mulher) em Hortolândia; fluxo CRAM → Conselho Tutelar → CREAS ativado em um dos casos
+- Adição da pendência #17 (Fatec — monitoramento de viabilidade)
+- Abertura da pendência #18 (Monte Sinai — número oficial de famílias beneficiadas pelo saneamento)
 
 **Responsável:** Ailton Vendramini / Claude (Anthropic)  
-**Repositório:** pmh-arquitetura-dados-sociais
+**Repositório:** pmh-arquitetura-dados-sociais  
+**Fonte das atualizações v10:** Tribuna Liberal, edição 10/03/2026
 
 ---
 
@@ -23,7 +25,8 @@ Inclusão e Desenvolvimento Econômico. A v06 adiciona `base_legal_principal`. A
 `esfera`, `id_orgao_executor`, `nome_orgao_executor` e `base_legal_municipal`. A v08 incorpora
 correções e adições do ciclo jornalístico 04–08/03/2026. A v09 adiciona `dimensao_ivs` a todos
 os programas, conectando o catálogo à DIM_VARIAVEL_IVS e ao IVS-H (Índice de Vulnerabilidade
-Social de Hortolândia).
+Social de Hortolândia). A v10 incorpora ciclo jornalístico 10/03/2026: Fatec Hortolândia
+(estudo de viabilidade), Monte Sinai (conclusão do saneamento) e atualização operacional do CRAM.
 
 **Tipo funcional:**
 - **Tipo A — Serviço Direto:** gera atendimento registrável
@@ -72,16 +75,6 @@ observacoes
 | `renda_trabalho` | Emprego, renda, informalidade | ACERTE, PAT, Banco do Povo, BF |
 | `multidimensional` | Atua em 2+ dimensões simultaneamente | PAIF, Ressignifica, CRAS/CREAS |
 | `governanca` | Conselhos e instrumentos de controle social | CMAS, CMDCA, Conselhos Tutelares |
-acesso                   (Presencial | Digital | Espontâneo | Encaminhamento)
-prazo_execucao
-contato
-base_legal_principal     (LOAS | CNAS 109/2009 | PBF | CadÚnico |
-                          ECA | Municipal | Estadual | Outro)
-base_legal_municipal     (lei/decreto municipal específico, se houver)
-ativo                    (S/N)
-data_inicio
-observacoes
-```
 
 **Padrão de `id_orgao_executor`:**
 
@@ -664,6 +657,7 @@ A relação completa norma × programa está em REL_NORMA_PROGRAMA.
 - **Dimensão IVS:** `infraestrutura_urbana` — regularização fundiária e melhoria habitacional — IVS IU_01 (saneamento) e IU_02 (coleta)
 - **Base legal principal:** Municipal
 - **Base legal municipal:** A confirmar
+- **Observações — Monte Sinai (atualização v10):** Em 07/03/2026, durante cerimônia da Sabesp em Paulínia, o prefeito Zezé Gomes recebeu placa simbólica marcando a conclusão da implantação da rede de esgoto subterrânea no Monte Sinai — beneficiando aproximadamente 650 famílias. Em parceria com a CDHU, 152 unidades habitacionais encontram-se em construção para moradores de áreas de risco da região. A área doada pelo estado é de ~220 mil m². Infraestrutura complementar inclui iluminação LED (117 postes, 5.700m de cabos, implantados em 2022), kits cavaletes para hidrômetro e abertura de 7 vias. Parte da área será preservada como área ambiental. Fonte: Tribuna Liberal, 10/03/2026, p. 04. ⚠️ Pendência #18: confirmar número oficial de famílias beneficiadas (650 é estimativa da Secretaria de Habitação).
 
 ---
 
@@ -889,6 +883,29 @@ A relação completa norma × programa está em REL_NORMA_PROGRAMA.
 
 ---
 
+### Fatec Hortolândia *(novo — v10)*
+
+- **Esfera:** `Estadual`
+- **Tipo:** B — Política Articulada *(fase atual: estudo de viabilidade)*
+- **Secretaria responsável:** Desenvolvimento Econômico, Trabalho, Turismo e Inovação
+- **Secretarias parceiras:** A confirmar
+- **id_orgao_executor:** `EXT_CENTRO_PAULA_SOUZA`
+- **nome_orgao_executor:** Centro Paula Souza — Governo do Estado de São Paulo
+- **Operador:** Centro Paula Souza (gestão das Fatecs e Etecs no Estado)
+- **Público-alvo:** Jovens e adultos buscando ensino superior tecnológico gratuito; demanda do setor produtivo local
+- **Vínculo CadÚnico:** Indireto
+- **Nível de proteção:** Produtivo / Educacional
+- **Status:** ESTUDO DE VIABILIDADE — reunião oficial realizada em 09/03/2026 na Câmara Municipal de Hortolândia; participaram o prefeito Zezé Gomes (Republicanos), o secretário de Desenvolvimento Econômico Dimas Corrêa Pádua, o deputado estadual Dirceu Dalben (Cidadania), o presidente do Centro Paula Souza Clóvis Dias e representantes do setor produtivo e da Etec local. Sem prazo definido para implantação.
+- **Possível localização:** Terreno ao lado da Etec de Hortolândia, região do Remanso Campineiro
+- **Cursos potenciais:** A definir — levantamento de demanda realizado junto ao setor produtivo em 09/03/2026
+- **Contexto territorial:** Hortolândia já conta com Instituto Federal, Etec e Univesp. A Fatec completaria o ciclo de ensino superior público presencial com foco tecnológico, alinhando formação à demanda das 400+ empresas instaladas no município
+- **Dimensão IVS:** `renda_trabalho` — ensino superior tecnológico gratuito como vetor de mobilidade social — IVS RT_02 (desocupação qualificada) e RT_03 (informalidade por falta de qualificação)
+- **Base legal principal:** Estadual
+- **Base legal municipal:** A confirmar
+- **Observações:** ⚠️ Pendência #17: monitorar edições futuras da Tribuna Liberal e comunicados oficiais da Prefeitura para acompanhar evolução do estudo. Nota de conexão com o modelo: a Fatec, quando implantada, gerará demanda de cruzamento entre CadÚnico × matrículas Fatec — potencial indicador de mobilidade social via ensino superior.
+
+---
+
 ## Grupo 7 — Públicos Específicos / Direitos Humanos
 
 ---
@@ -981,6 +998,7 @@ A relação completa norma × programa está em REL_NORMA_PROGRAMA.
 - **Dimensão IVS:** `multidimensional` — violência contra a mulher — CH (maternidade, escolaridade) + RT (dependência econômica)
 - **Base legal principal:** Outro (Lei 11.340/2006)
 - **Base legal municipal:** A confirmar *(em operação desde 2017)*
+- **Observações — atualização v10:** Em 08/03/2026 (Dia Internacional da Mulher) foram registrados dois casos de violência doméstica em Hortolândia, nos bairros Jardim Novo Ângulo e Recanto do Sol. Caso 1: mulher de 47 anos com ferimentos na cabeça; filho do casal ficou sob acompanhamento do **Conselho Tutelar** — fluxo CRAM → CT_I/CT_II ativado. Caso 2: mulher agredida e ameaçada de morte; companheiro preso em flagrante (Lei Maria da Penha); filhos menores sob cuidado de familiares; vítima manifestou interesse em medida protetiva — fluxo CRAM → CREAS ativado. Fonte: Tribuna Liberal, 10/03/2026, p. 06. ⚠️ Nota arquitetural: esses casos confirmam o fluxo CRAM → Conselho Tutelar → CREAS como cadeia operacional real — a modelar em FATO_ATENDIMENTO com campo `id_encaminhamento_destino`.
 
 ---
 
@@ -1133,18 +1151,18 @@ A relação completa norma × programa está em REL_NORMA_PROGRAMA.
 
 | Dimensão IVS | Qtd | % | Programas principais |
 |-------------|-----|---|---------------------|
-| `capital_humano` | 22 | 37,9% | SCFV, Cuidar, Enfrentamento Trabalho Infantil, Bolsa Creche, Farmácia Solidária, PCD/Idosos, CCMI, Juventude, CRAM, Primeira Infância, CREAN, SAMU, Vila da Saúde |
-| `renda_trabalho` | 19 | 32,8% | ACERTE, PAT, Banco do Povo, SINE, MEI, Banco de Alimentos, Cestas, Seguro Desemprego, PAA, Cozinha Comunitária, Feiras, Costura, Capacita |
-| `multidimensional` | 9 | 15,5% | PAIF, PAEFI, Abordagem Social, Risco Social, Pop. Rua, Ressignifica, Igualdade Racial, CRAM (duplo), Emergências |
-| `infraestrutura_urbana` | 6 | 10,3% | MCMV, Agora a Casa é Sua, Vida Longa, PHLIS, Casa de Passagem, Acolhimento |
-| `governanca` | 2 | 3,4% | Inscrição OSCs CMAS, Inscrição OSCs CMDCA |
-| **TOTAL** | **58** | **100%** | — |
+| `capital_humano` | 22 | 36,7% | SCFV, Cuidar, Enfrentamento Trabalho Infantil, Bolsa Creche, Farmácia Solidária, PCD/Idosos, CCMI, Juventude, CRAM, Primeira Infância, CREAN, SAMU, Vila da Saúde |
+| `renda_trabalho` | 20 | 33,3% | ACERTE, PAT, Banco do Povo, SINE, MEI, Banco de Alimentos, Cestas, Seguro Desemprego, PAA, Cozinha Comunitária, Feiras, Costura, Capacita, **Fatec Hortolândia** |
+| `multidimensional` | 9 | 15,0% | PAIF, PAEFI, Abordagem Social, Risco Social, Pop. Rua, Ressignifica, Igualdade Racial, CRAM (duplo), Emergências |
+| `infraestrutura_urbana` | 6 | 10,0% | MCMV, Agora a Casa é Sua, Vida Longa, PHLIS, Casa de Passagem, Acolhimento |
+| `governanca` | 2 | 3,3% | Inscrição OSCs CMAS, Inscrição OSCs CMDCA |
+| **TOTAL** | **59** | **100%** | — |
 
 > **Leitura analítica:** O município de Hortolândia concentra seus programas em
-> Capital Humano (38%) e Renda e Trabalho (33%), com cobertura menor em
-> Infraestrutura Urbana (10%). Isso é coerente com o perfil local: infraestrutura
-> urbana relativamente consolidada, e vulnerabilidade concentrada em escolaridade,
-> empregabilidade e renda — confirmando a hipótese de calibração do IVS-H.
+> Capital Humano (37%) e Renda e Trabalho (33%), com cobertura menor em
+> Infraestrutura Urbana (10%). A adição da Fatec (ainda em estudo de viabilidade)
+> reforça a trajetória estratégica do município em `renda_trabalho` — articulando
+> qualificação formal ao tecido produtivo local de 400+ empresas instaladas.
 
 ---
 
@@ -1182,10 +1200,11 @@ A relação completa norma × programa está em REL_NORMA_PROGRAMA.
 | OSC_ESPERANCAR | Instituto Esperançar | OSC conveniada | DIM_OSC (futuro) |
 | EXT_DESENVOLVE_SP | Desenvolve SP | Operador externo estadual | — |
 | EXT_SEBRAE_SP | SEBRAE-SP | Operador externo estadual | — |
+| EXT_CENTRO_PAULA_SOUZA | Centro Paula Souza — Gov. Estado de SP | Operador externo estadual | — |
 
 ---
 
-## Notas Arquiteturais Consolidadas (v08)
+## Notas Arquiteturais Consolidadas (v10)
 
 | # | Nota | Impacto no modelo |
 |---|------|-----------------|
@@ -1200,6 +1219,8 @@ A relação completa norma × programa está em REL_NORMA_PROGRAMA.
 | 9 | `id_orgao_executor` é FK para JOIN | Liga DIM_PROGRAMA → DIM_UNIDADES_ATENDIMENTO e DIM_GESTORES |
 | 10 | Operadores externos (EXT_) sem dimensão interna | Integração futura via convênio ou API |
 | 11 | MCMV Amanda: divergência 421×576 documentações | Dado a validar junto à Secretaria de Habitação antes de uso em indicador |
+| 12 | Fluxo CRAM → Conselho Tutelar → CREAS (atualização v10) | Confirmado operacionalmente em 08/03/2026 — modelar campo `id_encaminhamento_destino` em FATO_ATENDIMENTO |
+| 13 | Fatec: dados de matrícula ficam no Centro Paula Souza | Cruzamento CadÚnico × matrículas Fatec futuro — requer convênio estadual |
 
 ---
 
@@ -1211,6 +1232,8 @@ CadÚnico (entrada)
 PAIF — acompanhamento familiar (CRAS)
     ↓
 Projeto Capacita / Costura Industrial — qualificação
+    ↓
+[futuro] Fatec Hortolândia — ensino superior tecnológico
     ↓
 PAT / SINE — intermediação de mão de obra
     ↓
@@ -1275,6 +1298,8 @@ Saída do perfil CadÚnico
 | 14 | Closet Solidário: confirmar base legal municipal e critérios formais de acesso | Média |
 | 15 | Confirmar `id_orgao_executor` DEP_MULHERES — verificar se é departamento formal ou vinculado ao Dep. de Governo | Média |
 | 16 | Programa Vida Longa: monitorar resultado das negociações com o Estado | Média |
+| 17 | Fatec Hortolândia: monitorar evolução do estudo de viabilidade junto ao Centro Paula Souza e à Prefeitura | Alta |
+| 18 | Monte Sinai — saneamento: confirmar número oficial de famílias beneficiadas (~650) junto à Secretaria de Habitação | Média |
 
 ---
 
@@ -1289,8 +1314,9 @@ Saída do perfil CadÚnico
 | v05 | 03/03/2026 | Varredura Sec. Inclusão (22 serviços); Sec. Desenvolvimento Econômico (7 serviços); notas arquiteturais |
 | v06 | 03/03/2026 | Campo `base_legal_principal`; base legal dos conselhos (G10) |
 | v07 | 05/03/2026 | Campos `esfera`, `id_orgao_executor`, `nome_orgao_executor`, `base_legal_municipal`; glossário FK completo |
+| v08 | 07/03/2026 | Ciclo jornalístico 04–08/03/2026: MCMV Amanda → status EXECUÇÃO; Programa Vida Longa → NEGOCIAÇÃO ATIVA; adição Closet Solidário; ACERTE → caso Suelen; CRAM atualizado; DEP_MULHERES adicionado; CMDM adicionado ao G10; CAGED jan/2026; pendências 13–16 |
 | v09 | 09/03/2026 | Adição do campo `dimensao_ivs` a todos os 58 programas; tabela de distribuição por dimensão; fundamentado na DIM_VARIAVEL_IVS v01 e metodologia IVS/IPEA |
-| v08 | 07/03/2026 | Ciclo jornalístico 04–08/03/2026: MCMV Amanda → status EXECUÇÃO, 576 documentações (⚠️ divergência a confirmar); Programa Vida Longa → status NEGOCIAÇÃO ATIVA; adição Closet Solidário (novo programa, Dep. Mulheres + Fundo Social, lançamento 09/03/2026); ACERTE → nota caso Suelen (evidência empírica da cadeia de emancipação); nome oficial CRAM atualizado; DEP_MULHERES adicionado ao glossário FK; Cons. Direitos da Mulher adicionado ao G10; CAGED jan/2026 adicionado ao dado de contexto; pendências 13–16 abertas |
+| v10 | 10/03/2026 | Ciclo jornalístico 10/03/2026 (Tribuna Liberal): adição Fatec Hortolândia (G6, status ESTUDO DE VIABILIDADE, EXT_CENTRO_PAULA_SOUZA); atualização Monte Sinai em Agora a Casa é Sua (G5) — saneamento concluído ~650 famílias, 152 unidades CDHU em construção; atualização CRAM (G7) — dois casos violência doméstica 08/03/2026, fluxo CRAM→CT e CRAM→CREAS confirmados; nota arquitetural #12 e #13 adicionadas; EXT_CENTRO_PAULA_SOUZA adicionado ao glossário FK; trajetória de transição produtiva atualizada com Fatec; tabela IVS atualizada (59 programas); pendências #17 e #18 abertas |
 
 ---
 
