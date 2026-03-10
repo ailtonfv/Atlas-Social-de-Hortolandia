@@ -2,7 +2,7 @@
 ## Vulnerabilidade Social e Integração de Políticas Públicas em Hortolândia
 
 **Arquivo:** `00_governanca/palestra_marco_2026.md`  
-**Versão:** v02  
+**Versão:** v03  
 **Data:** 2026-03-10  
 **Responsável:** Ailton Vendramini  
 **Repositório:** Atlas-Social-de-Hortolândia
@@ -145,13 +145,25 @@ Todos analisam a mesma **vulnerabilidade territorial**.
 
 **Slide 9 — A realidade de Hortolândia**
 
-Alguns indicadores estruturais já são positivos:
-- Cobertura de abastecimento de água
-- Coleta de lixo
-- Infraestrutura urbana consolidada
+Os dados de saneamento básico de Hortolândia são excepcionais:
 
-Isso significa que **outras dimensões tornam-se mais determinantes
-localmente** — Capital Humano e Renda e Trabalho.
+| Indicador | Valor (2020) | Fonte |
+|---|---|---|
+| Cobertura de abastecimento de água | **100%** | SNIS / SABESP |
+| Coleta de esgoto | **96,4%** | SNIS / SABESP |
+| Esgoto tratado por água consumida | **89,7%** | SNIS / SABESP |
+
+> Hortolândia foi destaque nacional no evento *Casos de Sucesso em
+> Saneamento Básico* do Instituto Trata Brasil (2019).
+
+Isso tem uma implicação direta para o IVS:
+
+Quando uma variável tem cobertura próxima de 100%, ela **não diferencia
+os territórios** — todos os bairros ficam com valor semelhante.
+Seu poder discriminatório local é baixo.
+
+Portanto, outras dimensões tornam-se **mais determinantes em Hortolândia**:
+Capital Humano e Renda e Trabalho.
 
 Hortolândia possui **49.100 empregos formais** com remuneração média
 de R$ 4.700 — e ao mesmo tempo **72.424 pessoas no CadÚnico** (dez/2025).
@@ -209,7 +221,7 @@ Mesmas variáveis. Mesmas dimensões. **Pesos calibrados à realidade local.**
 
 | Dimensão | Peso IPEA | Peso IVS-H | Justificativa |
 |---|---|---|---|
-| Infraestrutura Urbana | 33% | **~15–20%** | Saneamento e coleta de lixo com alta cobertura — baixo poder discriminatório entre territórios de Hortolândia |
+| Infraestrutura Urbana | 33% | **~15–20%** | Água: 100% de cobertura; esgoto coletado: 96,4% (SNIS 2020 / SABESP). Variância entre territórios próxima de zero — baixo poder discriminatório. ⚠️ Peso revisável se obras futuras alterarem a cobertura. |
 | Capital Humano | 33% | **~40–45%** | Reprodução intergeracional da pobreza é o desafio central — mães chefes, analfabetismo, crianças fora da escola |
 | Renda e Trabalho | 33% | **~35–40%** | Tensão entre polo de emprego formal e 72.424 no CadÚnico — desemprego e informalidade são determinantes locais |
 
@@ -430,7 +442,8 @@ Quando a vulnerabilidade passa a orientar o planejamento:
 | Versão | Data | Alterações |
 |---|---|---|
 | v01 | 2026-03-10 | Criação — estrutura de 21 slides a partir do Registro de Ideias de 08/03/2026 |
-| v02 | 2026-03-10 | Adição do Slide 10a — lâmina comparativa IVS-IPEA × IVS-H (o que é igual, o que muda, calibração hipotética e disponibilidade imediata) |
+| v02 | 2026-03-10 | Adição do Slide 10a — lâmina comparativa IVS-IPEA × IVS-H |
+| v03 | 2026-03-10 | Slide 9: dados reais SNIS/SABESP (água 100%, esgoto 96,4%, tratamento 89,7%); Slide 10a: justificativa IU com fonte empírica + nota de revisabilidade do peso conforme novas obras |
 
 ---
 
