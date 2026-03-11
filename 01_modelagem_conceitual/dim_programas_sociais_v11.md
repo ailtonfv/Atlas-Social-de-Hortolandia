@@ -7,7 +7,7 @@
 - Atualização do **SINE** — inclusão de `data_inicio: fevereiro/2026` (data formal de adesão ao Sistema Nacional de Emprego). Fonte: Tribuna Liberal, 11/03/2026
 - Abertura da **Pendência #22**: conflito de fonte sobre local da reunião de estudo de viabilidade da Fatec (09/03/2026) — jornal 10/03 e 11/03 registram "Câmara Municipal"; v11 corrigiu para "SMIDS" com base em Caio [RH PMH]. Verificar com fonte interna.
 
-**Responsável:** Ailton Vendramini / Claude (Anthropic)
+**Responsável:** Ailton Vendramini
 **Repositório:** pmh-arquitetura-dados-sociais
 **Fontes das atualizações v12:** Tribuna Liberal nº 9.697, 11/03/2026
 
