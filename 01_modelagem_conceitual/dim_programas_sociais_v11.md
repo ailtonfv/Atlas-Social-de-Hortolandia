@@ -1,19 +1,15 @@
 # DIM_PROGRAMA — Catálogo de Programas Sociais
-**Versão:** 11
-**Data de atualização:** 10/03/2026
-**Versão anterior:** 10 (10/03/2026)
-**Atualizações v11:**
-- Adição do bloco **Fundamento Metodológico — IVS e IVS-H** (origem IPEA/IBGE, adaptação municipal, finalidade do campo `dimensao_ivs`)
-- Correção do local da reunião da Fatec: *Câmara Municipal* → **SMIDS** (Secretaria Municipal de Inclusão e Desenvolvimento Social) — fonte: Caio [RH PMH], 10/03/2026
-- Correção da **Casa de Passagem**: separação explícita entre a modalidade de Média Complexidade (triagem no Centro POP, até 30 dias) e a modalidade de Alta Complexidade (acolhimento via OSC conveniada) — fonte: Ata de Reunião Técnica SMIDS, 10/02/2026 v02
-- Adição das seis modalidades de **Alta Complexidade** documentadas na ata (SAICA, Abrigo adultos, Abrigo mulheres, Residência Inclusiva, ILPI/Casa-Lar idosos, República)
-- Adição do programa **DECOLA** (Grupo 6) com pendência de relação com Aprendiz Social
-- Adição do programa **Aprendiz Social** (Grupo 6) com pendência de distinção em relação ao DECOLA
-- Pendências #19, #20 e #21 abertas
+**Versão:** 12
+**Data de atualização:** 11/03/2026
+**Versão anterior:** 11 (10/03/2026)
+**Atualizações v12:**
+- Adição do programa **PEI — Polo de Empregabilidade Inclusiva** (Grupo 7) — parceria municipal com Estado via Secretaria de Direitos da PCD; iniciado fev/2026 no Paço Municipal. Fonte: Tribuna Liberal, 11/03/2026
+- Atualização do **SINE** — inclusão de `data_inicio: fevereiro/2026` (data formal de adesão ao Sistema Nacional de Emprego). Fonte: Tribuna Liberal, 11/03/2026
+- Abertura da **Pendência #22**: conflito de fonte sobre local da reunião de estudo de viabilidade da Fatec (09/03/2026) — jornal 10/03 e 11/03 registram "Câmara Municipal"; v11 corrigiu para "SMIDS" com base em Caio [RH PMH]. Verificar com fonte interna.
 
 **Responsável:** Ailton Vendramini / Claude (Anthropic)
 **Repositório:** pmh-arquitetura-dados-sociais
-**Fontes das atualizações v11:** Caio [RH PMH Lima], WhatsApp 10/03/2026; Ata de Reunião Técnica SMIDS, 10/02/2026 v02
+**Fontes das atualizações v12:** Tribuna Liberal nº 9.697, 11/03/2026
 
 ---
 
@@ -30,7 +26,9 @@ os programas, conectando o catálogo à DIM_VARIAVEL_IVS e ao IVS-H. A v10 incor
 jornalístico 10/03/2026. A v11 incorpora correções e adições provenientes da Ata de Reunião
 Técnica SMIDS (10/02/2026 v02) e de comunicação direta com Caio [RH PMH], incluindo separação
 da Casa de Passagem por nível de complexidade, catalogação das modalidades de Alta Complexidade
-e adição de DECOLA e Aprendiz Social.
+e adição de DECOLA e Aprendiz Social. A v12 incorpora ciclo jornalístico 11/03/2026: adição do
+PEI, atualização do SINE com data de adesão formal e abertura da Pendência #22 (Fatec —
+conflito de fonte sobre local da reunião).
 
 **Tipo funcional:**
 - **Tipo A — Serviço Direto:** gera atendimento registrável
@@ -873,10 +871,32 @@ A relação completa norma × programa está em REL_NORMA_PROGRAMA.
 - **nome_orgao_executor:** PAT (ponto da rede SINE federal)
 - **Operador:** Ministério do Trabalho (SINE / Emprega Brasil)
 - **Vínculo CadÚnico:** Indireto
+- **data_inicio:** Fevereiro/2026 — data formal de adesão de Hortolândia ao Sistema Nacional de Emprego. Fonte: Tribuna Liberal, 11/03/2026
 - **Dimensão IVS:** `renda_trabalho` — intermediação federal de emprego — IVS RT_02 e RT_03
 - **Base legal principal:** Outro (Lei 7.998/1990)
 - **Base legal municipal:** A confirmar
 - **⚠️ Nota arquitetural:** dados ficam no MTE federal — integração futura requer API federal.
+
+---
+
+### PEI — Polo de Empregabilidade Inclusiva *(novo — v12)*
+
+- **Esfera:** `Estadual/Municipal`
+- **Tipo:** A — Serviço Direto
+- **Secretaria responsável:** Inclusão e Desenvolvimento Social (SMIDS)
+- **Secretarias parceiras:** Secretaria Estadual de Direitos da Pessoa com Deficiência
+- **id_orgao_executor:** `DEP_PCD` *(provisório)*
+- **nome_orgao_executor:** Dep. de Políticas Públicas para a PCD
+- **Público-alvo:** Pessoas com deficiência (PCD) em busca de inserção no mercado de trabalho
+- **Vínculo CadÚnico:** A confirmar
+- **Nível de proteção:** Produtivo
+- **Status:** EXECUÇÃO — atendimentos iniciados em fevereiro/2026
+- **data_inicio:** Fevereiro/2026
+- **Acesso:** Presencial — Paço Municipal
+- **Dimensão IVS:** `renda_trabalho` — inclusão produtiva de PCD — IVS RT_02 (desocupação) e CH (deficiência e inclusão)
+- **Base legal principal:** Estadual + Municipal (Termo de Cooperação Técnica)
+- **Base legal municipal:** A confirmar
+- **Observações:** Um dos três programas formalizados via Termo de Cooperação Técnica entre a Prefeitura de Hortolândia e o Governo do Estado de SP, com presença do secretário estadual Marcos da Costa, em fevereiro/2026. Fonte: Tribuna Liberal, 11/03/2026. ⚠️ Pendência #23: confirmar `id_orgao_executor` definitivo, base legal municipal, critérios formais de acesso e se há outros dois programas do Termo de Cooperação ainda não catalogados.
 
 ---
 
@@ -994,7 +1014,7 @@ A relação completa norma × programa está em REL_NORMA_PROGRAMA.
 
 ---
 
-### DECOLA *(novo — v11)*
+### DECOLA
 
 - **Esfera:** `Municipal`
 - **Tipo:** A — Serviço Direto
@@ -1007,11 +1027,11 @@ A relação completa norma × programa está em REL_NORMA_PROGRAMA.
 - **Dimensão IVS:** `renda_trabalho` — empregabilidade e inserção produtiva — IVS RT_02 e RT_03
 - **Base legal principal:** Municipal
 - **Base legal municipal:** A confirmar
-- **Observações:** Programa de empregabilidade e inserção produtiva identificado na Ata de Reunião Técnica SMIDS (10/02/2026). ⚠️ Pendência #20: verificar se "Aprendiz Social" é denominação atual do DECOLA Juventude ou programa distinto. Confirmar status operacional e público-alvo detalhado.
+- **Observações:** ⚠️ Pendência #20: verificar se "Aprendiz Social" é denominação atual do DECOLA Juventude ou programa distinto.
 
 ---
 
-### Aprendiz Social *(novo — v11)*
+### Aprendiz Social
 
 - **Esfera:** `Municipal`
 - **Tipo:** A — Serviço Direto
@@ -1024,27 +1044,27 @@ A relação completa norma × programa está em REL_NORMA_PROGRAMA.
 - **Dimensão IVS:** `renda_trabalho` — formação de jovens para o mercado — IVS RT_02 (desocupação) e CH_08 (nem-nem)
 - **Base legal principal:** Municipal
 - **Base legal municipal:** A confirmar
-- **Observações:** Programa de formação para jovens identificado na Ata de Reunião Técnica SMIDS (10/02/2026). ⚠️ Pendência #20: confirmar se é programa distinto do DECOLA ou modalidade interna. Confirmar status operacional.
+- **Observações:** ⚠️ Pendência #20: confirmar se é programa distinto do DECOLA ou modalidade interna.
 
 ---
 
-### Fatec Hortolândia *(novo — v10)*
+### Fatec Hortolândia
 
 - **Esfera:** `Estadual`
 - **Tipo:** B — Política Articulada *(fase atual: estudo de viabilidade)*
 - **Secretaria responsável:** Desenvolvimento Econômico, Trabalho, Turismo e Inovação
 - **id_orgao_executor:** `EXT_CENTRO_PAULA_SOUZA`
 - **nome_orgao_executor:** Centro Paula Souza — Governo do Estado de São Paulo
-- **Operador:** Centro Paula Souza (gestão das Fatecs e Etecs no Estado)
+- **Operador:** Centro Paula Souza
 - **Público-alvo:** Jovens e adultos buscando ensino superior tecnológico gratuito; demanda do setor produtivo local
 - **Vínculo CadÚnico:** Indireto
 - **Nível de proteção:** Produtivo / Educacional
-- **Status:** ESTUDO DE VIABILIDADE — reunião oficial realizada em 09/03/2026 na **SMIDS** (Secretaria Municipal de Inclusão e Desenvolvimento Social); participaram o prefeito Zezé Gomes, o secretário de Desenvolvimento Econômico Dimas Corrêa Pádua, o deputado estadual Dirceu Dalben, o presidente do Centro Paula Souza Clóvis Dias e representantes do setor produtivo e da Etec local. Sem prazo definido para implantação. Fonte: Tribuna Liberal 10/03/2026; correção do local: Caio [RH PMH], 10/03/2026.
+- **Status:** ESTUDO DE VIABILIDADE — reunião oficial realizada em 09/03/2026; sem prazo definido para implantação
 - **Possível localização:** Terreno ao lado da Etec de Hortolândia, região do Remanso Campineiro
 - **Dimensão IVS:** `renda_trabalho` — ensino superior tecnológico gratuito como vetor de mobilidade social — IVS RT_02 e RT_03
 - **Base legal principal:** Estadual
 - **Base legal municipal:** A confirmar
-- **Observações:** ⚠️ Pendência #17: monitorar evolução do estudo de viabilidade.
+- **Observações:** ⚠️ Pendência #22: conflito de fonte sobre local da reunião de 09/03/2026. Tribuna Liberal (10/03/2026 e 11/03/2026) registra "Câmara Municipal"; v11 corrigiu para "SMIDS" com base em Caio [RH PMH Lima], 10/03/2026. Verificar com fonte interna. ⚠️ Pendência #17: monitorar evolução do estudo de viabilidade.
 
 ---
 
@@ -1140,11 +1160,11 @@ A relação completa norma × programa está em REL_NORMA_PROGRAMA.
 - **Dimensão IVS:** `multidimensional` — violência contra a mulher — CH + RT
 - **Base legal principal:** Outro (Lei 11.340/2006)
 - **Base legal municipal:** A confirmar *(em operação desde 2017)*
-- **Observações — atualização v10:** Em 08/03/2026 registrados dois casos de violência doméstica em Hortolândia (Jd. Novo Ângulo e Recanto do Sol). Caso 1: filho do casal sob acompanhamento do Conselho Tutelar — fluxo CRAM → CT ativado. Caso 2: companheiro preso em flagrante (Lei Maria da Penha); vítima buscou medida protetiva — fluxo CRAM → CREAS ativado. ⚠️ Nota arquitetural: confirma o fluxo CRAM → Conselho Tutelar → CREAS como cadeia operacional real — modelar campo `id_encaminhamento_destino` em FATO_ATENDIMENTO.
+- **Observações:** Em 08/03/2026 registrados dois casos de violência doméstica em Hortolândia. Caso 1: filho do casal sob acompanhamento do Conselho Tutelar — fluxo CRAM → CT ativado. Caso 2: companheiro preso em flagrante; vítima buscou medida protetiva — fluxo CRAM → CREAS ativado. ⚠️ Nota arquitetural: confirma o fluxo CRAM → Conselho Tutelar → CREAS como cadeia operacional real — modelar campo `id_encaminhamento_destino` em FATO_ATENDIMENTO.
 
 ---
 
-### Closet Solidário *(novo — v08)*
+### Closet Solidário
 
 - **Esfera:** `Municipal`
 - **Tipo:** A — Serviço Direto
@@ -1290,18 +1310,18 @@ A relação completa norma × programa está em REL_NORMA_PROGRAMA.
 
 | Dimensão IVS | Qtd | % | Programas principais |
 |-------------|-----|---|---------------------|
-| `capital_humano` | 22 | 34,4% | SCFV, Cuidar, SAICA, Residência Inclusiva, ILPI, Bolsa Creche, CCMI, CRAM, Primeira Infância, CREAN, SAMU, Vila da Saúde |
-| `renda_trabalho` | 22 | 34,4% | ACERTE, PAT, Banco do Povo, SINE, MEI, BAH, Cestas, Seguro Desemprego, PAA, Cozinha, Feiras, Costura, Capacita, **DECOLA**, **Aprendiz Social**, **Fatec**, República |
-| `multidimensional` | 10 | 15,6% | PAIF, PAEFI, Abordagem Social, Risco Social, Pop. Rua, Ressignifica, Igualdade Racial, CRAM (duplo), Emergências, Abrigo Mulheres |
-| `infraestrutura_urbana` | 6 | 9,4% | MCMV, Agora a Casa é Sua, Vida Longa, PHLIS, Abrigo Adultos/Rua, Acolhimento |
+| `capital_humano` | 22 | 33,8% | SCFV, Cuidar, SAICA, Residência Inclusiva, ILPI, Bolsa Creche, CCMI, CRAM, Primeira Infância, CREAN, SAMU, Vila da Saúde |
+| `renda_trabalho` | 24 | 36,9% | ACERTE, PAT, Banco do Povo, SINE, MEI, BAH, Cestas, Seguro Desemprego, PAA, Cozinha, Feiras, Costura, Capacita, DECOLA, Aprendiz Social, Fatec, República, **PEI** |
+| `multidimensional` | 10 | 15,4% | PAIF, PAEFI, Abordagem Social, Risco Social, Pop. Rua, Ressignifica, Igualdade Racial, CRAM, Emergências, Abrigo Mulheres |
+| `infraestrutura_urbana` | 6 | 9,2% | MCMV, Agora a Casa é Sua, Vida Longa, PHLIS, Abrigo Adultos/Rua, Acolhimento |
 | `governanca` | 2 | 3,1% | Inscrição OSCs CMAS, Inscrição OSCs CMDCA |
-| **TOTAL** | **62** | **100%** | — |
+| **TOTAL** | **64** | **100%** | — |
 
-> **Leitura analítica:** A v11 equilibra as dimensões Capital Humano e Renda e Trabalho
-> (ambas em 34%), reflexo da incorporação das modalidades de Alta Complexidade e dos
-> programas de inclusão produtiva identificados na ata SMIDS. A cobertura em
-> Infraestrutura Urbana permanece em 9–10%, confirmando a dependência de parceiros
-> estaduais e federais nessa dimensão.
+> **Leitura analítica:** A v12 passa a 64 programas com a adição do PEI. A dimensão
+> Renda e Trabalho avança para 36,9%, reflexo da incorporação progressiva dos
+> programas de inclusão produtiva — SINE (adesão fev/2026), PEI (início fev/2026),
+> DECOLA e Aprendiz Social. A cobertura em Infraestrutura Urbana permanece em ~9%,
+> confirmando dependência de parceiros estaduais e federais nessa dimensão.
 
 ---
 
@@ -1368,7 +1388,7 @@ Entrada (3 vias):
 
 ---
 
-## Notas Arquiteturais Consolidadas (v11)
+## Notas Arquiteturais Consolidadas (v12)
 
 | # | Nota | Impacto no modelo |
 |---|------|-----------------|
@@ -1386,6 +1406,7 @@ Entrada (3 vias):
 | 12 | Fluxo CRAM → Conselho Tutelar → CREAS confirmado (08/03/2026) | Modelar campo `id_encaminhamento_destino` em FATO_ATENDIMENTO |
 | 13 | Fatec: dados de matrícula ficam no Centro Paula Souza | Cruzamento CadÚnico × matrículas Fatec futuro — requer convênio estadual |
 | 14 | Alta Complexidade executada por OSCs — maioria sem `id_orgao_executor` definido | Pendência #19: identificar e cadastrar OSCs executoras |
+| 15 | PEI: dados ficam no Estado (Sec. Direitos da PCD) | Parceria via Termo de Cooperação — integração futura requer convênio estadual |
 
 ---
 
@@ -1397,6 +1418,8 @@ CadÚnico (entrada)
 PAIF — acompanhamento familiar (CRAS)
     ↓
 Projeto Capacita / Costura Industrial / DECOLA — qualificação
+    ↓
+PEI — inclusão produtiva para PCD (quando aplicável)
     ↓
 [futuro] Fatec Hortolândia — ensino superior tecnológico
     ↓
@@ -1495,6 +1518,8 @@ Autonomia
 | 19 | Identificar OSCs executoras das 5 modalidades de Alta Complexidade (SAICA, Abrigo Mulheres, Residência Inclusiva, ILPI, República) e atualizar `id_orgao_executor` | Alta |
 | 20 | Confirmar se Aprendiz Social é denominação atual do DECOLA Juventude ou programa distinto; confirmar status operacional de ambos | Alta |
 | 21 | Sistemas de registro de Alta Complexidade: confirmar quais dados vão ao SIGAS e quais ao CadÚnico | Alta |
+| 22 | Fatec — conflito de fonte sobre local da reunião de 09/03/2026: Tribuna Liberal (10/03 e 11/03) registra "Câmara Municipal"; v11 corrigiu para "SMIDS" com base em Caio [RH PMH Lima]. Verificar com fonte interna para resolução definitiva | Média |
+| 23 | PEI — confirmar `id_orgao_executor` definitivo (DEP_PCD provisório), base legal municipal, critérios formais de acesso e se há outros dois programas do Termo de Cooperação ainda não catalogados | Alta |
 
 ---
 
@@ -1512,7 +1537,8 @@ Autonomia
 | v08 | 07/03/2026 | Ciclo jornalístico 04–08/03/2026: MCMV Amanda, Vida Longa, Closet Solidário, ACERTE caso Suelen, CRAM, DEP_MULHERES, CMDM, CAGED jan/2026; pendências 13–16 |
 | v09 | 09/03/2026 | Campo `dimensao_ivs` em todos os programas; tabela de distribuição por dimensão; DIM_VARIAVEL_IVS v01 |
 | v10 | 10/03/2026 | Fatec Hortolândia (G7, ESTUDO DE VIABILIDADE); Monte Sinai em Agora a Casa é Sua; CRAM 08/03/2026; notas arquiteturais #12 e #13; pendências #17 e #18 |
-| v11 | 10/03/2026 | Bloco Fundamento Metodológico IVS/IVS-H adicionado; correção local reunião Fatec: Câmara → SMIDS (fonte: Caio [RH PMH]); separação Casa de Passagem: triagem (Média Complexidade, Centro POP) vs acolhimento (Alta Complexidade, OSC); adição das 6 modalidades de Alta Complexidade (SAICA, Abrigo Adultos, Abrigo Mulheres, Residência Inclusiva, ILPI/Casa-Lar, República); adição DECOLA e Aprendiz Social (G7); Fluxo Institucional SUAS adicionado; Trajetória de Saída da Rua adicionada; OSC_A_CONFIRMAR adicionado ao glossário FK; total 62 programas; pendências #19, #20, #21 abertas. Fonte: Ata Reunião Técnica SMIDS 10/02/2026 v02; Caio [RH PMH Lima], 10/03/2026 |
+| v11 | 10/03/2026 | Bloco Fundamento Metodológico IVS/IVS-H; correção local reunião Fatec: Câmara → SMIDS (fonte: Caio [RH PMH]); separação Casa de Passagem por nível de complexidade; 6 modalidades de Alta Complexidade; DECOLA e Aprendiz Social (G7); Fluxo SUAS; Trajetória de Saída da Rua; total 62 programas; pendências #19, #20, #21 |
+| v12 | 11/03/2026 | Ciclo jornalístico 11/03/2026: adição PEI — Polo de Empregabilidade Inclusiva (G7); atualização SINE com `data_inicio` fev/2026; PEI inserido na Trajetória de Transição Produtiva; nota arquitetural #15 (PEI/Estado); tabela distribuição IVS atualizada (64 programas, RT=36,9%); pendências #22 (Fatec conflito de fonte) e #23 (PEI detalhamento). Fonte: Tribuna Liberal nº 9.697, 11/03/2026 |
 
 ---
 
