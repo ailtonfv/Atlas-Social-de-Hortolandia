@@ -39,7 +39,7 @@ O Jardim Ricardo deixa de ser evento isolado. Duas ativações documentadas em m
 **Origem:** Tribuna Liberal, p. 08 — "Assassino desce de carro e executa homem de 44 anos em Hortolândia"
 
 **Registro:**
-Júlio César Machado Silva, 44 anos, executado em 10/03/2026 na Rua 2, Jardim Nossa Senhora de Fátima, Hortolândia.
+Júlio César Machado Silva, 44 anos, executado em "10/03/2026" na Rua 2, Jardim Nossa Senhora de Fátima, Hortolândia.
 
 **Relevância para o projeto:**
 Dado de contexto territorial. O projeto ainda não possui tabela de segurança pública. Não forçar encaixe em estrutura inexistente.
