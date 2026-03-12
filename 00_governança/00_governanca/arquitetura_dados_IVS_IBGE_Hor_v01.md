@@ -1,5 +1,5 @@
 # Arquitetura de Obtenção de Dados — IVS / IBGE / Hortolândia
-**Versão:** v01  
+**Versão:** v02  
 **Data:** "12/03/2026"  
 **Responsável:** Ailton Vendramini  
 **Repositório:** Atlas-Social-de-Hortolândia / 00_governanca  
@@ -9,6 +9,22 @@
 > o IVS-H (Índice de Vulnerabilidade Social de Hortolândia).
 > Não é modelagem conceitual — é decisão de governança de fontes.
 > Responde à pergunta: *quais arquivos baixar, de quais sistemas, com qual filtro?*
+
+---
+
+## 0. Escopo Territorial do IVS-H
+
+Este projeto opera em três escalas territoriais distintas, cada uma com finalidade própria:
+
+| Escala | Índice | Finalidade |
+|---|---|---|
+| **Brasil** | IVS IPEA | Referência metodológica e comparação nacional |
+| **Município** | IVS-H municipal | Posicionamento de Hortolândia no contexto regional |
+| **Território** | IVS-H por loteamento / núcleo / CRAS | Instrumento de gestão pública local |
+
+> A escala territorial (loteamento / núcleo / CRAS) é o diferencial
+> estratégico do IVS-H. É nela que a política pública opera —
+> e é nela que o Atlas Social de Hortolândia entrega valor.
 
 ---
 
@@ -47,6 +63,11 @@ Não existe IVS 2015, IVS 2018, IVS 2020 ou qualquer ano intercensal.
 > o município não pode esperar 10 anos entre medições.
 > O IVS-H substitui a periodicidade censitária por atualização anual
 > via dados administrativos municipais.
+>
+> Dados administrativos municipais possuem maior frequência temporal
+> e maior granularidade territorial, permitindo monitoramento contínuo
+> da vulnerabilidade social — algo que o índice nacional, por definição,
+> não é capaz de oferecer.
 
 ---
 
@@ -56,17 +77,19 @@ Não existe IVS 2015, IVS 2018, IVS 2020 ou qualquer ano intercensal.
 codigo_municipio = 3519071
 ```
 
-> ⚠️ Atenção: este é o código correto. Qualquer script de filtro deve usar
-> exatamente este valor. Código incorreto resulta em dados de outro município.
+> ⚠️ Atenção: este é o código correto, confirmado pela base do IBGE.
+> Qualquer script de filtro deve usar exatamente este valor.
+> Código incorreto resulta em dados de outro município sem aviso de erro.
 
 ---
 
 ## 2. O que o Censo 2022 fornece para o IVS-H
 
-Das 16 variáveis do IVS nacional, o Censo 2022 cobre diretamente entre **9 e 12**,
-dependendo da granularidade disponível nos agregados municipais.
+O Censo Demográfico fornece os insumos primários para a maioria dos indicadores
+do IVS, enquanto alguns dependem de estimativas complementares ou registros
+administrativos.
 
-| Dimensão | Variáveis cobertas pelo Censo | Variáveis a complementar |
+| Dimensão | Variáveis com insumos no Censo | Variáveis a complementar |
 |---|---|---|
 | Infraestrutura Urbana | Abastecimento de água, esgoto, coleta de lixo, renda domiciliar per capita | Tempo de deslocamento casa-trabalho (PNAD / estimativa) |
 | Capital Humano | Analfabetismo, frequência escolar (0–5, 6–14, 15–17), estrutura etária, fecundidade | Mortalidade infantil (SIM/DATASUS) |
@@ -102,6 +125,11 @@ Todos disponíveis em:
 **Arquivo:** `Agregados_por_municipios_caracteristicas_domicilio1_BR.zip`  
 **Contém:** abastecimento de água, esgotamento sanitário, coleta de lixo, condições habitacionais  
 **Dimensão IVS-H:** `infraestrutura_urbana` — variáveis IU_agua, IU_esgoto, IU_lixo
+
+> ⚠️ **Atenção:** este arquivo normalmente aparece em três versões:
+> `domicilio1`, `domicilio2` e `domicilio3`. Alguns indicadores podem
+> estar distribuídos entre as três versões. Baixar as três e verificar
+> o dicionário de variáveis antes de descartar qualquer uma.
 
 ### 3.5 Rendimento
 **Arquivo:** `Agregados_por_municipios_rendimento_BR.zip`  
@@ -140,14 +168,20 @@ df_hortolandia = df[df["codigo_municipio"] == codigo_municipio]
 
 ---
 
-## 5. Pipeline de Dados — IVS-H
+## 5. Pipeline Analítico — IVS-H
+
+O projeto adota um pipeline analítico estruturado em camadas
+(`raw → filtrado → variáveis → índice`), que garante rastreabilidade,
+reprodutibilidade e auditabilidade em cada etapa de transformação.
 
 ```
 raw_IBGE/
   ├─ agregados_basico.zip
   ├─ agregados_alfabetizacao.zip
   ├─ agregados_demografia.zip
-  ├─ agregados_domicilios.zip
+  ├─ agregados_domicilios1.zip
+  ├─ agregados_domicilios2.zip
+  ├─ agregados_domicilios3.zip
   └─ agregados_rendimento.zip
         ↓
         filtro: codigo_municipio = 3519071
@@ -174,10 +208,11 @@ IVS-H
   └─ ivsh_loteamento.csv         (nível loteamento — instrumento de gestão)
 ```
 
-> Este pipeline é um **mini Data Lake municipal**. A separação em camadas
-> (`raw → filtrado → variáveis → índice`) garante rastreabilidade,
-> reprodutibilidade e auditabilidade — princípios já estabelecidos nas
-> diretrizes do projeto.
+> Essa arquitetura em camadas (`raw → filtrado → variáveis → índice`)
+> é o mesmo padrão adotado em Data Lakes e pipelines ELT modernos,
+> aplicado à escala e aos recursos disponíveis no município.
+> Princípios idênticos aos estabelecidos nas diretrizes do projeto:
+> staging layer como etapa obrigatória antes da camada analítica.
 
 ---
 
@@ -213,10 +248,11 @@ Saída esperada: pasta `ivs_hortolandia/` com IVS geral e 3 dimensões para 2000
 | **Finalidade** | Fotografia nacional comparativa | Instrumento de gestão pública local |
 | **Atualização** | A cada Censo | A cada ano — IVS-H 2022, 2023, 2024, 2025... |
 
-> Segundo levantamento realizado em "12/03/2026", a construção de um IVS
-> municipal com atualização anual via dados administrativos **praticamente
-> não existe em municípios brasileiros**. O IVS-H posiciona Hortolândia
-> em fronteira metodológica.
+> A combinação de indicador social composto + atualização anual +
+> integração intersetorial + granularidade territorial (loteamento)
+> **praticamente não existe em municípios brasileiros**.
+> O IVS-H posiciona Hortolândia em fronteira metodológica na
+> governança de dados aplicada à política pública.
 
 ---
 
@@ -224,11 +260,12 @@ Saída esperada: pasta `ivs_hortolandia/` com IVS geral e 3 dimensões para 2000
 
 | # | Ação | Responsável | Dependência |
 |---|---|---|---|
-| 1 | Baixar os 5 arquivos IBGE listados na Seção 3 | Ailton (máquina Debian) | Acesso à internet |
+| 1 | Baixar os 5 arquivos IBGE listados na Seção 3 (incluindo domicilio2 e domicilio3) | Ailton (máquina Debian) | Acesso à internet |
 | 2 | Executar `busca_ivs_hortolandia_v2.py` para obter IVS IPEA 2000/2010 | Ailton (máquina Debian) | Acesso à internet |
 | 3 | Aplicar filtro `3519071` e gerar `filtrado_hortolandia/` | Ailton (máquina Debian) | Passo 1 concluído |
-| 4 | Mapear variáveis IBGE para `dim_variavel_IVS_v01r3.md` | Ailton + Claude | Passo 3 concluído |
-| 5 | Popular `schema_IVS.sql` com dados reais | Ailton (Debian / SQLite) | Passo 4 concluído |
+| 4 | Verificar dicionário de variáveis do domicilio1/2/3 — identificar onde estão IU_agua, IU_esgoto, IU_lixo | Ailton + Claude | Passo 1 concluído |
+| 5 | Mapear variáveis IBGE para `dim_variavel_IVS_v01r3.md` | Ailton + Claude | Passo 3 concluído |
+| 6 | Popular `schema_IVS.sql` com dados reais | Ailton (Debian / SQLite) | Passo 5 concluído |
 
 ---
 
@@ -237,6 +274,7 @@ Saída esperada: pasta `ivs_hortolandia/` com IVS geral e 3 dimensões para 2000
 | Versão | Data | Alterações |
 |---|---|---|
 | v01 | "12/03/2026" | Criação — baseado em `arquitetura_obtenção_de_dados_IVS.docx`; premissas IBGE/IPEA; 5 arquivos mapeados; pipeline completo; posicionamento IVS × IVS-H; correção do código IBGE (3529401 → 3519071) |
+| v02 | "12/03/2026" | Seção 0 adicionada: escopo territorial em três escalas (Brasil / Município / Território). Frase sobre "9 a 12 variáveis" substituída por formulação metodologicamente mais cautelosa. Nota sobre domicilio1/2/3 adicionada na Seção 3.4. "mini Data Lake" substituído por "pipeline analítico estruturado em camadas". Frase sobre dados administrativos e monitoramento contínuo adicionada na Seção 1.2. Trecho de posicionamento estratégico reforçado na Seção 7. Passo 4 adicionado na Seção 8 (verificar dicionário domicilio1/2/3). |
 
 ---
 
