@@ -1,5 +1,5 @@
 # Atlas Social de Hortolândia
-**Fechamento do Dia — 14 e 15 de março de 2026**
+**Fechamento do Dia — 14 de março de 2026**
 **Responsável:** Ailton Vendramini
 
 ---
