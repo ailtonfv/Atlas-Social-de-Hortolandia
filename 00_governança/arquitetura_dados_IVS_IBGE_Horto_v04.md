@@ -29,6 +29,8 @@ Território	IVS-H por loteamento / núcleo / CRAS	Instrumento de gestão públic
 
 O IBGE classifica Hortolândia como integrante do **Arranjo Populacional de Campinas/SP** — uma das 11 grandes concentrações urbanas brasileiras na faixa de 1 a 2,5 milhões de habitantes. Em 2010, o arranjo somava **1.874.442 habitantes** e PIB de **R$ 71,4 bilhões**, com destaque para a indústria (26,9% do valor adicionado).
 
+> O índice de integração de 0,42 indica **integração funcional elevada** com o arranjo regional — não necessariamente dependência econômica. Em regiões metropolitanas maduras como Campinas, os fluxos pendulares são bidirecionais. A natureza da relação (dormitório, polo ou município integrado) requer o saldo pendular completo (entradas − saídas), dado que será obtido na etapa 2 do roadmap desta dimensão. Ver `dim_dinamica_metropolitana_v01.md`.
+
 A tabela abaixo reproduz os dados de Hortolândia conforme registrados na Tabela 1.1 do estudo:
 
 | Atributo | Valor (Censo 2010) |
