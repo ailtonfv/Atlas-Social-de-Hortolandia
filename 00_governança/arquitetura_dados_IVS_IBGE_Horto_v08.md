@@ -291,7 +291,7 @@ Dados obtidos em "13/03/2026" via Google BigQuery:
 |-------|------------|----------------------|
 | Quilombola | 6 pessoas | Invisível no CadÚnico, sem território |
 | Indígena | **255 pessoas** | Invisível no CadÚnico, sem terra demarcada |
-| TEA | 2.806 pessoas | Diagnóstico médico — CadÚnico parcial |
+| TEA - Transtorno do Expectro Altista | 2.806 pessoas | Diagnóstico médico — CadÚnico parcial |
 
 ### 6.1.7 Aglomerados subnormais — IU_esgoto discrimina no território
 
