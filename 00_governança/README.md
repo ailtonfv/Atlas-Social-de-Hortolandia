@@ -1,8 +1,9 @@
+[diretrizes_estrategicas_v03.md](https://github.com/user-attachments/files/26059661/diretrizes_estrategicas_v03.md)
 # Diretrizes Estratégicas — Registro de Decisões
-**Data de criação:** 27/02/2026  
-**Última atualização:** 09/03/2026  
-**Versão:** 02  
-**Responsável:** Ailton Vendramini  
+**Data de criação:** "27/02/2026"
+**Última atualização:** "17/03/2026"
+**Versão:** 03
+**Responsável:** Ailton Vendramini
 **Status:** Diretrizes aprovadas — em implementação
 
 ---
@@ -32,7 +33,16 @@ Fonte bruta (CECAD, CSV, XLS)
 ### Onde implementar
 A camada de staging deve ser formalizada na pasta `02_modelagem_lógica` como parte do esquema SQL. Cada carga de dados externa gera uma tabela de staging correspondente antes de qualquer transformação.
 
-> **Atualização v02:** A pasta `02_modelagem_lógica` foi criada e contém o primeiro arquivo do modelo analítico: `dim_variavel_IVS.md` (v01, 09/03/2026), com 16 variáveis do IVS/IPEA organizadas em 3 dimensões. O schema SQL formal é o próximo passo desta camada.
+> **Atualização v02:** A pasta `02_modelagem_lógica` foi criada e contém o primeiro
+> arquivo do modelo analítico: `dim_variavel_IVS.md` (v01, "09/03/2026"), com 16
+> variáveis do IVS/IPEA organizadas em 3 dimensões. O schema SQL formal é o próximo
+> passo desta camada.
+
+> **Conexão com o Atlas Social:** Os campos `fonte_calculo`, `data_referencia` e
+> `versao_calculo` obrigatórios nas tabelas fato (`fato_ivs_loteamento`,
+> `fato_ivs_municipio`) implementam diretamente esta diretriz — garantindo que
+> cada cálculo do IVS-H seja rastreável até sua fonte bruta original.
+> Ver `arquitetura_dados_IVS_IBGE_Horto_v09.md`, Seção 8.
 
 ---
 
@@ -91,6 +101,21 @@ Pessoa → CPF → Família X — Loteamento Y — CRAS Z
 
 Não é expulsão — é **emancipação planejada**. O sistema precisa identificar pessoas que já atingiram condições de transição e acompanhar sua saída para autonomia.
 
+### Critério de emancipação — a definir
+
+O critério formal que determina quando uma família está pronta para transição
+**será definido em fase posterior do projeto**, com participação das secretarias
+envolvidas (Inclusão, Desenvolvimento Econômico, Saúde). Possíveis dimensões a
+considerar:
+
+- Renda per capita familiar em relação ao critério CadÚnico
+- Tempo de atendimento contínuo sem progressão de renda
+- Existência de vínculo formal ativo (CAGED) de pelo menos um membro
+- Acesso a programa de qualificação profissional concluído
+
+> Esta lacuna é registrada para não permanecer indefinidamente em aberto.
+> A definição do critério é requisito para o Produto 3 (IVS-H Consolidado Territorial).
+
 ### Integração com Secretaria de Desenvolvimento Econômico
 Esta diretriz conecta diretamente a Secretaria de Inclusão com a Secretaria de Desenvolvimento Econômico. O fluxo proposto:
 
@@ -126,13 +151,13 @@ Hortolândia tem 72.424 pessoas inscritas no CadÚnico (dado dez/2025). Mas esse
 
 Existem pelo menos três distorções graves:
 
-**Distorção 1 — Cadastros desatualizados**  
+**Distorção 1 — Cadastros desatualizados**
 Pessoas que mudaram de situação (conseguiram emprego, aumentaram renda, saíram do município) mas permanecem no cadastro. O dado de dez/2025 já mostrou isso: 25.395 pessoas classificadas como "acima do perfil" ainda constam no CadÚnico.
 
-**Distorção 2 — Duplicação de benefícios**  
+**Distorção 2 — Duplicação de benefícios**
 O sistema atual é deficiente o suficiente para permitir que um mesmo vulnerável retire, por exemplo, mais de uma cesta básica — deixando outro sem receber. Isso não é necessariamente fraude: é falha de controle. Sem cruzamento de CPF entre programas, a duplicação é invisível para a gestão.
 
-**Distorção 3 — Subatendimento invisível**  
+**Distorção 3 — Subatendimento invisível**
 Famílias que estão no CadÚnico, são elegíveis, mas nunca foram alcançadas por nenhum serviço. O dado de dez/2025 mostrou que a maioria das 72.424 pessoas não tem CRAS de referência preenchido — o que sugere que uma parcela significativa nunca teve contato ativo com a rede.
 
 ### O que o sistema precisa revelar
@@ -161,10 +186,34 @@ Essa pergunta simples, respondida com dados reais, já justifica o projeto intei
 | Visão de benefícios por **pessoa** e família | Gestão integrada e emancipação planejada | Fase 2 — enriquecimento |
 | Controle de duplicação e subatendimento | Eficiência e equidade na distribuição de benefícios | MVP — primeiros indicadores |
 
-> **Princípio permanente:** A unidade mínima de análise é sempre a **Pessoa**. A Família é uma agregação de pessoas. O Loteamento é a unidade territorial de referência. Tudo começa com a Pessoa.
+> **Princípio permanente:** A unidade mínima de análise é sempre a **Pessoa**.
+> A Família é uma agregação de pessoas. O Loteamento é a unidade territorial de
+> referência. Tudo começa com a Pessoa.
+
+### Conexão com o Atlas Social de Hortolândia
+
+Estas três diretrizes são os fundamentos operacionais do Atlas Social:
+
+| Diretriz | Componente do Atlas Social |
+|----------|---------------------------|
+| Staging obrigatório | Campos `fonte_calculo` + `data_referencia` + `versao_calculo` nas tabelas fato — `arquitetura_dados_IVS_IBGE_Horto_v09.md`, Seção 8 |
+| Visão por pessoa e família | Cadeia `Pessoa → Família → Loteamento` — unidade primária do IVS-H |
+| Controle de duplicação e subatendimento | Grupo "subatendidos" da Diretriz 3 = territórios com IVS-H alto + zero programas ativos — primeiro resultado do IVS-H parcial (Produto 1) |
+
+> A pergunta da Diretriz 3 — *"quantas pessoas não estão recebendo nada?"* —
+> é a que o IVS-H parcial começa a responder no Produto 1.
+> O grupo "subatendidos" cruzado com o mapa de loteamentos é o primeiro
+> entregável com valor político imediato para a Secretaria de Inclusão.
 
 ---
 
-*Registro gerado a partir de discussão estratégica em 27/02/2026.*  
-*Atualizado em 09/03/2026 (v02): correção terminológica (Território → Loteamento/Núcleo), atualização do número CadÚnico (72.424), remoção de referência ao ACERTE (programa da Sec. de Governo, não da Inclusão), registro do avanço na 02_modelagem_lógica.*  
+*Registro gerado a partir de discussão estratégica em "27/02/2026".*
+*Atualizado em "09/03/2026" (v02): correção terminológica (Território → Loteamento/Núcleo),
+atualização do número CadÚnico (72.424), remoção de referência ao ACERTE, registro do
+avanço na 02_modelagem_lógica.*
+*Atualizado em "17/03/2026" (v03): Diretriz 1 — conexão explícita com campos temporais
+das tabelas fato (arquitetura_dados_IVS_IBGE_Horto_v09.md, Seção 8). Diretriz 2 —
+seção "Critério de emancipação" adicionada: lacuna registrada formalmente com as
+dimensões possíveis e dependência do Produto 3. Síntese — tabela de conexão com o
+Atlas Social adicionada: cada diretriz ancorada no componente técnico correspondente.*
 *Estas diretrizes orientam as decisões técnicas das próximas fases do projeto.*
