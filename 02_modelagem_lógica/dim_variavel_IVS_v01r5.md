@@ -1,192 +1,346 @@
-[ivs_vs_ivsh_comparativo_v05.md](https://github.com/user-attachments/files/26085680/ivs_vs_ivsh_comparativo_v05.md)
-# IVS × IVS-H — Comparativo das Variáveis de Vulnerabilidade Social
-**Arquivo:** `00_governanca/ivs_vs_ivsh_comparativo.md`  
-**Versão:** v05  
-**Data:** "18/03/2026"  
+[dim_variavel_IVS_v01r5.md](https://github.com/user-attachments/files/26085845/dim_variavel_IVS_v01r5.md)
+# DIM_VARIAVEL_IVS — Variáveis do Índice de Vulnerabilidade Social
+
+**Versão:** v01r5  
+**Data de criação:** "09/03/2026"  
+**Última atualização:** "18/03/2026"  
 **Responsável:** Ailton Vendramini  
-**Repositório:** Atlas-Social-de-Hortolândia  
-**Fonte metodológica:** COSTA, MA; MARGUTI, BO. Atlas da Vulnerabilidade Social nos Municípios Brasileiros. Brasília: IPEA, 2015.  
-**Referência metodológica adicional:** NARDO, M. et al. Manual sobre Construção de Indicadores Compostos. Paris: OCDE, 2008.
-
-> IVS-H: ocorrência local — hipóteses iniciais, a validar com dados reais do CadÚnico dez/2025 e Censo 2022.
+**Repositório:** Atlas-Social-de-Hortolândia / 02_modelagem_lógica
 
 ---
 
-## Resumo Executivo por Dimensão
+## Nota Metodológica
 
-| Dimensão | Variáveis IVS | Variáveis IVS-H | Peso IPEA | Peso IVS-H (hipótese) | Implicação estratégica |
-| --- | --- | --- | --- | --- | --- |
-| Infraestrutura Urbana | 3 | 2 | 33% | ~15-20% | IU_03 migrada para RT como variável local superior. IU_01 e IU_02 com baixo poder discriminatório — saneamento com alta cobertura em Hortolândia. |
-| Capital Humano | 8 | 8 | 33% | ~40-45% | Dimensão mais relevante localmente. A reprodução intergeracional da pobreza é o desafio central. 5 variáveis disponíveis imediatamente no CadÚnico. |
-| Renda e Trabalho | 5 | 7 | 33% | ~35-40% | RT_06 e RT_07 substituem IU_03 com metodologia superior — fluxo intermunicipal real (SIDRA/IBGE) em vez de proxy de tempo de deslocamento. |
-| TOTAL | 16 | 17 | 100% | 100% | IVS-H incorpora 1 variável local adicional (mobilidade intermunicipal desagregada). Comparabilidade nacional preservada via ancora IPEA. |
+Esta dimensão registra as variáveis que compõem o Índice de
+Vulnerabilidade Social (IVS), desenvolvido pelo IPEA e publicado no
+Atlas da Vulnerabilidade Social nos Municípios Brasileiros (2015),
+e suas adaptações locais no IVS-H.
 
-> Pesos IVS-H são hipóteses iniciais. A calibração definitiva seguirá as diretrizes da OCDE (Handbook on Constructing Composite Indicators, 2008).
+O IVS oficial é adotado como **base metodológica** do projeto.
+A partir dele, é construído o **IVS-H (Hortolândia)** — mesmas
+dimensões, pesos calibrados à realidade local, e duas variáveis
+locais adicionais (RT_06 e RT_07) que substituem IU_03 com
+metodologia superior.
 
-**Nota territorial:** No Atlas Social de Hortolândia, o IVS-H é calculado na escala mínima de loteamento e posteriormente agregado para Núcleo (área de CRAS) e Região de Planejamento (RP).
+**Princípio adotado:**
+> Usar o IVS oficial garante credibilidade científica, comparabilidade
+> intermunicipal e legitimidade institucional. A calibração local
+> (IVS-H) preserva a base e ajusta os pesos conforme evidências
+> empíricas do território.
 
-> O CadÚnico não cobre a totalidade da população municipal. As variáveis derivadas dessa fonte representam a população cadastrada ou elegível ao cadastro.
+**Referências:**
+- COSTA, M. A.; MARGUTI, B. O. *Atlas da Vulnerabilidade Social nos
+  Municípios Brasileiros*. Brasília: IPEA, 2015.
+- FUNARI, A. P. et al. *Atualização do IVS a partir dos dados da PNAD
+  Contínua 2022*. Boletim Regional, Urbano e Ambiental, IPEA, 2024.
+- IPEA. *Atlas da Vulnerabilidade Social*. ivs.ipea.gov.br
+- NARDO, M. et al. *Handbook on Constructing Composite Indicators*.
+  Paris: OECD, 2008.
 
 ---
 
-## Linha de Base Empírica — IVS IPEA para Hortolândia (2000/2010)
+## Estrutura da DIM_VARIAVEL_IVS
 
-**Fonte:** Dataset `basedosdados.br_ipea_avs.municipio` — Google BigQuery | Código: `3519071`  
-**Arquivo:** `referencias_ipea/ivs_ipea_hortolandia/bq-results-20260313-195741.csv`  
-**Obtido em:** "13/03/2026"
+```
+id_variavel
+cod_variavel
+nome_variavel
+descricao
+dimensao_ivs          (Infraestrutura Urbana | Capital Humano | Renda e Trabalho)
+nivel_analise         (Pessoa | Família/Domicílio | Agregação Territorial)
+direcao_risco         (maior_pior | maior_melhor)
+peso_ipea             (igual para todas = 1/16 aprox. 0,0625 — peso uniforme original)
+peso_h                (peso calibrado IVS-H — a definir com dados reais)
+numerador             (definição do numerador da fórmula operacional)
+denominador           (definição do denominador da fórmula operacional)
+unidade               (proporcao | taxa | percentual | contagem)
+universo_referencia   (população de referência para o cálculo)
+fonte_dado            (fonte de dado disponível em Hortolândia)
+disponivel            (S | N | Parcial)
+prazo_obtencao        (Imediato | Curto prazo | Médio prazo | Roadmap)
+observacoes
+```
 
-| Dimensão | IVS 2000 | IVS 2010 | Variação | Interpretação |
-| --- | --- | --- | --- | --- |
-| IVS Geral | 0,399 | 0,293 | -0,106 | Melhora significativa — município avançou em vulnerabilidade geral |
-| Infraestrutura Urbana | 0,349 | 0,354 | +0,005 | Estável — quase sem variação entre os dois Censos |
-| Capital Humano | 0,445 | 0,258 | -0,187 | Maior melhoria absoluta — dimensão mais dinâmica em Hortolândia |
-| Renda e Trabalho | 0,405 | 0,266 | -0,139 | Melhora expressiva — segunda dimensão mais relevante |
+> **Nota sobre `nivel_analise`:** o IVS não é medido diretamente no
+> território. Os indicadores são calculados nas unidades de análise
+> pessoa ou domicílio e posteriormente agregados. O valor
+> "Agregação Territorial" indica que o resultado é consolidado na
+> hierarquia: loteamento → núcleo (CRAS) → região de planejamento (RP).
 
-> Quanto menor o índice, menor a vulnerabilidade.
+> **Nota sobre `direcao_risco`:** campo obrigatório para normalização
+> correta do índice. Indica se valores maiores da variável representam
+> maior vulnerabilidade (maior_pior) ou menor vulnerabilidade
+> (maior_melhor). Essencial na etapa de padronização min-max para
+> garantir que todas as variáveis apontem na mesma direção antes da
+> composição do índice.
 
-### Validação Empírica das Hipóteses de Peso IVS-H
+> **Nota sobre pesos:** o IVS IPEA atribui peso uniforme a todas as
+> variáveis dentro de cada dimensão, e peso igual às três dimensões
+> (1/3 cada). O campo `peso_h` será preenchido após análise empírica
+> dos dados locais — inicialmente replicará o peso IPEA.
 
-| Dimensão | Variação IPEA (2000 a 2010) | Hipótese de peso IVS-H | Fundamento empírico |
-| --- | --- | --- | --- |
-| Infraestrutura Urbana | +0,005 (estável) | ~15-20% (reduzido) | Confirmado: quase sem variação — baixo poder discriminatório entre territórios de Hortolândia. |
-| Capital Humano | -0,187 (maior melhoria) | ~40-45% (elevado) | Confirmado: foi a dimensão que mais variou — onde a vulnerabilidade residual é mais relevante. |
-| Renda e Trabalho | -0,139 (segunda maior melhoria) | ~35-40% (elevado) | Confirmado: segunda dimensão mais dinâmica. Tensão entre polo de emprego e vulnerabilidade persistente. |
-
-> Conclusão metodológica: a distribuição histórica da variação do IVS por dimensão é consistente com as hipóteses de peso do IVS-H. A calibração definitiva será realizada após o cálculo com dados reais (CadÚnico dez/2025 + Censo 2022).
+> **Nota sobre fórmulas:** os campos `numerador`, `denominador`,
+> `unidade` e `universo_referencia` formalizam o cálculo operacional
+> de cada variável. São necessários para implementação reproduzível
+> e auditável. Detalhes completos por variável nas tabelas abaixo.
 
 ---
 
 ## Dimensão 1 — Infraestrutura Urbana
 
-**2 variáveis no IVS-H | Peso IPEA: 33% | Peso IVS-H (hipótese): ~15-20%**
+*2 variáveis no IVS-H (3 no IVS IPEA) | peso da dimensão no IVS: 1/3 | peso IVS-H hipótese: ~15-20%*
 
-> IU_03 foi migrada para a dimensão Renda e Trabalho como RT_06/RT_07. Ver seção específica abaixo.
+> IU_03 foi migrada para a dimensão Renda e Trabalho (ver RT_06 e RT_07).
+> Justificativa: IU_03 é indicador híbrido que mistura restrição de renda
+> com mobilidade urbana, conceitos pertencentes a dimensões distintas.
+> A migração preserva a coerência conceitual da dimensão IU e permite
+> modelagem superior com dados SIDRA/IBGE de fluxo intermunicipal real.
 
-| N | Código | Variável | Fonte Municipal | Peso IPEA | Peso IVS-H | Direcao Risco | Observação |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| 1 | IU_01 | % pessoas em domicílios com água e esgoto inadequados | IBGE Censo 2022 / SAAE | 6,25% | ~6% | maior = pior | Cobertura elevada em Hortolândia — baixo poder discriminatório municipal. Mantém poder discriminatório territorial (entre loteamentos). Peso reduzido no IVS-H. |
-| 2 | IU_02 | % população em domicílios sem coleta de lixo | IBGE Censo 2022 / Serviços Urbanos | 6,25% | ~6% | maior = pior | Mesmo raciocínio de IU_01. Peso revisável se obras futuras alterarem cobertura em loteamentos específicos. |
+| id | cod | nome da variável | nível | direcao_risco | fonte do dado | disponível | prazo | observações |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| IVS001 | IU_01 | Percentual de pessoas em domicílios com abastecimento de água e esgotamento sanitário inadequados | Família/Domicílio | maior_pior | IBGE Censo 2022 / SAAE Hortolândia | Parcial | Curto prazo | Baixo poder discriminatório municipal (cobertura próxima de 100%) — não elimina poder discriminatório territorial entre loteamentos. Peso local reduzido, mas variável mantida por relevância em loteamentos periféricos. |
+| IVS002 | IU_02 | Percentual da população que vive em domicílios urbanos sem serviço de coleta de lixo | Família/Domicílio | maior_pior | IBGE Censo 2022 / Secretaria de Serviços Urbanos | Parcial | Curto prazo | Mesmo raciocínio de IU_01. Baixo poder discriminatório municipal, possível variação territorial em loteamentos mais recentes ou irregulares. Peso revisável. |
 
-**Nota sobre IU_03 (variável IPEA original):**  
-A variável original "% pessoas com renda menor ou igual a meio SM e deslocamento maior que 1h até o trabalho" foi descontinuada no IVS-H por ser um indicador híbrido que mistura restrição de renda (dimensão RT) com mobilidade urbana (dimensão IU). A migração para RT, com desagregação em RT_06 e RT_07 usando dados SIDRA/IBGE de fluxo intermunicipal real, representa melhoria metodológica em relação à variável original do IPEA.
+### Fórmulas Operacionais — Infraestrutura Urbana
+
+**IU_01**
+- Numerador: pessoas em domicílios sem rede geral de água OU sem rede coletora de esgoto
+- Denominador: total de pessoas residentes no loteamento
+- Unidade: proporção (0 a 1)
+- Universo: população residente total (Censo 2022)
+
+**IU_02**
+- Numerador: pessoas em domicílios sem coleta de lixo por serviço municipal ou empresa contratada
+- Denominador: total de pessoas residentes no loteamento
+- Unidade: proporção (0 a 1)
+- Universo: população residente em domicílios particulares (Censo 2022)
 
 ---
 
 ## Dimensão 2 — Capital Humano
 
-**8 variáveis | Peso IPEA: 33% | Peso IVS-H (hipótese): ~40-45%**
+*8 variáveis | peso da dimensão no IVS: 1/3 | peso IVS-H hipótese: ~40-45%*
 
-| N | Código | Variável | Fonte Municipal | Peso IPEA | Peso IVS-H | Direcao Risco | Observação |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| 3 | CH_01 | Mortalidade infantil até 1 ano de idade | Secretaria de Saúde / DATASUS | 6,25% | ~5% | maior = pior | Disponível no DATASUS. Solicitar série histórica à Saúde Municipal. |
-| 4 | CH_02 | % crianças de 0 a 5 anos fora da escola | Secretaria de Educação / CadÚnico | 6,25% | ~5% | maior = pior | CadÚnico registra frequência escolar. Cruzar com matrículas da Educação. |
-| 5 | CH_03 | % crianças de 6 a 14 anos fora da escola | Secretaria de Educação / CadÚnico | 6,25% | ~6% | maior = pior | Evasão escolar — interface direta com CRAS e Conselho Tutelar. |
-| 6 | CH_04 | % mulheres de 10 a 17 anos que tiveram filhos | Secretaria de Saúde / CadÚnico | 6,25% | ~5% | maior = pior | Variável relevante porém de disponibilidade menos estável — depende de integração intersetorial e validação com base de saúde. Sujeita a revisão de fonte. |
-| 7 | CH_05 | % maes chefes de familia, sem fund. completo e com filho menor de 15 anos | CadUnico — disponivel imediatamente | 6,25% | ~8% | maior = pior | Disponível imediatamente. Alta relevância local — peso elevado no IVS-H. |
-| 8 | CH_06 | Taxa de analfabetismo — populacao de 15 anos ou mais | CadUnico — disponivel imediatamente / IBGE Censo 2022 | 6,25% | ~7% | maior = pior | Disponível imediatamente. Censo 2022 permite validação para população fora do cadastro. |
-| 9 | CH_07 | % criancas em domicilios sem nenhum morador com fund. completo | CadUnico — disponivel imediatamente | 6,25% | ~8% | maior = pior | Disponível imediatamente. Indicador mais poderoso de reprodução intergeracional da pobreza. |
-| 10 | CH_08 | % jovens de 15 a 24 anos: nao estudam, nao trabalham e renda menor ou igual a meio SM | CadÚnico + CAGED | 6,25% | ~6% | maior = pior | Geração nem-nem em situação de vulnerabilidade econômica. Jovens fora do CadÚnico são ponto cego. CadÚnico identifica bem vulnerabilidade mas não cobre todos os jovens 15-24 do município. |
+| id | cod | nome da variável | nível | direcao_risco | fonte do dado | disponível | prazo | observações |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| IVS004 | CH_01 | Mortalidade até 1 ano de idade | Pessoa | maior_pior | Secretaria Municipal de Saúde / DATASUS | Parcial | Curto prazo | Disponível no DATASUS. Solicitar série histórica à Saúde Municipal via interlocução intersetorial. |
+| IVS005 | CH_02 | Percentual de crianças de 0 a 5 anos que não frequentam a escola | Pessoa | maior_pior | Secretaria de Educação / CadÚnico | Parcial | Curto prazo | CadÚnico registra frequência escolar das crianças do cadastro. Cruzar com matrículas da Educação. |
+| IVS006 | CH_03 | Percentual de crianças de 6 a 14 anos que não frequentam a escola | Pessoa | maior_pior | Secretaria de Educação / CadÚnico | Parcial | Curto prazo | Evasão escolar — interface direta com CRAS e Conselho Tutelar. |
+| IVS007 | CH_04 | Percentual de mulheres de 10 a 17 anos que tiveram filhos | Pessoa | maior_pior | Secretaria de Saúde (registros de parto) / CadÚnico | Parcial | Médio prazo | Variável relevante porém de disponibilidade menos estável — depende de integração intersetorial e validação com base de saúde. Sujeita a revisão de fonte. Manter com observação explícita de fragilidade metodológica. |
+| IVS008 | CH_05 | Percentual de mães chefes de família, sem fundamental completo e com pelo menos um filho menor de 15 anos | Família/Domicílio | maior_pior | CadÚnico — disponível imediatamente | Sim | Imediato | Totalmente disponível no CadÚnico. Escolaridade, composição familiar, chefe de família e idade dos filhos são campos padrão do cadastro. Alta relevância local — peso elevado no IVS-H. |
+| IVS009 | CH_06 | Taxa de analfabetismo da população de 15 anos ou mais | Pessoa | maior_pior | CadÚnico — disponível imediatamente / IBGE Censo 2022 | Sim | Imediato | Disponível no CadÚnico. Censo 2022 permite validação e expansão para população fora do cadastro. |
+| IVS010 | CH_07 | Percentual de crianças que vivem em domicílios em que nenhum morador tem ensino fundamental completo | Família/Domicílio | maior_pior | CadÚnico — disponível imediatamente | Sim | Imediato | Totalmente disponível no CadÚnico. Um dos indicadores mais poderosos para detectar reprodução intergeracional da pobreza. |
+| IVS011 | CH_08 | Percentual de pessoas de 15 a 24 anos que não estudam, não trabalham e possuem renda per capita menor ou igual a meio SM | Pessoa | maior_pior | CadÚnico + CAGED | Parcial | Curto prazo | CadÚnico identifica bem a vulnerabilidade, mas não cobre todos os jovens de 15 a 24 anos do município — jovens fora do cadastro são ponto cego estrutural. CAGED registra apenas vínculo formal. Indicador estratégico para captura da geração nem-nem por loteamento. |
+
+### Fórmulas Operacionais — Capital Humano
+
+**CH_01**
+- Numerador: óbitos de crianças menores de 1 ano no loteamento
+- Denominador: nascidos vivos no loteamento no mesmo período
+- Unidade: taxa por 1.000 nascidos vivos
+- Universo: nascidos vivos — DATASUS / Secretaria Municipal de Saúde
+
+**CH_02**
+- Numerador: crianças de 0 a 5 anos que não frequentam estabelecimento de ensino
+- Denominador: total de crianças de 0 a 5 anos no loteamento
+- Unidade: proporção (0 a 1)
+- Universo: crianças de 0 a 5 anos no CadÚnico / Secretaria de Educação
+
+**CH_03**
+- Numerador: crianças de 6 a 14 anos que não frequentam estabelecimento de ensino
+- Denominador: total de crianças de 6 a 14 anos no loteamento
+- Unidade: proporção (0 a 1)
+- Universo: crianças de 6 a 14 anos no CadÚnico / Secretaria de Educação
+
+**CH_04**
+- Numerador: mulheres de 10 a 17 anos com pelo menos um filho registrado
+- Denominador: total de mulheres de 10 a 17 anos no loteamento
+- Unidade: proporção (0 a 1)
+- Universo: mulheres de 10 a 17 anos — Secretaria de Saúde / CadÚnico
+
+**CH_05**
+- Numerador: mulheres chefes de família, sem ensino fundamental completo, com pelo menos um filho menor de 15 anos
+- Denominador: total de mulheres chefes de família no loteamento
+- Unidade: proporção (0 a 1)
+- Universo: mulheres chefes de família no CadÚnico
+
+**CH_06**
+- Numerador: pessoas de 15 anos ou mais que não sabem ler nem escrever
+- Denominador: total de pessoas de 15 anos ou mais no loteamento
+- Unidade: proporção (0 a 1)
+- Universo: população de 15 anos ou mais no CadÚnico / Censo 2022
+
+**CH_07**
+- Numerador: crianças que residem em domicílios onde nenhum morador concluiu o ensino fundamental
+- Denominador: total de crianças no loteamento
+- Unidade: proporção (0 a 1)
+- Universo: crianças residentes no CadÚnico
+
+**CH_08**
+- Numerador: jovens de 15 a 24 anos que não estudam, não trabalham formalmente e têm renda per capita menor ou igual a meio SM
+- Denominador: total de jovens de 15 a 24 anos no loteamento
+- Unidade: proporção (0 a 1)
+- Universo: jovens de 15 a 24 anos no CadÚnico (com limitação de cobertura)
 
 ---
 
 ## Dimensão 3 — Renda e Trabalho
 
-**7 variáveis no IVS-H (5 originais + RT_06 + RT_07) | Peso IPEA: 33% | Peso IVS-H (hipótese): ~35-40%**
+*7 variáveis no IVS-H (5 originais IPEA + RT_06 + RT_07) | peso da dimensão no IVS: 1/3 | peso IVS-H hipótese: ~35-40%*
 
-| N | Código | Variável | Fonte Municipal | Peso IPEA | Peso IVS-H | Direcao Risco | Observação |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| 11 | RT_01 | % pessoas com renda domiciliar per capita menor ou igual a meio SM | CadUnico — disponivel imediatamente | 6,25% | ~9% | maior = pior | Disponível imediatamente. Ponto de entrada natural do IVS-H. Renda domiciliar per capita por setor censitário não publicada pelo IBGE no Censo 2022 — CadÚnico confirmado como fonte primária. |
-| 12 | RT_02 | Taxa de desocupacao — populacao de 18 anos ou mais | CadÚnico + CAGED | 6,25% | ~8% | maior = pior | CadÚnico: situação declarada. CAGED registra vínculos formais. Trabalhadores informais e parte dos MEI não aparecem no CAGED. |
-| 13 | RT_03 | % pessoas 18+ sem fund. completo em ocupacao informal | CadÚnico | 6,25% | ~7% | maior = pior | Subestimação provável — cruzar com CAGED para identificar vínculo formal. |
-| 14 | RT_04 | % pessoas em domicilios com renda menor ou igual a meio SM dependentes de idosos | CadUnico — disponivel imediatamente | 6,25% | ~8% | maior = pior | Disponível imediatamente. Captura fragilidade da renda do idoso como sustentação familiar. |
-| 15 | RT_05 | Taxa de atividade das pessoas de 10 a 14 anos (trabalho infantil) | CadÚnico / IBGE Censo 2022 | 6,25% | ~3% | maior = pior | Interface direta com CREAS e Conselho Tutelar. Peso local reduzido decorre de: criticidade ética alta, incidência estatística menor, menor capacidade de explicar variação global do índice. |
-| 16 | RT_06 | % de pessoas ocupadas que trabalham fora do municipio (condicionada: renda menor ou igual a meio SM) | IBGE Censo 2022 / SIDRA — Tabela de deslocamento intermunicipal | — | ~4% | maior = pior | Variável local — sem equivalente direto no IVS IPEA. Substitui IU_03 com dado estrutural em vez de proxy temporal. Condicionada à renda para medir vulnerabilidade real — alta mobilidade com baixa renda. Dado disponível no SIDRA. |
-| 17 | RT_07 | % de pessoas que estudam fora do municipio | IBGE Censo 2022 / SIDRA — Tabela de deslocamento intermunicipal | — | ~3% | maior = pior | Variável local — sem equivalente direto no IVS IPEA. Mede déficit de oferta educacional local. Conecta com CH_02 e CH_03. Sinal de dependência territorial na formação. Dado disponível no SIDRA. |
+| id | cod | nome da variável | nível | direcao_risco | fonte do dado | disponível | prazo | observações |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| IVS012 | RT_01 | Proporção de pessoas com renda domiciliar per capita menor ou igual a meio SM | Família/Domicílio | maior_pior | CadÚnico — disponível imediatamente | Sim | Imediato | Totalmente disponível no CadÚnico. Ponto de entrada natural do IVS-H. Renda domiciliar per capita por setor censitário não publicada pelo IBGE no Censo 2022 — CadÚnico confirmado como fonte primária. |
+| IVS013 | RT_02 | Taxa de desocupação da população de 18 anos ou mais | Pessoa | maior_pior | CadÚnico + CAGED | Parcial | Curto prazo | CadÚnico registra situação ocupacional declarada. CAGED registra vínculo formal. Trabalhadores informais e parte dos MEI não aparecem no CAGED. |
+| IVS014 | RT_03 | Percentual de pessoas de 18 anos ou mais sem fundamental completo e em ocupação informal | Pessoa | maior_pior | CadÚnico | Parcial | Curto prazo | Escolaridade disponível no CadÚnico. Informalidade depende de declaração — subestimação provável. Cruzar com CAGED para identificar vínculo formal. |
+| IVS015 | RT_04 | Percentual de pessoas em domicílios com renda per capita menor ou igual a meio SM e dependentes de idosos | Família/Domicílio | maior_pior | CadÚnico — disponível imediatamente | Sim | Imediato | Totalmente disponível no CadÚnico. Captura fragilidade da renda do idoso como sustentáculo familiar. |
+| IVS016 | RT_05 | Taxa de atividade das pessoas de 10 a 14 anos de idade (trabalho infantil) | Pessoa | maior_pior | CadÚnico / IBGE Censo 2022 | Parcial | Curto prazo | Interface direta com CREAS e Conselho Tutelar. Peso local reduzido (~3%) justificado por: criticidade ética alta, incidência estatística menor, menor capacidade de explicar variação global do índice. Censo 2022 é fonte mais robusta. |
+| IVS_L01 | RT_06 | Percentual de pessoas ocupadas com renda per capita menor ou igual a meio SM que trabalham fora do município | Pessoa | maior_pior | IBGE Censo 2022 / SIDRA — tabela de deslocamento intermunicipal | Parcial | Curto prazo | Variável local — sem equivalente direto no IVS IPEA. Substitui IU_03 com medida estrutural de fluxo real em vez de proxy temporal. Condicionada à renda: alta mobilidade com baixa renda = vulnerabilidade. Alta mobilidade com alta renda = oportunidade. Dado disponível no SIDRA. |
+| IVS_L02 | RT_07 | Percentual de pessoas que estudam fora do município | Pessoa | maior_pior | IBGE Censo 2022 / SIDRA — tabela de deslocamento intermunicipal | Parcial | Curto prazo | Variável local — sem equivalente direto no IVS IPEA. Mede déficit de oferta educacional local. Conecta com CH_02 e CH_03. Dado disponível no SIDRA. |
+
+### Fórmulas Operacionais — Renda e Trabalho
+
+**RT_01**
+- Numerador: pessoas em domicílios com renda per capita menor ou igual a meio salário mínimo
+- Denominador: total de pessoas no loteamento
+- Unidade: proporção (0 a 1)
+- Universo: população cadastrada no CadÚnico dez/2025
+
+**RT_02**
+- Numerador: pessoas de 18 anos ou mais desocupadas (procurando trabalho sem vínculo)
+- Denominador: total de pessoas de 18 anos ou mais no loteamento
+- Unidade: proporção (0 a 1)
+- Universo: população de 18 anos ou mais no CadÚnico / CAGED
+
+**RT_03**
+- Numerador: pessoas de 18 anos ou mais sem ensino fundamental completo em ocupação informal (sem vínculo CAGED)
+- Denominador: total de pessoas de 18 anos ou mais ocupadas no loteamento
+- Unidade: proporção (0 a 1)
+- Universo: população ocupada de 18 anos ou mais no CadÚnico
+
+**RT_04**
+- Numerador: pessoas em domicílios com renda per capita menor ou igual a meio SM onde o principal provedor é idoso (60 anos ou mais)
+- Denominador: total de pessoas no loteamento
+- Unidade: proporção (0 a 1)
+- Universo: população total no CadÚnico dez/2025
+
+**RT_05**
+- Numerador: pessoas de 10 a 14 anos economicamente ativas (trabalho declarado)
+- Denominador: total de pessoas de 10 a 14 anos no loteamento
+- Unidade: proporção (0 a 1)
+- Universo: crianças de 10 a 14 anos no CadÚnico / Censo 2022
+
+**RT_06**
+- Numerador: pessoas ocupadas com renda per capita menor ou igual a meio SM que trabalham em outro município
+- Denominador: total de pessoas ocupadas com renda per capita menor ou igual a meio SM no loteamento
+- Unidade: proporção (0 a 1)
+- Universo: população ocupada de baixa renda — SIDRA / Censo 2022
+
+**RT_07**
+- Numerador: pessoas que frequentam estabelecimento de ensino localizado em outro município
+- Denominador: total de pessoas que frequentam estabelecimento de ensino no loteamento
+- Unidade: proporção (0 a 1)
+- Universo: população estudante — SIDRA / Censo 2022
 
 ---
 
-## RT_06 e RT_07 — Mobilidade Intermunicipal como Variável Local
+## Resumo de Disponibilidade
 
-### Origem da decisão
-
-A variável original do IPEA (IU_03) — percentual de pessoas com renda menor ou igual a meio SM e deslocamento maior que 1 hora até o trabalho — é um indicador híbrido que mistura:
-
-- restrição de renda (dimensão Renda e Trabalho)
-- dificuldade de mobilidade urbana (dimensão Infraestrutura Urbana)
-
-A convivência dessas duas dimensões em uma única variável dentro de IU reduz a clareza conceitual da dimensão e dificulta a normalização e a auditoria do índice.
-
-### Superioridade metodológica das variáveis locais
-
-Os dados disponíveis no SIDRA/IBGE para Hortolândia — fluxo de pessoas que trabalham fora do município e fluxo de pessoas que estudam fora do município — permitem construir variáveis estruturalmente superiores à variável original:
-
-| Aspecto | IU_03 IPEA original | RT_06 / RT_07 IVS-H |
+| Status | Qtd | Variáveis |
 | --- | --- | --- |
-| Natureza do dado | Proxy (tempo de deslocamento > 1h) | Medida estrutural (fluxo real intermunicipal) |
-| Disponibilidade | Censo 2022 microdados | SIDRA — tabela agregada disponivel |
-| Interpretacao | Indireta | Direta |
-| Dimensao conceitualmente correta | IU (discutivel) | RT (dependencia economica territorial) |
-| Poder analitico | Moderado | Alto — conecta com planejamento economico |
+| Disponível imediato (CadÚnico) | 5 | IVS008, IVS009, IVS010, IVS012, IVS015 |
+| Disponível (SIDRA/IBGE) | 2 | IVS_L01, IVS_L02 |
+| Parcial — curto prazo | 9 | IVS001, IVS002, IVS004, IVS005, IVS006, IVS011, IVS013, IVS014, IVS016 |
+| Parcial — médio prazo | 1 | IVS007 |
+| **TOTAL IVS-H** | **17** | — |
 
-### Interpretação territorial
-
-| Situação | Leitura analítica |
-| --- | --- |
-| Alto % trabalha fora | Economia local não absorve a força de trabalho residente |
-| Alto % estuda fora | Déficit de oferta educacional local |
-| Ambos altos com baixa renda | Território com alta dependência funcional da região |
-
-> Alta mobilidade com alta renda = oportunidade.  
-> Alta mobilidade com baixa renda = vulnerabilidade.  
-> Por isso RT_06 é condicionada: % de pessoas com renda menor ou igual a meio SM que trabalham fora do município.
-
-### Conexão estratégica
-
-RT_06 e RT_07 conectam o IVS-H diretamente com o planejamento econômico municipal, permitindo responder:
-
-- Quais loteamentos dependem mais de emprego externo?
-- Onde investir em geração de emprego local?
-- Onde há maior custo de transporte sobre renda vulnerável?
-- Onde a oferta educacional local é insuficiente?
-
-Essa conexão transforma o IVS-H em instrumento de diálogo entre a Inclusão Social e o Desenvolvimento Econômico — integração intersetorial direta.
+> **Implicação para o MVP:** as 5 variáveis imediatamente disponíveis
+> no CadÚnico (dez/2025) mais RT_06 e RT_07 do SIDRA permitem calcular
+> um **IVS-H parcial com 7 variáveis** como primeiro entregável analítico.
 
 ---
 
-## Disponibilidade das Variáveis
+## Fluxo Analítico do IVS-H
 
-| Status | Qtd | Variáveis | Próximo passo |
+1. Dados administrativos coletados nas fontes originais
+   (CadÚnico, CAGED, Censo IBGE, SIDRA, Saúde, Educação).
+
+2. Indicadores básicos calculados nas unidades de análise
+   pessoa ou domicílio.
+
+3. Resultados agregados para a escala territorial:
+   **Loteamento → Núcleo (CRAS) → Região de Planejamento.**
+
+4. Normalização min-max aplicada por variável, respeitando
+   `direcao_risco` (maior_pior = normalização direta;
+   maior_melhor = normalização invertida).
+
+5. Índice IVS-H calculado aplicando os pesos definidos
+   em `DIM_VARIAVEL_IVS` sobre os valores normalizados
+   registrados em `FATO_VARIAVEL_IVS_LOTEAMENTO`.
+
+---
+
+## Capacidade Analítica do IVS-H
+
+| Escala | Aplicação |
+| --- | --- |
+| Loteamento | Identificação de bolsões de vulnerabilidade |
+| Núcleo CRAS | Planejamento da assistência social |
+| Região de Planejamento | Planejamento urbano e territorial |
+| Município | Comparação com IVS nacional |
+
+---
+
+## Mapeamento IVS-H × Camadas do Modelo
+
+| Camada analítica | Variáveis IVS-H cobertas |
+| --- | --- |
+| Pessoa | IVS004, IVS005, IVS006, IVS007, IVS009, IVS011, IVS013, IVS014, IVS016, IVS_L01, IVS_L02 |
+| Família/Domicílio | IVS001, IVS002, IVS008, IVS010, IVS012, IVS015 |
+| Agregação Territorial | Todas — o IVS-H é calculado por loteamento e agregado por Núcleo e RP |
+
+---
+
+## Mapeamento IVS-H × Programas Municipais
+
+| Dimensão IVS | Exemplos de programas de Hortolândia | Campo `dimensao_ivs` |
+| --- | --- | --- |
+| Infraestrutura Urbana | Agora a Casa é Sua, PHLIS, MCMV, Serviços Urbanos | `infraestrutura_urbana` |
+| Capital Humano | Programa Cuidar, Bolsa Creche, SCFV, Enfrentamento Trabalho Infantil | `capital_humano` |
+| Renda e Trabalho | PAT, Banco do Povo, Bolsa Família, BPC, DECOLA, Emprega Hortolândia | `renda_trabalho` |
+| Multidimensional | PAIF, PAEFI, Ressignifica Hortolândia, CRAS/CREAS | `multidimensional` |
+
+---
+
+## IVS-H — Calibração Local (em construção)
+
+| Dimensão | Peso IPEA | Peso IVS-H (hipótese) | Justificativa |
 | --- | --- | --- | --- |
-| Disponível imediatamente — CadÚnico | 5 | CH_05, CH_06, CH_07, RT_01, RT_04 | Calcular subíndice IVS-H parcial com CadÚnico dez/2025 |
-| Disponível — SIDRA/IBGE | 2 | RT_06, RT_07 | Extrair tabela de deslocamento intermunicipal do SIDRA |
-| Parcial — curto prazo | 9 | IU_01, IU_02, CH_01, CH_02, CH_03, CH_08, RT_02, RT_03, RT_05 | Integrar IBGE Censo 2022, CAGED e Saúde/Educação municipal |
-| Parcial — prazo médio | 1 | CH_04 | Registro de parto adolescente — integração Saúde |
-| TOTAL IVS-H | 17 | — | — |
+| Infraestrutura Urbana | 33% | ~15-20% | Cobertura de água e coleta de lixo elevadas — baixo poder discriminatório municipal, possível variação territorial |
+| Capital Humano | 33% | ~40-45% | Reprodução intergeracional da pobreza é o desafio central |
+| Renda e Trabalho | 33% | ~35-40% | Tensão entre polo de emprego formal e 72.424 no CadÚnico — RT_06 e RT_07 ampliam o poder analítico territorial |
 
-> A renda domiciliar por setor censitário ainda não foi publicada no Censo 2022. A dimensão Renda e Trabalho do IVS-H utiliza como fonte primária o CadÚnico municipal, complementado por dados administrativos (CAGED).
+> Estes pesos são hipótese inicial. A calibração definitiva do IVS-H
+> será feita com base nos dados reais do CadÚnico dez/2025 e validada
+> com os dados do Censo 2022 e SIDRA. A metodologia seguirá as
+> diretrizes da OCDE (NARDO et al., OECD, 2008).
 
 ---
 
-## Evolução Incremental do IVS-H
+## Pendências
 
-| Versão | Cobertura | Variáveis |
+| # | Pendência | Prioridade |
 | --- | --- | --- |
-| IVS-H v1 (parcial CadÚnico) | 5 variáveis CadÚnico + 2 SIDRA | CH_05, CH_06, CH_07, RT_01, RT_04, RT_06, RT_07 |
-| IVS-H v2 (expandido) | 8-10 variáveis | + IBGE Censo 2022, CAGED |
-| IVS-H v3 (intersetorial) | 12+ variáveis | + Saúde, Educação municipal |
-| IVS-H v4 (consolidado) | 17 variáveis — sistema completo | Todas as fontes integradas |
-
----
-
-## Referências Cruzadas
-
-| Documento | Localização no repositório |
-| --- | --- |
-| DIM_VARIAVEL_IVS v01r5 (detalhe técnico completo) | `02_modelagem_lógica/dim_variavel_IVS_v01r5.md` |
-| nota_tecnica_fato_ivs_loteamento v04 | `02_modelagem_lógica/nota_tecnica_fato_ivs_loteamento_v04.sql` |
-| DIM_PROGRAMA v04 | `01_modelagem_conceitual/dim_programa_v04.md` |
-| Palestra marco 2026 v05 | `00_governanca/palestra_marco_2026_v05.md` |
-| Linha de base empírica IVS IPEA | `referencias_ipea/ivs_ipea_hortolandia/bq-results-20260313-195741.csv` |
+| P01 | Solicitar dados de mortalidade infantil à Secretaria de Saúde (IVS004) | Alta |
+| P02 | Solicitar dados de matrícula e evasão escolar à Secretaria de Educação (IVS005, IVS006) | Alta |
+| P03 | Extrair tabela de deslocamento intermunicipal do SIDRA/IBGE (RT_06, RT_07) | Alta |
+| P04 | Calcular subíndice IVS-H parcial com as 5 variáveis CadÚnico dez/2025 | Alta |
+| P05 | Levantar dados do IBGE Censo 2022 por setor censitário para Hortolândia | Alta |
+| P06 | Confirmar cobertura de saneamento com SAAE (IVS001) | Média |
+| P07 | Definir metodologia formal de calibração dos pesos IVS-H | Média |
+| P08 | Cruzar variáveis IVS com loteamentos para cálculo territorial | Alta |
+| P09 | Formalizar convenção de `periodo_referencia` nos scripts de carga | Média |
 
 ---
 
@@ -194,13 +348,14 @@ Essa conexão transforma o IVS-H em instrumento de diálogo entre a Inclusão So
 
 | Versão | Data | Alterações |
 | --- | --- | --- |
-| v01 | "10/03/2026" | Criação — comparativo das 16 variáveis IVS x IVS-H; resumo executivo por dimensão; tabela de disponibilidade municipal |
-| v02 | "11/03/2026" | Correção: 3 variáveis para 5 variáveis disponíveis no CadÚnico; padronização de meio SM; redação CH_08; nota territorial; nota CadÚnico; nota RT expandida |
-| v03 | "11/03/2026" | RT_02: observações sobre CAGED e MEI; IU_03: caracterizado como indicador híbrido; referência Nardo et al. (OCDE, 2008) |
-| v04 | "13/03/2026" | Seção Linha de Base Empírica: IVS IPEA 2000/2010 via BigQuery; tabela de validação empírica das hipóteses de peso; conclusão metodológica |
-| v05 | "18/03/2026" | IU_03 migrada para RT: criadas RT_06 (% ocupados que trabalham fora do municipio, condicionada a renda menor ou igual a meio SM) e RT_07 (% que estudam fora do municipio), com fonte SIDRA/IBGE — variáveis locais superiores à variável original do IPEA. Coluna direcao_risco adicionada a todas as dimensões. IVS-H passa de 16 para 17 variáveis. Resumo executivo, tabela de disponibilidade e referências cruzadas atualizados. Seção RT_06/RT_07 adicionada com justificativa metodológica e interpretação territorial. |
+| v01 | "09/03/2026" | Criação — 16 variáveis IVS mapeadas; disponibilidade por fonte municipal; calibração IVS-H inicial; mapeamento por camada analítica e por programa |
+| v01r | "09/03/2026" | Revisão — substituída entidade Território pela hierarquia Loteamento / RP / Núcleo |
+| v01r2 | "09/03/2026" | Revisão — substituída referência Modelo RAJIS por Atlas Social de Hortolândia; número CadÚnico padronizado para 72.424; ACERTE removido do mapeamento; datas em ISO 8601 |
+| v01r3 | "11/03/2026" | Correção: curto prazo 8 para 9 variáveis; médio prazo 3 para 2; IVS003 caracterizado como indicador híbrido; nivel_analise Agregação Territorial com nota; fonte_municipal para fonte_dado; Fluxo Analítico adicionado; quadro Capacidade Analítica adicionado; referência Nardo et al. (OECD, 2008) |
+| v01r4 | "13/03/2026" | RT_01 (IVS012): confirmação empírica — renda domiciliar per capita por setor censitário não publicada pelo IBGE no Censo 2022; CadÚnico confirmado como fonte primária de RT_01 |
+| v01r5 | "18/03/2026" | IU_03 removida da dimensão IU com nota de migração. RT_06 (IVS_L01) e RT_07 (IVS_L02) criadas como variáveis locais em Renda e Trabalho com fonte SIDRA/IBGE. Campo direcao_risco adicionado à estrutura e a todas as variáveis. Fórmulas operacionais (numerador, denominador, unidade, universo) adicionadas para todas as 17 variáveis. Notas reforçadas em IU_01/IU_02 (distinção municipal vs. territorial), CH_04 (fragilidade metodológica explicitada), CH_08 (limitação CadÚnico simplificada), RT_05 (justificativa do peso baixo formalizada). Mapeamento de programas: Emprega Hortolândia incluído em RT. Total IVS-H: 17 variáveis. |
 
 ---
 
-*Documento de comunicação institucional — `00_governanca/`.*  
-*Atlas Social de Hortolândia — uso interno.*
+*Documento de modelagem conceitual — 02_modelagem_lógica.*  
+*Uso interno — Atlas Social de Hortolândia.*
