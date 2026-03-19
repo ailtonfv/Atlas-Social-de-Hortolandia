@@ -1,10 +1,10 @@
-[palestra_marco_2026_v09.md](https://github.com/user-attachments/files/26098082/palestra_marco_2026_v09.md)
+[palestra_marco_2026_v10.md](https://github.com/user-attachments/files/26114016/palestra_marco_2026_v10.md)
 # Palestra — Março de 2026
 ## Vulnerabilidade Social e Integração de Políticas Públicas em Hortolândia
 
 **Arquivo:** `00_governanca/palestra_marco_2026.md`  
-**Versão:** v09  
-**Data:** "18/03/2026"  
+**Versão:** v10  
+**Data:** "19/03/2026"  
 **Responsável:** Ailton Vendramini  
 **Repositório:** Atlas-Social-de-Hortolândia
 
@@ -644,14 +644,50 @@ mas protege tecnicamente contra qualquer questionamento.*
 - Nivel: Setor censitario (361 setores em Hortolandia)
 - Tipo: Caracteristicas urbanisticas do entorno dos domicilios
 
+**Caminho exato para reproduzir o dado — passo a passo:**
+
+```
+1. Acessar o FTP publico do IBGE:
+   https://ftp.ibge.gov.br/Censos/Censo_Demografico_2022/
+            Agregados_por_Setores_Censitarios/SP/
+
+2. Baixar o arquivo:
+   Entorno_SP.zip
+
+3. Extrair o arquivo CSV:
+   Entorno_SP.csv
+
+4. Abrir o dicionario ANTES de qualquer analise (obrigatorio):
+   Dicionario_de_dados_Agregados_por_Setores_Censitarios_2022.xlsx
+   (mesma pasta do FTP)
+
+5. No dicionario, localizar o grupo v052xx:
+   Sao as variaveis de "Caracteristicas do Entorno dos Domicilios"
+
+6. Identificar a variavel correta:
+   v05215 = "Esgoto a ceu aberto nos logradouros"
+   v05215_perc = percentual de domicilios com essa condicao no entorno
+
+   ATENCAO: v05215 e indicador de PRESENCA DE PROBLEMA
+   (maior = pior) — diferente das demais variaveis do grupo
+   que medem presenca de infraestrutura positiva (maior = melhor)
+
+7. Filtrar por municipio:
+   Coluna: cd_municipio
+   Valor: 3519071 (Hortolandia-SP)
+
+8. Calcular media ponderada:
+   Peso = coluna v05200_v05230 (total de domicilios do setor)
+   Excluir valores > 100 (dados corrompidos na coluna _perc bruta)
+```
+
 **Variavel analisada**
 - Codigo IBGE: v05215_perc
 - Descricao: Percentual de domicilios cujo entorno possui esgoto a ceu aberto
 - Escala: 0 a 100%
 - Direcao do risco: maior = pior (presenca de problema)
-- Dicionario: `Dicionario_de_dados_Agregados_por_Setores_Censitarios_2022.xlsx`
 
-**Resultado observado**
+**Resultado para Hortolandia**
 - Media municipal ponderada: 3,4%
 - 9 setores com 100% de esgoto a ceu aberto no entorno
 - ~5.272 domicilios nesses setores
@@ -661,11 +697,38 @@ mas protege tecnicamente contra qualquer questionamento.*
 - Nao e media municipal: e analise de distribuicao intraurbana
 - Nao e erro de medicao: e heterogeneidade territorial real
 - Complementa, nao contradiz, o dado SNIS (coleta municipal = 96,4%)
+- SNIS mede ligacao domiciliar a rede coletora
+- IBGE mede presenca visual de esgoto no entorno do logradouro
+- Sao metricas distintas que medem dimensoes distintas do saneamento
 
 **Limitacoes**
 - Variavel refere-se ao entorno, nao ao domicilio individual
 - Dados agregados por setor (nao microdados)
 - Recorte temporal: Censo 2022
+
+**Dado complementar disponivel — Fossa Septica**
+
+Para analisar o tipo de esgotamento sanitario no nivel do domicilio
+(incluindo fossa septica), o dado esta disponivel em arquivo diferente:
+
+```
+Arquivo: Domicilio_SP.zip
+Mesmo FTP:
+https://ftp.ibge.gov.br/Censos/Censo_Demografico_2022/
+         Agregados_por_Setores_Censitarios/SP/
+
+Variaveis relevantes (consultar dicionario):
+- Rede geral de esgoto ou pluvial
+- Fossa septica ligada a rede
+- Fossa septica nao ligada a rede (fossa rudimentar)
+- Vala / rio / lago / outro
+
+Hipotese a validar: os mesmos 9 setores com 100% de esgoto
+a ceu aberto (Entorno_SP) devem apresentar alta concentracao
+de fossa septica nao ligada (Domicilio_SP).
+Se confirmado, isso seria dupla evidencia empirica da mesma
+vulnerabilidade territorial.
+```
 
 > "A analise por setor censitario revela desigualdades territoriais
 > invisiveis em indicadores agregados."
@@ -718,7 +781,8 @@ Referencia metodologica completa:
 | v06 | "18/03/2026" | Slides 22-27: tres camadas, Amanda, arquitetura, antes/depois, camadas territoriais, nova estrutura. |
 | v07 | "18/03/2026" | Slide 0 dividido (0/0A/0B). Duas Hortolandias isolado. Slides 27-28 reescritos. |
 | v08 | "18/03/2026" | Slide Duas Hortolandias: dado real v05215 (9 setores, 100% esgoto a ceu aberto). Slide 9 ajustado. Slide 10: evidencia empirica local. Slide 26: modelo hibrido. Slide de Suporte backup. Nota tecnica IBGE. |
-| v09 | "18/03/2026" | Slide 15A novo: "Como o sistema funciona hoje" — diagnostico operacional SMIDS, marco/2026. Fonte: entrevista tecnica Caio x Claudia. 6 bullets descritivos (tom nao-critico), 3 consequencias em destaque, frase de impacto "Hoje, a prefeitura atende. Com o Atlas Social, a prefeitura passa a priorizar." Total: 32 slides + 1 backup. |
+| v09 | "18/03/2026" | Slide 15A novo: diagnostico operacional SMIDS. Frase de impacto.
+| v10 | "19/03/2026" | Slide de Suporte: caminho exato FTP IBGE para reproduzir dado v05215 adicionado (passo a passo, 8 etapas). Nota sobre dado complementar fossa septica (Domicilio_SP.zip). Diferenca SNIS x IBGE formalizada. Programas: CASA_MULHER_BR e ELES_ELAS adicionados ao Grupo 8.: "Como o sistema funciona hoje" — diagnostico operacional SMIDS, marco/2026. Fonte: entrevista tecnica Caio x Claudia. 6 bullets descritivos (tom nao-critico), 3 consequencias em destaque, frase de impacto "Hoje, a prefeitura atende. Com o Atlas Social, a prefeitura passa a priorizar." Total: 32 slides + 1 backup. |
 
 ---
 
