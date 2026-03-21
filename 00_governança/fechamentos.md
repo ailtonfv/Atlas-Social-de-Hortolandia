@@ -72,74 +72,14 @@ A ordem de apresentação importa: construir aliança antes de chegar
 nos itens 3 e 5.
 
 ---
+| Fase | Leitura | Objetivo | Variáveis utilizadas | Dimensões cobertas | Fonte principal | Observação metodológica |
+|------|--------|----------|---------------------|--------------------|------------------|--------------------------|
 
-## Pendências Abertas — Próxima Sessão
+| Fase 1 — MVP | Referência (IPEA parcial) | Iniciar o cálculo com base real | CH_05, CH_06, CH_07, RT_01, RT_04 | Capital Humano + Renda/Trabalho | CadÚnico (dez/2025) | Mantém estrutura do IPEA com cobertura parcial |
+| Fase 1 — MVP | Gestão Local | Leitura operacional da vulnerabilidade | CH_05, CH_06, CH_07, RT_01, RT_04 | Capital Humano + Renda/Trabalho | CadÚnico | Ênfase prática em renda e estrutura familiar |
 
-| Prioridade | Item |
-| --- | --- |
-| Alta | Calcular IVS-H Parcial v1 na Debian (5 variáveis CadÚnico) |
-| Alta | Script SQL de cálculo para o repositório |
-| Alta | Preview .docx da palestra v10 |
-| Alta | `dim_fonte_dado_v01.md` autônomo em `01_modelagem_conceitual/` |
-| Alta | Atualizar `dim_orgao_executor` — Sandra Pablo, porte CRAS, Amanda novo CRAS |
-| Média | Roteiro segunda visita Caio à SMIDS (3 blocos) |
-| Média | Resolver 39 bairros com Cláudia — campo `status_loteamento` |
-| Média | `dim_programa` — refugiados/imigrantes (cesta básica confirmada em campo) |
+| Fase 2 — Intermediária | Referência (IPEA expandido) | Aumentar cobertura do índice | CH_01, CH_02, CH_04, RT_02, RT_06, RT_07 + Fase 1 | Todas dimensões parcialmente cobertas | IBGE (SIDRA), CAGED, Saúde, Educação | Infraestrutura ainda incompleta ou agregada |
+| Fase 2 — Intermediária | Gestão Local | Melhorar capacidade de decisão territorial | CH_01, CH_02, CH_04, RT_01, RT_02, RT_06, RT_07 + Fase 1 | Capital Humano + Renda/Trabalho dominantes | CadÚnico + IBGE + CAGED | Peso implícito maior nas variáveis mais discriminantes |
 
----
-
-## Roteiro Segunda Visita do Caio — Registrado
-
-**Bloco 1 — Capacidade instalada real**
-- Quantas famílias com PAF ativo hoje em cada CRAS?
-- Relação técnico/família em cada núcleo?
-- Existe meta formal de acompanhamento por técnico?
-
-**Bloco 2 — O dado de superação**
-- Qual variável do CadÚnico dispara a suspensão do benefício?
-- Existe série histórica de superações por território?
-
-**Bloco 3 — Os 39 bairros**
-- Para cada um dos 39, qual loteamento vizinho o CRAS usa como referência?
-
----
-
-*Fechamento gerado ao final da sessão de 19/03/2026.*  
-*Atlas Social de Hortolândia.*
-
-
-| Variável | Dimensão | Fase 0 (IPEA) | Fase 1 (CadÚnico) | Fase 2 (Parcial) | Fase 3 (Completo) | Fonte principal |
-|----------|----------|---------------|-------------------|------------------|-------------------|-----------------|
-| IU_01 — % domicílios sem água/esgoto adequado | Infraestrutura | ✔ | ✖ | (✔) | ✔ | IBGE / SNIS |
-| IU_02 — % domicílios sem coleta de lixo | Infraestrutura | ✔ | ✖ | (✔) | ✔ | IBGE / SNIS |
-| IU_03 — % população em domicílios com baixa densidade/infraestrutura precária | Infraestrutura | ✔ | ✖ | (✔) | ✔ | IBGE |
-| IU_04 — % população em domicílios com mobilidade precária | Infraestrutura | ✔ | ✖ | ✖ | ✔ | IBGE |
-
-| CH_01 — Mortalidade infantil | Capital Humano | ✔ | ✖ | ✖ | ✔ | Saúde (SIM/DATASUS) |
-| CH_02 — Crianças fora da escola | Capital Humano | ✔ | ✖ | (✔) | ✔ | INEP |
-| CH_03 — Gravidez na adolescência | Capital Humano | ✔ | ✖ | ✖ | ✔ | Saúde |
-| CH_04 — Jovens que não estudam nem trabalham | Capital Humano | ✔ | ✖ | (✔) | ✔ | IBGE / CAGED |
-
-| CH_05 — Chefes mulheres sem fundamental com filho menor | Capital Humano | ✔ | ✔ | ✔ | ✔ | CadÚnico |
-| CH_06 — Taxa de analfabetismo | Capital Humano | ✔ | ✔ | ✔ | ✔ | CadÚnico / IBGE |
-| CH_07 — Crianças em domicílios sem adulto com fundamental completo | Capital Humano | ✔ | ✔ | ✔ | ✔ | CadÚnico |
-| CH_08 — Jovens com baixa escolaridade | Capital Humano | ✔ | ✖ | (✔) | ✔ | IBGE |
-
-| RT_01 — % renda per capita ≤ 1/2 SM | Renda/Trabalho | ✔ | ✔ | ✔ | ✔ | CadÚnico |
-| RT_02 — Taxa de desocupação | Renda/Trabalho | ✔ | ✖ | (✔) | ✔ | CAGED / IBGE |
-| RT_03 — Informalidade | Renda/Trabalho | ✔ | ✖ | ✖ | ✔ | IBGE |
-| RT_04 — Dependência de idosos | Renda/Trabalho | ✔ | ✔ | ✔ | ✔ | CadÚnico |
-| RT_05 — Baixa renda domiciliar geral | Renda/Trabalho | ✔ | ✔ | ✔ | ✔ | CadÚnico |
-| RT_06 — Pessoas que trabalham fora do município | Renda/Trabalho | ✔ | ✖ | ✔ | ✔ | IBGE (SIDRA) |
-| RT_07 — Pessoas que estudam fora do município | Renda/Trabalho | ✔ | ✖ | ✔ | ✔ | IBGE (SIDRA) |
-
-| Fase | Nome | Variáveis utilizadas | Fontes de dados | Nível territorial | Objetivo principal | Limitações |
-|------|------|---------------------|-----------------|------------------|-------------------|------------|
-| Fase 0 | Conceitual | 16 (IPEA) | Literatura (IPEA, 2015) | Nacional / Municipal | Definir metodologia e legitimidade científica | Sem aplicação prática local |
-| Fase 1 | MVP CadÚnico | 5 variáveis (CH + RT) | CadÚnico (dez/2025) | Loteamento | Primeira leitura territorial da vulnerabilidade | Sem cobertura total da população |
-| Fase 2 | IVS-H Parcial | 8–10 variáveis | CadÚnico + Censo 2022 (agregado) | Loteamento + RP | Melhorar representatividade do índice | IBGE ainda sem microdados |
-| Fase 3 | IVS-H Expandido | 16 variáveis completas | CadÚnico + IBGE + CAGED + Saúde + Educação | Loteamento + Núcleo + RP | Índice completo e comparável ao IPEA | Integração de dados complexa |
-| Fase 4 | IVS-H Dinâmico | 16 variáveis + atualização contínua | CadÚnico (mensal) + demais fontes | Loteamento (tempo real aproximado) | Monitoramento contínuo da vulnerabilidade | Dependência de qualidade cadastral |
-| Fase 5 | IVS-H Validado | 16 variáveis calibradas localmente | Todas + validação empírica | Multiescala | Ajuste de pesos com base na realidade local | Risco de perder comparabilidade se mal conduzido |
-| Fase 6 | IVS-H Operacional | 16 variáveis + integração institucional | Todas + sistemas municipais | Loteamento → CRAS → RP | Uso na gestão pública (priorização, decisão) | Dependência institucional |
-| Fase 7 | IVS-H Científico | 16 variáveis + microdados IBGE | IBGE (setor censitário) + demais | Setor censitário + loteamento | Alta precisão estatística | Microdados ainda indisponíveis |
+| Fase 3 — Completa | Referência (IPEA completo) | Índice totalmente comparável ao IPEA | IU_01, IU_02, IU_03, IU_04 + CH_01–CH_08 + RT_01–RT_07 | 3 dimensões completas | IBGE + SNIS + CadÚnico + CAGED + Saúde + Educação | Cobertura integral das 16 variáveis |
+| Fase 3 — Completa | Gestão Local | Índice calibrado à realidade municipal | Todas as 16 variáveis (mesma base) | 3 dimensões completas | Todas as fontes integradas | Possível ajuste de pesos com base empírica |
