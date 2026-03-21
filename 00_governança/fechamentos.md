@@ -106,3 +106,14 @@ nos itens 3 e 5.
 
 *Fechamento gerado ao final da sessão de 19/03/2026.*  
 *Atlas Social de Hortolândia.*
+
+| Fase | Nome | Variáveis utilizadas | Fontes de dados | Nível territorial | Objetivo principal | Limitações |
+|------|------|---------------------|-----------------|------------------|-------------------|------------|
+| Fase 0 | Conceitual | 16 (IPEA) | Literatura (IPEA, 2015) | Nacional / Municipal | Definir metodologia e legitimidade científica | Sem aplicação prática local |
+| Fase 1 | MVP CadÚnico | 5 variáveis (CH + RT) | CadÚnico (dez/2025) | Loteamento | Primeira leitura territorial da vulnerabilidade | Sem cobertura total da população |
+| Fase 2 | IVS-H Parcial | 8–10 variáveis | CadÚnico + Censo 2022 (agregado) | Loteamento + RP | Melhorar representatividade do índice | IBGE ainda sem microdados |
+| Fase 3 | IVS-H Expandido | 16 variáveis completas | CadÚnico + IBGE + CAGED + Saúde + Educação | Loteamento + Núcleo + RP | Índice completo e comparável ao IPEA | Integração de dados complexa |
+| Fase 4 | IVS-H Dinâmico | 16 variáveis + atualização contínua | CadÚnico (mensal) + demais fontes | Loteamento (tempo real aproximado) | Monitoramento contínuo da vulnerabilidade | Dependência de qualidade cadastral |
+| Fase 5 | IVS-H Validado | 16 variáveis calibradas localmente | Todas + validação empírica | Multiescala | Ajuste de pesos com base na realidade local | Risco de perder comparabilidade se mal conduzido |
+| Fase 6 | IVS-H Operacional | 16 variáveis + integração institucional | Todas + sistemas municipais | Loteamento → CRAS → RP | Uso na gestão pública (priorização, decisão) | Dependência institucional |
+| Fase 7 | IVS-H Científico | 16 variáveis + microdados IBGE | IBGE (setor censitário) + demais | Setor censitário + loteamento | Alta precisão estatística | Microdados ainda indisponíveis |
