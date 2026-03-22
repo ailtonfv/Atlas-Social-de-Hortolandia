@@ -1,3 +1,203 @@
+[fechamento_dia_22_03_2026.md](https://github.com/user-attachments/files/26169203/fechamento_dia_22_03_2026.md)
+[Uploading fe# Fechamento do Dia — 22/03/2026
+
+**Projeto:** Atlas Social de Hortolândia  
+**Repositório:** `ailtonfv/Atlas-Social-de-Hortolandia`  
+**Sessão:** Domingo, 22 de março de 2026
+
+---
+
+## 1. Contexto da Sessão
+
+Sessão de domingo com caráter estratégico e reflexivo — sem mergulho
+em código, mas com entrega de valor real. O tema central foi a
+**governança da implementação**: como garantir que os meses de
+discussão conceitual no GitHub não se percam no momento em que o
+Jupyter for aberto pela primeira vez.
+
+A sessão produziu três artefatos normativos que formam a espinha
+dorsal da rastreabilidade do projeto, além de uma versão refinada
+do documento de variáveis mais crítico do modelo.
+
+---
+
+## 2. Decisões Definitivas da Sessão
+
+### 2.1 Arquitetura de governança da implementação
+
+Três camadas complementares e obrigatórias antes de qualquer código:
+
+| Artefato | Papel |
+| --- | --- |
+| `convencao_nomenclatura_v01.md` | Vocabulário único — nomes de notebooks, variáveis, tabelas, outputs |
+| `matriz_rastreabilidade_operacional_v02.md` | Ponte entre GitHub e Jupyter — quem executa o quê, com base em quê |
+| Cabeçalho padrão de notebook | Identidade e rastreabilidade de cada notebook individual |
+
+**Princípio consolidado:**
+> O GitHub responde o que e por quê. O Jupyter responde como e com
+> quais dados. A matriz conecta os dois mundos.
+
+### 2.2 Fronteira GitHub × Jupyter
+
+Arquivos do GitHub **não migram** para o Jupyter — eles **geram**
+correspondentes no Jupyter. A relação é de derivação, não de migração.
+Decisões conceituais nunca devem ser armazenadas dentro de notebooks.
+
+### 2.3 Estrutura de pastas do Jupyter consolidada
+
+A estrutura observada em `/cadunico_projeto/` foi mapeada e
+incorporada à matriz:
+
+```
+cadunico_projeto/
+├── notebooks/     → 01, 02, 03, 04 (todos vazios — prontos para receber código)
+├── script/        → funcoes_gerais.py
+├── outputs/
+│   ├── tabelas/   → ivs_variaveis.csv, ivs_resultado_final.csv, familias_vulneraveis.csv
+│   └── graficos/  → vulnerabilidade_por_familia.png, ivs_por_nucleo.png, distribuicao_renda.png
+├── dados/         → bruto.csv, externo.parquet, processado.xlsx
+├── docs/          → metodologia_ivsh.md
+└── README.md
+```
+
+### 2.4 Tipologia de outputs formalizada
+
+| tipo_output | Significado | Pode commitar? |
+| --- | --- | --- |
+| exploratorio | Inspeção e validação — não oficial | Não |
+| analitico | Resultado de cálculo — dado individual | Não |
+| operacional | Uso restrito à rede CRAS | Não |
+| institucional | Dado agregado — apresentável | Sim |
+
+### 2.5 Risco de schema CadÚnico — formalizado
+
+Todas as colunas do CadÚnico usadas no modelo são dependentes do
+dicionário oficial versão dez/2025. Qualquer atualização do
+Ministério pode invalidar notebooks silenciosamente.
+**Mitigação obrigatória:** registrar versão do dicionário no
+cabeçalho de cada notebook a cada nova carga.
+
+---
+
+## 3. Arquivos Produzidos
+
+| Arquivo | Versão | Destino no Repositório | Status |
+| --- | --- | --- | --- |
+| `convencao_nomenclatura_v01.md` | v01 | `04_documentacao_tecnica/` | Aguarda upload |
+| `matriz_rastreabilidade_operacional_v02.md` | v02 | `04_documentacao_tecnica/` | Aguarda upload |
+| `dim_variavel_IVS_v01r7.md` | v01r7 | `01_modelagem_conceitual/` | Aguarda upload — substitui v01r5 |
+
+### Pendência de sessões anteriores ainda em aberto
+
+| Arquivo | Status |
+| --- | --- |
+| `ipst_h_v02.md` | Aguarda upload |
+| `palestra_marco_2026_v10.md` | Aguarda upload |
+
+---
+
+## 4. O que Mudou em Cada Arquivo
+
+### `convencao_nomenclatura_v01.md`
+Documento novo. Define:
+- Faixas numéricas de notebooks (01–09 exploração, 10–19 dimensões,
+  20–29 índices, 30–39 territorial, 90–99 rascunhos)
+- Prefixos de tabelas SQLite (DIM_, FATO_, REL_, STG_)
+- Padrão de variáveis Python (var_rt01, var_ch05...)
+- Padrão de outputs com data no nome
+- Regras de documentação GitHub já praticadas
+
+### `matriz_rastreabilidade_operacional_v02.md`
+Evolução da v01. Incorporações da v02:
+- `id_rastreabilidade` (RTB_001 a RTB_045) — endereço único citável
+- Separação `Tabela leitura` vs. `Tabela escrita`
+- `tipo_output` — exploratorio / analitico / operacional / institucional
+- `periodo_referencia` como coluna obrigatória em todas as seções
+- Risco de schema CadÚnico formalizado com mitigação
+- RTB_001 marcado como output exploratório — conflito de nome com RTB_003 sinalizado
+
+### `dim_variavel_IVS_v01r7.md`
+Evolução da v01r6 (que já havia corrigido IU_03 e removido RT_06/RT_07).
+Refinamentos metodológicos da v01r7:
+- `peso_ipea` corrigido para estrutura hierárquica real:
+  IU ÷ 3, CH ÷ 8, RT ÷ 5 — pesos por variável distintos entre dimensões
+- Fórmulas min-max formalizadas matematicamente para `maior_pior`
+  e `maior_melhor`
+- Nota de conversão de escala: CH_01 (taxa por 1.000) requer
+  conversão antes da normalização
+- P10 adicionada às pendências: separar `nivel_analise` em unidade
+  de cálculo e unidade de agregação (melhoria futura)
+
+---
+
+## 5. Situação do Projeto — Etapas
+
+| Etapa | Status |
+| --- | --- |
+| Catálogo de programas (66 programas) | Concluído |
+| DIM_ORGAO_EXECUTOR v05 | Concluído |
+| DIM_NUCLEO v01 | Concluído |
+| REL_PROGRAMA_INDICADOR v01 | Concluído |
+| DIM_DINAMICA_METROPOLITANA v03 | Concluído |
+| Arquitetura dados IVS v10 | Concluído |
+| IPST-H v02 | Concluído |
+| Palestra marco 2026 v10 | Concluído |
+| Slides SVG bloco IVS (5 slides) | Concluído |
+| dim_variavel_IVS_v01r7 | Concluído hoje |
+| convencao_nomenclatura_v01 | Concluído hoje |
+| matriz_rastreabilidade_operacional_v02 | Concluído hoje |
+| Cabeçalho padrão de notebook | Pendente — próxima sessão |
+| README.md e docs/ do Jupyter | Pendente — próxima sessão |
+| id_programa = SISTEMA em DIM_PROGRAMA | Pendente |
+| Dicionário domicilio1/2/3 — variáveis IU | Pendente |
+| Reunião com Cláudia — sobreposições territoriais | Bloqueado — externo |
+| Sign-off Jesus José — planilha territorial v03 | Pendente |
+| Cálculo IVS-H MVP — Produto 1 (CadÚnico) | Próximas sessões |
+| Apresentação para equipe da Inclusão | Esta semana |
+
+---
+
+## 6. Agenda para a Próxima Sessão
+
+| Prioridade | Ação |
+| --- | --- |
+| 1 | Subir os 5 arquivos pendentes no GitHub |
+| 2 | Produzir cabeçalho padrão de notebook |
+| 3 | Preencher README.md e docs/metodologia_ivsh.md no Jupyter |
+| 4 | Resolver conflito de nome `ivs_variaveis.csv` (RTB_020 vs RTB_021) |
+| 5 | Iniciar cálculo das 4 variáveis restantes do MVP (CH_05, CH_06, CH_07, RT_04) |
+
+---
+
+## 7. Nota de Encerramento
+
+A sessão de hoje não produziu código — e foi exatamente o que
+precisava ser feito. Os três artefatos de governança entregues
+valem mais do que uma semana de notebooks sem rastreabilidade.
+
+O risco identificado foi real: sem a matriz e a convenção, o
+código produzido nas próximas sessões poderia divergir
+silenciosamente de tudo que foi acordado nos últimos meses.
+Esse risco foi endereçado antes de acontecer.
+
+O projeto está pronto para receber código com consciência limpa.
+
+---
+
+*Fechamento — Atlas Social de Hortolândia*  
+*Sessão de 22 de março de 2026*  
+*"Não começamos com promessa. Começamos com prova."*
+chamento_dia_22_03_2026.md…]()
+
+
+
+
+
+
+
+
+
+
 
 [files (1).zip](https://github.com/user-attachments/files/26161486/files.1.zip)
 [fechamento_dia_21_03_2026.md](https://github.com/user-attachments/files/26161663/fechamento_dia_21_03_2026.md)
