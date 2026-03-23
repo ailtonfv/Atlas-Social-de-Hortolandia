@@ -1,7 +1,8 @@
-[cabecalho_padrao_notebook_v01.md](https://github.com/user-attachments/files/26181581/cabecalho_padrao_notebook_v01.md)[Uploading# Cabeçalho Padrão de Notebook — Atlas Social de Hortolândia
+[cabecalho_padrao_notebook_v01 (1).md](https://github.com/user-attachments/files/26183831/cabecalho_padrao_notebook_v01.1.md)
+# Cabeçalho Padrão de Notebook — Atlas Social de Hortolândia
 **Versão:** v01  
 **Data:** "23/03/2026"  
-**Pasta:** `04_documento_tecnico/`
+**Pasta:** `04_documentacao_tecnica/`
 
 ---
 
@@ -33,8 +34,14 @@ Tempo estimado de preenchimento: 2 minutos.
 ## Base Conceitual
 Documentos GitHub que definem o quê e o porquê:
 - `dim_variavel_IVS_v01r7.md` → <seção específica>
-- `arquitetura_dados_IVS_v10.md` → <seção específica>
+- `arquitetura_dados_IVS_IBGE_Horto_v10.md` → <seção específica>
 - <outros documentos relevantes>
+
+> **⚠️ Fronteira IVS-H × IPST-H:** este notebook calcula variáveis do
+> IVS-H — exatamente as 16 variáveis do IVS/IPEA (IU_01–IU_03, CH_01–CH_08,
+> RT_01–RT_05). Variáveis de deslocamento (RT_06/RT_07) pertencem ao IPST-H
+> e não devem ser inseridas em fato_variavel_ivs_loteamento.
+> Referência: `dim_variavel_IVS_v01r7.md` — Nota Metodológica.
 
 ## Base Lógica
 Artefatos que definem a estrutura de dados:
@@ -99,5 +106,3 @@ Artefatos que definem a estrutura de dados:
 
 *Atlas Social de Hortolândia — Documento Normativo*  
 *"Preencher o cabeçalho não é burocracia. É o contrato entre a intenção e a execução."*
- cabecalho_padrao_notebook_v01.md…]()
-
