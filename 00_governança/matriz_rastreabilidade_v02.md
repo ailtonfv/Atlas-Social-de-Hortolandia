@@ -1,5 +1,4 @@
-[matriz_rastreabilidade_operacional_v02.md](https://github.com/user-attachments/files/26169180/matriz_rastreabilidade_operacional_v02.md)
-# Matriz de Rastreabilidade Operacional — Atlas Social de Hortolândia
+[matriz_rastreabilidade_operacional_v02 (1).md](https://github.com/user-attachments/files/26183876/matriz_rastreabilidade_operacional_v02.1.md)[Uploading matriz_rastrea# Matriz de Rastreabilidade Operacional — Atlas Social de Hortolândia
 **Versão:** v02  
 **Data:** "22/03/2026"  
 **Pasta:** `04_documentacao_tecnica/`  
@@ -28,9 +27,9 @@ Se a modificação alterar schema de tabela ou coluna do CadÚnico, registrar ve
 | id_rastreabilidade | Notebook | O que executa | Variáveis IVS-H | Tabela leitura | Tabela escrita | Output gerado | tipo_output | periodo_referencia | Documento GitHub que fundamenta |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | RTB_001 | `01_rt01_exploracao_inicial.ipynb` | Exploração e validação da RT_01. Leitura do CadÚnico bruto. Primeiro cálculo de renda per capita. | RT_01 | `STG_CADUNICO_RAW` | — | `outputs/tabelas/ivs_variaveis.csv` ⚠️ exploratório — não oficial | exploratorio | CadÚnico dez/2025 | `dim_variavel_IVS_v01r7.md` → RT_01 |
-| RTB_002 | `02_tratamento_base.ipynb` | Limpeza, deduplicação, padronização de campos. Gera base tratada para os demais notebooks. | — (pré-cálculo) | — | `STG_CADUNICO_RAW` | `dados/processado.xlsx` | operacional | CadÚnico dez/2025 | `arquitetura_dados_IVS_v10.md` → Camada Trusted |
+| RTB_002 | `02_tratamento_base.ipynb` | Limpeza, deduplicação, padronização de campos. Gera base tratada para os demais notebooks. | — (pré-cálculo) | — | `STG_CADUNICO_RAW` | `dados/processado.xlsx` | operacional | CadÚnico dez/2025 | `arquitetura_dados_IVS_IBGE_Horto_v10.md` → Camada Trusted |
 | RTB_003 | `03_analises_variaveis.ipynb` | Cálculo das 5 variáveis MVP: CH_05, CH_06, CH_07, RT_01, RT_04. Análise por loteamento. | CH_05, CH_06, CH_07, RT_01, RT_04 | `STG_CADUNICO_RAW` `DIM_LOTEAMENTO` | — | `outputs/tabelas/ivs_variaveis.csv` `outputs/graficos/distribuicao_renda.png` `outputs/graficos/vulnerabilidade_por_familia.png` | analitico / institucional | CadÚnico dez/2025 | `dim_variavel_IVS_v01r7.md` → CH_05, CH_06, CH_07, RT_01, RT_04 |
-| RTB_004 | `04_calculo_ivsh.ipynb` | Composição do IVS-H MVP. Aplicação de pesos. Ranking por loteamento/núcleo. | IVS-H Fase 1 (5 variáveis) | `DIM_LOTEAMENTO` `DIM_NUCLEO` | `FATO_IVS_LOTEAMENTO` | `outputs/tabelas/ivs_resultado_final.csv` `outputs/tabelas/familias_vulneraveis.csv` `outputs/graficos/ivs_por_nucleo.png` | institucional / operacional / institucional | CadÚnico dez/2025 | `dim_variavel_IVS_v01r7.md` `arquitetura_dados_IVS_v10.md` `ipst_h_v02.md` |
+| RTB_004 | `04_calculo_ivsh.ipynb` | Composição do IVS-H MVP. Aplicação de pesos. Ranking por loteamento/núcleo. | IVS-H Fase 1 (5 variáveis) | `DIM_LOTEAMENTO` `DIM_NUCLEO` | `FATO_IVS_LOTEAMENTO` | `outputs/tabelas/ivs_resultado_final.csv` `outputs/tabelas/familias_vulneraveis.csv` `outputs/graficos/ivs_por_nucleo.png` | institucional / operacional / institucional | CadÚnico dez/2025 | `dim_variavel_IVS_v01r7.md` `arquitetura_dados_IVS_IBGE_Horto_v10.md` `ipst_h_v02.md` |
 
 > **⚠️ RTB_001 — output exploratório:** o CSV gerado neste notebook
 > tem finalidade de inspeção e validação, não de consumo analítico
@@ -82,11 +81,11 @@ Se a modificação alterar schema de tabela ou coluna do CadÚnico, registrar ve
 
 | id_rastreabilidade | Tabela SQLite | Operação | Notebook responsável | Dimensão/Fato de origem | periodo_referencia | Documento GitHub |
 | --- | --- | --- | --- | --- | --- | --- |
-| RTB_030 | `STG_CADUNICO_RAW` | escrita | RTB_002 | Staging — sem dimensão | CadÚnico dez/2025 | `arquitetura_dados_IVS_v10.md` |
-| RTB_031 | `STG_CADUNICO_RAW` | leitura | RTB_001 RTB_003 | Staging — sem dimensão | CadÚnico dez/2025 | `arquitetura_dados_IVS_v10.md` |
+| RTB_030 | `STG_CADUNICO_RAW` | escrita | RTB_002 | Staging — sem dimensão | CadÚnico dez/2025 | `arquitetura_dados_IVS_IBGE_Horto_v10.md` |
+| RTB_031 | `STG_CADUNICO_RAW` | leitura | RTB_001 RTB_003 | Staging — sem dimensão | CadÚnico dez/2025 | `arquitetura_dados_IVS_IBGE_Horto_v10.md` |
 | RTB_032 | `DIM_LOTEAMENTO` | leitura | RTB_003 RTB_004 | `loteamento_dim_v03.md` | Planilha territorial v03 | `loteamento_dim_v03.md` |
 | RTB_033 | `DIM_NUCLEO` | leitura | RTB_004 | `DIM_NUCLEO v01` | Definição analítica | `loteamento_dim_v03.md` |
-| RTB_034 | `FATO_IVS_LOTEAMENTO` | escrita | RTB_004 | Fato de resultado analítico | CadÚnico dez/2025 | `arquitetura_dados_IVS_v10.md` `dim_variavel_IVS_v01r7.md` |
+| RTB_034 | `FATO_IVS_LOTEAMENTO` | escrita | RTB_004 | Fato de resultado analítico | CadÚnico dez/2025 | `arquitetura_dados_IVS_IBGE_Horto_v10.md` `dim_variavel_IVS_v01r7.md` |
 
 ---
 
@@ -95,7 +94,7 @@ Se a modificação alterar schema de tabela ou coluna do CadÚnico, registrar ve
 | id_rastreabilidade | Documento GitHub | Pasta | Papel na implementação | Notebooks dependentes |
 | --- | --- | --- | --- | --- |
 | RTB_040 | `dim_variavel_IVS_v01r7.md` | `01_modelagem_conceitual/` | Define as 16 variáveis, fases MVP, fórmulas, pesos | RTB_001 RTB_003 RTB_004 |
-| RTB_041 | `arquitetura_dados_IVS_v10.md` | `00_governança/` | Define o modelo de dados, camadas, fontes | RTB_002 RTB_004 |
+| RTB_041 | `arquitetura_dados_IVS_IBGE_Horto_v10.md` | `00_governança/` | Define o modelo de dados, camadas, fontes | RTB_002 RTB_004 |
 | RTB_042 | `loteamento_dim_v03.md` | `01_modelagem_conceitual/` | Define loteamento como átomo espacial, núcleo como agregação | RTB_003 RTB_004 |
 | RTB_043 | `ipst_h_v02.md` | `01_modelagem_conceitual/` | Define eixos do IPST-H — interpretação conjunta com IVS-H | RTB_004 |
 | RTB_044 | `convencao_nomenclatura_v01.md` | `04_documentacao_tecnica/` | Governa nomes de notebooks, variáveis, tabelas e outputs | Todos |
@@ -130,3 +129,4 @@ Se a modificação alterar schema de tabela ou coluna do CadÚnico, registrar ve
 
 *Atlas Social de Hortolândia — Documento de Rastreabilidade*  
 *"O notebook executa. O GitHub fundamenta. A matriz conecta."*
+bilidade_operacional_v02 (1).md…]()
