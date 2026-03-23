@@ -1,4 +1,4 @@
-[dim_variavel_IVS_v01r8.md](https://github.com/user-attachments/files/26192952/dim_variavel_IVS_v01r8.md)
+[dim_variavel_IVS_v01r8 (1).md](https://github.com/user-attachments/files/26193291/dim_variavel_IVS_v01r8.1.md)
 # DIM_VARIAVEL_IVS — Variáveis do Índice de Vulnerabilidade Social
 
 **Versão:** v01r8  
@@ -20,16 +20,21 @@ O IVS oficial é adotado como **base metodológica** do projeto.
 A partir dele, é construído o **IVS-H (Hortolândia)**, preservando
 as mesmas 16 variáveis e as mesmas três dimensões do modelo IPEA.
 
-Sua implementação é progressiva por fases:
-- na **Fase 1 (MVP)**, utiliza a ponderação original do IVS/IPEA;
-- na **Fase 2**, poderá incorporar calibração local de pesos,
-  após validação empírica com dados reais do CadÚnico e Censo 2022.
+Sua implementação é progressiva por fases, conforme disponibilidade
+de dados:
+
+- **Fase 1 (MVP):** cálculo com as variáveis já disponíveis no CadÚnico,
+  utilizando a ponderação original do IVS/IPEA;
+- **Fase 2:** incorporação progressiva das demais variáveis, com base
+  em IBGE, SIDRA, CAGED, Saúde e Educação;
+- **Fase 3:** eventual calibração local de pesos (`peso_h`), após
+  validação empírica com dados reais do CadÚnico e Censo 2022.
 
 O IVS-H **não acrescenta nem remove variáveis** do modelo IPEA.
-A diferença está na cobertura de dados: onde o IPEA usa Censo
-decenal, o IVS-H usa fontes municipais contínuas (CadÚnico,
-registros administrativos) para calcular o mesmo indicador com
-maior frequência e granularidade por loteamento.
+A diferença está na cobertura e na frequência das fontes: onde o IPEA
+usa majoritariamente o Censo decenal, o IVS-H combina fontes municipais
+contínuas e registros administrativos para calcular o mesmo indicador
+com maior frequência e maior detalhamento espacial.
 
 Variáveis locais adicionais (deslocamento para trabalho e estudo)
 pertencem ao **IPST-H** (Índice de Pressão Social Territorial de
@@ -38,9 +43,10 @@ o Estado, não vulnerabilidade estrutural da população.
 
 **Princípio adotado:**
 > Usar o IVS oficial garante credibilidade científica, comparabilidade
-> intermunicipal e legitimidade institucional. A calibração local
-> (IVS-H) preserva a base e ajusta os pesos conforme evidências
-> empíricas da realidade local.
+> intermunicipal e legitimidade institucional. A implementação local
+> (IVS-H) preserva a base metodológica nacional e avança por fases,
+> começando pela ponderação original do IPEA e deixando a calibração
+> local para etapa posterior de validação empírica.
 
 **Referências:**
 - COSTA, M. A.; MARGUTI, B. O. *Atlas da Vulnerabilidade Social nos
@@ -286,6 +292,10 @@ observacoes
 > as fontes forem disponibilizadas, preservando a estrutura original
 > do índice.
 
+> **Nota metodológica da Fase 1:** nesta etapa inicial, o cálculo deve
+> utilizar a ponderação original do IVS/IPEA, sem calibração local de
+> `peso_h`. A recalibração fica reservada para fase posterior.
+
 ---
 
 ## Fluxo Analítico do IVS-H
@@ -341,7 +351,7 @@ observacoes
 
 ---
 
-## IVS-H — Calibração Local (em construção)
+## IVS-H — Hipótese de Calibração Local (Fase posterior)
 
 | Dimensão | Peso IPEA | Peso IVS-H (hipótese) | Justificativa |
 | --- | --- | --- | --- |
@@ -371,7 +381,8 @@ observacoes
 | P08 | Cruzar variáveis IVS com loteamentos para cálculo por escala espacial | Alta |
 | P09 | Formalizar convenção de `periodo_referencia` nos scripts de carga | Média |
 | P10 | Separar `nivel_analise` em `unidade_calculo` e `unidade_agregacao` (melhoria futura) | Baixa |
-| P11 | Formalizar regra operacional de "dependência de idosos" para RT_04 | Alta |
+| P11 | Registrar explicitamente, nos scripts e notebooks da Fase 1, o uso da ponderação original do IVS/IPEA (sem calibração local de peso_h) | Alta |
+| P12 | Formalizar regra operacional de "dependência de idosos" para RT_04 — definir se critério é RF idoso ou principal provedor idoso | Alta |
 
 ---
 
@@ -387,7 +398,7 @@ observacoes
 | v01r5 | "18/03/2026" | IU_03 removida (incorretamente); RT_06/RT_07 criadas; direcao_risco adicionado; fórmulas operacionais |
 | v01r6 | "22/03/2026" | IU_03 restaurada; RT_06/RT_07 removidas (pertencem ao IPST-H); total = 16 variáveis |
 | v01r7 | "22/03/2026" | peso_ipea corrigido para estrutura hierárquica; fórmulas min-max formalizadas; nota de escala CH_01; P10 adicionada |
-| v01r8 | "23/03/2026" | (1) Nota Metodológica reescrita: implementação progressiva por fases — Fase 1 usa pesos IPEA, Fase 2 calibração local; (2) "Agregação Territorial" → "Agregação Espacial" em toda a extensão do documento; (3) "evidências empíricas do território" → "evidências empíricas da realidade local"; (4) nota nivel_analise expandida com aviso de simplificação e referência a P10; (5) RT_04: observação corrigida — "sujeito à definição operacional de dependência de idosos" + referência ao dicionário; RT_04 fórmula: nota de pendência operacional; P11 adicionada; (6) CH_05: observação operacional explicitada (cod_parentesco_rf_pessoa, sexo, filho < 15); CH_05 fórmula: campos exatos adicionados; (7) CH_07: nota de agregação obrigatória por cod_familiar_fam adicionada na observação e na fórmula; (8) tabela de calibração: nota esclarece que pesos são hipótese para Fase 2 |
+| v01r8 | "23/03/2026" | (1) Nota Metodológica reescrita: estrutura explícita Fase 1 / Fase 2 / Fase 3 — Fase 1 usa pesos IPEA, Fase 3 calibração local; diferença entre IVS-H e IPEA reformulada como cobertura e frequência das fontes; (2) Princípio adotado: linguagem alinhada à implementação progressiva; (3) "Agregação Territorial" → "Agregação Espacial" em toda a extensão do documento; (4) nota nivel_analise expandida com aviso de simplificação e referência a P10; (5) RT_04: observação e fórmula com honestidade metodológica explícita; (6) CH_05 e CH_07: notas operacionais explicitadas na observação e na fórmula; (7) Resumo de Disponibilidade: nota metodológica da Fase 1 adicionada; (8) título da seção de calibração: "Hipótese de Calibração Local (Fase posterior)"; (9) P11 e P12 adicionadas |
 
 ---
 
