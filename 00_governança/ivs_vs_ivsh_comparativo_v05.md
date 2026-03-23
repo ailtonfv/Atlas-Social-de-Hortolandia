@@ -1,4 +1,5 @@
-[ivs_vs_ivsh_comparativo_v05 (2).md](https://github.com/user-attachments/files/26192281/ivs_vs_ivsh_comparativo_v05.2.md)[Uploading iv# IVS × IVS-H — Comparativo das 16 Variáveis de Vulnerabilidade Social
+[ivs_vs_ivsh_comparativo_v05 (3).md](https://github.com/user-attachments/files/26192471/ivs_vs_ivsh_comparativo_v05.3.md)
+# IVS × IVS-H — Comparativo das 16 Variáveis de Vulnerabilidade Social
 
 **Arquivo:** `00_governanca/ivs_vs_ivsh_comparativo_v05.md`  
 **Versão:** v05  
@@ -34,8 +35,16 @@ na Fase 2, após validação empírica com dados do CadÚnico e Censo 2022.
 O Atlas Social de Hortolândia opera com dois índices distintos:
 
 **IVS-H (Índice de Vulnerabilidade Social de Hortolândia)**
-Replica exatamente as 16 variáveis do IVS/IPEA. Mede vulnerabilidade
-estrutural da população. Garante comparabilidade nacional.
+O IVS-H adota como referência metodológica as 16 variáveis do IVS/IPEA.
+
+No entanto, sua implementação é progressiva:
+
+- **Fase 1 (MVP):** cálculo com subconjunto de variáveis disponíveis no CadÚnico
+- **Fase 2:** incorporação das demais variáveis (IBGE, CAGED, Saúde, Educação)
+- **Fase final:** replicação integral da metodologia do IVS/IPEA
+
+Essa abordagem garante execução imediata com dados reais,
+sem comprometer a comparabilidade metodológica no longo prazo.
 
 **IPST-H (Índice de Pressão Social Territorial de Hortolândia)**
 Índice próprio municipal. Mede pressão sobre o Estado em três eixos:
@@ -182,4 +191,3 @@ Referências: `dim_variavel_IVS_v01r7.md` e `ipst_h_v02.md`
 
 *Documento de comunicação institucional — 00_governança/*  
 *Atlas Social de Hortolândia — uso interno*
-s_vs_ivsh_comparativo_v05 (2).md…]()
