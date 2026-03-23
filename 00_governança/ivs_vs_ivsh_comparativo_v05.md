@@ -1,5 +1,4 @@
-[ivs_vs_ivsh_comparativo_v05 (1).md](https://github.com/user-attachments/files/26192083/ivs_vs_ivsh_comparativo_v05.1.md)
-# IVS × IVS-H — Comparativo das 16 Variáveis de Vulnerabilidade Social
+[ivs_vs_ivsh_comparativo_v05 (2).md](https://github.com/user-attachments/files/26192281/ivs_vs_ivsh_comparativo_v05.2.md)[Uploading iv# IVS × IVS-H — Comparativo das 16 Variáveis de Vulnerabilidade Social
 
 **Arquivo:** `00_governanca/ivs_vs_ivsh_comparativo_v05.md`  
 **Versão:** v05  
@@ -10,6 +9,23 @@
 **Referência metodológica adicional:** NARDO, M. et al. *Manual sobre Construção de Indicadores Compostos*. Paris: OCDE, 2008.
 
 > **IVS-H:** ocorrência local — hipóteses iniciais, a validar com dados reais do CadÚnico dez/2025 e Censo 2022.
+
+---
+
+## ⚠️ Nota Metodológica — Fase do Projeto
+
+Este documento apresenta a proposta de calibração do IVS-H
+com base em hipóteses estruturais locais.
+
+**Para o MVP (Fase 1), o índice será calculado utilizando
+exatamente a ponderação original do IVS/IPEA**, garantindo:
+
+- comparabilidade nacional
+- consistência metodológica
+- execução rápida com dados reais
+
+A calibração de pesos apresentada neste documento será aplicada
+na Fase 2, após validação empírica com dados do CadÚnico e Censo 2022.
 
 ---
 
@@ -166,3 +182,4 @@ Referências: `dim_variavel_IVS_v01r7.md` e `ipst_h_v02.md`
 
 *Documento de comunicação institucional — 00_governança/*  
 *Atlas Social de Hortolândia — uso interno*
+s_vs_ivsh_comparativo_v05 (2).md…]()
