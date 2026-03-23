@@ -1,23 +1,26 @@
 -- =============================================================================
 -- schema_IVS.sql
 -- Esquema completo do banco de dados — Atlas Social de Hortolândia
--- Versão: v05 — "20/03/2026"
+-- Versão: v06 — "23/03/2026"
 -- Responsável: Ailton Vendramini
 -- Repositório: Atlas-Social-de-Hortolândia / 02_modelagem_lógica
 -- =============================================================================
 -- v01 — "10/03/2026" — Criação
 -- v02 — "10/03/2026" — Renomeação: fato_ivs_territorial → fato_ivs_loteamento
---                      Alinhamento com hierarquia Loteamento → Núcleo → RP
--- v03 — "11/03/2026" — FKs declaradas (id_loteamento, id_nucleo, id_rp)
---                      Campo unidade_medida adicionado
---                      Nota DIM_TEMPO adicionada (roadmap)
---                      Nota de revisão de pesos com comparabilidade temporal
---                      Periodicidade CadÚnico corrigida
--- v04 — "20/03/2026" — FATO_ABRANGENCIA_CRAS adicionada (cobertura temporal)
---                      DIM_TIPO_EVENTO adicionada (catálogo de eventos sociais)
---                      FATO_EVENTO_SOCIAL adicionada
---                      Esquema estrela atualizado para refletir novos módulos
+-- v03 — "11/03/2026" — FKs declaradas; campo unidade_medida; nota DIM_TEMPO
+-- v04 — "20/03/2026" — FATO_ABRANGENCIA_CRAS; DIM_TIPO_EVENTO; FATO_EVENTO_SOCIAL
 -- v05 — "20/03/2026" — Consolidação final do dia
+-- v06 — "23/03/2026" — CORREÇÃO ESTRUTURAL:
+--                      (1) fato_ivs_loteamento separada em duas tabelas
+--                          conforme nota_tecnica_fato_ivs_loteamento_v04.sql:
+--                          fato_variavel_ivs_loteamento (variáveis brutas)
+--                          fato_ivs_loteamento (índice consolidado)
+--                      (2) campo texto livre fonte_dado substituído por FK
+--                          id_fonte referenciando dim_fonte_dado
+--                      (3) nota SIDRA_CENSO2022 atualizada: RT_06 e RT_07
+--                          pertencem ao IPST-H — não ao IVS-H
+--                      (4) referência de arquivo de governança corrigida:
+--                          arquitetura_dados_IVS_IBGE_Horto_v10.md
 -- =============================================================================
 
 -- =============================================================================
@@ -46,7 +49,8 @@
 --     e do CAGED (mensal)
 --   - A DIM_VARIAVEL_IVS define O QUE medir — não QUANDO nem QUANTO
 --   - Os valores reais, por loteamento e por período, pertencem a
---     FATO_IVS_LOTEAMENTO
+--     FATO_VARIAVEL_IVS_LOTEAMENTO
+--   - O índice consolidado por loteamento pertence a FATO_IVS_LOTEAMENTO
 --
 -- =============================================================================
 -- HIERARQUIA ANALÍTICA DO PROJETO
@@ -63,6 +67,39 @@
 --   A cobertura do CRAS é operacional (limite de atendimento), não geográfica.
 --
 -- =============================================================================
+-- DECISÃO METODOLÓGICA CENTRAL — IVS-H vs IPST-H
+-- =============================================================================
+--
+--   IVS-H: preserva exatamente as 16 variáveis do IVS/IPEA.
+--   Dimensões: Infraestrutura Urbana (3), Capital Humano (8), Renda e Trabalho (5).
+--   Variáveis locais de deslocamento (RT_06, RT_07) pertencem ao IPST-H,
+--   não ao IVS-H. Referência: dim_variavel_IVS_v01r7.md
+--
+--   IPST-H: índice próprio municipal — mede pressão sobre o Estado.
+--   Eixos: Pressão Territorial (PT), Pressão Operacional (PO), Lacunas (LC).
+--   Referência: ipst_h_v02.md
+--
+-- =============================================================================
+-- SEPARAÇÃO SEMÂNTICA DE TABELAS FATO — IVS-H
+-- =============================================================================
+--
+--   fato_variavel_ivs_loteamento
+--     → Armazena o valor bruto/percentual de cada variável IVS-H
+--        por loteamento e período de referência.
+--     → É a tabela de ingestão e cálculo intermediário.
+--     → Equivale a "o que foi medido, onde e quando".
+--
+--   fato_ivs_loteamento
+--     → Armazena o índice IVS-H já calculado, por dimensão e geral,
+--        por loteamento e período.
+--     → É a tabela de resultado analítico.
+--     → Equivale a "qual é o índice consolidado do loteamento".
+--
+--   A separação evita ambiguidade semântica e facilita auditoria:
+--   é sempre possível rastrear do índice final até a variável bruta.
+--   Referência: nota_tecnica_fato_ivs_loteamento_v04.sql
+--
+-- =============================================================================
 -- ROADMAP — DIM_TEMPO
 -- =============================================================================
 --
@@ -72,88 +109,204 @@
 --   CREATE TABLE dim_tempo (
 --       id_tempo        INTEGER PRIMARY KEY,
 --       ano             INTEGER NOT NULL,
---       semestre        INTEGER,   -- 1 | 2
---       mes             INTEGER,   -- 1-12
---       tipo_periodo    TEXT       -- 'Anual' | 'Semestral' | 'Mensal'
+--       semestre        INTEGER,
+--       mes             INTEGER,
+--       tipo_periodo    TEXT
 --   );
 --
--- Benefícios:
---   - Facilita análise temporal e séries históricas
---   - Melhora desempenho analítico (filtros e agregações)
---   - Segue padrão de esquema estrela (Data Warehouse)
---
---   Essa evolução não requer migração destrutiva — basta adicionar a tabela
---   e um campo id_tempo como FK opcional em FATO_IVS_LOTEAMENTO.
---
 -- =============================================================================
--- MÓDULO 1 — IVS-H
+-- TABELA DE FONTES — DIM_FONTE_DADO
+-- =============================================================================
+
+CREATE TABLE IF NOT EXISTS dim_fonte_dado (
+
+    id_fonte            TEXT    PRIMARY KEY,
+    -- Convenção: SIGLA_ANO ou SIGLA_PERIODICIDADE
+    -- Exemplos: 'SNIS_2022', 'CADUNICO_DEZ2025', 'CENSO2022_SETOR'
+    -- Proibido: espaços, acentos, barras, letras minúsculas.
+
+    nome_fonte          TEXT    NOT NULL,
+    orgao_responsavel   TEXT,
+    periodicidade       TEXT,
+    -- Valores: Anual | Semestral | Mensal | Decenal | Eventual
+
+    url_acesso          TEXT,
+    data_ultima_carga   TEXT,   -- ISO 8601: YYYY-MM-DD
+    observacoes         TEXT
+);
+
+INSERT OR IGNORE INTO dim_fonte_dado VALUES
+    ('SNIS_2022',
+     'Sistema Nacional de Informações sobre Saneamento',
+     'Ministério das Cidades', 'Anual',
+     'https://app4.mdr.gov.br/serieHistorica/', '2026-03-10',
+     'Indicadores de água e esgoto por município. IU_01 e IU_02.'),
+
+    ('CADUNICO_DEZ2025',
+     'Cadastro Único para Programas Sociais — extração dezembro/2025',
+     'Ministério do Desenvolvimento e Assistência Social', 'Mensal',
+     NULL, '2026-03-10',
+     'Fonte principal de CH e RT. 72.424 pessoas em Hortolândia (dez/2025). '
+     'Renda autodeclarada — triangulação futura via CAGED/CNIS.'),
+
+    ('CENSO2022_SETOR',
+     'Censo Demográfico 2022 — Agregados por Setores Censitários',
+     'IBGE', 'Decenal',
+     'https://ftp.ibge.gov.br/Censos/Censo_Demografico_2022/', '2026-03-10',
+     'IU_01, IU_02, IU_03 e variáveis CH/RT do Censo. '
+     'Renda domiciliar per capita por setor não publicada — CadÚnico é '
+     'fonte primária de RT_01. '
+     'NOTA v06: RT_06 e RT_07 (deslocamento para trabalho/estudo) pertencem '
+     'ao IPST-H — não ao IVS-H. Fonte SIDRA permanece válida para IU_03.'),
+
+    ('CAGED_MENSAL',
+     'Cadastro Geral de Empregados e Desempregados',
+     'Ministério do Trabalho', 'Mensal',
+     'https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/estatisticas-trabalho/caged',
+     '2026-03-10',
+     'Vínculo formal. RT_02 e RT_03. MEI não aparece no CAGED.'),
+
+    ('SABESP_SNIS',
+     'SABESP — indicadores SNIS Hortolândia',
+     'SABESP / Instituto Trata Brasil', 'Anual',
+     'https://tratabrasil.org.br', '2026-03-10',
+     'Água 100% (2015-2020), esgoto 96,4% (2020), tratamento 89,7% (2020). '
+     'Fonte empírica para calibração do peso IU no IVS-H.');
+
+
+-- =============================================================================
+-- MÓDULO 1A — FATO_VARIAVEL_IVS_LOTEAMENTO
+-- Variáveis brutas/intermediárias por loteamento e período.
+-- "O que foi medido, onde e quando."
+-- =============================================================================
+
+CREATE TABLE IF NOT EXISTS fato_variavel_ivs_loteamento (
+
+    id_fato             INTEGER PRIMARY KEY AUTOINCREMENT,
+
+    id_variavel         TEXT    NOT NULL,
+    -- FK → dim_variavel_ivs
+    -- Valores IVS-H: IVS001–IVS016 (16 variáveis IPEA)
+    -- IVS_L01 e IVS_L02 pertencem ao IPST-H — não inserir aqui.
+
+    id_loteamento       TEXT    NOT NULL,   -- FK → dim_loteamento
+    id_nucleo           TEXT,               -- FK → dim_nucleo (conveniência analítica)
+    id_rp               TEXT,               -- FK → dim_regiao_planejamento (idem)
+
+    periodo_referencia  TEXT    NOT NULL,
+    -- Convenção obrigatória: YYYY | YYYY-MM | YYYY-S1 | YYYY-S2
+
+    data_extracao       TEXT    NOT NULL,   -- ISO 8601: YYYY-MM-DD
+
+    id_fonte            TEXT    NOT NULL,
+    -- FK → dim_fonte_dado
+    -- Substitui campo texto livre fonte_dado das versões anteriores.
+
+    versao_fonte        TEXT,
+
+    valor_absoluto      REAL,   -- Numerador
+    valor_denominador   REAL,   -- Denominador
+    valor_percentual    REAL,
+    -- Unidade: percentual legível — armazenar 3.6 para 3,6%.
+    -- Nunca armazenar como proporção (0.036).
+
+    cobertura_cadastral REAL,   -- % da população coberta pela fonte
+
+    flag_estimado       INTEGER DEFAULT 0,  -- 1 = estimado/interpolado
+    flag_revisado       INTEGER DEFAULT 0,  -- 1 = revisado após publicação
+    flag_oficial        INTEGER DEFAULT 1,  -- 0 = derivado internamente
+
+    observacoes         TEXT,
+
+    FOREIGN KEY (id_variavel) REFERENCES dim_variavel_ivs(id_variavel),
+    FOREIGN KEY (id_fonte)    REFERENCES dim_fonte_dado(id_fonte),
+
+    UNIQUE (id_variavel, id_loteamento, periodo_referencia, id_fonte)
+);
+
+CREATE INDEX IF NOT EXISTS idx_fvil_variavel
+    ON fato_variavel_ivs_loteamento (id_variavel);
+CREATE INDEX IF NOT EXISTS idx_fvil_loteamento
+    ON fato_variavel_ivs_loteamento (id_loteamento);
+CREATE INDEX IF NOT EXISTS idx_fvil_periodo
+    ON fato_variavel_ivs_loteamento (periodo_referencia);
+CREATE INDEX IF NOT EXISTS idx_fvil_fonte
+    ON fato_variavel_ivs_loteamento (id_fonte);
+CREATE INDEX IF NOT EXISTS idx_fvil_nucleo
+    ON fato_variavel_ivs_loteamento (id_nucleo);
+
+
+-- =============================================================================
+-- MÓDULO 1B — FATO_IVS_LOTEAMENTO
+-- Índice IVS-H consolidado por loteamento e período.
+-- "Qual é o índice do loteamento."
+-- Calculado a partir de fato_variavel_ivs_loteamento após
+-- normalização min-max e aplicação de pesos.
 -- =============================================================================
 
 CREATE TABLE IF NOT EXISTS fato_ivs_loteamento (
 
     id_fato             INTEGER PRIMARY KEY AUTOINCREMENT,
-    id_variavel         TEXT    NOT NULL,   -- FK → dim_variavel_ivs
+
     id_loteamento       TEXT    NOT NULL,   -- FK → dim_loteamento
     id_nucleo           TEXT,               -- FK → dim_nucleo
     id_rp               TEXT,               -- FK → dim_regiao_planejamento
 
-    periodo_referencia  TEXT    NOT NULL,   -- Ex: '2022' | '2025-S1' | '2025-12'
-    data_extracao       TEXT    NOT NULL,   -- ISO 8601
-    fonte_dado          TEXT    NOT NULL,   -- SNIS | CadUnico | Censo2022 | CAGED
-    versao_fonte        TEXT,               -- Ex: 'SNIS_2022' | 'CadUnico_dez2025'
+    periodo_referencia  TEXT    NOT NULL,
+    data_calculo        TEXT    NOT NULL,   -- ISO 8601: YYYY-MM-DD
 
-    valor_absoluto      REAL,
-    valor_denominador   REAL,
-    valor_percentual    REAL,
-    unidade_medida      TEXT,               -- '%' | 'taxa por 1000' | 'anos'
+    versao_calculo      TEXT,
+    -- Ex: 'IVS-H_FASE1_v1' | 'IVS-H_EXPANDIDO_v2'
 
-    cobertura_cadastral REAL,               -- % da população coberta pela fonte
-    flag_estimado       INTEGER DEFAULT 0,  -- 1 = estimado / interpolado
-    flag_revisado       INTEGER DEFAULT 0,  -- 1 = revisado após publicação
+    -- Índice por dimensão (normalizados, 0 a 1)
+    ivsh_infraestrutura_urbana  REAL,
+    ivsh_capital_humano         REAL,
+    ivsh_renda_trabalho         REAL,
+
+    -- Índice geral (0 a 1)
+    ivsh_geral          REAL,
+
+    -- Rastreabilidade do cálculo
+    n_variaveis_iu      INTEGER,
+    n_variaveis_ch      INTEGER,
+    n_variaveis_rt      INTEGER,
+    n_variaveis_total   INTEGER,
+
+    flag_parcial        INTEGER DEFAULT 0,
+    -- 1 = calculado com subconjunto de variáveis (MVP/Fase 1)
+    -- 0 = calculado com conjunto completo (16 variáveis)
+
     observacoes         TEXT,
 
-    FOREIGN KEY (id_variavel)   REFERENCES dim_variavel_ivs(id_variavel),
     FOREIGN KEY (id_loteamento) REFERENCES dim_loteamento(id_loteamento),
-    FOREIGN KEY (id_nucleo)     REFERENCES dim_nucleo(id_nucleo),
-    FOREIGN KEY (id_rp)         REFERENCES dim_regiao_planejamento(id_rp),
 
-    UNIQUE (id_variavel, id_loteamento, periodo_referencia, fonte_dado)
+    UNIQUE (id_loteamento, periodo_referencia, versao_calculo)
 );
 
-CREATE INDEX IF NOT EXISTS idx_fato_variavel
-    ON fato_ivs_loteamento (id_variavel);
-CREATE INDEX IF NOT EXISTS idx_fato_loteamento
+CREATE INDEX IF NOT EXISTS idx_fil_loteamento
     ON fato_ivs_loteamento (id_loteamento);
-CREATE INDEX IF NOT EXISTS idx_fato_periodo
+CREATE INDEX IF NOT EXISTS idx_fil_periodo
     ON fato_ivs_loteamento (periodo_referencia);
-CREATE INDEX IF NOT EXISTS idx_fato_fonte
-    ON fato_ivs_loteamento (fonte_dado);
+CREATE INDEX IF NOT EXISTS idx_fil_nucleo
+    ON fato_ivs_loteamento (id_nucleo);
+
 
 -- =============================================================================
--- MÓDULO 2 — COBERTURA CRAS (relação temporal loteamento × CRAS)
+-- MÓDULO 2 — COBERTURA CRAS
 -- =============================================================================
---
--- A cobertura do CRAS é definida por limite operacional de atendimento,
--- não por fronteira geográfica fixa. Um loteamento pode mudar de CRAS
--- quando uma nova unidade for implantada. Esse histórico deve ser preservado.
---
--- Implicação para indicadores: o cálculo de cobertura por loteamento deve
--- referenciar a abrangência VIGENTE na data do atendimento, nunca a atual.
---
 
 CREATE TABLE IF NOT EXISTS fato_abrangencia_cras (
 
     id_abrangencia      INTEGER PRIMARY KEY AUTOINCREMENT,
-    id_loteamento       TEXT    NOT NULL,   -- FK → dim_loteamento
-    id_cras             TEXT    NOT NULL,   -- FK → dim_unidades_atendimento
-    data_inicio         TEXT    NOT NULL,   -- ISO 8601
-    data_fim            TEXT,               -- NULL = vigente
-    ativo               INTEGER DEFAULT 1,  -- 1 = vigente
-    fonte_delimitacao   TEXT,               -- 'CRAS_cobertura' | 'Manual' | ...
+    id_loteamento       TEXT    NOT NULL,
+    id_cras             TEXT    NOT NULL,
+    data_inicio         TEXT    NOT NULL,
+    data_fim            TEXT,
+    ativo               INTEGER DEFAULT 1,
+    fonte_delimitacao   TEXT,
     observacoes         TEXT,
 
     FOREIGN KEY (id_loteamento) REFERENCES dim_loteamento(id_loteamento),
-
     UNIQUE (id_loteamento, id_cras, data_inicio)
 );
 
@@ -164,42 +317,20 @@ CREATE INDEX IF NOT EXISTS idx_abrangencia_cras
 CREATE INDEX IF NOT EXISTS idx_abrangencia_ativo
     ON fato_abrangencia_cras (ativo);
 
+
 -- =============================================================================
 -- MÓDULO 3 — EVENTOS SOCIAIS
 -- =============================================================================
---
--- Registra ocorrências observáveis no município — crimes, premiações,
--- programas, eventos de saúde — complementando a leitura estrutural do IVS-H
--- com pressão social dinâmica por loteamento.
---
--- O IVS-H mede privação estrutural acumulada.
--- FATO_EVENTO_SOCIAL mede pressão emergente e dinâmica.
--- Os dois instrumentos são complementares — não concorrentes.
---
--- Combinação analítica central:
---   IVS-H baixo + eventos negativos frequentes = alerta (mudança não capturada)
---   IVS-H alto  + eventos negativos frequentes = emergência — prioridade máxima
---   IVS-H alto  + eventos positivos            = política funcionando em contexto adverso
---
 
 CREATE TABLE IF NOT EXISTS dim_tipo_evento (
 
     id_tipo_evento      TEXT    PRIMARY KEY,
-                                -- padrão: EVT_{CATEGORIA}_{SUBCATEGORIA}
-                                -- ex: EVT_SEG_PATRIMONIAL_FURTO_VEICULO
     categoria           TEXT    NOT NULL,
-                                -- Segurança Pública | Educação | Saúde |
-                                -- Segurança Alimentar | Habitação | Trabalho | Outro
     subcategoria        TEXT    NOT NULL,
-                                -- ex: Crime Patrimonial | Tráfico |
-                                --     Desempenho Escolar | Transferência de Alimentos
     nome_tipo           TEXT    NOT NULL,
     polaridade          TEXT    NOT NULL
                                 CHECK (polaridade IN ('Positiva','Negativa','Neutra')),
-                                -- Positiva = melhoria, proteção ou avanço
-                                -- Negativa = risco, vulnerabilidade ou problema
-                                -- Neutra   = informativo, sem impacto claro
-    dimensao_ivsh       TEXT,   -- IU | CH | RT | Transversal | Nenhuma
+    dimensao_ivsh       TEXT,
     escala_registro     TEXT    NOT NULL
                                 CHECK (escala_registro IN
                                     ('Loteamento','Nucleo','RP','Municipio')),
@@ -209,70 +340,45 @@ CREATE TABLE IF NOT EXISTS dim_tipo_evento (
     observacoes         TEXT
 );
 
--- Carga inicial — casos reais do município (Tribuna Liberal 20/03/2026)
 INSERT OR IGNORE INTO dim_tipo_evento VALUES
-    ('EVT_SEG_PATRIMONIAL_FURTO_VEICULO',
-     'Segurança Pública','Crime Patrimonial','Furto de Veículo',
-     'Negativa','RT','Loteamento','Boletim Oficial','Alta',1,NULL),
-    ('EVT_SEG_TRAFICO_APREENSAO',
-     'Segurança Pública','Tráfico','Apreensão de Entorpecentes',
-     'Negativa','RT','Loteamento','Boletim Oficial','Alta',1,NULL),
-    ('EVT_SEG_PATRIMONIAL_ROUBO',
-     'Segurança Pública','Crime Patrimonial','Roubo a Pessoa',
-     'Negativa','RT','Loteamento','Boletim Oficial','Alta',1,NULL),
-    ('EVT_EDU_DESEMPENHO_PREMIACAO',
-     'Educação','Desempenho Escolar','Premiação Estadual de Alfabetização',
-     'Positiva','CH','Loteamento','Secretaria Municipal','Alta',1,NULL),
-    ('EVT_EDU_DESEMPENHO_EVASAO',
-     'Educação','Desempenho Escolar','Evasão Escolar',
-     'Negativa','CH','Loteamento','Sistema Municipal','Alta',1,NULL),
-    ('EVT_ALI_TRANSFERENCIA_PAA',
-     'Segurança Alimentar','Transferência de Alimentos','Distribuição PAA',
-     'Positiva','RT','Municipio','Imprensa','Media',1,
+    ('EVT_SEG_PATRIMONIAL_FURTO_VEICULO','Segurança Pública','Crime Patrimonial',
+     'Furto de Veículo','Negativa','RT','Loteamento','Boletim Oficial','Alta',1,NULL),
+    ('EVT_SEG_TRAFICO_APREENSAO','Segurança Pública','Tráfico',
+     'Apreensão de Entorpecentes','Negativa','RT','Loteamento','Boletim Oficial','Alta',1,NULL),
+    ('EVT_SEG_PATRIMONIAL_ROUBO','Segurança Pública','Crime Patrimonial',
+     'Roubo a Pessoa','Negativa','RT','Loteamento','Boletim Oficial','Alta',1,NULL),
+    ('EVT_EDU_DESEMPENHO_PREMIACAO','Educação','Desempenho Escolar',
+     'Premiação Estadual de Alfabetização','Positiva','CH','Loteamento','Secretaria Municipal','Alta',1,NULL),
+    ('EVT_EDU_DESEMPENHO_EVASAO','Educação','Desempenho Escolar',
+     'Evasão Escolar','Negativa','CH','Loteamento','Sistema Municipal','Alta',1,NULL),
+    ('EVT_ALI_TRANSFERENCIA_PAA','Segurança Alimentar','Transferência de Alimentos',
+     'Distribuição PAA','Positiva','RT','Municipio','Imprensa','Media',1,
      'Município elegível via CADInsans — derivado do CadÚnico'),
-    ('EVT_ALI_INSEGURANCA_GRAVE',
-     'Segurança Alimentar','Insegurança Alimentar','Insegurança Alimentar Grave (CADInsans)',
-     'Negativa','RT','Municipio','MDS','Alta',1,NULL),
-    ('EVT_SAU_MATERNO_INFANTIL',
-     'Saúde','Materno-Infantil','Gravidez na Adolescência',
-     'Negativa','CH','Loteamento','Saúde','Alta',1,NULL),
-    ('EVT_HAB_IRREGULAR',
-     'Habitação','Irregularidade','Ocupação Irregular',
-     'Negativa','IU','Loteamento','Secretaria Municipal','Media',1,NULL),
-    ('EVT_TRA_EMPREGO_FORMAL',
-     'Trabalho','Empregabilidade','Inserção em Emprego Formal',
-     'Positiva','RT','Loteamento','CAGED','Media',1,NULL);
+    ('EVT_ALI_INSEGURANCA_GRAVE','Segurança Alimentar','Insegurança Alimentar',
+     'Insegurança Alimentar Grave (CADInsans)','Negativa','RT','Municipio','MDS','Alta',1,NULL),
+    ('EVT_SAU_MATERNO_INFANTIL','Saúde','Materno-Infantil',
+     'Gravidez na Adolescência','Negativa','CH','Loteamento','Saúde','Alta',1,NULL),
+    ('EVT_HAB_IRREGULAR','Habitação','Irregularidade',
+     'Ocupação Irregular','Negativa','IU','Loteamento','Secretaria Municipal','Media',1,NULL),
+    ('EVT_TRA_EMPREGO_FORMAL','Trabalho','Empregabilidade',
+     'Inserção em Emprego Formal','Positiva','RT','Loteamento','CAGED','Media',1,NULL);
 
 CREATE TABLE IF NOT EXISTS fato_evento_social (
 
     id_evento           INTEGER PRIMARY KEY AUTOINCREMENT,
-                                -- padrão textual de referência: EVS_{ANO}{MES}_{SEQ}
-    id_tipo_evento      TEXT    NOT NULL,   -- FK → dim_tipo_evento
-
-    -- Localização — apenas um campo preenchido por registro
-    id_loteamento       TEXT,               -- FK → dim_loteamento (escala Loteamento)
-    id_nucleo           TEXT,               -- FK → dim_nucleo     (escala Núcleo)
-    id_rp               TEXT,               -- FK → dim_regiao_planejamento (escala RP)
-    id_municipio        TEXT DEFAULT '3519071',  -- fixo quando escala = Município
-
-    -- Temporalidade
-    data_evento         TEXT    NOT NULL,   -- data da ocorrência ou da fonte
-    data_referencia     TEXT,               -- período ao qual o dado se refere
-                                            -- pode diferir de data_evento
-
-    -- Valor
-    valor_referencia    REAL,               -- ex: 28 | 5 | 70
-    unidade_medida      TEXT,               -- Ocorrências | Famílias | Escolas | ...
-
-    -- Intensidade e qualidade
+    id_tipo_evento      TEXT    NOT NULL,
+    id_loteamento       TEXT,
+    id_nucleo           TEXT,
+    id_rp               TEXT,
+    id_municipio        TEXT    DEFAULT '3519071',
+    data_evento         TEXT    NOT NULL,
+    data_referencia     TEXT,
+    valor_referencia    REAL,
+    unidade_medida      TEXT,
     gravidade           TEXT    CHECK (gravidade IN ('Baixa','Media','Alta')),
     confianca_fonte     TEXT    CHECK (confianca_fonte IN ('Alta','Media','Baixa')),
-    fonte_registro      TEXT,               -- Boletim Oficial | Imprensa |
-                                            -- Secretaria Municipal | Sistema Municipal |
-                                            -- Observação de Campo | Outro
-    referencia_fonte    TEXT,               -- URL, número do BO, nome do relatório
-
-    -- Controle
+    fonte_registro      TEXT,
+    referencia_fonte    TEXT,
     data_registro       TEXT    DEFAULT (date('now')),
     usuario_registro    TEXT,
     ativo               INTEGER DEFAULT 1,
@@ -291,7 +397,6 @@ CREATE INDEX IF NOT EXISTS idx_evento_loteamento
 CREATE INDEX IF NOT EXISTS idx_evento_data
     ON fato_evento_social (data_evento);
 
--- Exemplos reais — Tribuna Liberal 20/03/2026
 INSERT OR IGNORE INTO fato_evento_social (
     id_tipo_evento, id_loteamento,
     data_evento, data_referencia,
@@ -299,119 +404,54 @@ INSERT OR IGNORE INTO fato_evento_social (
     gravidade, confianca_fonte, fonte_registro, referencia_fonte
 ) VALUES
     ('EVT_SEG_PATRIMONIAL_FURTO_VEICULO', 'LOT_071',
-     '2026-03-20', '2026-01/2026-03',
-     28, 'Ocorrências',
+     '2026-03-20', '2026-01/2026-03', 28, 'Ocorrências',
      'Alta', 'Media', 'Imprensa',
      'Tribuna Liberal 20/03/2026 p.09 — dados do 1o Distrito Policial'),
     ('EVT_SEG_TRAFICO_APREENSAO', 'LOT_068',
-     '2026-03-19', '2026-03-19',
-     121, 'Ocorrências',
+     '2026-03-19', '2026-03-19', 121, 'Ocorrências',
      'Alta', 'Alta', 'Boletim Oficial',
      'Tribuna Liberal 20/03/2026 p.09 — operação DISE Americana'),
     ('EVT_EDU_DESEMPENHO_PREMIACAO', NULL,
-     '2026-03-20', '2025',
-     5, 'Escolas',
+     '2026-03-20', '2025', 5, 'Escolas',
      'Alta', 'Alta', 'Secretaria Municipal',
-     'Tribuna Liberal 20/03/2026 p.07 — Prêmio Excelência Educacional. id_loteamento a mapear por endereço de cada EMEF.'),
+     'Tribuna Liberal 20/03/2026 p.07 — id_loteamento a mapear por endereço das EMEFs'),
     ('EVT_ALI_TRANSFERENCIA_PAA', NULL,
-     '2026-03-20', '2026-S1',
-     70, 'Famílias',
+     '2026-03-20', '2026-S1', 70, 'Famílias',
      'Media', 'Alta', 'Imprensa',
-     'Tribuna Liberal 20/03/2026 p.04 — CATI Regional Campinas. Referência regional. Hortolândia elegível via CADInsans.');
+     'Tribuna Liberal 20/03/2026 p.04 — Hortolândia elegível via CADInsans');
 
--- =============================================================================
--- TABELA DE FONTES — DIM_FONTE_DADO
--- =============================================================================
-
-CREATE TABLE IF NOT EXISTS dim_fonte_dado (
-
-    id_fonte            TEXT    PRIMARY KEY,
-    nome_fonte          TEXT    NOT NULL,
-    orgao_responsavel   TEXT,
-    periodicidade       TEXT,
-    url_acesso          TEXT,
-    data_ultima_carga   TEXT,
-    observacoes         TEXT
-);
-
-INSERT OR IGNORE INTO dim_fonte_dado VALUES
-    ('SNIS_2022',
-     'Sistema Nacional de Informações sobre Saneamento',
-     'Ministério das Cidades','Anual',
-     'https://app4.mdr.gov.br/serieHistorica/','2026-03-10',
-     'Indicadores de água e esgoto por município. IU_01 e IU_02.'),
-    ('CADUNICO_DEZ2025',
-     'Cadastro Único para Programas Sociais',
-     'Ministério do Desenvolvimento e Assistência Social',
-     'Mensal (extrações administrativas)',
-     NULL,'2026-03-10',
-     'Fonte principal de CH e RT. 72.424 pessoas em Hortolândia (dez/2025). '
-     'Renda autodeclarada — sem comprovação. Triangulação futura via CAGED/CNIS.'),
-    ('CENSO2022_SETOR',
-     'Censo Demográfico 2022 — Agregados por Setores Censitários',
-     'IBGE','Decenal',
-     'https://ftp.ibge.gov.br/Censos/Censo_Demografico_2022/','2026-03-10',
-     'Microdados ainda não liberados. Dados agregados disponíveis.'),
-    ('CAGED_MENSAL',
-     'Cadastro Geral de Empregados e Desempregados',
-     'Ministério do Trabalho','Mensal',
-     'https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/estatisticas-trabalho/caged',
-     '2026-03-10',
-     'Vínculo formal. RT_02 e RT_03. Requer convênio MTE. '
-     'Trabalhadores informais não aparecem nessa base.'),
-    ('SABESP_SNIS',
-     'SABESP — indicadores SNIS Hortolândia',
-     'SABESP / Instituto Trata Brasil','Anual',
-     'https://tratabrasil.org.br','2026-03-10',
-     'Água 100% (2015-2020), esgoto 96,4% (2020), tratamento 89,7% (2020).');
 
 -- =============================================================================
 -- NOTA SOBRE DINAMISMO DO IVS-H
 -- =============================================================================
 --
--- PRINCÍPIO ARQUITETURAL:
---
 --   Os pesos do IVS-H (campo peso_h em dim_variavel_ivs) devem ser
---   revisados periodicamente conforme:
---
---   1. Novas obras de infraestrutura (IU_01, IU_02):
---      Se cobertura de esgoto cair abaixo de 90% em algum loteamento,
---      IU_01 readquire poder discriminatório. Monitorar via SNIS (anual).
---
---   2. Atualização do CadÚnico (variáveis CH e RT):
---      Recomendado: recalcular IVS-H a cada extração semestral.
---
---   3. Novos dados do Censo IBGE:
---      Próximo Censo: ~2032. Até lá, Censo 2022 é referência estática para IU.
---
---   PRINCÍPIO DE COMPARABILIDADE TEMPORAL:
---   Alterações de peso afetam toda a série histórica — devem ser justificadas,
---   documentadas e versionadas. Não revisar sem evidência empírica suficiente.
---   Referência: NARDO, M. et al. Handbook on Constructing Composite
---   Indicators. Paris: OECD, 2008.
+--   revisados periodicamente. Referência metodológica: NARDO et al. (OECD, 2008)
+--   Documento de governança: arquitetura_dados_IVS_IBGE_Horto_v10.md
 --
 -- =============================================================================
--- ESQUEMA ESTRELA COMPLETO — VISÃO GERAL
+-- ESQUEMA ESTRELA — VISÃO GERAL
 -- =============================================================================
 --
---   DIMENSÕES FIXAS
---   DIM_VARIAVEL_IVS          — 16 variáveis, pesos, dimensões IU/CH/RT
---   DIM_LOTEAMENTO            — 141 loteamentos (átomo espacial — imutável)
---   DIM_NUCLEO                — Agregação por setor (Inclusão, Saúde, Educação...)
---   DIM_REGIAO_PLANEJAMENTO   — 6 RPs (Plano Diretor 2017-2020)
---   DIM_FONTE_DADO            — Rastreabilidade de origem e versão
---   DIM_TIPO_EVENTO           — Catálogo de tipos de eventos sociais
+--   DIMENSÕES
+--   DIM_VARIAVEL_IVS          — 16 variáveis IVS-H (IU/CH/RT)
+--   DIM_LOTEAMENTO            — 141 loteamentos (átomo espacial)
+--   DIM_NUCLEO                — Agregação por setor
+--   DIM_REGIAO_PLANEJAMENTO   — 6 RPs (Plano Diretor)
+--   DIM_FONTE_DADO            — Rastreabilidade de origem
+--   DIM_TIPO_EVENTO           — Catálogo de eventos sociais
 --
 --   TABELAS FATO
---   FATO_IVS_LOTEAMENTO       — Valores IVS-H por variável, loteamento e período
---   FATO_ABRANGENCIA_CRAS     — Cobertura temporal loteamento × CRAS
---   FATO_EVENTO_SOCIAL        — Ocorrências sociais por loteamento e data
+--   FATO_VARIAVEL_IVS_LOTEAMENTO  — Variáveis brutas por loteamento/período
+--   FATO_IVS_LOTEAMENTO           — Índice consolidado por loteamento/período
+--   FATO_ABRANGENCIA_CRAS         — Cobertura temporal loteamento × CRAS
+--   FATO_EVENTO_SOCIAL            — Ocorrências sociais por loteamento/data
 --
---   Evolução futura:
+--   Roadmap:
 --   DIM_TEMPO                 — Dimensão temporal para séries históricas
---   FATO_ATENDIMENTO          — Atendimentos individuais por família e CRAS
---   FATO_IVS_MUNICIPIO        — IVS-H agregado municipal para comparação IPEA
+--   FATO_ATENDIMENTO          — Atendimentos por família e CRAS
+--   FATO_IVS_MUNICIPIO        — IVS-H municipal para comparação IPEA
 --
 -- =============================================================================
--- FIM DO SCHEMA
+-- FIM DO SCHEMA v06
 -- =============================================================================
