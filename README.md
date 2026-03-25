@@ -124,6 +124,54 @@ O modelo segue princípios de **modelagem dimensional analítica**.
 Essas estruturas permitem análises **territoriais, temporais e institucionais** da política pública.
 
 ---
+## 📈 Metodologia do IVS-H (abordagem em fases)
+
+A construção do IVS-H segue uma estratégia incremental, dividida em fases, com o objetivo de garantir robustez técnica, rastreabilidade e aderência à realidade municipal.
+
+### 🔹 Fase 1 — Reprodução do IVS (base IPEA)
+
+- Utilização das mesmas 16 variáveis do IVS nacional
+- Aplicação inicial com pesos de referência
+- Objetivo: validação metodológica e aderência ao território
+
+---
+
+### 🔹 Fase 2 — Calibração local (IVS-H)
+
+- Ajuste de pesos conforme realidade de Hortolândia
+- Ênfase maior em:
+  - capital humano
+  - renda e trabalho
+- Redução relativa do peso de infraestrutura urbana
+
+Objetivo: refletir com maior precisão a vulnerabilidade social local
+
+---
+
+### 🔹 Fase 3 — Integração longitudinal
+
+- Inclusão de dimensão temporal
+- Acompanhamento da trajetória das famílias
+- Identificação de permanência ou superação da vulnerabilidade
+
+Objetivo: sair da fotografia estática e avançar para análise de trajetória
+
+---
+
+### 🔹 Fase 4 — Integração intersetorial
+
+- Conexão com:
+  - saúde
+  - educação
+  - habitação
+- Consolidação de indicadores transversais
+
+Objetivo: romper silos administrativos e permitir gestão integrada
+
+--
+
+
+---
 
 ## 📈 Índice de Vulnerabilidade Social — IVS-H
 
@@ -138,6 +186,52 @@ O projeto adota o **IVS (IPEA)** como referência metodológica e propõe o **IV
 A calibração reflete as especificidades locais, especialmente a alta cobertura de infraestrutura urbana e a persistência de vulnerabilidades estruturais em capital humano e renda.
 
 > Referência: `00_governanca/ivs_vs_ivsh_comparativo_v05.md`
+
+---
+## 📊 Índice de Pressão Territorial (IPT-H)
+
+Além do IVS-H, o projeto propõe a construção de um **Índice de Pressão Territorial (IPT-H)**.
+
+### 🎯 Conceito
+
+Enquanto o IVS-H mede a **condição de vulnerabilidade**, o IPT-H mede a **pressão sobre a rede de atendimento**.
+
+---
+
+### 🔹 Dimensões de análise
+
+O IPT-H considera:
+
+- densidade de famílias vulneráveis por território
+- volume de atendimentos realizados
+- capacidade instalada da rede (CRAS, CREAS, OSCs)
+- demanda potencial não atendida
+
+---
+
+### 🔹 Interpretação
+
+| Situação | Significado |
+|--------|------------|
+| IVS alto + IPT alto | território crítico (alta vulnerabilidade e alta pressão) |
+| IVS alto + IPT baixo | vulnerabilidade oculta (subatendimento) |
+| IVS baixo + IPT alto | possível sobrecarga operacional |
+| IVS baixo + IPT baixo | situação controlada |
+
+---
+
+### 🔹 Objetivo estratégico
+
+O IPT-H permite:
+
+- identificar gargalos operacionais
+- orientar alocação de recursos
+- qualificar a gestão territorial da política pública
+
+---
+
+> O IVS-H responde: **onde está a vulnerabilidade**  
+> O IPT-H responde: **onde está a pressão sobre o sistema**
 
 ---
 
