@@ -1,6 +1,6 @@
 # Notebook: <nome descritivo>
 **id_rastreabilidade:** RTB_00X  
-**Versão:** v01  
+**Versão:** v02 
 **Data de criação:** DD/MM/AAAA  
 **Última atualização:** DD/MM/AAAA  
 **Responsável:** Ailton Vendramini  
