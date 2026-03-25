@@ -81,7 +81,140 @@ O projeto adota uma estrutura inspirada em **Data Lakehouse**, organizada em cam
    - `outputs/`
 
 ---
+Como ficaria a árvore no Jupyter
+cadunico_projeto/
+├── README.md
+├── .gitignore
+│
+├── dados/
+│   ├── cadunico/
+│   │   ├── 01_bruto/
+│   │   │   ├── 2025_12/
+│   │   │   │   └── cadunico.csv
+│   │   │   └── 2026_03/
+│   │   │       └── cadunico.csv
+│   │   ├── 02_limpo/
+│   │   │   ├── 2025_12/
+│   │   │   │   └── cadunico_limpo.parquet
+│   │   │   └── 2026_03/
+│   │   │       └── cadunico_limpo.parquet
+│   │   ├── 03_curado/
+│   │   │   ├── 2025_12/
+│   │   │   │   └── cadunico_ivsh_base.parquet
+│   │   │   └── 2026_03/
+│   │   │       └── cadunico_ivsh_base.parquet
+│   │   └── 04_exportacao/
+│   │       ├── 2025_12/
+│   │       │   ├── cadunico_resumo.xlsx
+│   │       │   └── cadunico_diagnostico.csv
+│   │       └── 2026_03/
+│   │           ├── cadunico_resumo.xlsx
+│   │           └── cadunico_diagnostico.csv
+│   │
+│   ├── sigas/
+│   │   ├── 01_bruto/
+│   │   │   └── 2026_03/
+│   │   │       └── sigas.xlsx
+│   │   ├── 02_limpo/
+│   │   │   └── 2026_03/
+│   │   │       └── sigas_limpo.parquet
+│   │   ├── 03_curado/
+│   │   │   └── 2026_03/
+│   │   │       └── sigas_base_integracao.parquet
+│   │   └── 04_exportacao/
+│   │       └── 2026_03/
+│   │           └── sigas_resumo.xlsx
+│   │
+│   ├── externos/
+│   │   ├── ibge/
+│   │   │   ├── 01_bruto/
+│   │   │   │   └── 2022/
+│   │   │   │       └── ibge_setores_hortolandia.parquet
+│   │   │   ├── 02_limpo/
+│   │   │   │   └── 2022/
+│   │   │   │       └── ibge_setores_hortolandia_limpo.parquet
+│   │   │   └── 03_curado/
+│   │   │       └── 2022/
+│   │   │           └── ibge_setores_hortolandia_base.parquet
+│   │   ├── territorios/
+│   │   │   ├── 01_bruto/
+│   │   │   ├── 02_limpo/
+│   │   │   └── 03_curado/
+│   │   └── auxiliares/
+│   │       ├── 01_bruto/
+│   │       ├── 02_limpo/
+│   │       └── 03_curado/
+│   │
+│   └── integracao/
+│       ├── 01_bruto/
+│       ├── 02_limpo/
+│       ├── 03_curado/
+│       └── 04_exportacao/
+│
+├── notebooks/
+│   ├── cadunico/
+│   │   ├── 01_exploracao_cadunico.ipynb
+│   │   ├── 02_tratamento_cadunico.ipynb
+│   │   ├── 03_analise_variaveis_cadunico.ipynb
+│   │   ├── 04_analise_temporal_cadunico.ipynb
+│   │   └── 05_calculo_ivsh_cadunico.ipynb
+│   │
+│   ├── sigas/
+│   │   ├── 01_exploracao_sigas.ipynb
+│   │   ├── 02_tratamento_sigas.ipynb
+│   │   └── 03_analise_sigas.ipynb
+│   │
+│   ├── externos/
+│   │   ├── 01_exploracao_ibge.ipynb
+│   │   ├── 02_tratamento_ibge.ipynb
+│   │   └── 03_analise_territorial_externos.ipynb
+│   │
+│   └── integracao/
+│       ├── 01_merge_cadunico_sigas.ipynb
+│       ├── 02_merge_territorial_integracao.ipynb
+│       ├── 03_analise_temporal_integracao.ipynb
+│       └── 04_calculo_ivsh_final_integracao.ipynb
+│
+├── scripts/
+│   ├── cadunico/
+│   │   ├── leitura_cadunico.py
+│   │   ├── limpeza_cadunico.py
+│   │   └── curadoria_cadunico.py
+│   ├── sigas/
+│   │   ├── leitura_sigas.py
+│   │   ├── limpeza_sigas.py
+│   │   └── curadoria_sigas.py
+│   ├── integracao/
+│   │   ├── merge_integracao.py
+│   │   └── serie_temporal_integracao.py
+│   └── utils/
+│       ├── funcoes_gerais.py
+│       ├── caminhos.py
+│       └── validacoes.py
+│
+├── outputs/
+│   ├── tabelas/
+│   │   ├── cadunico/
+│   │   ├── sigas/
+│   │   ├── externos/
+│   │   └── integracao/
+│   ├── graficos/
+│   │   ├── cadunico/
+│   │   ├── sigas/
+│   │   ├── externos/
+│   │   └── integracao/
+│   └── relatorios/
+│       ├── cadunico/
+│       ├── sigas/
+│       └── integracao/
+│
+└── docs/
+    ├── metodologia_ivsh.md
+    ├── padrao_nomenclatura.md
+    ├── regras_negocio.md
+    └── notas_tecnicas.md
 
+---
 ## 📂 Estrutura do repositório
 
 | Diretório | Conteúdo |
