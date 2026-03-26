@@ -82,7 +82,7 @@ O projeto adota uma estrutura inspirada em **Data Lakehouse**, organizada em cam
 
 ---
 Como ficaria a árvore no Jupyter
-**cadunico_projeto/
+**atlas social/
 ├── README.md
 ├── .gitignore
 │
