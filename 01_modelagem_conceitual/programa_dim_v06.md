@@ -1,10 +1,10 @@
-[dim_programa_v06.md](https://github.com/user-attachments/files/26114230/dim_programa_v06.md)
+[programa_dim_v07.md](https://github.com/user-attachments/files/26287654/programa_dim_v07.md)
 # DIM_PROGRAMA — Catálogo de Programas Sociais
-**Versão:** v06  
-**Data:** "19/03/2026"  
+**Versão:** v07  
+**Data:** "26/03/2026"  
 **Responsável:** Ailton Vendramini  
 **Repositório:** Atlas-Social-de-Hortolândia / 01_modelagem_conceitual  
-**Origem:** Atualizado a partir de `dim_programa_v05.md` — adição de CASA_MULHER_BR e ELES_ELAS ao Grupo 8
+**Origem:** Atualizado a partir de `dim_programa_v06.md` — enriquecimento do RESSIGNIFICA com dados do portal da prefeitura
 
 > Este arquivo contém exclusivamente o **núcleo cadastral** de cada programa.
 > Destina-se à modelagem relacional e à carga em banco de dados.
@@ -69,7 +69,7 @@ observacoes              nota curta — detalhes em notas_arquiteturais
 ## Grupo 1 — Proteção Social Básica
 
 | id_programa | nome_programa | tipo | tipo_entrega | categoria | esfera | secretaria_responsavel | id_orgao_executor | publico_alvo | faixa_etaria | vinculo_cadunico | nivel_protecao | acesso | prazo_execucao | dimensao_ivs | indicador_principal | abrangencia_nucleo | base_legal_principal | base_legal_municipal | status_programa | data_inicio | observacoes |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | PAIF | Serviço de Proteção e Atendimento Integral às Famílias | A | servico | assistencia_social | Federal | SMIDS | CRAS_* (7) | Famílias em vulnerabilidade | Todas | S | Básica | Espontâneo / Encaminhamento | Continuado | multidimensional | famílias acompanhadas / famílias vulneráveis | Municipal | CNAS 109/2009 | Lei 3.911/2021 | ativo | — | Serviço central dos CRAS. FEAS 2026: R$ 94.947,37 para lanches PAIF |
 | SCFV | Serviço de Convivência e Fortalecimento de Vínculos | A | servico | assistencia_social | Federal | SMIDS | CRAS_* (7) | Crianças, adolescentes, adultos e idosos em vulnerabilidade | 0-17 / 60+ | S | Básica | Encaminhamento | Continuado | capital_humano | cobertura por núcleo / evasão escolar | Municipal | CNAS 109/2009 | Lei 3.911/2021 | ativo | — | Chamamento 01/2026: Instituto Recrie 1º lugar. Gaps por núcleo questionados pelo CMDCA (Ofício 001/2026) |
 | CCS | Centro de Convivência Social — Jd. Rosolém | A | equipamento | assistencia_social | Municipal | SMIDS | CRAS_ROSOLEM | Comunidade da área de abrangência | Todas | Parcial | Básica | Espontâneo | Continuado | capital_humano | participantes ativos / mês | NUCLEO_ROSOLEM | Municipal | A confirmar | ativo | — | Verificar se permanece equipamento distinto do CRAS Rosolém |
@@ -79,7 +79,7 @@ observacoes              nota curta — detalhes em notas_arquiteturais
 ## Grupo 2 — Proteção Social Especial — Média Complexidade
 
 | id_programa | nome_programa | tipo | tipo_entrega | categoria | esfera | secretaria_responsavel | id_orgao_executor | publico_alvo | faixa_etaria | vinculo_cadunico | nivel_protecao | acesso | prazo_execucao | dimensao_ivs | indicador_principal | abrangencia_nucleo | base_legal_principal | base_legal_municipal | status_programa | data_inicio | observacoes |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | PAEFI | Serviço de Proteção e Atendimento Especializado a Famílias e Indivíduos | A | servico | assistencia_social | Federal | SMIDS | CREAS_01 | Famílias com violação de direitos | Todas | S | Especial-Média | Encaminhamento | Continuado | multidimensional | famílias em acompanhamento ativo | Municipal | CNAS 109/2009 | Lei 3.911/2021 | ativo | — | — |
 | CENTROPOP | Centro de Referência Especializado para População em Situação de Rua | C | equipamento | assistencia_social | Federal | SMIDS | CENTROPOP_01 | Adultos, adolescentes e famílias em situação de rua | 18+ | Parcial | Especial-Média | Espontâneo | Imediato | multidimensional | atendimentos / mês | Municipal | LOAS + CNAS 109/2009 | Lei 3.911/2021 | ativo | — | Ponto cego no CadÚnico |
 | ABORDAGEM_SOCIAL | Serviço Especializado em Abordagem Social | A | servico | assistencia_social | Federal | SMIDS | CENTROPOP_01 | População em situação de rua | Todas | S | Especial-Média | Espontâneo | Imediato | multidimensional | abordagens realizadas / mês | Municipal | CNAS 109/2009 | Lei 3.911/2021 | ativo | — | — |
@@ -92,7 +92,7 @@ observacoes              nota curta — detalhes em notas_arquiteturais
 ## Grupo 3 — Proteção Social Especial — Alta Complexidade
 
 | id_programa | nome_programa | tipo | tipo_entrega | categoria | esfera | secretaria_responsavel | id_orgao_executor | publico_alvo | faixa_etaria | vinculo_cadunico | nivel_protecao | acesso | prazo_execucao | dimensao_ivs | indicador_principal | abrangencia_nucleo | base_legal_principal | base_legal_municipal | status_programa | data_inicio | observacoes |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | SAICA | Serviço de Acolhimento Institucional para Crianças e Adolescentes | A | servico | assistencia_social | Intersetorial | SMIDS | OSC_SAO_PEDRO | Crianças e adolescentes com direitos violados | 0-18 | S | Especial-Alta | Encaminhamento | Continuado | capital_humano | crianças acolhidas / desligamentos para família | Municipal | ECA + CNAS 109/2009 | A confirmar | ativo | — | Executor transferido da OSC Esperançar (encerrada fev/2026) — Res. CMAS 007/2026. Saldo: R$ 964.288,20 |
 | ABRIGO_ADULTOS | Abrigo Institucional para Adultos e Famílias em Situação de Rua | A | servico | assistencia_social | Intersetorial | SMIDS | OSC_SAO_PEDRO | Adultos em situação de rua | 24-59 | S | Especial-Alta | Encaminhamento (via Centro POP) | Continuado | infraestrutura_urbana | vagas ocupadas / tempo médio de permanência | Municipal | LOAS + CNAS 109/2009 | A confirmar | ativo | — | Executor atualizado — OSC Esperançar encerrada fev/2026 |
 | ABRIGO_MULHERES | Abrigo Institucional para Mulheres em Situação de Violência | A | servico | assistencia_social | Intersetorial | SMIDS | OSC_A_CONFIRMAR | Mulheres em violência doméstica ou sexual | 18+ | S | Especial-Alta | Encaminhamento (sem B.O.) | Continuado | multidimensional | mulheres acolhidas | Municipal | Lei 11.340/2006 + CNAS | A confirmar | ativo | — | Interface Comissão Intersetorial VD — Decreto 5.810/2026 |
@@ -109,7 +109,7 @@ observacoes              nota curta — detalhes em notas_arquiteturais
 ## Grupo 4 — Programas Municipais Específicos (Inclusão)
 
 | id_programa | nome_programa | tipo | tipo_entrega | categoria | esfera | secretaria_responsavel | id_orgao_executor | publico_alvo | faixa_etaria | vinculo_cadunico | nivel_protecao | acesso | prazo_execucao | dimensao_ivs | indicador_principal | abrangencia_nucleo | base_legal_principal | base_legal_municipal | status_programa | data_inicio | observacoes |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | FUNDO_EMERG | Fundo Social — Atendimento Emergencial | A | beneficio | assistencia_social | Municipal | Fundo Social | FUNDO_SOCIAL | Famílias em vulnerabilidade emergencial | Todas | S | Básica/Alimentar | Encaminhamento | Imediato | renda_trabalho | atendimentos emergenciais / mês | Municipal | Municipal | Decreto 5.598/2025 | ativo | — | — |
 | ACERTE | Ação Cidadã de Requalificação, Trabalho e Educação | D | qualificacao | emprego_renda | Municipal | Gov. (Dep. Rel. Inst.) | DEP_DIPGR | Pessoas em vulnerabilidade, egressos, pop. rua | 18+ | S | Produtivo | Presencial | Temporário | renda_trabalho | inserção formal pós-programa | Municipal | Municipal | A confirmar | ativo | — | Bolsa R$ 710 + cesta. Modalidades: Costura, Serviços Gerais |
 | CUIDAR | Programa Cuidar | A | servico | saude | Municipal | Fundo Social | FUNDO_SOCIAL | Gestantes a partir da 34ª semana | — | Parcial | Básica/Intersetorial | Encaminhamento | Temporário | capital_humano | gestantes acompanhadas | Municipal | Municipal | Lei 3.955/2022 | ativo | 2022-10-00 | — |
@@ -117,7 +117,7 @@ observacoes              nota curta — detalhes em notas_arquiteturais
 | COSTURA_IND | Projeto Costura Industrial | D | qualificacao | emprego_renda | Municipal | SMIDS | CQP_II | Pessoas em vulnerabilidade — setor têxtil | 18+ | S | Produtivo | Presencial | Temporário | renda_trabalho | concluintes com vínculo formal | Municipal | Municipal | A confirmar | ativo | — | Modalidade ACERTE. Benefício: R$ 710 + cesta |
 | FARMACIA_SOL | Farmácia Solidária | A | beneficio | saude | Municipal | SMIDS | SEC_INCLUSAO | Pessoas em vulnerabilidade socioeconômica | Todas | A confirmar | Básica/Saúde | Presencial | Continuado | capital_humano | medicamentos dispensados / mês | Municipal | Municipal | A confirmar | ativo | — | Detalhar critério de acesso |
 | FEIRAS_EMPREEND | Feiras de Empreendedores | A | servico | emprego_renda | Municipal | SMIDS | CESP | Empreendedores em vulnerabilidade | Todas | Indireto | Produtivo | Espontâneo | Continuado | renda_trabalho | feirantes ativos / edição | Municipal | Municipal | A confirmar | ativo | — | — |
-| RESSIGNIFICA | Programa Ressignifica Hortolândia | A | beneficio | assistencia_social | Municipal | SMIDS | CENTROPOP_01 | Moradores em situação de rua | 18+ | S | Especial-Alta/Intersetorial | Encaminhamento | Continuado | multidimensional | beneficiários com moradia estável | Municipal | Municipal + Decreto 7.053/2009 | A confirmar | ativo | 2023-12-00 | Bolsa R$ 700 + cesta + auxílio aluguel |
+| RESSIGNIFICA | Programa Ressignifica Hortolândia | A | servico | assistencia_social | Intersetorial | SMIDS | CENTROPOP_01 | Moradores em situação de rua | 18+ (perfil: 29-48a, masc., fund. incompleto, +1 ano rua) | S | Especial-Alta/Intersetorial | Encaminhamento | Continuado | multidimensional | beneficiários com inserção produtiva ou moradia estável | Municipal | Municipal + Decreto 7.053/2009 | A confirmar | ativo | 2023-12-05 | Programa guarda-chuva intersetorial (Gov, Inclusão, Habitação, Seg. Pública, Educação, Esportes, Saúde). Lançado no CFPF Remanso Campineiro. Cap. inicial: 30 vagas com expansão prevista. Elegibilidade: metas — frequência saúde + cursos capacitação + oficinas planejamento familiar. Ativa os programas: CENTROPOP, ABORDAGEM_SOCIAL, ABRIGO_ADULTOS, REPUBLICA, ACERTE. Inclui bolsa + cesta + auxílio aluguel. Nota arquitetural: atendimento RESSIGNIFICA gera atendimentos-filho em programas ativados — modelar em FATO_ATENDIMENTO. |
 | BOLSA_CRECHE | Bolsa Creche | A | beneficio | educacao | Municipal | Educação | SEC_EDUCACAO | Crianças sem vaga na rede pública | 6 meses-3a6m | S | Básica | Encaminhamento | Continuado | capital_humano | crianças beneficiadas | Municipal | Municipal | A confirmar | ativo | — | — |
 | INSCRICAO_CMAS | Inscrição de OSCs no CMAS | B | instrumento | governanca | Municipal | SMIDS | SEC_INCLUSAO | Organizações da Sociedade Civil | — | N | — | Presencial | — | governanca | OSCs inscritas e ativas | Municipal | LOAS | Lei 3.911/2021 | ativo | — | — |
 | INSCRICAO_CMDCA | Inscrição de OSCs no CMDCA | B | instrumento | governanca | Municipal | SMIDS | SEC_INCLUSAO | OSCs voltadas à criança e adolescente | — | N | — | Presencial | — | governanca | OSCs inscritas e ativas | Municipal | ECA | A confirmar | ativo | — | — |
@@ -128,7 +128,7 @@ observacoes              nota curta — detalhes em notas_arquiteturais
 ## Grupo 5 — Segurança Alimentar
 
 | id_programa | nome_programa | tipo | tipo_entrega | categoria | esfera | secretaria_responsavel | id_orgao_executor | publico_alvo | faixa_etaria | vinculo_cadunico | nivel_protecao | acesso | prazo_execucao | dimensao_ivs | indicador_principal | abrangencia_nucleo | base_legal_principal | base_legal_municipal | status_programa | data_inicio | observacoes |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | BAH | Banco de Alimentos de Hortolândia | A | transferencia | seguranca_alimentar | Municipal | Educação | DEP_SEG_ALIMENTAR | Pop. em insegurança via 19 OSCs parceiras | Todas | Indireto | Alimentar | Encaminhamento | Continuado | renda_trabalho | pessoas atendidas / toneladas distribuídas | Municipal | Municipal | A confirmar | ativo | 2007-00-00 | 19 org / 1.762 pessoas (2024) |
 | PAA | Programa de Aquisição de Alimentos | A | transferencia | seguranca_alimentar | Federal | Educação | DEP_SEG_ALIMENTAR | Agricultores familiares + beneficiários BAH | Todas | Indireto | Alimentar | Encaminhamento | Continuado | renda_trabalho | agricultores credenciados / famílias beneficiadas | Municipal | Lei 10.696/2003 | A confirmar | ativo | — | Credenciamento publicado DO MAR06/2026 — ciclo ativo |
 | CESTAS | Distribuição de Cestas Básicas | A | beneficio | seguranca_alimentar | Municipal | SMIDS / Fundo Social | FUNDO_SOCIAL | Famílias em vulnerabilidade | Todas | S | Alimentar | Encaminhamento | Imediato | renda_trabalho | cestas distribuídas / mês | Municipal | Municipal | Decreto 5.598/2025 | ativo | — | — |
@@ -140,7 +140,7 @@ observacoes              nota curta — detalhes em notas_arquiteturais
 ## Grupo 6 — Habitação
 
 | id_programa | nome_programa | tipo | tipo_entrega | categoria | esfera | secretaria_responsavel | id_orgao_executor | publico_alvo | faixa_etaria | vinculo_cadunico | nivel_protecao | acesso | prazo_execucao | dimensao_ivs | indicador_principal | abrangencia_nucleo | base_legal_principal | base_legal_municipal | status_programa | data_inicio | observacoes |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | AGORA_CASA | Agora a Casa é Sua | A | beneficio | habitacao | Municipal | Habitação | SEC_HABITACAO | Famílias em situação irregular | Todas | Indireto | — | Encaminhamento | Temporário | infraestrutura_urbana | títulos emitidos | Municipal | Municipal | A confirmar | ativo | — | ~3.000 títulos 2021-2024 |
 | VIDA_LONGA | Programa Vida Longa (Estadual) | A | beneficio | habitacao | Estadual | Habitação | SEC_HABITACAO | Idosos >= 60 anos residentes >= 2 anos | 60+ | S | — | Encaminhamento | A confirmar | infraestrutura_urbana | unidades habitacionais entregues | Municipal | Estadual | A confirmar | planejamento | — | 28 unidades — negociação ativa |
 | MCMV | Minha Casa, Minha Vida — Hortolândia | A | beneficio | habitacao | Federal | Habitação | SEC_HABITACAO | Famílias em vulnerabilidade | Todas | S | — | Encaminhamento | Temporário | infraestrutura_urbana | unidades entregues | Municipal | PBF / CadÚnico | Lei 14.620/2023 | ativo | 2026-00-00 | 400 unidades — Jd. Amanda |
@@ -151,7 +151,7 @@ observacoes              nota curta — detalhes em notas_arquiteturais
 ## Grupo 7 — Inserção Produtiva e Qualificação
 
 | id_programa | nome_programa | tipo | tipo_entrega | categoria | esfera | secretaria_responsavel | id_orgao_executor | publico_alvo | faixa_etaria | vinculo_cadunico | nivel_protecao | acesso | prazo_execucao | dimensao_ivs | indicador_principal | abrangencia_nucleo | base_legal_principal | base_legal_municipal | status_programa | data_inicio | observacoes |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | PAT | Posto de Atendimento ao Trabalhador | C | equipamento | emprego_renda | Estadual/Municipal | Sec. Des. Econômico | PAT_01 | Desempregados em geral, PCD | 18+ | Indireto | Produtivo | Presencial | Continuado | renda_trabalho | encaminhamentos com inserção formal | Municipal | Lei 7.998/1990 | A confirmar | ativo | — | Cruzamento CadÚnico x mercado formal |
 | PAT_VAGAS | Cadastro de Vagas por Empresa — PAT | A | servico | emprego_renda | Estadual/Municipal | Sec. Des. Econômico | PAT_01 | Empresas (oferta) + trabalhadores (demanda) | 18+ | Indireto | Produtivo | Presencial | Continuado | renda_trabalho | vagas preenchidas / mês | Municipal | Lei 7.998/1990 | A confirmar | ativo | — | — |
 | SINE | Cadastro no SINE e Encaminhamento para Vagas | A | servico | emprego_renda | Federal | Sec. Des. Econômico | PAT_01 | Trabalhadores desempregados | 18+ | Indireto | Produtivo | Presencial | Continuado | renda_trabalho | trabalhadores inseridos via SINE | Municipal | Lei 7.998/1990 | A confirmar | ativo | 2026-02-00 | Adesão formal fev/2026 |
@@ -175,7 +175,7 @@ observacoes              nota curta — detalhes em notas_arquiteturais
 ## Grupo 8 — Públicos Específicos / Direitos Humanos
 
 | id_programa | nome_programa | tipo | tipo_entrega | categoria | esfera | secretaria_responsavel | id_orgao_executor | publico_alvo | faixa_etaria | vinculo_cadunico | nivel_protecao | acesso | prazo_execucao | dimensao_ivs | indicador_principal | abrangencia_nucleo | base_legal_principal | base_legal_municipal | status_programa | data_inicio | observacoes |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | POL_PCD | Cadastro e Políticas para PCD | B | instrumento | direitos_humanos | Municipal | Gov. (DPCD) | DEP_PCD | Pessoas com deficiência | Todas | Indireto | — | Presencial | Continuado | capital_humano | PCD cadastradas | Municipal | Lei 13.146/2015 | A confirmar | ativo | — | Res. Consolidação e Ampliação PCD em análise no CMAS (mar/2026) |
 | POL_IDOSO | Políticas para Pessoa Idosa | B | instrumento | direitos_humanos | Municipal | Gov. (Dep. Dir. Humanos) | DEP_DIR_HUMANOS | Idosos em vulnerabilidade | 60+ | Indireto | — | — | Continuado | capital_humano | idosos atendidos na rede | Municipal | Lei 10.741/2003 | A confirmar | ativo | — | — |
 | CCMI | Centro de Convivência da Melhor Idade | A | equipamento | direitos_humanos | Municipal | Gov. (Dep. Dir. Humanos) | DEP_DIR_HUMANOS | Idosos 60+ | 60+ | Indireto | — | Presencial | Continuado | capital_humano | frequentadores ativos / mês | Municipal | Municipal | A confirmar | ativo | — | Coord.: psicóloga Fernanda Fadiga |
@@ -186,15 +186,15 @@ observacoes              nota curta — detalhes em notas_arquiteturais
 | VIVA_MAIS | Viva Mais | A | servico | saude | Municipal | Gov. (Dep. Rel. Inst.) | DEP_DIPGR | Comunidade geral | Todas | Indireto | — | Espontâneo | Continuado | capital_humano | A confirmar | Municipal | Municipal | A confirmar | ativo | — | — |
 | AMBULATORIO_TRANS | Ambulatório Trans | A | servico | saude | Municipal | Saúde | SEC_SAUDE | População transexual | 18+ | Indireto | — | Espontâneo | Continuado | capital_humano | atendimentos / mês | Municipal | Municipal | A confirmar | ativo | 2024-01-00 | — |
 | COM_PRIMEIRA_INF | Comitê Intersetorial de Políticas para a Primeira Infância | B | instrumento | educacao | Municipal | Educação | SEC_EDUCACAO | Crianças 0-6 anos | 0-6 | — | — | — | Continuado | capital_humano | deliberações implementadas | Municipal | Lei 13.257/2016 | A confirmar | ativo | — | — |
-| CASA_MULHER_BR | Casa da Mulher Brasileira — Hortolândia | C | equipamento | direitos_humanos | Federal | Gov. (Dep. Mulheres) | OSC_A_CONFIRMAR | Mulheres em situação de violência — acolhimento integrado | 18+ | Indireto | Especial-Alta/Intersetorial | Encaminhamento | Continuado | multidimensional | mulheres atendidas / encaminhamentos realizados | Municipal | Federal — Programa Mulher Viver | A confirmar | planejamento | — | Ministra Márcia Lopes confirmou apoio à implantação em 18/03/2026 (agenda Jardim Amanda). Integra acolhimento, triagem, apoio psicossocial, delegacia, juizado, MP, defensoria, autonomia econômica, brinquedoteca, alojamento de passagem e central de transportes. Hortolândia pode liderar consórcio regional. Prefeito protocolou ofício à ministra.
-| ELES_ELAS | Movimento Eles Por Elas Hortolândia | B | instrumento | direitos_humanos | Municipal | Gov. (Dep. Mulheres) | DEP_MULHERES | População masculina — conscientização contra violência | Todas (foco 10-29) | N | — | Presencial / Espontâneo | Continuado | multidimensional | ações educativas realizadas / comunidades alcançadas | Municipal | Municipal | A confirmar | ativo | 2026-03-00 | Iniciativa do vereador Nei Prazeres + voluntários (saúde mental, advogados, lideranças). Conscientização masculina para prevenir violência contra mulheres. Apresentado à ministra Márcia Lopes em 18/03/2026. Atuação em comunidades religiosas, escolas, empresas.
+| CASA_MULHER_BR | Casa da Mulher Brasileira — Hortolândia | C | equipamento | direitos_humanos | Federal | Gov. (Dep. Mulheres) | OSC_A_CONFIRMAR | Mulheres em situação de violência — acolhimento integrado | 18+ | Indireto | Especial-Alta/Intersetorial | Encaminhamento | Continuado | multidimensional | mulheres atendidas / encaminhamentos realizados | Municipal | Federal — Programa Mulher Viver | A confirmar | planejamento | — | Ministra Márcia Lopes confirmou apoio à implantação em 18/03/2026 (agenda Jardim Amanda). Integra acolhimento, triagem, apoio psicossocial, delegacia, juizado, MP, defensoria, autonomia econômica, brinquedoteca, alojamento de passagem e central de transportes. Hortolândia pode liderar consórcio regional. Prefeito protocolou ofício à ministra. |
+| ELES_ELAS | Movimento Eles Por Elas Hortolândia | B | instrumento | direitos_humanos | Municipal | Gov. (Dep. Mulheres) | DEP_MULHERES | População masculina — conscientização contra violência | Todas (foco 10-29) | N | — | Presencial / Espontâneo | Continuado | multidimensional | ações educativas realizadas / comunidades alcançadas | Municipal | Municipal | A confirmar | ativo | 2026-03-00 | Iniciativa do vereador Nei Prazeres + voluntários (saúde mental, advogados, lideranças). Conscientização masculina para prevenir violência contra mulheres. Apresentado à ministra Márcia Lopes em 18/03/2026. Atuação em comunidades religiosas, escolas, empresas. |
 
 ---
 
 ## Grupo 9 — Formação Cultural
 
 | id_programa | nome_programa | tipo | tipo_entrega | categoria | esfera | secretaria_responsavel | id_orgao_executor | publico_alvo | faixa_etaria | vinculo_cadunico | nivel_protecao | acesso | prazo_execucao | dimensao_ivs | indicador_principal | abrangencia_nucleo | base_legal_principal | base_legal_municipal | status_programa | data_inicio | observacoes |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | FORMACOES_CULT | Formações Culturais (bloco) | A | servico | cultura | Municipal | Cultura | DEP_CULTURA | Comunidade geral — acesso universal e gratuito | Todas | Indireto | — | Presencial / Espontâneo | Continuado | capital_humano | matrículas ativas | Municipal | Municipal | A confirmar | ativo | — | Verificar registro de matrículas para FATO_ATENDIMENTO |
 
 ---
@@ -202,7 +202,7 @@ observacoes              nota curta — detalhes em notas_arquiteturais
 ## Grupo 10 — Serviços de Saúde com Interface SUAS
 
 | id_programa | nome_programa | tipo | tipo_entrega | categoria | esfera | secretaria_responsavel | id_orgao_executor | publico_alvo | faixa_etaria | vinculo_cadunico | nivel_protecao | acesso | prazo_execucao | dimensao_ivs | indicador_principal | abrangencia_nucleo | base_legal_principal | base_legal_municipal | status_programa | data_inicio | observacoes |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | SAMU | SAMU Regional Hortolândia e Sumaré | A | servico | saude | Federal/Municipal | Saúde | SEC_SAUDE | Pop. geral em urgência/emergência | Todas | Indireto | — | Espontâneo | Imediato | capital_humano | ocorrências atendidas / tempo médio resposta | Municipal | Lei 8.080/1990 | A confirmar | ativo | — | Abrangência: Hortolândia + Sumaré |
 | VILA_SAUDE | Vila da Saúde | A | equipamento | saude | Municipal | A confirmar | A confirmar | Pop. geral | Todas | A confirmar | — | — | — | capital_humano | A confirmar | Municipal | A confirmar | A confirmar | planejamento | — | Intenção declarada jan/2026 — sem prazo |
 
@@ -211,7 +211,7 @@ observacoes              nota curta — detalhes em notas_arquiteturais
 ## Grupo 11 — Governança e Conselhos
 
 | id_programa | nome_programa | tipo | tipo_entrega | categoria | esfera | id_orgao_executor | secretaria_responsavel | vinculo_cadunico | dimensao_ivs | indicador_principal | abrangencia_nucleo | base_legal_principal | base_legal_municipal | status_programa |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | COMSEA | Conselho Municipal de Segurança Alimentar | B | instrumento | governanca | Municipal | SEC_EDUCACAO | Educação | N | governanca | reuniões realizadas / deliberações implementadas | Municipal | Municipal | A confirmar | ativo |
 | CAISAN | Câmara Intersetorial de Segurança Alimentar | B | instrumento | governanca | Municipal | SEC_EDUCACAO | Educação | N | governanca | planos de ação aprovados | Municipal | Municipal | A confirmar | ativo |
 | CMPcD | Conselho Municipal da PCD | B | instrumento | governanca | Municipal | DEP_PCD | Gov. (DPCD) | N | governanca | deliberações implementadas | Municipal | Lei 13.146/2015 | A confirmar | ativo |
@@ -238,6 +238,7 @@ observacoes              nota curta — detalhes em notas_arquiteturais
 | v04 | "15/03/2026" | Três novos campos: tipo_entrega, indicador_principal, abrangencia_nucleo; remoção de contato e departamento_executor das colunas visíveis; atualização FEIRAS_LIVRES |
 | v05 | "18/03/2026" | Grupo 7: EMPREGA_HORTOLANDIA, FEIRAO_EMPREGO e APP_CURRICULOS adicionados. Total: 67. |
 | v06 | "19/03/2026" | Grupo 8: dois novos programas — CASA_MULHER_BR (Casa da Mulher Brasileira, Federal, planejamento, confirmada pela ministra Márcia Lopes em 18/03/2026) e ELES_ELAS (Movimento Eles Por Elas, Municipal, ativo, vereador Nei Prazeres). Fonte: Tribuna Liberal 19/03/2026. Total de programas catalogados: 69. |
+| v07 | "26/03/2026" | RESSIGNIFICA (Grupo 4) enriquecido com dados do portal da prefeitura: tipo_entrega beneficio→servico, esfera Municipal→Intersetorial, data_inicio atualizada para 2023-12-05, faixa_etaria com perfil documentado (29-48a, masc., fund. incompleto, +1 ano rua), indicador_principal refinado para inserção produtiva ou moradia estável, observacoes expandidas com secretarias parceiras, critérios de elegibilidade e lista de programas ativados. Nota arquitetural adicionada: atendimento RESSIGNIFICA gera atendimentos-filho nos programas ativados — questão a modelar em FATO_ATENDIMENTO. Total de programas: 69 (sem novos cadastros). |
 
 ---
 
