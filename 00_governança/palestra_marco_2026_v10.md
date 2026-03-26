@@ -264,6 +264,38 @@ risco de longo prazo é real e territorialmente concentrado.
 > precisa capturar o movimento."*
 
 ---
+**Slide 9A — O que a imprensa local já está mostrando**
+
+> *"A vulnerabilidade social não aparece apenas nos cadastros. Ela também aparece no cotidiano da cidade — e deixa rastros públicos."*
+
+### Evidência exploratória — imprensa local  
+**Período observado:** 14 a 26 de março de 2026  
+**Base consolidada:** 19 registros estruturados da *Tribuna Liberal*
+
+#### Distribuição por dimensão IVS
+- **Capital Humano:** 9 ocorrências  
+- **Renda e Trabalho:** 6 ocorrências  
+- **Infraestrutura Urbana:** 4 ocorrências  
+
+#### Leitura inicial
+- A imprensa local concentra maior volume de ocorrências em **Capital Humano**
+- **Renda e Trabalho** aparece como segunda pressão recorrente
+- **Infraestrutura Urbana** segue presente, mas com menor frequência relativa
+
+#### Variáveis mais recorrentes
+- **CH_04 — mães vulneráveis**
+- **IU_01 — infraestrutura urbana**
+- **RT_01 — baixa renda**
+- **RT_04 — idosos vulneráveis**
+
+> *"O Atlas Social não pretende substituir os sistemas oficiais.  
+> Ele pretende cruzar o dado administrativo com a evidência empírica da cidade real."*
+
+**Nota metodológica:**  
+Leitura exploratória baseada em clipping estruturado de imprensa local.  
+Não substitui indicador oficial, mas funciona como sinalizador de pressão social e de temas recorrentes.
+
+---
 
 **Slide 10 — A proposta: IVS-H**
 
