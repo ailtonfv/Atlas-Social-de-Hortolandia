@@ -283,7 +283,7 @@ risco de longo prazo é real e territorialmente concentrado.
 - **Infraestrutura Urbana** segue presente, mas com menor frequência relativa
 
 #### Variáveis mais recorrentes
-- **CH_04 — mães vulneráveis**
+- **CH_04 — mães  vulneráveis**
 - **IU_01 — infraestrutura urbana**
 - **RT_01 — baixa renda**
 - **RT_04 — idosos vulneráveis**
