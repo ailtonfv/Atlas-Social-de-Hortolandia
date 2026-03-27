@@ -1,9 +1,9 @@
-[dim_variavel_IVS_v01r8 (1).md](https://github.com/user-attachments/files/26193291/dim_variavel_IVS_v01r8.1.md)
+[dim_variavel_IVS_v01r9.md](https://github.com/user-attachments/files/26317297/dim_variavel_IVS_v01r9.md)
 # DIM_VARIAVEL_IVS — Variáveis do Índice de Vulnerabilidade Social
 
-**Versão:** v01r8  
+**Versão:** v01r9  
 **Data de criação:** "09/03/2026"  
-**Última atualização:** "23/03/2026"  
+**Última atualização:** "27/03/2026"  
 **Responsável:** Ailton Vendramini  
 **Repositório:** Atlas-Social-de-Hortolândia / 01_modelagem_conceitual
 
@@ -204,11 +204,11 @@ observacoes
 - Unidade: proporção (0 a 1)
 - Universo: mulheres de 10 a 17 anos — Secretaria de Saúde / CadÚnico
 
-**CH_05**
-- Numerador: mulheres chefes de família (cod_parentesco_rf_pessoa = 1, sexo feminino), sem ensino fundamental completo, com pelo menos um filho menor de 15 anos no mesmo cod_familiar_fam
-- Denominador: total de mulheres chefes de família no loteamento
+**CH_05** *(corrigido em v01r9)*
+- Numerador: famílias cuja responsável é mulher (cod_parentesco_rf_pessoa = 1, sexo feminino), sem ensino fundamental completo, com pelo menos um filho menor de 15 anos no mesmo cod_familiar_fam
+- Denominador: **total de famílias do loteamento na base**
 - Unidade: proporção (0 a 1)
-- Universo: mulheres chefes de família no CadÚnico
+- Universo: famílias no CadÚnico
 
 **CH_06**
 - Numerador: pessoas de 15 anos ou mais que não sabem ler nem escrever
@@ -239,7 +239,7 @@ observacoes
 | IVS012 | RT_01 | Proporção de pessoas com renda domiciliar per capita menor ou igual a meio SM | Família/Domicílio | maior_pior | CadÚnico — disponível imediatamente | Sim | Imediato | Disponível no CadÚnico. Ponto de entrada natural do IVS-H. Renda domiciliar per capita por setor censitário não publicada pelo IBGE no Censo 2022 — CadÚnico confirmado como fonte primária. |
 | IVS013 | RT_02 | Taxa de desocupação da população de 18 anos ou mais | Pessoa | maior_pior | CadÚnico + CAGED | Parcial | Curto prazo | CadÚnico registra situação ocupacional declarada. CAGED registra vínculo formal. Trabalhadores informais e parte dos MEI não aparecem no CAGED. |
 | IVS014 | RT_03 | Percentual de pessoas de 18 anos ou mais sem fundamental completo e em ocupação informal | Pessoa | maior_pior | CadÚnico | Parcial | Curto prazo | Escolaridade disponível no CadÚnico. Informalidade depende de declaração — subestimação provável. Cruzar com CAGED para identificar vínculo formal. |
-| IVS015 | RT_04 | Percentual de pessoas em domicílios com renda per capita menor ou igual a meio SM e dependentes de idosos | Família/Domicílio | maior_pior | CadÚnico — disponível imediatamente | Sim | Imediato | Disponível no CadÚnico, mas sujeito à definição operacional de dependência de idosos. A identificação do idoso como principal provedor exige regra complementar além da presença de idoso no domicílio — ver dicionario_cadunico_operacional_v02.md. |
+| IVS015 | RT_04 | Percentual de domicílios com renda per capita menor ou igual a meio SM e com presença de idoso | Família/Domicílio | maior_pior | CadÚnico — disponível imediatamente | Sim | Imediato | Disponível no CadÚnico. Critério operacional definido em 27/03/2026: domicílios com renda per capita ≤ 0,5 SM e presença de pelo menos um morador com 60 anos ou mais. P12 resolvida. |
 | IVS016 | RT_05 | Taxa de atividade das pessoas de 10 a 14 anos de idade (trabalho infantil) | Pessoa | maior_pior | CadÚnico / IBGE Censo 2022 | Parcial | Curto prazo | Interface direta com CREAS e Conselho Tutelar. Peso local reduzido (~3%) justificado por: criticidade ética alta, incidência estatística menor, menor capacidade de explicar variação global do índice. Censo 2022 é fonte mais robusta. |
 
 ### Fórmulas Operacionais — Renda e Trabalho
@@ -262,11 +262,11 @@ observacoes
 - Unidade: proporção (0 a 1)
 - Universo: população ocupada de 18 anos ou mais no CadÚnico
 
-**RT_04**
-- Numerador: pessoas em domicílios com renda per capita menor ou igual a meio SM onde o principal provedor é idoso (60 anos ou mais) — definição operacional de "principal provedor" a ser formalizada
-- Denominador: total de pessoas no loteamento
+**RT_04** *(corrigido em v01r9)*
+- Numerador: **domicílios** com renda per capita menor ou igual a meio SM e presença de pelo menos um morador com 60 anos ou mais
+- Denominador: **total de domicílios do loteamento na base**
 - Unidade: proporção (0 a 1)
-- Universo: população total no CadÚnico dez/2025
+- Universo: domicílios no CadÚnico dez/2025
 
 **RT_05**
 - Numerador: pessoas de 10 a 14 anos economicamente ativas (trabalho declarado)
@@ -295,6 +295,21 @@ observacoes
 > **Nota metodológica da Fase 1:** nesta etapa inicial, o cálculo deve
 > utilizar a ponderação original do IVS/IPEA, sem calibração local de
 > `peso_h`. A recalibração fica reservada para fase posterior.
+
+---
+
+## Resumo das Unidades de Cálculo — Fase 1 MVP
+
+| Variável | Unidade primária | Denominador | Agregação final |
+| --- | --- | --- | --- |
+| RT_01 | Pessoa | Total de pessoas do loteamento | Loteamento |
+| RT_04 | Domicílio/Família | Total de domicílios do loteamento | Loteamento |
+| CH_06 | Pessoa | Total de pessoas 15+ do loteamento | Loteamento |
+| CH_07 | Criança em contexto domiciliar | Total de crianças 0-14 do loteamento | Loteamento |
+| CH_05 | Família | Total de famílias do loteamento | Loteamento |
+
+> Denominadores são sempre a população/domicílios/famílias *observadas
+> no CadÚnico*, agregadas por loteamento — não a população censitária.
 
 ---
 
@@ -382,7 +397,7 @@ observacoes
 | P09 | Formalizar convenção de `periodo_referencia` nos scripts de carga | Média |
 | P10 | Separar `nivel_analise` em `unidade_calculo` e `unidade_agregacao` (melhoria futura) | Baixa |
 | P11 | Registrar explicitamente, nos scripts e notebooks da Fase 1, o uso da ponderação original do IVS/IPEA (sem calibração local de peso_h) | Alta |
-| P12 | Formalizar regra operacional de "dependência de idosos" para RT_04 — definir se critério é RF idoso ou principal provedor idoso | Alta |
+| P12 | ~~Formalizar regra operacional de "dependência de idosos" para RT_04~~ | ✅ Resolvida em 27/03/2026 — critério: domicílios com renda ≤ 0,5 SM e presença de pelo menos um morador com 60 anos ou mais |
 
 ---
 
@@ -398,7 +413,8 @@ observacoes
 | v01r5 | "18/03/2026" | IU_03 removida (incorretamente); RT_06/RT_07 criadas; direcao_risco adicionado; fórmulas operacionais |
 | v01r6 | "22/03/2026" | IU_03 restaurada; RT_06/RT_07 removidas (pertencem ao IPST-H); total = 16 variáveis |
 | v01r7 | "22/03/2026" | peso_ipea corrigido para estrutura hierárquica; fórmulas min-max formalizadas; nota de escala CH_01; P10 adicionada |
-| v01r8 | "23/03/2026" | (1) Nota Metodológica reescrita: estrutura explícita Fase 1 / Fase 2 / Fase 3 — Fase 1 usa pesos IPEA, Fase 3 calibração local; diferença entre IVS-H e IPEA reformulada como cobertura e frequência das fontes; (2) Princípio adotado: linguagem alinhada à implementação progressiva; (3) "Agregação Territorial" → "Agregação Espacial" em toda a extensão do documento; (4) nota nivel_analise expandida com aviso de simplificação e referência a P10; (5) RT_04: observação e fórmula com honestidade metodológica explícita; (6) CH_05 e CH_07: notas operacionais explicitadas na observação e na fórmula; (7) Resumo de Disponibilidade: nota metodológica da Fase 1 adicionada; (8) título da seção de calibração: "Hipótese de Calibração Local (Fase posterior)"; (9) P11 e P12 adicionadas |
+| v01r8 | "23/03/2026" | (1) Nota Metodológica reescrita: estrutura explícita Fase 1 / Fase 2 / Fase 3; (2) Princípio adotado alinhado à implementação progressiva; (3) "Agregação Territorial" → "Agregação Espacial"; (4) nota nivel_analise expandida; (5) RT_04: observação com honestidade metodológica; (6) CH_05 e CH_07: notas operacionais explicitadas; (7) Resumo de Disponibilidade com nota Fase 1; (8) título calibração: "Hipótese de Calibração Local (Fase posterior)"; (9) P11 e P12 adicionadas |
+| v01r9 | "27/03/2026" | Duas correções cirúrgicas a partir da formalização das fórmulas MVP (insights.docx, 27/03/2026): (1) **RT_04**: unidade corrigida de Pessoa para Domicílio/Família; numerador corrigido de "pessoas em domicílios onde o principal provedor é idoso" para "domicílios com renda ≤ 0,5 SM e presença de pelo menos um morador com 60+"; denominador corrigido de "total de pessoas" para "total de domicílios do loteamento"; P12 marcada como resolvida. (2) **CH_05**: denominador corrigido de "total de mulheres chefes de família" para "total de famílias do loteamento" — alinhamento com metodologia IPEA. Seção "Resumo das Unidades de Cálculo — Fase 1 MVP" adicionada. |
 
 ---
 
