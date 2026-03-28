@@ -1,1 +1,5 @@
-
+	fonte	data	item	pagina	dimensao_ivs	codigo_variavel	resumo	localidade	tipo_evento	gravidade	observacao	cod_loteamento
+1	Tribuna Liberal	2026-03-27	Manifesto servidores vale-alimentação	01	renda_trabalho	RT_01	Servidores municipais pedem vale-refeição; PL encaminhado à Câmara prevê benefício sem extinguir cesta básica	Hortolândia	politica_publica	media	Contexto político relevante para período de apresentação em abril	
+2	Tribuna Liberal	2026-03-27	Protocolo Coordenação Pedagógica	08	capital_humano	CH_07	Lançamento de protocolo formativo para coordenadores pedagógicos nas escolas municipais; 26 mil alunos atendidos	Hortolândia	politica_publica	media	Ação da Educação; interface com CH_03 e CH_07; presença do prefeito Zezé	
+3	Tribuna Liberal	2026-03-27	Zeladoria Parque Lago da Fé	08	SMIDS_EXT	SMIDS_EXT	Mutirão de manutenção no Parque Lago da Fé (Parque Gabriel) e Parque Chico Mendes; troca de equipamentos	Hortolândia	infraestrutura	media	Parque Gabriel em área de vulnerabilidade; relevância territorial	
+4	Tribuna Liberal	2026-03-27	Furto de carga Jardim Amanda	09	SMIDS_EXT	SMIDS_EXT	Quatro presos por furto de óleo na Av. Princesa Isabel; transferência ilegal de carga em caminhões	Jardim Amanda	problema	media	Ocorrência de segurança no Jd. Amanda; loteamento de interesse para o projeto	351
