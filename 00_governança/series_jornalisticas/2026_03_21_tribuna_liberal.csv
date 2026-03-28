@@ -1,1 +1,5 @@
-
+	fonte	data	item	pagina	dimensao_ivs	codigo_variavel	resumo	localidade	tipo_evento	gravidade	observacao	cod_loteamento
+1	Tribuna Liberal	2026-03-21	Exposicao Mulheres que Inspiram	s/n	capital_humano	CH_04	Acao SMIDS/DPP PcD no Palacio dos Migrantes - Queza Garcia citada nominalmente	Hortolandia	politica_publica	media	Acao pontual nao entra no catalogo de programas	
+2	Tribuna Liberal	2026-03-21	Residencial Senior Terca da Serra	s/n	renda_trabalho	RT_04	Segunda unidade no Parque Ortolandia - 30 leitos - envelhecimento demografico	Hortolandia	infraestrutura	media	Impacto futuro em RT_04 Economia Prateada	
+3	Tribuna Liberal	2026-03-21	17a Caravana Federativa equipamentos saude	s/n	capital_humano	CH_01	Saude recebeu equipamentos de fisioterapia reabilitacao oftalmologia	Hortolandia	politica_publica	media	Amplia capacidade de resposta Capital Humano	
+4	Tribuna Liberal	2026-03-21	Reajuste funcionalismo 2,51%	s/n	renda_trabalho	RT_01	Lei 4606/2026 - 5200 servidores - IPCA 10 meses	Hortolandia	politica_publica	media	Contexto de custo de vida e pressao sobre renda	
