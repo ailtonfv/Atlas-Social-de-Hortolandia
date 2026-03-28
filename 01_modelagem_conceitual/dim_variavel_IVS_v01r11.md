@@ -1,8 +1,8 @@
-[dim_variavel_IVS_v01r10.md](https://github.com/user-attachments/files/26317409/dim_variavel_IVS_v01r10.md)[Uploading dim_va# DIM_VARIAVEL_IVS — Variáveis do Índice de Vulnerabilidade Social
+[dim_variavel_IVS_v01r11.md](https://github.com/user-attachments/files/26325385/dim_variavel_IVS_v01r11.md)[Uploading d# DIM_VARIAVEL_IVS — Variáveis do Índice de Vulnerabilidade Social
 
-**Versão:** v01r10  
+**Versão:** v01r11  
 **Data de criação:** "09/03/2026"  
-**Última atualização:** "27/03/2026"  
+**Última atualização:** "29/03/2026"  
 **Responsável:** Ailton Vendramini  
 **Repositório:** Atlas-Social-de-Hortolândia / 01_modelagem_conceitual
 
@@ -260,6 +260,7 @@ Onde:
 - $Pessoas_{rpc \leq 0{,}5SM}(l)$ = pessoas em domicílios com renda per capita menor ou igual a meio salário mínimo no loteamento $l$
 - $Pessoas_{total}(l)$ = total de pessoas no loteamento $l$
 - Universo: população cadastrada no CadÚnico dez/2025
+- **Referência salarial (Fase 1):** salário mínimo vigente em dezembro/2025 = **R$ 1.518,00** — limiar de corte = **R$ 759,00** per capita. Fonte: `dim_salario_minimo_v01.md`.
 
 **RT_02**
 - Numerador: pessoas de 18 anos ou mais desocupadas (procurando trabalho sem vínculo)
@@ -281,6 +282,7 @@ Onde:
 - $Dom_{rpc \leq 0{,}5SM \,\cap\, idoso \geq 60}(l)$ = domicílios com renda per capita menor ou igual a meio SM e presença de pelo menos um morador com 60 anos ou mais no loteamento $l$
 - $Dom_{total}(l)$ = total de domicílios do loteamento $l$ na base
 - Universo: domicílios no CadÚnico dez/2025
+- **Referência salarial (Fase 1):** salário mínimo vigente em dezembro/2025 = **R$ 1.518,00** — limiar de corte = **R$ 759,00** per capita. Fonte: `dim_salario_minimo_v01.md`.
 
 **RT_05**
 - Numerador: pessoas de 10 a 14 anos economicamente ativas (trabalho declarado)
@@ -430,9 +432,10 @@ Onde:
 | v01r8 | "23/03/2026" | (1) Nota Metodológica reescrita: estrutura explícita Fase 1 / Fase 2 / Fase 3; (2) Princípio adotado alinhado à implementação progressiva; (3) "Agregação Territorial" → "Agregação Espacial"; (4) nota nivel_analise expandida; (5) RT_04: observação com honestidade metodológica; (6) CH_05 e CH_07: notas operacionais explicitadas; (7) Resumo de Disponibilidade com nota Fase 1; (8) título calibração: "Hipótese de Calibração Local (Fase posterior)"; (9) P11 e P12 adicionadas |
 | v01r9 | "27/03/2026" | Duas correções cirúrgicas a partir da formalização das fórmulas MVP (insights.docx, 27/03/2026): (1) **RT_04**: unidade corrigida de Pessoa para Domicílio/Família; numerador corrigido de "pessoas em domicílios onde o principal provedor é idoso" para "domicílios com renda ≤ 0,5 SM e presença de pelo menos um morador com 60+"; denominador corrigido de "total de pessoas" para "total de domicílios do loteamento"; P12 marcada como resolvida. (2) **CH_05**: denominador corrigido de "total de mulheres chefes de família" para "total de famílias do loteamento" — alinhamento com metodologia IPEA. Seção "Resumo das Unidades de Cálculo — Fase 1 MVP" adicionada. |
 | v01r10 | "27/03/2026" | Fórmulas das 5 variáveis do MVP (RT_01, RT_04, CH_05, CH_06, CH_07) reescritas em notação LaTeX com subscritos, intersecções e denominadores explícitos. Demais fórmulas (variáveis Fase 2) mantidas em formato descritivo — LaTeX reservado para as variáveis operacionalmente ativas no MVP. |
+| v01r11 | "29/03/2026" | RT_01 e RT_04: adição da referência salarial concreta — SM dez/2025 = R$ 1.518,00, limiar de corte = R$ 759,00 per capita, com referência cruzada a `dim_salario_minimo_v01.md`. Garante rastreabilidade auditável do limiar usado no cálculo do MVP Fase 1. |
 
 ---
 
 *Documento de modelagem conceitual — 01_modelagem_conceitual.*  
 *Uso interno — Atlas Social de Hortolândia.*
-riavel_IVS_v01r10.md…]()
+im_variavel_IVS_v01r11.md…]()
