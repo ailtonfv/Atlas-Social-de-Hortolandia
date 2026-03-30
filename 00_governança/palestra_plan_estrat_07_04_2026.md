@@ -1,4 +1,4 @@
-[palestra_plan_estrat_07_04_2026_v02.md](https://github.com/user-attachments/files/26353125/palestra_plan_estrat_07_04_2026_v02.md)[Uploading palestra_p# SLIDE 1 — CAPA
+[palestra_plan_estrat_07_04_2026_v02 (1).md](https://github.com/user-attachments/files/26353884/palestra_plan_estrat_07_04_2026_v02.1.md)[Uploading palestra_plan_# SLIDE 1 — CAPA
 
 ## ATLAS SOCIAL DE HORTOLÂNDIA
 **Dados, Integração e Decisão Pública**
@@ -47,6 +47,7 @@ Abril de 2026
 - Estruturação de indicadores de vulnerabilidade com referência nacional (IPEA)
 - Repositório documentado, versionado e auditável
 - Articulação com equipes de SIG e de cadastro para integração de endereços
+- Levantamento técnico inicial de sistemas municipais (ex.: assistência social) para avaliação de qualidade e integração dos dados
 
 > Já há uma base inicial — e ela está sendo construída de forma que
 > outras secretarias possam utilizá-la
@@ -82,7 +83,7 @@ Preparada para produção de indicadores por recorte territorial
 2. Retrabalho frequente: múltiplas equipes tratando as mesmas bases separadamente
 3. Dificuldade de leitura territorial integrada — cada área enxerga apenas um recorte
 4. Decisões tomadas com base em informações parciais ou desatualizadas
-5. Ausência de uma base comum que permita comparar esforços e resultados entre áreas
+5. Em alguns sistemas, há cadastros sem vínculo com atendimento e campos pouco utilizados — o que dificulta análises consistentes
 
 > O desafio não é coletar mais dados — é conectar o que já existe
 
@@ -197,4 +198,4 @@ O investimento maior, se e quando necessário, virá com maturidade comprovada
 
 [DEPARTAMENTO]
 [NOME COMPLETO]
-lan_estrat_07_04_2026_v02.md…]()
+estrat_07_04_2026_v02 (1).md…]()
