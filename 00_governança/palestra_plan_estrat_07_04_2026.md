@@ -1,139 +1,200 @@
-# SLIDE 1 — TÍTULO
+[palestra_plan_estrat_07_04_2026_v02.md](https://github.com/user-attachments/files/26353125/palestra_plan_estrat_07_04_2026_v02.md)[Uploading palestra_p# SLIDE 1 — CAPA
 
-## ATLAS SOCIAL DE HORTOLÂNDIA  
+## ATLAS SOCIAL DE HORTOLÂNDIA
 **Dados, Integração e Decisão Pública**
 
-Secretaria de Planejamento Estratégico  
+Departamento: [DEPARTAMENTO]
+Responsável: [NOME COMPLETO]
+
+Secretaria de Planejamento Estratégico
 Abril de 2026
 
 ---
 
-# SLIDE 2 — CONTEXTO
+# SLIDE 2 — ESTRUTURA ORGANIZACIONAL
 
-## O ponto de partida
+## Estrutura
 
-- Hortolândia já possui muitos dados  
-- Esses dados estão dispersos entre secretarias  
-- Cada área enxerga apenas uma parte da realidade  
+**Unidade:** Secretaria Municipal de Inclusão e Desenvolvimento Social — SMIDS
 
-> O problema não é falta de dados  
-> É falta de integração
+**Nº Total de Servidores:** [PREENCHER]
 
----
+**Perfil predominante:** Técnico e Operacional
 
-# SLIDE 3 — O PROBLEMA
-
-## Fragmentação gera ineficiência
-
-- Múltiplas equipes baixando e tratando dados manualmente  
-- Retrabalho constante  
-- Dificuldade de visão territorial integrada  
-- Decisões baseadas em recortes parciais  
-
-> A cidade é uma só — os dados ainda não são
+> Esta linha de trabalho está vinculada à SMIDS e conectada
+> às demais secretarias que produzem e utilizam dados sociais
 
 ---
 
-# SLIDE 4 — O QUE ESTÁ SENDO CONSTRUÍDO
+# SLIDE 3 — PRINCIPAIS ATRIBUIÇÕES DO DEPARTAMENTO
 
-## Atlas Social de Hortolândia
+## Atribuições institucionais
 
-- Estrutura integrada de dados sociais  
-- Base territorial única (Região → Núcleo → Loteamento)  
-- Integração entre CadÚnico, sistemas municipais e dados externos  
-- Modelo reproduzível e auditável  
+1. Gestão e análise do Cadastro Único no âmbito municipal
+2. Monitoramento da vulnerabilidade social por loteamento e núcleo de CRAS
+3. Produção de evidências técnicas para orientar a política socioassistencial
 
-> Não é um painel — é uma infraestrutura de decisão
-
----
-
-# SLIDE 5 — BASE METODOLÓGICA
-
-## Índice de Vulnerabilidade Social
-
-Referência: :contentReference[oaicite:0]{index=0} (IPEA)
-
-- Utilização das mesmas 16 variáveis do IVS nacional  
-- Adaptação para realidade local → IVS-H  
-- Comparabilidade preservada  
-- Ajuste de pesos conforme evidência municipal  
-
-> Rigor técnico com adaptação local
+> Organizar o dado existente para que ele sirva à decisão pública
 
 ---
 
-# SLIDE 6 — O QUE JÁ FOI FEITO
+# SLIDE 4 — PRINCIPAIS AÇÕES EM ANDAMENTO
 
-## Avanços concretos
+## O que vem sendo estruturado
 
-- Estrutura de dados organizada e documentada  
-- Modelagem das principais dimensões sociais  
-- Base do CadÚnico tratada para análise  
-- Definição da lógica territorial do município  
-- Repositório estruturado e versionado  
+- Base territorial única organizada por Região de Planejamento, Núcleo e Loteamento
+- Tratamento e organização dos dados do CadÚnico para análise local
+- Estruturação de indicadores de vulnerabilidade com referência nacional (IPEA)
+- Repositório documentado, versionado e auditável
+- Articulação com equipes de SIG e de cadastro para integração de endereços
 
-> O projeto já está em execução
-
----
-
-# SLIDE 7 — GANHO OPERACIONAL
-
-## Eficiência administrativa
-
-- Redução de retrabalho entre secretarias  
-- Menor dependência de planilhas isoladas  
-- Padronização de conceitos e indicadores  
-- Liberação de técnicos para atividades analíticas  
-
-> Menos esforço operacional, mais inteligência
+> Já há uma base inicial — e ela está sendo construída de forma que
+> outras secretarias possam utilizá-la
 
 ---
 
-# SLIDE 8 — VISÃO DE FUTURO
+# SLIDE 5 — INDICADORES E RESULTADOS
 
-## Evolução natural da arquitetura
+## Primeiras entregas concretas
 
-- Consolidação de bases integradas  
-- Automatização de atualizações  
-- Preparação para arquitetura de dados moderna (Data Lakehouse)  
-- Escalabilidade para outras áreas da Prefeitura  
+**1. Índice de Vulnerabilidade Social — IVS-H**
+Adaptação local das 16 variáveis do IVS/IPEA
+Comparabilidade nacional preservada
 
-> O futuro já está sendo preparado no presente
+**2. Base territorial estruturada**
+141 loteamentos organizados em 6 Regiões de Planejamento
+Vinculação com as áreas de abrangência dos CRAS
 
----
+**3. Base do CadÚnico tratada para análise**
+Aproximadamente 72.400 indivíduos
+Preparada para produção de indicadores por recorte territorial
 
-# SLIDE 9 — GOVERNANÇA E CUSTO
-
-## Uso racional de recursos
-
-- Aproveitamento de dados já disponíveis  
-- Redução de esforços duplicados  
-- Potencial de parcerias institucionais (Estado/União)  
-- Estrutura pensada para baixo custo incremental  
-
-> Eficiência antes de investimento
+> Este é um primeiro recorte — ainda em evolução,
+> aberto ao refinamento conjunto
 
 ---
 
-# SLIDE 10 — CAPACIDADE DE DECISÃO
+# SLIDE 6 — PRINCIPAIS SITUAÇÕES / PROBLEMAS IDENTIFICADOS
 
-## O que isso permite
+## Desafios que esta linha de trabalho busca endereçar
 
-- Identificar vulnerabilidade com precisão territorial  
-- Priorizar políticas públicas  
-- Medir impacto das ações  
-- Integrar secretarias em torno de objetivos comuns  
+1. Dados sociais dispersos entre secretarias, sem integração estruturada
+2. Retrabalho frequente: múltiplas equipes tratando as mesmas bases separadamente
+3. Dificuldade de leitura territorial integrada — cada área enxerga apenas um recorte
+4. Decisões tomadas com base em informações parciais ou desatualizadas
+5. Ausência de uma base comum que permita comparar esforços e resultados entre áreas
 
-> Sair da reação para a priorização
+> O desafio não é coletar mais dados — é conectar o que já existe
 
 ---
 
-# SLIDE 11 — MENSAGEM FINAL
+# SLIDE 7 — FOCO NO FUTURO
 
-## Direção estratégica
+## Direção desta linha de trabalho
 
-- Hortolândia tem dados suficientes para avançar  
-- O desafio é integrar, não coletar mais  
-- O Atlas Social é um primeiro passo estruturante  
+**1. Integrar esforços já existentes**
+Dar visibilidade ao que cada secretaria já faz,
+conectando iniciativas em torno de objetivos comuns
 
-> Decisão pública de qualidade exige base técnica sólida
+**2. Ampliar a base analítica de forma incremental**
+A estrutura vem sendo organizada de forma compatível
+com arquiteturas modernas, permitindo evolução futura
+com baixo impacto operacional e financeiro
+
+**3. Abrir espaço para decisões estratégicas no momento oportuno**
+Isso permite que a Prefeitura avance, de forma estruturada,
+nessa direção — quando e como for mais adequado
+
+---
+
+# SLIDE 8 — PROPOSTA 1
+
+## Proposta 1 — Base Integrada de Vulnerabilidade Social
+
+**Descrição:**
+Organização dos dados do CadÚnico em uma estrutura analítica
+territorial, vinculada aos loteamentos e às áreas de abrangência dos CRAS
+
+**Desafio / Oportunidade:**
+Os dados já existem — o que falta é organização que permita
+leitura integrada e comparável entre secretarias
+
+**Benefícios esperados:**
+- Redução de retrabalho entre equipes
+- Indicadores territoriais disponíveis para todas as áreas
+- Fundamentação técnica para priorização de políticas
+
+**Viabilidade:**
+Aproveitamento integral de dados já disponíveis
+Sem dependência de novos sistemas ou contratações
+
+---
+
+# SLIDE 9 — PROPOSTA 2
+
+## Proposta 2 — Redução de Esforço Operacional Duplicado
+
+**Descrição:**
+Padronização de conceitos, indicadores e recortes territoriais
+para uso compartilhado entre secretarias
+
+**Desafio / Oportunidade:**
+Hoje, cada área define seus próprios recortes e indicadores —
+o que dificulta comparações e gera inconsistências nos relatórios
+
+**Benefícios esperados:**
+- Menos tempo técnico gasto em tratamento de dados
+- Linguagem comum entre secretarias
+- Relatórios mais ágeis e comparáveis
+
+**Viabilidade:**
+Esse esforço só faz sentido se for útil para as secretarias —
+e parte justamente das necessidades que elas já têm
+
+---
+
+# SLIDE 10 — PROPOSTA 3
+
+## Proposta 3 — Estrutura Preparada para Crescimento Futuro
+
+**Descrição:**
+A base vem sendo organizada de forma que permita,
+no momento oportuno, integração com outras fontes
+e com sistemas de maior escala
+
+**Desafio / Oportunidade:**
+Municípios que estruturam bem sua base analítica
+ficam em posição mais favorável para parcerias
+institucionais com Estado e União
+
+**Benefícios esperados:**
+- Potencial de acesso a convênios e integrações federais
+- Escalabilidade para outras áreas da Prefeitura
+- Isso abre espaço, no momento oportuno, para decisões estratégicas
+  sobre integração de dados — sem comprometer o que já funciona
+
+**Viabilidade:**
+Estrutura incremental, sem aumento de custos na fase atual
+O investimento maior, se e quando necessário, virá com maturidade comprovada
+
+---
+
+# SLIDE 11 — ENCERRAMENTO
+
+## Esse movimento permite avançar
+
+- Hortolândia já tem dados suficientes para dar esse passo
+- O desafio é integrar — não coletar mais
+- Esta linha de trabalho é um primeiro passo estruturante,
+  construído para ser útil às secretarias, não para substituir nada
+
+> Esse movimento permite que a Prefeitura avance,
+> de forma estruturada, nessa direção
+
+---
+
+**Obrigado.**
+
+[DEPARTAMENTO]
+[NOME COMPLETO]
+lan_estrat_07_04_2026_v02.md…]()
