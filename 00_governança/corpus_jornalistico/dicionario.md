@@ -1,16 +1,16 @@
-# Dicionário do Corpus Jornalístico
+[dicionario_v02.md](https://github.com/user-attachments/files/26446292/dicionario_v02.md)[Uploading dicionario_v02.md# Dicionário do Corpus Jornalístico
 **Atlas Social de Hortolândia — SMIDS**
-Versão: v01 | Data: 2026-04-01
+Versão: v02 | Data: 2026-04-02
 
 ---
 
 ## Princípio conceitual
 
-> IVS mede. SMIDS_EXT explica.
+> IVS mede. GOV e SMIDS_EXT explicam.
 
 O corpus jornalístico opera em duas camadas:
 - **Núcleo duro (IVS):** mensurável, comparável, replicável
-- **Camada expandida (SMIDS_EXT):** contextual, interpretativa, estratégica
+- **Camada expandida (GOV / SMIDS_EXT):** contextual, interpretativa, estratégica
 
 ---
 
@@ -51,8 +51,12 @@ Valores permitidos:
 | `infraestrutura_urbana` | Dimensão IU do IVS |
 | `renda_trabalho` | Dimensão RT do IVS |
 | `multidimensional` | Evento cruza duas ou mais dimensões |
-| `governanca` | Fora do IVS — capacidade institucional |
-| `SMIDS_EXT` | Fora do IVS — contexto expandido |
+| `governanca` | Fora do IVS — capacidade institucional do Estado |
+
+**Nota:** o valor `SMIDS_EXT` foi removido desta coluna a partir de v02.
+Eventos anteriormente classificados como `dimensao_ivs = SMIDS_EXT`
+devem ser reclassificados para a dimensão IVS mais próxima,
+usando `codigo_variavel = SMIDS_EXT` para preservar a distinção de origem.
 
 ---
 
@@ -65,13 +69,19 @@ Valores permitidos:
 | `CH_01` a `CH_08` | Variáveis Capital Humano |
 | `RT_01` a `RT_05` | Variáveis Renda e Trabalho |
 | `multidimensional` | Cruza variáveis sem código único |
-| `governanca` | Evento institucional sem variável IVS |
-| `SMIDS_EXT` | Residual controlado — só quando não há mapeamento defensável |
+| `SMIDS_GOV` | Evento de governança institucional — em uso |
+| `SMIDS_EXT` | Evento externo ao escopo SMIDS com impacto territorial indireto |
 
-**Regra SMIDS_EXT:** usar apenas quando o evento não mapeia para nenhuma
-variável IVS de forma defensável. Exemplos corretos: parque de lazer,
-emenda parlamentar genérica, certificação institucional.
-Subtipagem futura planejada: `SMIDS_INFRA`, `SMIDS_GOV`, `SMIDS_EQUIP`
+**Regra SMIDS_GOV:** usar quando o evento envolve capacidade institucional,
+instrumento de planejamento, certificação ou ação pública formal.
+Exemplos: Plano Diretor, Selo FNAS, audiência pública, convênio municipal.
+
+**Regra SMIDS_EXT:** usar quando o evento não mapeia para nenhuma variável IVS
+de forma defensável e não é de governança direta.
+Exemplos: obra viária de outra secretaria, infraestrutura regional, emenda
+parlamentar genérica sem escopo SMIDS.
+
+**Subtipagem futura planejada:** `SMIDS_INFRA`, `SMIDS_EQUIP`
 
 ---
 
@@ -170,3 +180,5 @@ Valores permitidos:
 | versão | data | alteração |
 |---|---|---|
 | v01 | 2026-04-01 | Criação do dicionário; 17 colunas documentadas |
+| v02 | 2026-04-02 | `SMIDS_GOV` promovido de futuro para em uso; `SMIDS_EXT` removido de `dimensao_ivs` com nota de migração; princípio conceitual atualizado |
+…]()
