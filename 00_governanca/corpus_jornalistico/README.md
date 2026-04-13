@@ -1,195 +1,223 @@
-# 📰 CORPUS_JORNALISTICO — Evidências Empíricas da Vulnerabilidade Social
+# CORPUS JORNALÍSTICO
 
-**Versão:** v1.1
-**Data de atualização:** 2026-04-13
+## Evidências Empíricas da Vulnerabilidade Social em Hortolândia
+
+**Versão:** v1.2
+**Data:** 13 de abril de 2026
 **Responsável:** Ailton Vendramini
-**Repositório:** Atlas-Social-de-Hortolândia
+**Iniciativa:** Atlas Social de Hortolândia
 
 ---
 
-## 🎯 Objetivo
+## 🎯 Finalidade
 
-Este diretório reúne registros estruturados de notícias locais com o objetivo de:
+Este documento define a metodologia para estruturação e análise de notícias locais como **evidência empírica da vulnerabilidade social**, compondo uma camada complementar ao IVS-H.
 
-* Capturar **eventos reais** relacionados à vulnerabilidade social;
-* Complementar os indicadores estruturais do IVS-H;
-* Apoiar a construção do **IPST-H (Índice de Pressão Social Territorial)**.
+Seu objetivo é integrar:
 
----
-
-## 🧠 Princípio Conceitual
-
-> **O IVS mede condições estruturais.
-> O corpus jornalístico registra manifestações da vulnerabilidade.**
+* **dados estruturais** (indicadores oficiais);
+* **eventos reais observados no território**.
 
 ---
 
-## 🧱 Estrutura dos dados
+## 🧠 Arquitetura Conceitual
 
-Principais campos:
+O modelo adotado baseia-se na separação entre duas camadas analíticas:
 
-* `fonte`
-* `data`
-* `dimensao_ivs`
-* `codigo_variavel`
-* `tipo_relacao_variavel`
-* `resumo`
-* `tipo_evento`
-* `gravidade`
-* `polaridade_evento`
-* `cod_loteamento`
-* `nivel_confianca_loteamento`
+### 🔹 IVS-H — Estrutura da Vulnerabilidade
+
+* Mede condições sociais estruturais
+* Baseado em dados como CadÚnico, IBGE e CAGED
+* Representa o **estoque de vulnerabilidade**
+
+---
+
+### 🔹 Corpus Jornalístico — Manifestação da Vulnerabilidade
+
+* Registra eventos reais ocorridos no território
+* Captura situações como violência, crises e ocorrências sociais
+* Representa o **fluxo da vulnerabilidade**
+
+---
+
+### 🔹 Integração — IPST-H
+
+A combinação dessas duas camadas permite a construção do:
+
+> **IPST-H — Índice de Pressão Social Territorial**
+
+---
+
+## ⚠️ Princípio Fundamental
+
+> **Eventos jornalísticos não medem diretamente o IVS-H.**
+
+Eles devem ser interpretados como:
+
+> **evidências de pressão social associadas às dimensões da vulnerabilidade**
+
+---
+
+## 🧱 Estrutura dos Registros
+
+Cada notícia é convertida em um registro estruturado contendo:
+
+* fonte
+* data
+* dimensão IVS
+* código de variável (quando aplicável)
+* tipo de relação com a variável
+* resumo do evento
+* tipo de evento
+* gravidade
+* polaridade
+* identificação territorial (quando disponível)
 
 ---
 
 ## 🔎 Metodologia de Classificação
 
-### 1. Dimensão IVS
+### 1. Dimensão da Vulnerabilidade
 
-* `infraestrutura_urbana` (IU)
-* `capital_humano` (CH)
-* `renda_trabalho` (RT)
-* `multidimensional`
+Todo evento deve ser classificado em uma das dimensões:
 
----
-
-### 2. Uso do campo `codigo_variavel`
-
-> ⚠️ Este campo **não representa necessariamente uma medição direta**.
-
-Ele pode assumir dois papéis:
-
-* **Direta** → variável efetivamente medida pelo evento
-* **Associada** → variável potencialmente relacionada ao evento
+* **Infraestrutura Urbana (IU)**
+* **Capital Humano (CH)**
+* **Renda e Trabalho (RT)**
+* **Multidimensional**
 
 ---
 
-### 3. Tipo de relação com a variável (`tipo_relacao_variavel`)
+### 2. Uso do Código de Variável IVS
+
+O campo `codigo_variavel` deve ser utilizado com critério:
+
+* Quando houver correspondência objetiva → uso direto
+* Quando não houver correspondência clara → uso opcional como associação
+
+> ⚠️ Evitar forçar associação direta entre evento e variável IVS.
+
+---
+
+### 3. Tipo de Relação com a Variável
 
 Campo central da metodologia:
 
-* `direta` → evento mede a variável IVS
-* `proxy` → evento indica fortemente a variável
-* `contextual` → evento revela ambiente de vulnerabilidade
-* `alerta` → evento extremo de alto impacto social
+* **Direta**
+  O evento mede a variável IVS
+
+* **Proxy**
+  O evento indica fortemente a variável
+
+* **Contextual**
+  O evento ocorre em ambiente de vulnerabilidade, sem medir variável específica
+
+* **Alerta**
+  Evento extremo de alto impacto social
 
 ---
 
-## 📌 Regras operacionais (uso combinado)
+## 📊 Regras Operacionais
 
-| Tipo de relação | Uso de `codigo_variavel`                 |
-| --------------- | ---------------------------------------- |
-| direta          | Obrigatório (1 variável)                 |
-| proxy           | Recomendado (1 variável provável)        |
-| contextual      | Opcional (1 ou mais variáveis possíveis) |
-| alerta          | Opcional (uso com cautela)               |
+| Tipo de relação | Uso da variável IVS |
+| --------------- | ------------------- |
+| Direta          | Obrigatória         |
+| Proxy           | Recomendado         |
+| Contextual      | Opcional            |
+| Alerta          | Opcional            |
 
 ---
 
-## 📊 Exemplos práticos
+## 📌 Exemplos Aplicados
 
-### 🟡 Exemplo 1 — Indicador agregado (proxy)
+### Indicador agregado — Medidas protetivas
 
-**Evento:**
-94 medidas protetivas em jan–fev
-
-**Classificação:**
-
-* `dimensao_ivs`: capital_humano
-* `codigo_variavel`: CH_05 *(exemplo de associação — fragilidade familiar)*
-* `tipo_relacao_variavel`: proxy
-* `tipo_evento`: indicador
-* `gravidade`: alta
-* `polaridade_evento`: negativo
+* Dimensão: Capital Humano
+* Tipo de relação: Proxy
+* Tipo de evento: Indicador
+* Gravidade: Alta
+* Polaridade: Negativa
 
 **Interpretação:**
-
-> O evento não mede diretamente a variável, mas indica risco relevante associado à dimensão.
+Indica fragilidade nas relações familiares e exposição à violência, sem medir diretamente uma variável do IVS.
 
 ---
 
-### 🔴 Exemplo 2 — Evento extremo (alerta)
+### Evento de violência urbana — Homicídio
 
-**Evento:**
-Caso Nicolly (violência envolvendo adolescentes)
-
-**Classificação:**
-
-* `dimensao_ivs`: capital_humano
-* `codigo_variavel`: CH_03, CH_07 *(associação possível)*
-* `tipo_relacao_variavel`: alerta
-* `tipo_evento`: caso_individual
-* `gravidade`: alta
-* `polaridade_evento`: negativo
+* Dimensão: Capital Humano
+* Tipo de relação: Contextual
+* Tipo de evento: Problema
+* Gravidade: Alta
+* Polaridade: Negativa
 
 **Interpretação:**
-
-> Evento crítico que revela ambiente de vulnerabilidade, sem medir diretamente uma variável específica.
+Evento que expressa pressão social no território, associado à vulnerabilidade, mas sem correspondência direta com variável IVS.
 
 ---
 
-### 🟢 Exemplo 3 — Relação direta (hipotético)
+### Evento crítico — Violência envolvendo adolescentes
 
-**Evento:**
-Relatório oficial aponta taxa de analfabetismo de 12%
-
-**Classificação:**
-
-* `dimensao_ivs`: capital_humano
-* `codigo_variavel`: CH_06
-* `tipo_relacao_variavel`: direta
-* `tipo_evento`: indicador
-* `gravidade`: média
-* `polaridade_evento`: negativo
+* Dimensão: Capital Humano
+* Tipo de relação: Alerta
+* Tipo de evento: Caso individual
+* Gravidade: Alta
+* Polaridade: Negativa
 
 **Interpretação:**
-
-> O evento mede diretamente a variável do IVS.
-
----
-
-## ⚠️ Erros comuns
-
-❌ Forçar correspondência direta com variável IVS
-❌ Classificar todos os eventos como “direta”
-❌ Omitir `tipo_relacao_variavel`
-❌ Confundir evento com indicador estruturado
+Evento extremo que revela ambiente de vulnerabilidade social, com possíveis conexões múltiplas.
 
 ---
 
-## 📊 Interpretação Analítica
+### Indicador direto — Exemplo hipotético
 
-O corpus permite identificar:
+* Dimensão: Capital Humano
+* Variável: Analfabetismo
+* Tipo de relação: Direta
+* Tipo de evento: Indicador
 
-* Pressão social por dimensão IVS
-* Concentração territorial de eventos
-* Sinais antecipados de vulnerabilidade
+**Interpretação:**
+Evento mede diretamente variável estrutural do IVS.
+
+---
+
+## ⚠️ Limitações
+
+* Tendência a registrar eventos extremos
+* Possível viés editorial
+* Cobertura territorial parcial
+
+> O corpus deve ser interpretado como complemento analítico.
 
 ---
 
 ## 🔗 Integração com o IVS-H
 
-* IVS-H → **estoque estrutural de vulnerabilidade**
-* Corpus jornalístico → **fluxo de manifestações sociais**
+* **IVS-H** → estrutura da vulnerabilidade
+* **Eventos** → manifestações da vulnerabilidade
 
-Essa integração fundamenta o:
+Essa integração permite identificar:
 
-> **IPST-H — Índice de Pressão Social Territorial**
+* territórios com maior pressão social
+* sinais antecipados de agravamento
+* desconexões entre estrutura e realidade observada
+
+---
+
+## 🧭 Considerações Finais
+
+O corpus jornalístico não substitui indicadores — ele os **completa**.
+
+Sua principal contribuição é transformar eventos dispersos em:
+
+> **evidência estruturada da dinâmica social do território**
 
 ---
 
 ## 📚 Referências
 
 * Instituto de Pesquisa Econômica Aplicada (IPEA). *Atlas da Vulnerabilidade Social*
-* Schrodt, P. (2012). *Event Data Analysis*
-* Lazer et al. (2009). *Computational Social Science*
-
----
-
-## 🧭 Observação Final
-
-> Este corpus transforma notícias em evidência estruturada.
-
-Sua força está não apenas na coleta, mas na **consistência da classificação ao longo do tempo**.
+* Schrodt, P. — Event Data Analysis
+* Lazer et al. — Computational Social Science
 
 ---
