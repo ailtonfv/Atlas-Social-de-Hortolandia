@@ -16,7 +16,7 @@ Este documento estabelece a metodologia para estruturação e análise de notíc
 Seu objetivo é integrar:
 
 * **dados estruturais** (indicadores oficiais);
-* **eventos reais observados no território**.
+* **eventos reais observados no município**.
 
 ---
 
