@@ -1,7 +1,7 @@
 # 📰 CORPUS_JORNALISTICO — Evidências Empíricas da Vulnerabilidade Social
 
-**Versão:** v1.0
-**Data de criação:** 2026-04-13
+**Versão:** v1.1
+**Data de atualização:** 2026-04-13
 **Responsável:** Ailton Vendramini
 **Repositório:** Atlas-Social-de-Hortolândia
 
@@ -9,7 +9,7 @@
 
 ## 🎯 Objetivo
 
-Este diretório reúne registros estruturados de notícias locais (principalmente da *Tribuna Liberal*) com o objetivo de:
+Este diretório reúne registros estruturados de notícias locais com o objetivo de:
 
 * Capturar **eventos reais** relacionados à vulnerabilidade social;
 * Complementar os indicadores estruturais do IVS-H;
@@ -22,13 +22,11 @@ Este diretório reúne registros estruturados de notícias locais (principalment
 > **O IVS mede condições estruturais.
 > O corpus jornalístico registra manifestações da vulnerabilidade.**
 
-Essa base não substitui indicadores oficiais — ela os complementa, oferecendo uma leitura dinâmica e territorial da realidade social.
-
 ---
 
 ## 🧱 Estrutura dos dados
 
-Cada registro contém, entre outros, os seguintes campos:
+Principais campos:
 
 * `fonte`
 * `data`
@@ -48,8 +46,6 @@ Cada registro contém, entre outros, os seguintes campos:
 
 ### 1. Dimensão IVS
 
-Cada evento deve ser classificado em uma das dimensões:
-
 * `infraestrutura_urbana` (IU)
 * `capital_humano` (CH)
 * `renda_trabalho` (RT)
@@ -57,17 +53,20 @@ Cada evento deve ser classificado em uma das dimensões:
 
 ---
 
-### 2. Código de Variável IVS
+### 2. Uso do campo `codigo_variavel`
 
-O campo `codigo_variavel` deve ser utilizado **apenas quando houver correspondência direta** com uma variável do IVS.
+> ⚠️ Este campo **não representa necessariamente uma medição direta**.
 
-> ⚠️ Evitar forçar associações indiretas.
+Ele pode assumir dois papéis:
+
+* **Direta** → variável efetivamente medida pelo evento
+* **Associada** → variável potencialmente relacionada ao evento
 
 ---
 
-### 3. Tipo de Relação com a Variável
+### 3. Tipo de relação com a variável (`tipo_relacao_variavel`)
 
-Campo crítico para interpretação:
+Campo central da metodologia:
 
 * `direta` → evento mede a variável IVS
 * `proxy` → evento indica fortemente a variável
@@ -76,73 +75,106 @@ Campo crítico para interpretação:
 
 ---
 
-### 4. Tipo de Evento
+## 📌 Regras operacionais (uso combinado)
 
-* `problema`
-* `caso_individual`
-* `politica_publica`
-* `indicador`
-
----
-
-### 5. Gravidade
-
-* `baixa`
-* `media`
-* `alta`
-
-Critérios:
-
-* impacto social
-* recorrência
-* risco associado
+| Tipo de relação | Uso de `codigo_variavel`                 |
+| --------------- | ---------------------------------------- |
+| direta          | Obrigatório (1 variável)                 |
+| proxy           | Recomendado (1 variável provável)        |
+| contextual      | Opcional (1 ou mais variáveis possíveis) |
+| alerta          | Opcional (uso com cautela)               |
 
 ---
 
-### 6. Polaridade
+## 📊 Exemplos práticos
 
-* `positivo`
-* `negativo`
+### 🟡 Exemplo 1 — Indicador agregado (proxy)
 
-> ⚠️ Classificar como positivo apenas quando houver melhoria concreta.
+**Evento:**
+94 medidas protetivas em jan–fev
+
+**Classificação:**
+
+* `dimensao_ivs`: capital_humano
+* `codigo_variavel`: CH_05 *(exemplo de associação — fragilidade familiar)*
+* `tipo_relacao_variavel`: proxy
+* `tipo_evento`: indicador
+* `gravidade`: alta
+* `polaridade_evento`: negativo
+
+**Interpretação:**
+
+> O evento não mede diretamente a variável, mas indica risco relevante associado à dimensão.
+
+---
+
+### 🔴 Exemplo 2 — Evento extremo (alerta)
+
+**Evento:**
+Caso Nicolly (violência envolvendo adolescentes)
+
+**Classificação:**
+
+* `dimensao_ivs`: capital_humano
+* `codigo_variavel`: CH_03, CH_07 *(associação possível)*
+* `tipo_relacao_variavel`: alerta
+* `tipo_evento`: caso_individual
+* `gravidade`: alta
+* `polaridade_evento`: negativo
+
+**Interpretação:**
+
+> Evento crítico que revela ambiente de vulnerabilidade, sem medir diretamente uma variável específica.
+
+---
+
+### 🟢 Exemplo 3 — Relação direta (hipotético)
+
+**Evento:**
+Relatório oficial aponta taxa de analfabetismo de 12%
+
+**Classificação:**
+
+* `dimensao_ivs`: capital_humano
+* `codigo_variavel`: CH_06
+* `tipo_relacao_variavel`: direta
+* `tipo_evento`: indicador
+* `gravidade`: média
+* `polaridade_evento`: negativo
+
+**Interpretação:**
+
+> O evento mede diretamente a variável do IVS.
+
+---
+
+## ⚠️ Erros comuns
+
+❌ Forçar correspondência direta com variável IVS
+❌ Classificar todos os eventos como “direta”
+❌ Omitir `tipo_relacao_variavel`
+❌ Confundir evento com indicador estruturado
 
 ---
 
 ## 📊 Interpretação Analítica
 
-O corpus jornalístico permite identificar:
+O corpus permite identificar:
 
-* Concentração de eventos por dimensão IVS;
-* Padrões territoriais emergentes;
-* Pressões sociais não capturadas por dados estruturais.
+* Pressão social por dimensão IVS
+* Concentração territorial de eventos
+* Sinais antecipados de vulnerabilidade
 
 ---
 
 ## 🔗 Integração com o IVS-H
 
-* O IVS-H representa o **estoque de vulnerabilidade**;
-* O corpus jornalístico representa o **fluxo de eventos sociais**.
+* IVS-H → **estoque estrutural de vulnerabilidade**
+* Corpus jornalístico → **fluxo de manifestações sociais**
 
-Essa integração fundamenta o desenvolvimento do:
+Essa integração fundamenta o:
 
 > **IPST-H — Índice de Pressão Social Territorial**
-
----
-
-## ⚠️ Limitações
-
-* Viés editorial (notícias tendem a destacar eventos extremos);
-* Cobertura incompleta do território;
-* Dependência de fontes jornalísticas específicas.
-
----
-
-## ✅ Boas práticas
-
-* Manter consistência na classificação;
-* Revisar amostras periodicamente;
-* Evitar sobreinterpretação de eventos isolados;
-* Documentar casos ambíguos.
 
 ---
 
@@ -156,9 +188,8 @@ Essa integração fundamenta o desenvolvimento do:
 
 ## 🧭 Observação Final
 
-> Este corpus não é apenas uma base de dados.
-> É um instrumento de leitura da realidade social em tempo quase real.
+> Este corpus transforma notícias em evidência estruturada.
 
-Sua correta utilização permite antecipar tendências, identificar pressões territoriais e apoiar decisões estratégicas no âmbito das políticas públicas.
+Sua força está não apenas na coleta, mas na **consistência da classificação ao longo do tempo**.
 
 ---
