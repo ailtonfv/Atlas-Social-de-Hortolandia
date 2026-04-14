@@ -10,7 +10,7 @@
 
 | Valor | Critério |
 |---|---|
-| `alta` | Impacto direto na população |
+| `alta` | Impacto direto na populacao |
 | `media` | Impacto indireto |
 | `baixa` | Ação institucional / preventiva |
 | `alerta` | Evento crítico — violência, risco grave |
