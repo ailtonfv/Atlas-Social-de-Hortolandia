@@ -37,7 +37,7 @@ Para fins deste corpus:
 
 ## 1. nivel_criticidade
 
-| Valor | Critério |
+| Valor | Criterio |
 |---|---|
 | `alta` | Impacto direto relevante na população vulnerável |
 | `media` | Impacto indireto |
