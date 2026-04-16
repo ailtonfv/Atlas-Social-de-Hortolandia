@@ -144,7 +144,7 @@ Uso restrito.
 | Corpus jornalístico | Evidência |
 
 ---
-```markdown
+
 ```mermaid
 flowchart TD
 
