@@ -149,16 +149,11 @@ Uso restrito.
 
 ---
 
-# ✔ Como corrigir (simples)
-
-Você deve usar **apenas UM bloco**, assim:
-
 ```markdown
 ```mermaid
 flowchart TD
 
-A[Evento jornalístico] --> B{Mede diretamente<br>variável IVS?}
-
+Mede diretamente variável IVS?
 B -->|Sim| C[direta]
 C --> C1[Preencher codigo_variavel]
 C --> FIM1[FIM]
