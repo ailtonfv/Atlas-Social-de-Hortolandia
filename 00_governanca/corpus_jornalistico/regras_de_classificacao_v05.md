@@ -144,7 +144,7 @@ Uso restrito.
 | Corpus jornalístico | Evidência |
 
 ---
-<img width="3329" height="2806" alt="mermaid-diagram" src="https://github.com/user-attachments/assets/4cfa2104-3762-4f57-89f7-737fe834f851" />
+<img width="2570" height="3003" alt="mermaid-diagram (1)" src="https://github.com/user-attachments/assets/fa332cfb-088c-4602-863f-593339c7f749" />
 
 
 ---
