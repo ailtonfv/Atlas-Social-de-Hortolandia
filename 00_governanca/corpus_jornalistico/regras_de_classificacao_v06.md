@@ -162,5 +162,69 @@ O recorte analítico é definido pela relevância para Hortolândia, e não pela
 
 ---
 
+🎯 Critérios de inclusão
+
+Um evento DEVE ser incluído se atender a pelo menos um dos critérios:
+
+1. Evento ocorrido em Hortolândia
+Independente do tema
+Independentemente da dimensão IVS
+
+✔ Exemplo:
+
+Obra de drenagem no Jardim Novo Ângulo
+Atendimento no CRAS
+Violência em bairro local
+2. Evento ocorrido fora de Hortolândia com impacto direto ou plausível sobre o município
+
+✔ Exemplo:
+
+Hospital Estadual de Sumaré atendendo população de Hortolândia
+Política estadual que afeta repasses ao município
+Mercado de trabalho regional com forte integração (ex: CAGED regional)
+3. Evento regional com potencial analítico para o IVS-H
+
+✔ Critério:
+
+Afeta dinâmica estrutural relevante (saúde, mobilidade, trabalho, assistência)
+
+✔ Exemplo:
+
+Surto epidemiológico regional
+Mudança em política estadual de habitação
+Infraestrutura que altera fluxos pendulares
+🚫 Critérios de exclusão
+
+Um evento NÃO deve ser incluído quando:
+
+Não ocorre em Hortolândia
+Não possui impacto identificável sobre o município
+Não contribui para interpretação das variáveis do IVS-H
+
+✔ Exemplo:
+
+Política municipal de outra cidade sem conexão
+Evento cultural local sem relação com Hortolândia
+Crime isolado em município sem vínculo territorial
+🧠 Regra prática (para uso rápido)
+
+R14 — Pergunta de corte:
+
+“Este evento ajuda a explicar, medir ou antecipar a vulnerabilidade social em Hortolândia?”
+
+Se SIM → incluir
+Se NÃO → descartar
+⚠️ Observação metodológica
+
+O objetivo do corpus não é cobertura jornalística,
+mas sim modelagem analítica da vulnerabilidade social local.
+
+---
+
+“Escopo deliberadamente restrito para garantir profundidade analítica e reprodutibilidade.”
+
+
+---
+
 *Arquivo de governança — Atlas Social de Hortolândia*  
 *00_governanca/corpus_jornalistico/*
