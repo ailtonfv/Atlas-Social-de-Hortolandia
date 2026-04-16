@@ -162,6 +162,28 @@ O recorte analítico é definido pela relevância para Hortolândia, e não pela
 
 ---
 
+## 11. Interoperabilidade Territorial — CadÚnico
+
+Em 16/04/2026, a Secretaria de Inclusão Social informou que o sistema utilizado pelo Cadastro Único (CadÚnico) não opera com o código oficial municipal de loteamentos (`codbairro`), mas sim com dados derivados do CEP cadastrado no endereço.
+
+Isso implica que:
+
+- O recorte territorial do CadÚnico pode não coincidir com a malha oficial de loteamentos da Prefeitura
+- Nomes de bairros podem refletir convenções postais ou uso popular
+- Não há garantia de correspondência direta com `descbairro` ou `codbairro`
+
+### Implicações para o corpus
+
+- O campo `cod_loteamento` deve ser preenchido apenas quando houver correspondência clara com a base oficial
+- Em caso de ausência ou ambiguidade, utilizar `nao_identificado`
+- O campo `nivel_confianca_loteamento` torna-se obrigatório para indicar a qualidade da correspondência
+- O campo `observacao` deve registrar nomes populares, bairros informais ou referências territoriais relevantes
+
+### Diretriz geral
+
+> O modelo analítico do Atlas Social adota a malha territorial oficial da Prefeitura como referência, realizando a tradução de nomenclaturas oriundas de sistemas externos (como o CadÚnico) por meio de camadas intermediárias de normalização.
+
+---
 🎯 Critérios de inclusão
 
 Um evento DEVE ser incluído se atender a pelo menos um dos critérios:
