@@ -556,8 +556,9 @@ ding regras_de_classificacao_v10_1.md…]()
 
 ---
 
-<img width="1194" height="3373" alt="fluxo_v10_v2" src="https://github.com/user-attachments/assets/f82a0694-039e-4b54-a476-06c22a214322" />
 
+
+<img width="1050" height="4146" alt="fluxo_v10_1" src="https://github.com/user-attachments/assets/9f5e3faa-c2ba-4403-b028-e0d5f98b9244" />
 
 
 ---
