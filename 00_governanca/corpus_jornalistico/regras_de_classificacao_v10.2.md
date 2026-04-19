@@ -7,6 +7,10 @@
 
 ---
 
+![fluxo_v10_1](https://github.com/user-attachments/assets/9f5e3faa-c2ba-4403-b028-e0d5f98b9244)
+
+---
+
 ## Changelog v10.1 → v10.2
 
 | Item | Mudança |
