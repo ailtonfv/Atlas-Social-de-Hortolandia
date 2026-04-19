@@ -1,20 +1,26 @@
-[regras_de_classificacao_v10_1.md](https://github.com/user-attachments/files/26859356/regras_de_classificacao_v10_1.md)[Uploa# Regras de Classificação — Corpus Jornalístico
-**Versão:** v10.1  
-**Data:** "18/04/2026"  
+[regras_de_classificacao_v10.2.md](https://github.com/user-attachments/files/26866862/regras_de_classificacao_v10.2.md)
+# Regras de Classificação — Corpus Jornalístico
+**Versão:** v10.2  
+**Data:** "19/04/2026"  
 **Responsável:** Ailton Vendramini  
 **Repositório:** Atlas-Social-de-Hortolandia / 00_governanca/corpus_jornalistico/
 
 ---
 
-## Changelog v10 → v10.1
+![fluxo_v10_1](https://github.com/user-attachments/assets/9f5e3faa-c2ba-4403-b028-e0d5f98b9244)
+
+---
+
+## Changelog v10.1 → v10.2
 
 | Item | Mudança |
 |---|---|
-| R20 | Regra nova — agravamento com base interna à matéria |
-| R21 | Regra nova — violência letal nunca contextual |
-| R22 | Regra nova — GOVERNANCA só é "resposta" se houver pressão identificável |
-| R23 | Regra nova — PRESSAO_SOCIAL deve sempre ser potencialmente agregável em série |
-| Nota conceitual | Registro formal de candidato a tipo_camada futuro: PRESSAO_INSTITUCIONAL |
+| R24 | Regra nova — critério explícito de exclusão do IPST-H |
+| R25 | Regra nova — definição operacional de pressão social coletiva |
+| R26 | Renomeação — R20 (desfecho) passa a R26 para eliminar duplicidade com R20 (agravamento) |
+| Seção 12 | `entra_ipst = sim` ganha segunda condição: impacto coletivo + mensuração + série |
+| Seção 3 | R25 inserido após R23, na descrição de `PRESSAO_SOCIAL` |
+| Motivação | R24 e R25 derivados da classificação empírica dos eventos E13 e E18 (corpus dez/2025–jan/2026) |
 
 ---
 
@@ -177,9 +183,19 @@ Pertence a ciclo temático? → id_caso_pressao (opcional)
     ex: CH_VIOLENCIA_GENERO_2025
     ↓
 
-Entra no IPST-H? → entra_ipst
-    PRESSAO_SOCIAL + alerta + dado_auditavel → sim
-    demais → avaliar caso a caso
+Entra no IPST-H? → entra_ipst (R24)
+
+    CONDIÇÃO A:
+        PRESSAO_SOCIAL + nivel_criticidade = alerta + dado_auditavel
+        → sim
+
+    CONDIÇÃO B (fenômenos estruturais não críticos):
+        PRESSAO_SOCIAL + impacto coletivo + mensuração consistente
+                       + potencial de série temporal
+        → sim
+
+    Atende parcialmente uma das condições → avaliar
+    Não atende nenhuma condição → nao (aplicar R24)
 ```
 
 ---
@@ -222,6 +238,31 @@ Natureza analítica do evento. **Campo obrigatório.**
 | `GOVERNANCA` | `GOV_MUNICIPAL`, `GOV_ESTADUAL`, `GOV_FEDERAL` |
 | `PRESSAO_SOCIAL` | `SMIDS_EXT` |
 | `CONTEXTO` | `SMIDS_EXT` |
+
+### R23 — Agregabilidade de PRESSAO_SOCIAL
+
+> Todo registro classificado como `PRESSAO_SOCIAL` deve ser potencialmente **agregável em série temporal**.
+>
+> Se o fenômeno não puder ser contado, comparado ou rastreado ao longo do tempo, reavaliar a classificação para `CONTEXTO`.
+
+### R25 — Pressão social coletiva
+
+> Para fins de classificação, `PRESSAO_SOCIAL` deve representar fenômeno que:
+>
+> - afeta um conjunto de indivíduos — não apenas casos isolados
+> - possui potencial de recorrência
+> - altera condições de vida, segurança, renda ou mobilidade de forma identificável
+>
+> **Eventos individuais são aceitos apenas quando:**
+> 1. representam proxy documentado de fenômeno coletivo, ou
+> 2. possuem recorrência já registrada no corpus
+>
+> Caso contrário → reclassificar para `CONTEXTO`
+>
+> **Pergunta de corte (R25):**
+> *"Este evento representa um caso de algo que acontece repetidamente, ou é episódio isolado sem efeito sistêmico?"*
+> - Representa fenômeno coletivo → manter `PRESSAO_SOCIAL`
+> - Episódio isolado, sem efeito sistêmico → `CONTEXTO`
 
 ---
 
@@ -355,12 +396,6 @@ Posição do registro no ciclo de pressão social. **Campo obrigatório.**
 >
 > Ações estruturais, preventivas ou de rotina sem evento detonador → `papel_no_ciclo = nao_aplicavel`.
 
-### R23 — Agregabilidade de PRESSAO_SOCIAL
-
-> Todo registro classificado como `PRESSAO_SOCIAL` deve ser potencialmente **agregável em série temporal**.
->
-> Se o fenômeno não puder ser contado, comparado ou rastreado ao longo do tempo, reavaliar a classificação para `CONTEXTO`.
-
 ### Regra de ouro
 
 *"Este evento pode estar ligado a um problema social que surge, evolui ou é respondido?"*
@@ -394,9 +429,50 @@ Exemplo: `CH_VIOLENCIA_GENERO_2025`
 
 | Valor | Critério |
 |---|---|
-| `sim` | `PRESSAO_SOCIAL` + `nivel_criticidade = alerta` + `observacao = dado_auditavel` |
-| `avaliar` | Atende parcialmente os critérios |
-| `nao` | Sem relevância para o IPST-H |
+| `sim` | Atende Condição A ou Condição B (ver abaixo) |
+| `avaliar` | Atende parcialmente uma das condições |
+| `nao` | Não atende nenhuma condição — aplicar R24 |
+
+### Condições de entrada no IPST-H
+
+**Condição A — Evento crítico:**
+```
+PRESSAO_SOCIAL
++ nivel_criticidade = alerta
++ observacao = dado_auditavel
+→ entra_ipst = sim
+```
+
+**Condição B — Fenômeno estrutural:**
+```
+PRESSAO_SOCIAL
++ impacto coletivo (R25)
++ mensuração consistente
++ potencial de série temporal (R23)
+→ entra_ipst = sim
+```
+
+> A Condição B permite entrada de fenômenos que não atingem `alerta` mas possuem efeito coletivo mensurável e recorrente — como reajustes tarifários, inflação local ou pressão sobre mobilidade urbana.
+
+### R24 — Critério de exclusão do IPST-H
+
+> Um evento deve receber `entra_ipst = nao` quando satisfizer **todas** as seguintes condições:
+>
+> 1. Não é potencialmente agregável em série temporal (R23)
+> 2. Não afeta diretamente a população em escala coletiva (R25)
+> 3. Representa evento pontual, criminal ou administrativo sem efeito sistêmico
+> 4. Não possui possibilidade de construção de indicador contínuo
+>
+> **Pergunta de corte (R24):**
+> *"Este fenômeno pode ser transformado em um indicador mensal, trimestral ou anual?"*
+> - SIM → `avaliar` ou `sim`
+> - NÃO → `nao`
+>
+> **Exemplo canônico de exclusão:**
+> Açougue autuado por carne imprópria e fraude de energia — evento pontual, criminal, sem efeito sistêmico identificável → `entra_ipst = nao`
+>
+> **Exemplo canônico de inclusão (Condição B):**
+> Reajuste de tarifa de transporte metropolitano — impacto coletivo, recorrente, mensurável, candidato a proxy de IU_03 → `entra_ipst = sim`
 
 ---
 
@@ -459,7 +535,7 @@ Em "16/04/2026", confirmado que o CadÚnico opera com CEP, não com `codbairro`.
 
 ## 19. Limite do Corpus como Instrumento de Desfecho
 
-> **R20 (desfecho) — Limite do corpus**
+> **R26 — Limite do corpus** *(renomeado de R20-desfecho para eliminar conflito com R20-agravamento)*
 >
 > O corpus jornalístico não é fonte confiável para inferir resolução de fenômenos sociais. A ausência de registros não equivale a desfecho positivo.
 >
@@ -495,7 +571,7 @@ Complementar ao `observacao`. Sem restrição de vocabulário.
 
 ---
 
-## 22. Schema Completo v10.1
+## 22. Schema Completo v10.2
 
 | Campo | Função | Camada | Obrigatório |
 |---|---|---|---|
@@ -536,11 +612,32 @@ Registro canônico — exercitou R01, R04, R11 (descartada), R15, R16, R18, R19 
 | `observacao` | `dado_auditavel` | R15 — número verificável tem precedência |
 | `papel_no_ciclo` | `emergencia` | R19 — PRESSAO_SOCIAL nunca é nao_aplicavel |
 | `id_caso_pressao` | `CH_VIOLENCIA_GENERO_2025` | agrupamento temático |
-| `entra_ipst` | `sim` | PRESSAO_SOCIAL + alerta + dado_auditavel |
+| `entra_ipst` | `sim` | Condição A — PRESSAO_SOCIAL + alerta + dado_auditavel |
 
 ---
 
-## 24. Distinção conceitual
+## 24. Exemplo de Aplicação — R24 e R25 em contraste (dez/2025–jan/2026)
+
+Dois casos que motivaram a criação de R24 e R25:
+
+| Campo | E13 — Açougue Jd. Amanda | E18 — Tarifa transporte |
+|---|---|---|
+| `tipo_camada` | `PRESSAO_SOCIAL` | `IVS` |
+| `dimensao_analitica` | `capital_humano` | `infraestrutura_urbana` |
+| `nivel_criticidade` | `alta` | `media` |
+| `observacao` | `dado_auditavel` | `dado_auditavel` |
+| `entra_ipst` | `nao` | `sim` |
+| Motivo | Evento pontual, criminal, sem efeito sistêmico (R24) | Impacto coletivo, recorrente, proxy IU_03 (Condição B) |
+
+> **Leitura analítica:**
+> O filtro R24/R25 separa **ruído de sinal** no IPST-H.
+> Tipo A (não entra): crime pontual, evento isolado, impacto difuso.
+> Tipo B (entra): impacto econômico coletivo, repetível, mensurável.
+> Esse filtro é o coração operacional do IPST-H.
+
+---
+
+## 25. Distinção conceitual
 
 | Instrumento | Função |
 |---|---|
@@ -550,19 +647,35 @@ Registro canônico — exercitou R01, R04, R11 (descartada), R15, R16, R18, R19 
 
 ---
 
-*Arquivo de governança — Atlas Social de Hortolândia*  
-*00_governanca/corpus_jornalistico/*
-ding regras_de_classificacao_v10_1.md…]()
+## Índice de Regras
+
+| Regra | Descrição | Seção |
+|---|---|---|
+| R00 | Ação direta da Prefeitura → GOV_MUNICIPAL | 0.4 |
+| R01 | `direta` exige mensuração robusta | 4 |
+| R02 | Obras e investimentos → `indireta` | 4 |
+| R03 | Políticas públicas → `indireta` ou `latente` | 4 |
+| R04 | Sem métrica IVS → `codigo_variavel = vazio` | 4 |
+| R05 | `multidimensional` exige justificativa em `nota_analista` | 8 |
+| R06 | Excluir apenas se comprometer o modelo | 13 |
+| R11 | Simplificação: ação do Estado → indireta; sem ação → contextual | 4 |
+| R12 | Fonte controlada: Tribuna Liberal | 15 |
+| R13 | Escopo geográfico: relevância para Hortolândia | 16 |
+| R14 | Pergunta de corte de inclusão/exclusão | 17 |
+| R15 | Hierarquia obrigatória de `observacao` | 9 |
+| R16 | `dimensao_analitica` independe de `tipo_camada` | 5 |
+| R17 | `dimensao_analitica = vazio` só para evento puramente narrativo | 5 |
+| R18 | `SMIDS_EXT`: redefinição e regra de integridade | 7 |
+| R19 | `nao_aplicavel` de uso restrito | 10 |
+| R20 | Agravamento com base interna à matéria | 10 |
+| R21 | Violência letal nunca contextual | 4 |
+| R22 | GOVERNANCA só é "resposta" se houver pressão identificável | 10 |
+| R23 | PRESSAO_SOCIAL deve ser potencialmente agregável em série | 3 |
+| R24 | **[NOVO]** Critério explícito de exclusão do IPST-H | 12 |
+| R25 | **[NOVO]** Pressão social coletiva — definição operacional | 3 |
+| R26 | Limite do corpus como instrumento de desfecho *(ex-R20-desfecho)* | 19 |
 
 ---
 
-
-
-<img width="1050" height="4146" alt="fluxo_v10_1" src="https://github.com/user-attachments/assets/9f5e3faa-c2ba-4403-b028-e0d5f98b9244" />
-
-
----
-
 *Arquivo de governança — Atlas Social de Hortolândia*  
 *00_governanca/corpus_jornalistico/*
-ing regras_de_classificacao_v10.1md…]()
