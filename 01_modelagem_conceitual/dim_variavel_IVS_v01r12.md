@@ -7,7 +7,7 @@
 - **ID do documento:** IVSH_METODOLOGIA_V01
 - **Versão:** v1.0
 - **Data de criação:** 2026-04-XX
-- **Última atualização:** 2026-04-XX
+- **Última atualização:** 2026-04-27
 - **Responsável técnico:** [Ailton Vendramini]
 - **Área:** Planejamento / Inclusão Social
 - **Status:** Em validação técnica
