@@ -1,51 +1,27 @@
-[dim_variavel_IVS_v01r11.md](https://github.com/user-attachments/files/26325385/dim_variavel_IVS_v01r11.md)[Uploading d# DIM_VARIAVEL_IVS — Variáveis do Índice de Vulnerabilidade Social
-
-**Versão:** v01r11  
-**Data de criação:** "09/03/2026"  
-**Última atualização:** "29/03/2026"  
-**Responsável:** Ailton Vendramini  
-**Repositório:** Atlas-Social-de-Hortolândia / 01_modelagem_conceitual
+# 📊 Metodologia IVS-H (Índice de Vulnerabilidade Social de Hortolândia)
 
 ---
 
-## Nota Metodológica
+## 🧾 Metadados do Documento
 
-Esta dimensão registra as variáveis que compõem o Índice de
-Vulnerabilidade Social (IVS), desenvolvido pelo IPEA e publicado no
-Atlas da Vulnerabilidade Social nos Municípios Brasileiros (2015),
-e suas adaptações locais no IVS-H.
+- **ID do documento:** IVSH_METODOLOGIA_V01
+- **Versão:** v1.0
+- **Data de criação:** 2026-04-XX
+- **Última atualização:** 2026-04-XX
+- **Responsável técnico:** [Ailton Vendramini]
+- **Área:** Planejamento / Inclusão Social
+- **Status:** Em validação técnica
+- **Fonte principal:** IVS – IPEA
+- **Bases utilizadas:** CadÚnico (dez/2025)
+- **Granularidade:** Pessoa → Família → Loteamento → Núcleo → Região de Planejamento
 
-O IVS oficial é adotado como **base metodológica** do projeto.
-A partir dele, é construído o **IVS-H (Hortolândia)**, preservando
-as mesmas 16 variáveis e as mesmas três dimensões do modelo IPEA.
+---
 
-Sua implementação é progressiva por fases, conforme disponibilidade
-de dados:
+## 🎯 Finalidade
 
-- **Fase 1 (MVP):** cálculo com as variáveis já disponíveis no CadÚnico,
-  utilizando a ponderação original do IVS/IPEA;
-- **Fase 2:** incorporação progressiva das demais variáveis, com base
-  em IBGE, SIDRA, CAGED, Saúde e Educação;
-- **Fase 3:** eventual calibração local de pesos (`peso_h`), após
-  validação empírica com dados reais do CadÚnico e Censo 2022.
+Estabelecer a metodologia de cálculo, interpretação e aplicação do IVS-H, garantindo reprodutibilidade, transparência e alinhamento com o modelo nacional (IPEA).
 
-O IVS-H **não acrescenta nem remove variáveis** do modelo IPEA.
-A diferença está na cobertura e na frequência das fontes: onde o IPEA
-usa majoritariamente o Censo decenal, o IVS-H combina fontes municipais
-contínuas e registros administrativos para calcular o mesmo indicador
-com maior frequência e maior detalhamento espacial.
-
-Variáveis locais adicionais (deslocamento para trabalho e estudo)
-pertencem ao **IPST-H** (Índice de Pressão Social Territorial de
-Hortolândia) — instrumento complementar que mede pressão sobre
-o Estado, não vulnerabilidade estrutural da população.
-
-**Princípio adotado:**
-> Usar o IVS oficial garante credibilidade científica, comparabilidade
-> intermunicipal e legitimidade institucional. A implementação local
-> (IVS-H) preserva a base metodológica nacional e avança por fases,
-> começando pela ponderação original do IPEA e deixando a calibração
-> local para etapa posterior de validação empírica.
+---
 
 **Referências:**
 - COSTA, M. A.; MARGUTI, B. O. *Atlas da Vulnerabilidade Social nos
@@ -57,126 +33,229 @@ o Estado, não vulnerabilidade estrutural da população.
   Paris: OECD, 2008.
 
 ---
+# 📊 Metodologia IVS-H (Índice de Vulnerabilidade Social de Hortolândia)
 
-## Estrutura da DIM_VARIAVEL_IVS
+## 1. Princípio Metodológico
 
-```
-id_variavel
-cod_variavel
-nome_variavel
-descricao
-dimensao_ivs          (Infraestrutura Urbana | Capital Humano | Renda e Trabalho)
-nivel_analise         (Pessoa | Família/Domicílio | Agregação Espacial)
-direcao_risco         (maior_pior | maior_melhor)
-peso_ipea             (peso derivado da estrutura hierárquica do IVS: 1/3 por dimensão, distribuído igualmente entre as variáveis de cada dimensão — IU: 1/3 ÷ 3 ≈ 0,111 por variável; CH: 1/3 ÷ 8 ≈ 0,042 por variável; RT: 1/3 ÷ 5 ≈ 0,067 por variável)
-peso_h                (peso calibrado IVS-H — a definir com dados reais)
-numerador             (definição do numerador da fórmula operacional)
-denominador           (definição do denominador da fórmula operacional)
-unidade               (proporcao | taxa | percentual | contagem)
-universo_referencia   (população de referência para o cálculo)
-fonte_dado            (fonte de dado disponível em Hortolândia)
-disponivel            (S | N | Parcial)
-prazo_obtencao        (Imediato | Curto prazo | Médio prazo | Roadmap)
-observacoes
-```
+O IVS-H (Índice de Vulnerabilidade Social de Hortolândia) segue integralmente a estrutura conceitual do IVS desenvolvido pelo IPEA, preservando suas dimensões, variáveis e lógica de cálculo.
 
-> **Nota sobre `nivel_analise`:** o IVS não é medido diretamente na
-> escala espacial final. Os indicadores são calculados nas unidades de
-> análise pessoa ou domicílio e posteriormente agregados. O valor
-> "Agregação Espacial" indica que o resultado é consolidado na
-> hierarquia: loteamento → núcleo (CRAS) → região de planejamento (RP).
->
-> O campo `nivel_analise` registra, de forma simplificada, tanto
-> a unidade de cálculo quanto a escala final de consolidação.
-> Essa simplificação será refinada futuramente com a separação
-> entre `unidade_calculo` e `unidade_agregacao` (pendência P10).
+**Diretriz central:**
 
-> **Nota sobre `direcao_risco`:** campo obrigatório para normalização
-> correta do índice. Indica se valores maiores da variável representam
-> maior vulnerabilidade (maior_pior) ou menor vulnerabilidade
-> (maior_melhor). Essencial na etapa de padronização min-max para
-> garantir que todas as variáveis apontem na mesma direção antes da
-> composição do índice.
->
-> **Fórmula de normalização min-max:**
->
-> Para variáveis com `direcao_risco = maior_pior`:
-> ```
-> X_norm = (X - X_min) / (X_max - X_min)
-> ```
-> Para variáveis com `direcao_risco = maior_melhor`:
-> ```
-> X_norm = (X_max - X) / (X_max - X_min)
-> ```
-> Em ambos os casos, X_norm ∈ [0, 1], onde 1 = máxima vulnerabilidade.
->
-> **Nota sobre escala antes da normalização:** variáveis expressas em
-> escalas diferentes (ex: CH_01 em taxa por 1.000; demais em proporção
-> 0–1) devem ser convertidas para escala comparável antes da aplicação
-> do min-max. A normalização por si garante comparabilidade final, mas
-> a conversão prévia evita distorções nos valores de X_min e X_max.
-
-> **Nota sobre pesos:** o IVS IPEA estrutura os pesos em dois níveis:
-> cada dimensão recebe peso igual de 1/3, e dentro de cada dimensão
-> o peso é distribuído igualmente entre as variáveis. Isso resulta em
-> pesos por variável distintos entre dimensões: IU (~0,111 por variável),
-> CH (~0,042 por variável) e RT (~0,067 por variável). O campo `peso_h`
-> será preenchido após análise empírica dos dados locais.
-
-> **Nota sobre fórmulas:** os campos `numerador`, `denominador`,
-> `unidade` e `universo_referencia` formalizam o cálculo operacional
-> de cada variável. São necessários para implementação reproduzível
-> e auditável. Detalhes completos por variável nas tabelas abaixo.
+> O IVS-H não acrescenta nem remove variáveis do modelo original do IPEA. Sua contribuição está na adaptação operacional, na maior granularidade territorial e na atualização temporal.
 
 ---
 
-## Dimensão 1 — Infraestrutura Urbana
+## 2. Estrutura do Índice
 
-*3 variáveis | peso da dimensão no IVS: 1/3 | peso IVS-H hipótese: ~15-20%*
+O IVS-H mantém as três dimensões clássicas:
 
-| id | cod | nome da variável | nível | direcao_risco | fonte do dado | disponível | prazo | observações |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| IVS001 | IU_01 | Percentual de pessoas em domicílios com abastecimento de água e esgotamento sanitário inadequados | Família/Domicílio | maior_pior | IBGE Censo 2022 / SAAE Hortolândia | Parcial | Curto prazo | Baixo poder discriminatório municipal (cobertura próxima de 100%) — não elimina poder discriminatório entre loteamentos. Peso local reduzido, mas variável mantida por relevância em loteamentos periféricos. |
-| IVS002 | IU_02 | Percentual da população que vive em domicílios urbanos sem serviço de coleta de lixo | Família/Domicílio | maior_pior | IBGE Censo 2022 / Secretaria de Serviços Urbanos | Parcial | Curto prazo | Mesmo raciocínio de IU_01. Baixo poder discriminatório municipal, possível variação entre loteamentos mais recentes ou irregulares. Peso revisável. |
-| IVS003 | IU_03 | Percentual de pessoas com renda per capita menor ou igual a meio SM que gastam mais de uma hora em deslocamento para o trabalho | Pessoa | maior_pior | IBGE Censo 2022 / SIDRA | Parcial | Curto prazo | Indicador híbrido (renda + mobilidade) presente no IVS IPEA. Mantido no IVS-H para preservar as 16 variáveis originais e garantir comparabilidade nacional. Dado disponível no Censo 2022 via SIDRA. |
+* **Infraestrutura Urbana (IU)**
+* **Capital Humano (CH)**
+* **Renda e Trabalho (RT)**
 
-### Fórmulas Operacionais — Infraestrutura Urbana
+Cada dimensão é composta pelas variáveis originais do IVS, respeitando:
 
-**IU_01**
-- Numerador: pessoas em domicílios sem rede geral de água OU sem rede coletora de esgoto
-- Denominador: total de pessoas residentes no loteamento
-- Unidade: proporção (0 a 1)
-- Universo: população residente total (Censo 2022)
-
-**IU_02**
-- Numerador: pessoas em domicílios sem coleta de lixo por serviço municipal ou empresa contratada
-- Denominador: total de pessoas residentes no loteamento
-- Unidade: proporção (0 a 1)
-- Universo: população residente em domicílios particulares (Censo 2022)
-
-**IU_03**
-- Numerador: pessoas com renda domiciliar per capita menor ou igual a meio SM e tempo de deslocamento para o trabalho superior a 1 hora
-- Denominador: total de pessoas com renda domiciliar per capita menor ou igual a meio SM no loteamento
-- Unidade: proporção (0 a 1)
-- Universo: população ocupada de baixa renda — Censo 2022 / SIDRA
+* definição conceitual
+* direção do risco
+* forma de cálculo
 
 ---
 
-## Dimensão 2 — Capital Humano
+## 3. Unidade de Análise (Ajuste Estrutural)
 
-*8 variáveis | peso da dimensão no IVS: 1/3 | peso IVS-H hipótese: ~40-45%*
+Para evitar ambiguidades metodológicas, o IVS-H adota explicitamente duas camadas:
 
-| id | cod | nome da variável | nível | direcao_risco | fonte do dado | disponível | prazo | observações |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| IVS004 | CH_01 | Mortalidade até 1 ano de idade | Pessoa | maior_pior | Secretaria Municipal de Saúde / DATASUS | Parcial | Curto prazo | Disponível no DATASUS. Solicitar série histórica à Saúde Municipal via interlocução intersetorial. |
-| IVS005 | CH_02 | Percentual de crianças de 0 a 5 anos que não frequentam a escola | Pessoa | maior_pior | Secretaria de Educação / CadÚnico | Parcial | Curto prazo | CadÚnico registra frequência escolar das crianças do cadastro. Cruzar com matrículas da Educação. |
-| IVS006 | CH_03 | Percentual de crianças de 6 a 14 anos que não frequentam a escola | Pessoa | maior_pior | Secretaria de Educação / CadÚnico | Parcial | Curto prazo | Evasão escolar — interface direta com CRAS e Conselho Tutelar. |
-| IVS007 | CH_04 | Percentual de mulheres de 10 a 17 anos que tiveram filhos | Pessoa | maior_pior | Secretaria de Saúde (registros de parto) / CadÚnico | Parcial | Médio prazo | Variável relevante porém de disponibilidade menos estável — depende de integração intersetorial e validação com base de saúde. Sujeita a revisão de fonte. Fragilidade metodológica explicitada. |
-| IVS008 | CH_05 | Percentual de mães chefes de família, sem fundamental completo e com pelo menos um filho menor de 15 anos | Família/Domicílio | maior_pior | CadÚnico — disponível imediatamente | Sim | Imediato | Disponível no CadÚnico. Operacionalização depende da identificação de responsável familiar (cod_parentesco_rf_pessoa = 1), sexo feminino e presença de filho menor de 15 anos no mesmo cod_familiar_fam. Alta relevância local — peso elevado no IVS-H. |
-| IVS009 | CH_06 | Taxa de analfabetismo da população de 15 anos ou mais | Pessoa | maior_pior | CadÚnico — disponível imediatamente / IBGE Censo 2022 | Sim | Imediato | Disponível no CadÚnico. Censo 2022 permite validação e expansão para população fora do cadastro. |
-| IVS010 | CH_07 | Percentual de crianças que vivem em domicílios em que nenhum morador tem ensino fundamental completo | Família/Domicílio | maior_pior | CadÚnico — disponível imediatamente | Sim | Imediato | Disponível no CadÚnico. Calculada em nível familiar — exige agregação por cod_familiar_fam antes da marcação individual das crianças. Um dos indicadores mais poderosos para detectar reprodução intergeracional da pobreza. |
-| IVS011 | CH_08 | Percentual de pessoas de 15 a 24 anos que não estudam, não trabalham e possuem renda per capita menor ou igual a meio SM | Pessoa | maior_pior | CadÚnico + CAGED | Parcial | Curto prazo | CadÚnico identifica bem a vulnerabilidade, mas não cobre todos os jovens de 15 a 24 anos — jovens fora do cadastro são ponto cego estrutural. CAGED registra apenas vínculo formal. |
+* **Unidade de cálculo:** nível em que a variável é originalmente mensurada (ex: pessoa)
+* **Unidade de agregação:** nível em que o indicador será analisado (ex: família, loteamento, núcleo)
 
+Exemplo:
+
+| Variável | Unidade de cálculo | Unidade de agregação |
+| -------- | ------------------ | -------------------- |
+| RT_01    | Pessoa             | Família / Loteamento |
+
+---
+
+## 4. Estratégia de Implementação
+
+O IVS-H será implementado em três fases:
+
+### 🔹 Fase 1 — MVP (Curto Prazo)
+
+* Uso exclusivo de dados disponíveis (CadÚnico)
+* Cálculo inicial de variáveis viáveis (ex: RT_01, CH_05, CH_06, CH_07, RT_04)
+* Objetivo: gerar primeira leitura consistente da vulnerabilidade
+
+---
+
+### 🔹 Fase 2 — Expansão (Médio Prazo)
+
+* Integração com bases externas:
+
+  * CAGED (emprego formal)
+  * CNIS (renda e vínculos)
+  * INEP (educação)
+  * IBGE (dados censitários)
+
+---
+
+### 🔹 Fase 3 — Calibração (Longo Prazo)
+
+* Ajuste de pesos das dimensões
+* Análise de sensibilidade
+* Validação empírica com dados locais
+
+---
+
+## 5. Limitações dos Dados
+
+O CadÚnico apresenta limitações estruturais:
+
+* não cobre toda a população
+* base declaratória (sujeita a inconsistências)
+* atualização heterogênea
+
+**Diretriz:**
+
+> O IVS-H reconhece essas limitações e as incorpora explicitamente na interpretação dos resultados.
+
+---
+
+## 6. Tratamento de Outliers (Ajuste Crítico)
+
+Valores extremos (outliers) não serão removidos automaticamente.
+
+**Procedimento adotado:**
+
+1. Identificação dos valores extremos
+2. Análise individual dos casos
+3. Classificação:
+
+   * erro de registro
+   * valor válido raro
+   * inconsistência estrutural
+4. Tratamento apenas quando caracterizado erro
+
+Para indicadores contínuos, poderão ser aplicadas:
+
+* limitação de valores extremos (winsorização)
+* análises paralelas (com e sem outliers)
+
+---
+
+## 7. Normalização
+
+O IVS-H utiliza normalização min-max:
+
+```text
+(valor observado - mínimo) / (máximo - mínimo)
+```
+
+A direção do risco será respeitada:
+
+* **maior valor = maior vulnerabilidade**
+* ou invertido, conforme variável
+
+**Observação:**
+
+> Valores extremos podem distorcer a escala e devem ser avaliados previamente.
+
+---
+
+## 8. Variáveis (Exemplo Operacional)
+
+### 🔹 RT_01 — Renda per capita até 1/2 salário mínimo
+
+**Definição:**
+Percentual de pessoas com renda domiciliar per capita inferior ou igual a meio salário mínimo.
+
+**Cálculo:**
+
+```text
+Número de pessoas com renda per capita ≤ 1/2 SM
+------------------------------------------------
+Total de pessoas
+```
+
+**Fonte:**
+CadÚnico
+
+**Observação:**
+Indicador robusto a outliers, por se tratar de classificação binária.
+
+---
+
+## 9. Limitações Específicas (RT_02 e RT_03)
+
+Indicadores relacionados à informalidade apresentam:
+
+* subestimação estrutural
+* dificuldade de mensuração direta
+
+**Diretriz:**
+
+> Devem ser interpretados com cautela e, sempre que possível, complementados com outras fontes.
+
+---
+
+## 10. Interpretação dos Resultados (Nova Seção)
+
+O IVS-H não é apenas um indicador numérico, mas uma ferramenta de leitura territorial.
+
+Exemplos:
+
+* **RT alto:** vulnerabilidade econômica imediata
+* **CH alto:** risco de reprodução intergeracional da pobreza
+* **IU baixo:** não elimina outras formas de vulnerabilidade
+
+---
+
+## 11. Integração com Políticas Públicas
+
+Diferentes programas públicos atuam sobre dimensões específicas da vulnerabilidade:
+
+* assistência social → famílias vulneráveis
+* educação → capital humano
+* qualificação → inserção produtiva
+
+**Diretriz central:**
+
+> O desafio não está na ausência de políticas, mas na sua articulação e direcionamento.
+
+---
+
+## 12. Aplicação Estratégica
+
+O IVS-H permite:
+
+* identificar onde atuar
+* identificar para quem atuar
+* orientar qual política utilizar
+
+---
+
+## 13. Separação Conceitual (IVS-H vs IPST-H)
+
+* **IVS-H:** mede vulnerabilidade estrutural
+* **IPST-H:** mede pressão social operacional
+
+Essa separação evita distorções analíticas.
+
+---
+
+## 14. Conclusão
+
+O IVS-H representa uma evolução operacional do IVS tradicional:
+
+* maior granularidade
+* maior frequência temporal
+* maior aplicabilidade na gestão pública
+
+**Síntese:**
+
+> O IVS-H não é apenas um instrumento de diagnóstico, mas um mecanismo de priorização e organização das políticas públicas.
+
+---
 ### Fórmulas Operacionais — Capital Humano
 
 **CH_01**
@@ -397,43 +476,93 @@ Onde:
 > (NARDO et al., OECD, 2008).
 
 ---
+---
 
-## Pendências
+## 🔎 Rastreabilidade Metodológica
 
-| # | Pendência | Prioridade |
-| --- | --- | --- |
-| P01 | Solicitar dados de mortalidade infantil à Secretaria de Saúde (CH_01) | Alta |
-| P02 | Solicitar dados de matrícula e evasão escolar à Secretaria de Educação (CH_02, CH_03) | Alta |
-| P03 | Extrair IU_03 do SIDRA/IBGE Censo 2022 — tabela de deslocamento intermunicipal | Alta |
-| P04 | Calcular IVS-H Fase 1 com as 5 variáveis CadÚnico dez/2025 | Alta |
-| P05 | Levantar dados do IBGE Censo 2022 por setor censitário para Hortolândia | Alta |
-| P06 | Confirmar cobertura de saneamento com SAAE (IU_01) | Média |
-| P07 | Definir metodologia formal de calibração dos pesos IVS-H (Fase 2) | Média |
-| P08 | Cruzar variáveis IVS com loteamentos para cálculo por escala espacial | Alta |
-| P09 | Formalizar convenção de `periodo_referencia` nos scripts de carga | Média |
-| P10 | Separar `nivel_analise` em `unidade_calculo` e `unidade_agregacao` (melhoria futura) | Baixa |
-| P11 | Registrar explicitamente, nos scripts e notebooks da Fase 1, o uso da ponderação original do IVS/IPEA (sem calibração local de peso_h) | Alta |
-| P12 | ~~Formalizar regra operacional de "dependência de idosos" para RT_04~~ | ✅ Resolvida em 27/03/2026 — critério: domicílios com renda ≤ 0,5 SM e presença de pelo menos um morador com 60 anos ou mais |
+Cada variável do IVS-H segue os seguintes princípios:
+
+- aderência ao modelo IPEA
+- cálculo reprodutível em código (Python/Pandas)
+- identificação clara de:
+  - unidade de cálculo
+  - unidade de agregação
+- validação cruzada entre:
+  - cálculo manual
+  - campos existentes nas bases (quando disponíveis)
+
+---
+---
+
+## 🧠 Registro de Decisões Metodológicas
+
+### 🔹 Estrutura do Índice
+- Decisão: Manter integralmente as 16 variáveis do IVS IPEA
+- Justificativa: Garantir comparabilidade nacional e robustez metodológica
 
 ---
 
-## Log de Alterações
+### 🔹 Uso do CadÚnico (MVP)
+- Decisão: Utilizar CadÚnico como base inicial
+- Justificativa: Disponibilidade imediata e cobertura da população vulnerável
+- Limitação: Não representa totalidade da população
 
-| Versão | Data | Alterações |
-| --- | --- | --- |
-| v01 | "09/03/2026" | Criação |
-| v01r | "09/03/2026" | Substituída entidade Território pela hierarquia Loteamento / RP / Núcleo |
-| v01r2 | "09/03/2026" | Substituída referência Modelo RAJIS; número CadÚnico padronizado; ACERTE removido |
-| v01r3 | "11/03/2026" | Correções de disponibilidade; IVS003 como indicador híbrido; Fluxo Analítico adicionado |
-| v01r4 | "13/03/2026" | RT_01: CadÚnico confirmado como fonte primária |
-| v01r5 | "18/03/2026" | IU_03 removida (incorretamente); RT_06/RT_07 criadas; direcao_risco adicionado; fórmulas operacionais |
-| v01r6 | "22/03/2026" | IU_03 restaurada; RT_06/RT_07 removidas (pertencem ao IPST-H); total = 16 variáveis |
-| v01r7 | "22/03/2026" | peso_ipea corrigido para estrutura hierárquica; fórmulas min-max formalizadas; nota de escala CH_01; P10 adicionada |
-| v01r8 | "23/03/2026" | (1) Nota Metodológica reescrita: estrutura explícita Fase 1 / Fase 2 / Fase 3; (2) Princípio adotado alinhado à implementação progressiva; (3) "Agregação Territorial" → "Agregação Espacial"; (4) nota nivel_analise expandida; (5) RT_04: observação com honestidade metodológica; (6) CH_05 e CH_07: notas operacionais explicitadas; (7) Resumo de Disponibilidade com nota Fase 1; (8) título calibração: "Hipótese de Calibração Local (Fase posterior)"; (9) P11 e P12 adicionadas |
-| v01r9 | "27/03/2026" | Duas correções cirúrgicas a partir da formalização das fórmulas MVP (insights.docx, 27/03/2026): (1) **RT_04**: unidade corrigida de Pessoa para Domicílio/Família; numerador corrigido de "pessoas em domicílios onde o principal provedor é idoso" para "domicílios com renda ≤ 0,5 SM e presença de pelo menos um morador com 60+"; denominador corrigido de "total de pessoas" para "total de domicílios do loteamento"; P12 marcada como resolvida. (2) **CH_05**: denominador corrigido de "total de mulheres chefes de família" para "total de famílias do loteamento" — alinhamento com metodologia IPEA. Seção "Resumo das Unidades de Cálculo — Fase 1 MVP" adicionada. |
-| v01r10 | "27/03/2026" | Fórmulas das 5 variáveis do MVP (RT_01, RT_04, CH_05, CH_06, CH_07) reescritas em notação LaTeX com subscritos, intersecções e denominadores explícitos. Demais fórmulas (variáveis Fase 2) mantidas em formato descritivo — LaTeX reservado para as variáveis operacionalmente ativas no MVP. |
-| v01r11 | "29/03/2026" | RT_01 e RT_04: adição da referência salarial concreta — SM dez/2025 = R$ 1.518,00, limiar de corte = R$ 759,00 per capita, com referência cruzada a `dim_salario_minimo_v01.md`. Garante rastreabilidade auditável do limiar usado no cálculo do MVP Fase 1. |
+---
 
+### 🔹 Unidade de Análise
+- Decisão: Separar unidade de cálculo e unidade de agregação
+- Justificativa: Evitar inconsistências entre variáveis (pessoa vs família)
+
+---
+
+### 🔹 Tratamento de Outliers
+- Decisão: Não remover automaticamente valores extremos
+- Justificativa: Necessidade de investigação prévia (erro vs dado válido)
+- Ação futura: Aplicar winsorização em indicadores contínuos, quando necessário
+
+---
+
+### 🔹 Normalização
+- Decisão: Utilizar método min-max
+- Justificativa: Aderência ao modelo IPEA
+- Risco: Sensibilidade a outliers (controlado por análise prévia)
+
+---
+
+### 🔹 RT_01 (Renda)
+- Decisão: Validar cálculo com campo existente no CadÚnico
+- Justificativa: Garantia de consistência
+- Observação: Indicador robusto a outliers
+
+---
+
+### 🔹 RT_02 e RT_03 (Informalidade)
+- Decisão: Manter no modelo, mesmo com limitações
+- Justificativa: Aderência ao IVS original
+- Limitação: Subestimação estrutural da informalidade
+
+---
+
+### 🔹 Separação IVS-H x IPST-H
+- Decisão: Separar vulnerabilidade estrutural de pressão operacional
+- Justificativa: Evitar distorções analíticas
+
+---
+
+### 🔹 Estratégia de Implementação
+- Decisão: Estruturar em 3 fases (MVP → Expansão → Calibração)
+- Justificativa: Viabilidade técnica e institucional
+
+---
+
+## 📌 Observação Final
+
+Este documento é evolutivo e poderá ser atualizado conforme:
+- novas bases de dados
+- validações empíricas
+- decisões estratégicas da gestão
+
+---
 ---
 
 *Documento de modelagem conceitual — 01_modelagem_conceitual.*  
