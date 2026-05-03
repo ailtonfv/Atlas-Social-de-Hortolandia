@@ -1,4 +1,4 @@
-[regras_de_classificacao_v10.2.md](https://github.com/user-attachments/files/26866862/regras_de_classificacao_v10.2.md)
+[regras_de_classificacao_v10.3 (1).md](https://github.com/user-attachments/files/27317607/regras_de_classificacao_v10.3.1.md)[regras_de_classificacao_v10.2.md](https://github.com/user-attachments/files/26866862/regras_de_classificacao_v10.2.md)
 # Regras de Classificação — Corpus Jornalístico
 **Versão:** v10.3  
 **Data:** "03/05/2026"  
@@ -9,18 +9,17 @@
 
 ![fluxo_v10_1](https://github.com/user-attachments/assets/9f5e3faa-c2ba-4403-b028-e0d5f98b9244)
 
+
+
 ---
 
-## Changelog v10.1 → v10.2
+## Changelog v10.2 → v10.3
 
 | Item | Mudança |
 |---|---|
-| R24 | Regra nova — critério explícito de exclusão do IPST-H |
-| R25 | Regra nova — definição operacional de pressão social coletiva |
-| R26 | Renomeação — R20 (desfecho) passa a R26 para eliminar duplicidade com R20 (agravamento) |
-| Seção 12 | `entra_ipst = sim` ganha segunda condição: impacto coletivo + mensuração + série |
-| Seção 3 | R25 inserido após R23, na descrição de `PRESSAO_SOCIAL` |
-| Motivação | R24 e R25 derivados da classificação empírica dos eventos E13 e E18 (corpus dez/2025–jan/2026) |
+| R27 | Regra nova — definição operacional explícita do escopo geográfico do corpus |
+| Seção 16 | Reescrita completa — escopo geográfico passa de sugestão a critério vinculante |
+| Motivação | Classificação empírica de 03/05/2026 revelou ambiguidade na fronteira entre eventos regionais relevantes e eventos de outros municípios sem vínculo comprovável com Hortolândia |
 
 ---
 
@@ -115,12 +114,17 @@ Nível C — Painel gerencial
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-ENTRADA
+ENTRADA — FILTRO GEOGRÁFICO OBRIGATÓRIO (R27)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-O evento ocorre em Hortolândia ou tem impacto sobre o município? (R14)
-    NÃO → descartar
+Este evento se enquadra em algum dos três casos válidos? (R27)
+    CASO 1: Ocorreu em Hortolândia?
+    CASO 2: Ocorreu fora mas tem impacto direto e identificável sobre Hortolândia?
+    CASO 3: Ocorreu em Hortolândia e tem impacto identificável na região?
+
+    NÃO se enquadra em nenhum → DESCARTAR IMEDIATAMENTE
     SIM ↓
+
     Ocorreu em Hortolândia?
         SIM → municipio = Hortolândia | localidade = loteamento/bairro
         NÃO → municipio = origem | localidade = Regional
@@ -351,7 +355,7 @@ Uso restrito. Permitido apenas com atuação simultânea clara em mais de uma di
 | 1 | `sinal_smids_ext` | Sem variável IVS mapeável ou sem eixo dominante claro |
 | 2 | `multiplos_loteamentos` | Impacto difuso em mais de um loteamento |
 | 3 | `impacto_latente` | Efeito futuro não imediato |
-| 4 | `impacto_regional_hortolandia` | Evento externo com reflexo local |
+| 4 | `impacto_regional_hortolandia` | Evento externo com reflexo local identificável em Hortolândia |
 | 5 | `aproximacao_variavel` | Indicador substituto de variável IVS não oficial |
 | 6 | `caso_ilustrativo` | Evento pontual em loteamento identificado |
 | 7 | `interface_ch` | Cruzamento com dimensão Capital Humano |
@@ -467,12 +471,6 @@ PRESSAO_SOCIAL
 > *"Este fenômeno pode ser transformado em um indicador mensal, trimestral ou anual?"*
 > - SIM → `avaliar` ou `sim`
 > - NÃO → `nao`
->
-> **Exemplo canônico de exclusão:**
-> Açougue autuado por carne imprópria e fraude de energia — evento pontual, criminal, sem efeito sistêmico identificável → `entra_ipst = nao`
->
-> **Exemplo canônico de inclusão (Condição B):**
-> Reajuste de tarifa de transporte metropolitano — impacto coletivo, recorrente, mensurável, candidato a proxy de IU_03 → `entra_ipst = sim`
 
 ---
 
@@ -493,7 +491,7 @@ PRESSAO_SOCIAL
 | Situação | Tratamento |
 |---|---|
 | Política recém-lançada | `latente` |
-| Evento regional | `localidade = Regional` |
+| Evento regional com impacto em Hortolândia | `localidade = Regional` + `observacao = impacto_regional_hortolandia` |
 | Presença estatal positiva | registrar como evidência válida |
 
 ---
@@ -510,13 +508,80 @@ PRESSAO_SOCIAL
 
 ---
 
+### R27 — Definição operacional do escopo geográfico *(NOVO v10.3)*
+
+> **O corpus do Atlas Social de Hortolândia registra exclusivamente eventos que se enquadrem em um dos três casos abaixo. Fora desses casos, o evento deve ser descartado sem classificação.**
+
+---
+
+#### CASO 1 — Evento ocorrido em Hortolândia
+
+O evento aconteceu dentro dos limites do município de Hortolândia.
+
+> Inclui: ocorrências, ações de governo, programas, infraestrutura, violência, saúde, educação e qualquer fenômeno social situado no município.
+
+---
+
+#### CASO 2 — Evento externo com impacto direto e identificável sobre Hortolândia
+
+O evento ocorreu em outro município ou instância, mas seu efeito sobre Hortolândia é **explícito na matéria** ou **tecnicamente demonstrável**.
+
+> Inclui: crises hídricas regionais que afetam o abastecimento local, epidemias confirmadas em Hortolândia, operações policiais interestaduais com alvos no município, decisões federais ou estaduais com consequência direta para a população local.
+
+> **Não inclui:** dados de outros municípios apresentados sem vínculo explícito com Hortolândia, mesmo que pertençam à mesma região metropolitana.
+
+---
+
+#### CASO 3 — Evento de Hortolândia com impacto identificável na região
+
+O evento originou-se em Hortolândia e produz efeitos mensuráveis ou identificáveis em outros municípios da região.
+
+> Inclui: surtos com origem em Hortolândia que se expandem, ações do município com repercussão regional, operações conjuntas com origem local.
+
+---
+
+#### O que NÃO entra no corpus — lista de exclusão definitiva
+
+Os itens abaixo são descartados independentemente de sua relevância temática:
+
+| Tipo de conteúdo | Motivo |
+|---|---|
+| Eventos de outros municípios sem vínculo comprovável com Hortolândia | Não atende nenhum dos três casos |
+| Artigos de opinião, colunas acadêmicas ou editoriais sem referência local | Sem ancoragem territorial em Hortolândia |
+| Dados regionais onde Hortolândia não aparece como afetada | Relevância regional não equivale a relevância local |
+| Notícias de interesse geral sem dimensão social local identificável | Fora do escopo do Atlas Social |
+| Eventos de municípios vizinhos com mera proximidade geográfica | Proximidade não é impacto |
+
+---
+
+#### Pergunta de corte — R27
+
+> *"Este evento ocorreu em Hortolândia, ou seu impacto sobre Hortolândia é explícito e identificável?"*
+>
+> - **SIM** → prosseguir para R14 e fluxo de classificação
+> - **NÃO** → **descartar imediatamente**
+
+---
+
+#### Relação entre R13, R14 e R27
+
+| Regra | Função |
+|---|---|
+| R13 | Princípio geral: relevância para Hortolândia define o escopo |
+| R14 | Pergunta de corte analítica: o evento explica, mede ou antecipa vulnerabilidade? |
+| R27 | Critério operacional: define os três casos válidos e a lista de exclusão |
+
+> R27 é aplicada **antes** de R14. Um evento que não passa por R27 não chega a R14.
+
+---
+
 ## 17. Critérios de Inclusão e Exclusão
 
-> **R14 — Pergunta de corte:**
+> **R14 — Pergunta de corte analítica:**
 > *"Este evento ajuda a explicar, medir ou antecipar a vulnerabilidade social em Hortolândia?"*
 > SIM → incluir | NÃO → descartar
 
-**Incluir quando:**
+**Incluir quando** (após aprovação em R27):
 1. Evento ocorrido em Hortolândia
 2. Evento externo com impacto direto ou plausível sobre o município
 3. Evento regional com potencial analítico para o IVS-H
@@ -571,7 +636,7 @@ Complementar ao `observacao`. Sem restrição de vocabulário.
 
 ---
 
-## 22. Schema Completo v10.2
+## 22. Schema Completo v10.3
 
 | Campo | Função | Camada | Obrigatório |
 |---|---|---|---|
@@ -616,9 +681,24 @@ Registro canônico — exercitou R01, R04, R11 (descartada), R15, R16, R18, R19 
 
 ---
 
-## 24. Exemplo de Aplicação — R24 e R25 em contraste (dez/2025–jan/2026)
+## 24. Exemplo de Aplicação — R27 em contraste (03/05/2026)
 
-Dois casos que motivaram a criação de R24 e R25:
+Três casos que motivaram a criação de R27:
+
+| Campo | Sumaré 70,9% informalidade | Artigo interseccionalidade USP | Meningite 24 casos regionais |
+|---|---|---|---|
+| Passa R27? | **não** | **não** | **sim** |
+| Motivo | Dado de Sumaré sem vínculo explícito com Hortolândia | Artigo acadêmico sobre São Paulo, sem referência local | Hortolândia lidera com 10 casos — impacto direto confirmado |
+| Ação | descartar | descartar | classificar |
+
+> **Leitura analítica:**
+> Proximidade geográfica (Sumaré é município vizinho) não equivale a impacto sobre Hortolândia.
+> Relevância temática (informalidade é variável RT_03) não equivale a ancoragem territorial.
+> R27 separa **dado relevante sobre o município** de **dado relevante sobre o tema**.
+
+---
+
+## 25. Exemplo de Aplicação — R24 e R25 em contraste (dez/2025–jan/2026)
 
 | Campo | E13 — Açougue Jd. Amanda | E18 — Tarifa transporte |
 |---|---|---|
@@ -629,15 +709,9 @@ Dois casos que motivaram a criação de R24 e R25:
 | `entra_ipst` | `nao` | `sim` |
 | Motivo | Evento pontual, criminal, sem efeito sistêmico (R24) | Impacto coletivo, recorrente, proxy IU_03 (Condição B) |
 
-> **Leitura analítica:**
-> O filtro R24/R25 separa **ruído de sinal** no IPST-H.
-> Tipo A (não entra): crime pontual, evento isolado, impacto difuso.
-> Tipo B (entra): impacto econômico coletivo, repetível, mensurável.
-> Esse filtro é o coração operacional do IPST-H.
-
 ---
 
-## 25. Distinção conceitual
+## 26. Distinção conceitual
 
 | Instrumento | Função |
 |---|---|
@@ -660,8 +734,8 @@ Dois casos que motivaram a criação de R24 e R25:
 | R06 | Excluir apenas se comprometer o modelo | 13 |
 | R11 | Simplificação: ação do Estado → indireta; sem ação → contextual | 4 |
 | R12 | Fonte controlada: Tribuna Liberal | 15 |
-| R13 | Escopo geográfico: relevância para Hortolândia | 16 |
-| R14 | Pergunta de corte de inclusão/exclusão | 17 |
+| R13 | Princípio geral: relevância para Hortolândia define o escopo | 16 |
+| R14 | Pergunta de corte analítica de inclusão/exclusão | 17 |
 | R15 | Hierarquia obrigatória de `observacao` | 9 |
 | R16 | `dimensao_analitica` independe de `tipo_camada` | 5 |
 | R17 | `dimensao_analitica = vazio` só para evento puramente narrativo | 5 |
@@ -671,11 +745,27 @@ Dois casos que motivaram a criação de R24 e R25:
 | R21 | Violência letal nunca contextual | 4 |
 | R22 | GOVERNANCA só é "resposta" se houver pressão identificável | 10 |
 | R23 | PRESSAO_SOCIAL deve ser potencialmente agregável em série | 3 |
-| R24 | **[NOVO]** Critério explícito de exclusão do IPST-H | 12 |
-| R25 | **[NOVO]** Pressão social coletiva — definição operacional | 3 |
-| R26 | Limite do corpus como instrumento de desfecho *(ex-R20-desfecho)* | 19 |
+| R24 | Critério explícito de exclusão do IPST-H | 12 |
+| R25 | Pressão social coletiva — definição operacional | 3 |
+| R26 | Limite do corpus como instrumento de desfecho | 19 |
+| R27 | **[NOVO]** Definição operacional do escopo geográfico — três casos válidos + lista de exclusão | 16 |
+
+---
+
+## Changelog completo
+
+| Versão | Data | Alterações principais |
+|---|---|---|
+| v10.0 | anterior | Schema base — tipo_camada, dimensao_analitica, observacao |
+| v10.1 | anterior | Quatro colunas novas: papel_no_ciclo, id_caso_pressao, entra_ipst, dimensao_analitica obrigatória |
+| v10.2 | "19/04/2026" | R24 (exclusão IPST-H), R25 (pressão coletiva), R26 (renomeação desfecho) |
+| v10.3 | "03/05/2026" | R27 (escopo geográfico operacional), Seção 16 reescrita, Exemplo 24 adicionado |
 
 ---
 
 *Arquivo de governança — Atlas Social de Hortolândia*  
 *00_governanca/corpus_jornalistico/*
+ing regras_de_classificacao_v10.3 (1).md…]()
+
+
+---
