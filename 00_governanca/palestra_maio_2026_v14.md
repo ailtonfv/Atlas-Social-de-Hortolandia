@@ -1,10 +1,10 @@
-[palestra_maio_2026_v14 (1).md](https://github.com/user-attachments/files/27319494/palestra_maio_2026_v14.1.md)
-# Palestra — Atlas Social de Hortolândia (v14)
+[palestra_maio_2026_v15.md](https://github.com/user-attachments/files/27362578/palestra_maio_2026_v15.md)
+# Palestra — Atlas Social de Hortolândia (v15)
 
-**Versão:** v14  
-**Data:** Maio/2026  
-**Duração estimada:** 8 minutos  
-**Alterações v13 → v14:** RT_04 calculado (8%); frase central IVCAD incorporada; dado IPEA Q4/2025 adicionado como contexto nacional; slide 6 reestruturado com três vetores + dados; slide 3 atualizado com RT_04.
+**Versão:** v15
+**Data:** Maio/2026
+**Duração estimada:** 8 minutos
+**Alterações v14 → v15:** Slide 6 reestruturado — IPST-H adicionado como quinto instrumento; figura dos cinco instrumentos incorporada; frase síntese atualizada; slide 9 reescrito com MVP do IPST-H (TA, CD, TME) e dependência SIGAS explicitada.
 
 ---
 
@@ -75,7 +75,18 @@ Neste momento, o índice está sendo implementado de forma progressiva, com base
 
 ## 6. Os instrumentos — o que estamos medindo e por quê
 
-Para organizar a leitura da vulnerabilidade, utilizamos quatro instrumentos complementares. Cada um responde a uma pergunta diferente.
+Para organizar a leitura da vulnerabilidade, utilizamos cinco instrumentos complementares.
+Cada um responde a uma pergunta diferente — e nenhum substitui o outro.
+
+---
+
+> 📊 **[FIGURA — Os cinco instrumentos do Atlas Social]**
+>
+> *(inserir figura interativa gerada em 04/05/2026)*
+>
+> Camada de referência: **IVS/IPEA** — onde está a vulnerabilidade no Brasil?
+> Camada municipal: **IVS-H** (estrutura) + **IVCAD** (perfil do cadastrado)
+> Camada operacional: **IPST-H** (pressão sobre o Estado) + **IPSO-H** (o que está acontecendo agora)
 
 ---
 
@@ -97,14 +108,23 @@ Modelo federal com 6 dimensões e 40 indicadores, focado exclusivamente no públ
 
 ---
 
-**IPSO-H — Índice de Pressão Social Observada de Hortolândia**
-*Pergunta: o que está acontecendo agora?*
-Instrumento próprio construído a partir da classificação sistemática de matérias jornalísticas locais. Captura sinais emergentes que ainda não aparecem nos dados estruturais — funciona como sensor qualitativo da realidade social em tempo real.
+**IPST-H — Índice de Pressão Social Territorial de Hortolândia**
+*Pergunta: onde a vulnerabilidade está pressionando o Estado agora?*
+Instrumento próprio que mede a tensão sobre a rede de atendimento — volume de demanda, capacidade de resposta e tempo de espera. Transforma dados administrativos em sinais de pressão mensuráveis por unidade e por período.
 
 ---
 
-> Esses quatro instrumentos não se substituem — se complementam.
-> **O IVS-H mostra a estrutura. O IVCAD mostra o perfil. O IPSO-H mostra o movimento.**
+**IPSO-H — Índice de Pressão Social Observada de Hortolândia**
+*Pergunta: o que está acontecendo agora?*
+Instrumento próprio construído a partir da classificação sistemática de matérias da Tribuna Liberal. Captura ciclos de pressão social em tempo real — violência, saúde pública, mobilidade — antes que apareçam nos dados estruturais.
+
+---
+
+> **O IVS explica o problema.**
+> **O IVS-H localiza dentro do município.**
+> **O IVCAD perfila quem já está cadastrado.**
+> **O IPST-H mostra onde a pressão chega ao Estado.**
+> **O IPSO-H narra o que está acontecendo agora.**
 
 ---
 
@@ -137,27 +157,34 @@ Renda insuficiente para cobrir necessidades básicas, mesmo entre famílias com 
 
 ## 8. Complemento analítico — IPSO-H
 
-Além das bases estruturadas, construímos o **IPSO-H — Pressão Social Observada de Hortolândia**.
+Além das bases estruturadas, o **IPSO-H** funciona como sensor qualitativo da realidade social.
 
-A partir da classificação sistemática de matérias da Tribuna Liberal, identificamos ciclos de pressão social em tempo real:
+A partir da classificação sistemática de matérias da Tribuna Liberal, identificamos **ciclos de pressão social** com trajetória no tempo:
 
-* violência contra crianças e mulheres
-* crises de saúde pública
-* pressões sobre mobilidade e infraestrutura
+* violência de gênero — ciclo ativo desde dezembro/2025
+* violência contra crianças e adolescentes — ciclo aberto em abril/2026
+* surto de KPC regional — agravamento registrado em abril/2026
 
-O IPSO-H não é um índice — é um **sensor qualitativo da realidade social**, que permite antecipar sinais antes que apareçam nos dados estruturais.
+O IPSO-H não é um índice numérico — é **memória institucional datada**.
+Quando a gestão mudar, o corpus documenta o que estava acontecendo, quando o Estado respondeu e quais pressões nunca tiveram desfecho.
 
 ---
 
 ## 9. O que falta para avançar
 
-Para aprofundar essa análise, são necessárias integrações adicionais:
+Cada integração pendente tem um entregável concreto associado:
 
-* **SIGAS** — para acompanhamento dos atendimentos
-* **CAGED** — para verificação de vínculo formal
-* **Dados de saúde** — para cruzamento com o vetor de necessidade de cuidados
+**SIGAS** — acesso aos registros de atendimento do CRAS e CREAS.
+Ativa o **MVP do IPST-H**: três indicadores operacionais imediatos —
+Taxa de Atendimento (TA), Crescimento da Demanda (CD) e Tempo Médio de Espera (TME).
+Juntos respondem: *"o sistema está dando conta — e a situação está piorando ou melhorando?"*
 
-Essas integrações aumentam a precisão e permitem direcionar melhor os recursos já existentes.
+**CAGED** — verificação de vínculo formal de emprego.
+Permite cruzar o universo do CadÚnico com inserção produtiva real —
+completando as variáveis RT_02 e RT_03 do IVS-H.
+
+**Dados de saúde** — mortalidade infantil e gravidez na adolescência.
+Preenche CH_01 e CH_04 do IVS-H — as duas variáveis de Capital Humano ainda ausentes.
 
 ---
 
@@ -166,7 +193,8 @@ Essas integrações aumentam a precisão e permitem direcionar melhor os recurso
 O projeto segue uma lógica progressiva:
 
 * MVP com dados do CadÚnico ✔
-* Expansão com bases externas
+* MVP operacional com SIGAS (IPST-H — TA, CD, TME)
+* Expansão com bases externas (CAGED, Saúde, Educação)
 * Consolidação do índice completo
 
 O objetivo não é construir um modelo perfeito, mas um modelo **útil e aplicável desde o início**.
