@@ -1,4 +1,5 @@
-[palestra_maio_2026_v16.md](https://github.com/user-attachments/files/27376168/palestra_maio_2026_v16.md)[Uploading p# Palestra — Atlas Social de Hortolândia (v16)
+[palestra_maio_2026_v16 (1).md](https://github.com/user-attachments/files/27376475/palestra_maio_2026_v16.1.md)
+# Palestra — Atlas Social de Hortolândia (v16)
 
 **Versão:** v16
 **Data:** Maio/2026
@@ -85,7 +86,13 @@ Cada um responde a uma pergunta diferente — e nenhum substitui o outro.
 
 ---
 
-![Os cinco instrumentos do Atlas Social de Hortolândia](figuras/cinco_instrumentos_atlas_social.svg)
+| Instrumento | Pergunta central |
+|---|---|
+| **IVS** | Onde está a vulnerabilidade no Brasil? |
+| **IVS-H** | Onde está a vulnerabilidade dentro do município? |
+| **IVCAD** | Qual é o perfil de quem já está cadastrado? |
+| **IPST-H** | Onde a vulnerabilidade está pressionando o Estado agora? |
+| **IPSO-H** | O que está acontecendo agora? |
 
 ---
 
@@ -219,5 +226,3 @@ Porque, no final,
 ---
 
 *Atlas Social de Hortolândia — SMIDS / Maio 2026*
-alestra_maio_2026_v16.md…]()
-
