@@ -42,6 +42,9 @@ Mas há uma segunda leitura importante dentro desse universo:
 
 Isso significa que quase 2.400 famílias acumulam dois fatores simultâneos de vulnerabilidade: **baixa renda e necessidade de cuidado com idoso** — sem suporte estruturado do Estado.
 
+E, há uma terceira variável que vale considerar "6.259 famílias cadastradas não registram nenhuma fonte de renda — nem benefício, nem trabalho."
+Isso representa famílias fora de qualquer fluxo econômico mensurável.
+
 ---
 
 ## 4. Contexto nacional — o que o IPEA diz
