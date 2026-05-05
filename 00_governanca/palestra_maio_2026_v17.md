@@ -73,8 +73,11 @@ Expansão (aqui você ganha a sala):
 Esses três números formam uma hierarquia de vulnerabilidade:
 
 baixa renda
+
 baixa renda + dependência
+
 ausência total de renda
+
 Fala crítica:
 
 Cada nível exige um tipo diferente de política pública.
