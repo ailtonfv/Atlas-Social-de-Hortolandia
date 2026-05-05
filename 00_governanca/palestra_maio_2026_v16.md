@@ -1,9 +1,10 @@
-[palestra_maio_2026_v15 (1).md](https://github.com/user-attachments/files/27362789/palestra_maio_2026_v15.1.md)[Uploading# Palestra — Atlas Social de Hortolândia (v15)
+[palestra_maio_2026_v16 (1).md](https://github.com/user-attachments/files/27376475/palestra_maio_2026_v16.1.md)
+# Palestra — Atlas Social de Hortolândia (v16)
 
-**Versão:** v15
+**Versão:** v16
 **Data:** Maio/2026
 **Duração estimada:** 8 minutos
-**Alterações v14 → v15:** Slide 6 reestruturado — IPST-H adicionado como quinto instrumento; figura dos cinco instrumentos incorporada; frase síntese atualizada; slide 9 reescrito com MVP do IPST-H (TA, CD, TME) e dependência SIGAS explicitada.
+**Alterações v15 → v16:** Slide 3 atualizado — RT_04 corrigido para 6,35% (base real: 30.362 famílias); dado de renda zero (6.259 famílias) incorporado como terceira camada analítica.
 
 ---
 
@@ -28,7 +29,7 @@ A partir dela, estruturamos uma primeira camada analítica voltada à leitura da
 
 ---
 
-## 3. Primeiros resultados — RT_01 e RT_04
+## 3. Primeiros resultados — RT_01, RT_04 e renda zero
 
 Ao aplicar uma linha de corte de **½ salário mínimo per capita (R$ 759,00)**:
 
@@ -38,9 +39,15 @@ Esse dado representa o público vulnerável dentro do CadÚnico — não o munic
 
 Mas há uma segunda leitura importante dentro desse universo:
 
-**RT_04 — 8% das famílias têm renda per capita ≤ ½ SM e pelo menos um idoso (≥ 60 anos).**
+**RT_04 — 6,35% das famílias têm renda per capita ≤ ½ SM e pelo menos um idoso (≥ 60 anos).**
 
-Isso significa que quase 2.400 famílias acumulam dois fatores simultâneos de vulnerabilidade: **baixa renda e necessidade de cuidado com idoso** — sem suporte estruturado do Estado.
+Isso significa que cerca de **1.930 famílias** acumulam dois fatores simultâneos de vulnerabilidade: **baixa renda e necessidade de cuidado com idoso** — sem suporte estruturado do Estado.
+
+E há ainda uma terceira camada, mais crítica:
+
+**6.259 famílias cadastradas não registram nenhuma fonte de renda — nem benefício, nem trabalho.**
+
+Essas famílias estão completamente fora de qualquer fluxo econômico mensurável. Não são famílias com pouca renda — são famílias **sem renda**.
 
 ---
 
@@ -79,7 +86,13 @@ Cada um responde a uma pergunta diferente — e nenhum substitui o outro.
 
 ---
 
-![Os cinco instrumentos do Atlas Social de Hortolândia](figuras/cinco_instrumentos_atlas_social.svg)
+| Instrumento | Pergunta central |
+|---|---|
+| **IVS** | Onde está a vulnerabilidade no Brasil? |
+| **IVS-H** | Onde está a vulnerabilidade dentro do município? |
+| **IVCAD** | Qual é o perfil de quem já está cadastrado? |
+| **IPST-H** | Onde a vulnerabilidade está pressionando o Estado agora? |
+| **IPSO-H** | O que está acontecendo agora? |
 
 ---
 
@@ -213,4 +226,3 @@ Porque, no final,
 ---
 
 *Atlas Social de Hortolândia — SMIDS / Maio 2026*
- palestra_maio_2026_v15 (1).md…]()
