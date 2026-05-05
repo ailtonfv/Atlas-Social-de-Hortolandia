@@ -15,15 +15,25 @@ Demonstrar que o município já possui os dados necessários — e que o problem
 ⏱️ ESTRUTURA GERAL
 Bloco	Tema	Tempo
 1	Abertura e problema	5 min
+
 2	Base empírica (CadÚnico)	10 min
+
 3	Primeiros achados (RT_01, RT_04, renda zero)	10 min
+
 4	Contexto nacional (IPEA)	5 min
+
 5	Estrutura conceitual (IVS-H)	10 min
+
 6	Sistema de instrumentos	10 min
+
 7	Diagnóstico estrutural (IVCAD)	5 min
+
 8	Pressão social (IPST-H + IPSO-H)	5 min
+
 9	Lacunas e integrações (SIGAS, CAGED, etc.)	5 min
+
 10	Encerramento estratégico	5 min
+
 🔥 BLOCO 1 — ABERTURA (5 min)
 Fala sugerida:
 
@@ -98,9 +108,12 @@ O que vemos em Hortolândia não é exceção.
 🧩 BLOCO 5 — IVS-H (10 min)
 Explicar:
 3 dimensões:
+
 Infraestrutura Urbana
 Capital Humano
+
 Renda e Trabalho
+
 Fala:
 
 O IVS-H não substitui o IVS.
@@ -213,18 +226,11 @@ Porque o problema não é falta de informação.
 
 É falta de leitura.
 
-🎯 LEITURA FINAL (MINHA OPINIÃO)
 
-Essa versão de 1h:
 
-👉 não é uma palestra
-👉 é uma defesa técnica de um modelo de gestão pública
+🎯 LEITURA FINAL 
 
-Se bem executada, ela:
 
-legitima seu papel técnico
-reduz resistência institucional
-cria pressão positiva por integração
 📚 Referências (base conceitual)
 IPEA – IVS methodology
 McKinney (2022) – Python for Data Analysis
