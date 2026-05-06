@@ -1,6 +1,6 @@
-[palestra_maio_2026_v20.md](https://github.com/user-attachments/files/27449568/palestra_maio_2026_v20.md)[Uploading p# Palestra — Atlas Social de Hortolândia (v20)
+[palestra_maio_2026_v21.md](https://github.com/user-attachments/files/27451002/palestra_maio_2026_v21.md)[Uploading pale# Palestra — Atlas Social de Hortolândia (v21)
 
-**Versão:** v20
+**Versão:** v21
 **Data:** Maio/2026
 **Situação:** Duas versões independentes — escolher conforme definição do tempo disponível
 
@@ -110,6 +110,23 @@ Demonstrar que o município já possui os dados necessários — e que o problem
 | Frequentaram mas saíram sem aprender (inconsistente) | 1.609 |
 | **Total analfabetos 15+** | **4.516** |
 
+**Distribuição territorial — Top 10 loteamentos:**
+
+| Loteamento | Analfabetos | RP |
+|---|---|---|
+| Jardim Amanda | **1.045** | 3 |
+| Jardim Boa Vista | 231 | 3 |
+| Novo Ângulo | 173 | 5 |
+| Jardim Nova Hortolândia | 140 | 6 |
+| Jardim Nova Europa | 130 | 5 |
+| Jardim N. Sra. Auxiliadora | 130 | 6 |
+| Jardim Primavera | 114 | 6 |
+| Jardim Santa Clara do Lago | 107 | 2 |
+| Vila Real Continuação | 100 | 6 |
+| Jardim Nova América I | 94 | 5 |
+
+**Nota metodológica:** 4.394 analfabetos com loteamento identificado (97,3% do total). 122 em endereços sem correspondência no cadastro oficial (Jardim Brasil, Jardim Monte Sinai — irregular, e Taquara Branca).
+
 **Fala crítica:**
 
 > Quase metade dos analfabetos no CadÚnico de Hortolândia tem 60 anos ou mais.
@@ -120,8 +137,12 @@ Demonstrar que o município já possui os dados necessários — e que o problem
 > 2.538 pessoas passaram por alguma escola — e continuam analfabetas.
 > Entraram. Saíram. E não aprenderam a ler.
 >
+> E agora sabemos onde elas estão:
+> apenas dois loteamentos — Jardim Amanda e Jardim Boa Vista, ambos na Região de Planejamento 3 —
+> concentram 1.276 analfabetos. Quase 30% do total municipal.
+>
 > Isso não é ausência de política pública.
-> É falha da política que existiu.
+> É falha da política que existiu — e é um endereço concreto para a próxima.
 
 **Intenção:** transformar dado em decisão — e mostrar que o dado já orienta a política.
 
@@ -348,6 +369,9 @@ A partir dela, estruturamos uma primeira camada analítica voltada à leitura da
 Delas, **2.168 são idosos (60+)** — dependentes de terceiros para assinar documentos, acessar benefícios e entender comunicados do Estado.
 E **2.538 passaram por alguma escola — e saíram sem aprender a ler.**
 
+**Concentração territorial:**
+Apenas dois loteamentos — **Jardim Amanda (1.045)** e **Jardim Boa Vista (231)**, ambos na RP 3 — concentram **1.276 analfabetos**: quase 30% do total municipal.
+
 ---
 
 ## Slide 4 — Contexto Nacional: O que o IPEA diz
@@ -491,8 +515,9 @@ para uma gestão baseada em evidências — por loteamento, por família, por pe
 | v18 | "06/05/2026" | Duas versões separadas e independentes: Palestra A (1h) e Palestra B (8 min) |
 | v19 | "06/05/2026" | CH_06 incorporado: 4.516 analfabetos (15+), 2.348 (15–59), 2.168 idosos (60+); placar MVP; ciclos IPSO-H atualizados |
 | v20 | "06/05/2026" | CH_06 detalhado por trajetória escolar: 1.953 nunca foram à escola; 929 saíram analfabetos da rede pública; 1.609 frequentaram sem aprender — total 2.538 passaram por escola e continuam analfabetos |
+| v21 | "06/05/2026" | Ranking territorial do CH_06: Top 10 loteamentos; Jardim Amanda (1.045) + Jardim Boa Vista (231) = 1.276 analfabetos na RP 3 (30% do total); 4.394 de 4.516 com loteamento identificado (97,3%) |
 
 ---
 
 *Atlas Social de Hortolândia — SMIDS / Maio 2026*
-alestra_maio_2026_v20.md…]()
+stra_maio_2026_v21.md…]()
