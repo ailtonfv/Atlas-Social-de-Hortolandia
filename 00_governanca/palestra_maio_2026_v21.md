@@ -1,6 +1,7 @@
-[palestra_maio_2026_v18.md](https://github.com/user-attachments/files/27437463/palestra_maio_2026_v18.md)[Uploading palestra# Palestra — Atlas Social de Hortolândia (v18)
+[palestra_maio_2026_v22.md](https://github.com/user-attachments/files/27451426/palestra_maio_2026_v22.md)
+# Palestra — Atlas Social de Hortolândia (v22)
 
-**Versão:** v18
+**Versão:** v22
 **Data:** Maio/2026
 **Situação:** Duas versões independentes — escolher conforme definição do tempo disponível
 
@@ -33,7 +34,7 @@ Demonstrar que o município já possui os dados necessários — e que o problem
 |---|---|---|
 | 1 | Abertura e problema | 5 min |
 | 2 | Base empírica (CadÚnico) | 10 min |
-| 3 | Primeiros achados (RT_01, RT_04, renda zero) | 10 min |
+| 3 | Primeiros achados (RT_01, RT_04, renda zero, CH_06) | 10 min |
 | 4 | Contexto nacional (IPEA) | 5 min |
 | 5 | Estrutura conceitual (IVS-H) | 10 min |
 | 6 | Sistema de instrumentos | 10 min |
@@ -92,17 +93,60 @@ Demonstrar que o município já possui os dados necessários — e que o problem
 - Renda per capita ≤ ½ SM + pelo menos um idoso (≥ 60 anos)
 
 **Renda zero:**
-- 6.259 famílias sem nenhuma fonte de renda registrada — nem benefício, nem trabalho
+- 6.259 famílias com renda declarada igual a zero no CadÚnico de dezembro/2025
+- Pode indicar ausência real de renda ou desatualização cadastral
+
+**CH_06 — Analfabetismo:**
+- 8,69% das pessoas com 15 anos ou mais são analfabetas — **4.516 pessoas**
+- Na faixa produtiva (15–59 anos): 5,87% — **2.348 pessoas**
+- Idosos analfabetos (60+): **2.168 pessoas** — quase metade do total
+- Referência: Brasil 5,3% (PNAD 2024, população geral); Sudeste 2,8%
+
+**Detalhamento por trajetória escolar:**
+
+| Trajetória | Pessoas |
+|---|---|
+| Nunca foram à escola | 1.953 |
+| Foram à rede pública e saíram analfabetos | 929 |
+| Foram à rede particular e saíram analfabetos | 25 |
+| Frequentaram mas saíram sem aprender (inconsistente) | 1.609 |
+| **Total analfabetos 15+** | **4.516** |
+
+**Distribuição territorial — Top 10 loteamentos:**
+
+| Loteamento | Analfabetos | RP |
+|---|---|---|
+| Jardim Amanda | **1.045** | 3 |
+| Jardim Boa Vista | 231 | 3 |
+| Novo Ângulo | 173 | 5 |
+| Jardim Nova Hortolândia | 140 | 6 |
+| Jardim Nova Europa | 130 | 5 |
+| Jardim N. Sra. Auxiliadora | 130 | 6 |
+| Jardim Primavera | 114 | 6 |
+| Jardim Santa Clara do Lago | 107 | 2 |
+| Vila Real Continuação | 100 | 6 |
+| Jardim Nova América I | 94 | 5 |
+
+**Nota metodológica:** 4.394 analfabetos com loteamento identificado (97,3% do total). 122 em endereços sem correspondência no cadastro oficial (Jardim Brasil, Jardim Monte Sinai — irregular, e Taquara Branca).
 
 **Fala crítica:**
 
-> Esses três números formam uma hierarquia de vulnerabilidade:
-> baixa renda → baixa renda com dependência → ausência total de renda.
+> Quase metade dos analfabetos no CadÚnico de Hortolândia tem 60 anos ou mais.
+> São 2.168 pessoas que dependem de terceiros para assinar documentos,
+> acessar benefícios e entender comunicados do Estado.
 >
-> Cada nível exige um tipo diferente de política pública.
-> E hoje tratamos tudo da mesma forma.
+> Mas o dado que mais incomoda é outro:
+> 2.538 pessoas passaram por alguma escola — e continuam analfabetas.
+> Entraram. Saíram. E não aprenderam a ler.
+>
+> E agora sabemos onde elas estão:
+> apenas dois loteamentos — Jardim Amanda e Jardim Boa Vista, ambos na Região de Planejamento 3 —
+> concentram 1.276 analfabetos. Quase 30% do total municipal.
+>
+> Isso não é ausência de política pública.
+> É falha da política que existiu — e é um endereço concreto para a próxima.
 
-**Intenção:** transformar dado em decisão.
+**Intenção:** transformar dado em decisão — e mostrar que o dado já orienta a política.
 
 ---
 
@@ -137,10 +181,19 @@ O IVS-H é a aplicação local do modelo IPEA.
 > O IVS-H não substitui o IVS nacional.
 > Ele desce o nível de análise — do município para o loteamento.
 
+**Placar atual — Fase 1 MVP (5 variáveis do CadÚnico):**
+
+| Variável | Descrição | Status | Resultado |
+|---|---|---|---|
+| RT_01 | % famílias com renda per capita ≤ ½ SM | ✅ | 58,8% |
+| RT_04 | % famílias com renda ≤ ½ SM e idoso dependente | ✅ | 8,12% (~2.465 famílias) |
+| CH_06 | Taxa de analfabetismo — 15 anos ou mais | ✅ | 8,69% (15+) / 5,87% (15–59) |
+| CH_05 | % mães chefes sem fund. completo, filho < 15 anos | ⏳ | — |
+| CH_07 | % crianças em domicílios sem morador com fund. completo | ⏳ | — |
+
 **Pontos para aprofundar:**
-- Exemplos de variáveis em cada dimensão
-- Estado atual de implementação (Fase 1 MVP: 5 variáveis do CadÚnico)
-- Limitações atuais — a transparência metodológica gera confiança institucional
+- A transparência sobre o que já foi calculado e o que está pendente gera confiança institucional
+- Cada variável calculada é auditável: script versionado, fonte identificada, limitações documentadas
 
 **Intenção:** mostrar rigor metodológico e evolução progressiva.
 
@@ -308,11 +361,18 @@ A partir dela, estruturamos uma primeira camada analítica voltada à leitura da
 58,8% das famílias cadastradas possuem renda per capita ≤ ½ SM (R$ 759,00).
 
 **RT_04 — Renda baixa + idoso:**
-8,12% das famílias — aproximadamente **2.465 famílias** — acumulam dois fatores simultâneos: baixa renda e necessidade de cuidado com idoso.
+8,12% das famílias — aproximadamente **2.465 famílias** — acumulam baixa renda e necessidade de cuidado com idoso.
 
 **Renda zero:**
-**6.259 famílias** não registram nenhuma fonte de renda — nem benefício, nem trabalho.
-Não são famílias com pouca renda. São famílias sem renda.
+**6.259 famílias** com renda declarada igual a zero no CadÚnico de dezembro/2025 — ausência real de renda ou desatualização cadastral.
+
+**CH_06 — Analfabetismo:**
+**4.516 pessoas** com 15 anos ou mais são analfabetas (8,69%).
+Delas, **2.168 são idosos (60+)** — dependentes de terceiros para assinar documentos, acessar benefícios e entender comunicados do Estado.
+E **2.538 passaram por alguma escola — e saíram sem aprender a ler.**
+
+**Concentração territorial:**
+Apenas dois loteamentos — **Jardim Amanda (1.045)** e **Jardim Boa Vista (231)**, ambos na RP 3 — concentram **1.276 analfabetos**: quase 30% do total municipal.
 
 ---
 
@@ -331,13 +391,19 @@ Esse dado do IPEA confirma, em escala nacional, o que o CadÚnico de Hortolândi
 ## Slide 5 — A Estrutura do Modelo: IVS-H
 
 O **IVS-H** parte do modelo do IPEA, com 16 variáveis em três dimensões:
+Infraestrutura Urbana, Capital Humano e Renda e Trabalho.
 
-- Infraestrutura Urbana
-- Capital Humano
-- Renda e Trabalho
-
-Implementação progressiva, com base nas variáveis disponíveis no CadÚnico.
 Granularidade: do nível municipal até o nível de loteamento.
+
+**Fase 1 MVP — variáveis já calculadas:**
+
+| Variável | Resultado |
+|---|---|
+| RT_01 — renda baixa | ✅ 58,8% |
+| RT_04 — renda + idoso | ✅ 8,12% |
+| CH_06 — analfabetismo | ✅ 8,69% (15+) / 5,87% (15–59) |
+| CH_05 — mães chefes s/ escolaridade | ⏳ |
+| CH_07 — crianças s/ adulto escolarizado | ⏳ |
 
 ---
 
@@ -386,6 +452,7 @@ A partir da classificação sistemática de matérias da Tribuna Liberal, identi
 - Violência contra crianças e adolescentes — ciclo aberto em abril/2026
 - Surto de KPC regional — agravamento em abril/2026
 - Crise hídrica (Sabesp) — ciclo inaugurado em maio/2026
+- Saúde mental da população em situação de rua — inaugurado em maio/2026
 
 O IPSO-H não é um índice numérico — é memória institucional datada.
 Quando a gestão mudar, o corpus documenta o que estava acontecendo e quando o Estado respondeu.
@@ -445,11 +512,14 @@ para uma gestão baseada em evidências — por loteamento, por família, por pe
 
 | Versão | Data | Alteração |
 |---|---|---|
-| v16 | Maio/2026 | RT_04 corrigido para 6,35%; dado de renda zero (6.259 famílias) incorporado |
+| v16 | Maio/2026 | RT_04 corrigido para 6,35%; dado de renda zero incorporado |
 | v17 | "05/05/2026" | RT_04 atualizado para 8,12%; famílias reestimadas para ~2.465 |
 | v18 | "06/05/2026" | Duas versões separadas e independentes: Palestra A (1h) e Palestra B (8 min) |
+| v19 | "06/05/2026" | CH_06 incorporado: 4.516 analfabetos (15+), 2.348 (15–59), 2.168 idosos (60+); placar MVP; ciclos IPSO-H atualizados |
+| v20 | "06/05/2026" | CH_06 detalhado por trajetória escolar: 1.953 nunca foram à escola; 929 saíram analfabetos da rede pública; 1.609 frequentaram sem aprender — total 2.538 passaram por escola e continuam analfabetos |
+| v21 | "06/05/2026" | Ranking territorial do CH_06: Top 10 loteamentos; Jardim Amanda (1.045) + Jardim Boa Vista (231) = 1.276 analfabetos na RP 3 (30% do total) |
+| v22 | "06/05/2026" | Correção metodológica: renda zero reformulada — "renda declarada igual a zero" em vez de "sem benefício nem trabalho" |
 
 ---
 
 *Atlas Social de Hortolândia — SMIDS / Maio 2026*
-_maio_2026_v18.md…]()
