@@ -1,5 +1,4 @@
-[palestra_maio_2026_v19.md](https://github.com/user-attachments/files/27443409/palestra_maio_2026_v19.md)
-# Palestra — Atlas Social de Hortolândia (v19)
+[palestra_maio_2026_v19 (1).md](https://github.com/user-attachments/files/27443815/palestra_maio_2026_v19.1.md)[Uploading pales# Palestra — Atlas Social de Hortolândia (v19)
 
 **Versão:** v19
 **Data:** Maio/2026
@@ -96,19 +95,21 @@ Demonstrar que o município já possui os dados necessários — e que o problem
 - 6.259 famílias sem nenhuma fonte de renda registrada — nem benefício, nem trabalho
 
 **CH_06 — Analfabetismo:**
-- 8,69% das pessoas com 15 anos ou mais no CadÚnico são analfabetas (4.516 pessoas)
-- Quando isolamos a faixa produtiva (15–59 anos): cai para **5,87%**
-- A diferença — quase 3 pontos percentuais — é carregada pelos idosos (60+)
+- 8,69% das pessoas com 15 anos ou mais no CadÚnico são analfabetas — **4.516 pessoas**
+- Na faixa produtiva (15–59 anos): 5,87% — **2.348 pessoas**
+- Idosos analfabetos (60+): **2.168 pessoas** — quase metade do total
 - Referência: Brasil 5,3% (PNAD 2024, população geral); Sudeste 2,8%
 
 **Fala crítica:**
 
-> Esses números formam camadas distintas de vulnerabilidade:
-> baixa renda → baixa renda com dependência → ausência total de renda → analfabetismo.
+> Quase metade dos analfabetos no CadÚnico de Hortolândia tem 60 anos ou mais.
 >
-> O CH_06 revela algo importante: o analfabetismo em Hortolândia não é um problema
-> da geração produtiva — é uma herança geracional concentrada nos idosos.
-> Isso muda completamente o tipo de política necessária.
+> Isso não é dado estatístico — é um problema concreto de autonomia:
+> 2.168 idosos que dependem de terceiros para assinar documentos,
+> acessar benefícios e entender comunicados do Estado.
+>
+> O analfabetismo aqui não é falha da geração ativa — é uma herança geracional
+> que exige política específica para quem já passou da idade produtiva.
 
 **Intenção:** transformar dado em decisão — e mostrar que o dado já orienta a política.
 
@@ -332,9 +333,10 @@ A partir dela, estruturamos uma primeira camada analítica voltada à leitura da
 Não são famílias com pouca renda. São famílias sem renda.
 
 **CH_06 — Analfabetismo:**
-**8,69%** das pessoas com 15 anos ou mais são analfabetas — 4.516 pessoas.
-Na faixa produtiva (15–59 anos): **5,87%**.
-A diferença é carregada pelos idosos — o analfabetismo em Hortolândia é uma herança geracional, não um problema da geração ativa.
+**8,69%** das pessoas com 15 anos ou mais são analfabetas — **4.516 pessoas** no total.
+Na faixa produtiva (15–59 anos): 5,87% — **2.348 pessoas**.
+Idosos analfabetos (60+): **2.168 pessoas** — quase metade do total.
+São pessoas que dependem de terceiros para assinar documentos, acessar benefícios e entender comunicados do Estado.
 
 ---
 
@@ -477,8 +479,9 @@ para uma gestão baseada em evidências — por loteamento, por família, por pe
 | v16 | Maio/2026 | RT_04 corrigido para 6,35%; dado de renda zero (6.259 famílias) incorporado |
 | v17 | "05/05/2026" | RT_04 atualizado para 8,12%; famílias reestimadas para ~2.465 |
 | v18 | "06/05/2026" | Duas versões separadas e independentes: Palestra A (1h) e Palestra B (8 min) |
-| v19 | "06/05/2026" | CH_06 incorporado em ambas as versões (8,69% / 5,87%); placar MVP adicionado em Bloco 5 e Slide 5; ciclo saúde mental adicionado no Slide 8; Bloco 3 e Slide 3 100% alinhados |
+| v19 | "06/05/2026" | CH_06 incorporado em ambas as versões: 4.516 analfabetos (15+), 2.348 (15–59), 2.168 idosos (60+); placar MVP adicionado; ciclo saúde mental adicionado; ambas as versões 100% alinhadas |
 
 ---
 
 *Atlas Social de Hortolândia — SMIDS / Maio 2026*
+
