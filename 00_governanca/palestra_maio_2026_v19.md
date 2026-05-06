@@ -1,6 +1,6 @@
-[palestra_maio_2026_v19 (1).md](https://github.com/user-attachments/files/27443815/palestra_maio_2026_v19.1.md)[Uploading pales# Palestra — Atlas Social de Hortolândia (v19)
+[palestra_maio_2026_v20.md](https://github.com/user-attachments/files/27449568/palestra_maio_2026_v20.md)[Uploading p# Palestra — Atlas Social de Hortolândia (v20)
 
-**Versão:** v19
+**Versão:** v20
 **Data:** Maio/2026
 **Situação:** Duas versões independentes — escolher conforme definição do tempo disponível
 
@@ -95,21 +95,33 @@ Demonstrar que o município já possui os dados necessários — e que o problem
 - 6.259 famílias sem nenhuma fonte de renda registrada — nem benefício, nem trabalho
 
 **CH_06 — Analfabetismo:**
-- 8,69% das pessoas com 15 anos ou mais no CadÚnico são analfabetas — **4.516 pessoas**
+- 8,69% das pessoas com 15 anos ou mais são analfabetas — **4.516 pessoas**
 - Na faixa produtiva (15–59 anos): 5,87% — **2.348 pessoas**
 - Idosos analfabetos (60+): **2.168 pessoas** — quase metade do total
 - Referência: Brasil 5,3% (PNAD 2024, população geral); Sudeste 2,8%
 
+**Detalhamento por trajetória escolar:**
+
+| Trajetória | Pessoas |
+|---|---|
+| Nunca foram à escola | 1.953 |
+| Foram à rede pública e saíram analfabetos | 929 |
+| Foram à rede particular e saíram analfabetos | 25 |
+| Frequentaram mas saíram sem aprender (inconsistente) | 1.609 |
+| **Total analfabetos 15+** | **4.516** |
+
 **Fala crítica:**
 
 > Quase metade dos analfabetos no CadÚnico de Hortolândia tem 60 anos ou mais.
->
-> Isso não é dado estatístico — é um problema concreto de autonomia:
-> 2.168 idosos que dependem de terceiros para assinar documentos,
+> São 2.168 pessoas que dependem de terceiros para assinar documentos,
 > acessar benefícios e entender comunicados do Estado.
 >
-> O analfabetismo aqui não é falha da geração ativa — é uma herança geracional
-> que exige política específica para quem já passou da idade produtiva.
+> Mas o dado que mais incomoda é outro:
+> 2.538 pessoas passaram por alguma escola — e continuam analfabetas.
+> Entraram. Saíram. E não aprenderam a ler.
+>
+> Isso não é ausência de política pública.
+> É falha da política que existiu.
 
 **Intenção:** transformar dado em decisão — e mostrar que o dado já orienta a política.
 
@@ -326,17 +338,15 @@ A partir dela, estruturamos uma primeira camada analítica voltada à leitura da
 58,8% das famílias cadastradas possuem renda per capita ≤ ½ SM (R$ 759,00).
 
 **RT_04 — Renda baixa + idoso:**
-8,12% das famílias — aproximadamente **2.465 famílias** — acumulam dois fatores simultâneos: baixa renda e necessidade de cuidado com idoso.
+8,12% das famílias — aproximadamente **2.465 famílias** — acumulam baixa renda e necessidade de cuidado com idoso.
 
 **Renda zero:**
 **6.259 famílias** não registram nenhuma fonte de renda — nem benefício, nem trabalho.
-Não são famílias com pouca renda. São famílias sem renda.
 
 **CH_06 — Analfabetismo:**
-**8,69%** das pessoas com 15 anos ou mais são analfabetas — **4.516 pessoas** no total.
-Na faixa produtiva (15–59 anos): 5,87% — **2.348 pessoas**.
-Idosos analfabetos (60+): **2.168 pessoas** — quase metade do total.
-São pessoas que dependem de terceiros para assinar documentos, acessar benefícios e entender comunicados do Estado.
+**4.516 pessoas** com 15 anos ou mais são analfabetas (8,69%).
+Delas, **2.168 são idosos (60+)** — dependentes de terceiros para assinar documentos, acessar benefícios e entender comunicados do Estado.
+E **2.538 passaram por alguma escola — e saíram sem aprender a ler.**
 
 ---
 
@@ -365,7 +375,7 @@ Granularidade: do nível municipal até o nível de loteamento.
 |---|---|
 | RT_01 — renda baixa | ✅ 58,8% |
 | RT_04 — renda + idoso | ✅ 8,12% |
-| CH_06 — analfabetismo | ✅ 8,69% (15+) |
+| CH_06 — analfabetismo | ✅ 8,69% (15+) / 5,87% (15–59) |
 | CH_05 — mães chefes s/ escolaridade | ⏳ |
 | CH_07 — crianças s/ adulto escolarizado | ⏳ |
 
@@ -476,12 +486,13 @@ para uma gestão baseada em evidências — por loteamento, por família, por pe
 
 | Versão | Data | Alteração |
 |---|---|---|
-| v16 | Maio/2026 | RT_04 corrigido para 6,35%; dado de renda zero (6.259 famílias) incorporado |
+| v16 | Maio/2026 | RT_04 corrigido para 6,35%; dado de renda zero incorporado |
 | v17 | "05/05/2026" | RT_04 atualizado para 8,12%; famílias reestimadas para ~2.465 |
 | v18 | "06/05/2026" | Duas versões separadas e independentes: Palestra A (1h) e Palestra B (8 min) |
-| v19 | "06/05/2026" | CH_06 incorporado em ambas as versões: 4.516 analfabetos (15+), 2.348 (15–59), 2.168 idosos (60+); placar MVP adicionado; ciclo saúde mental adicionado; ambas as versões 100% alinhadas |
+| v19 | "06/05/2026" | CH_06 incorporado: 4.516 analfabetos (15+), 2.348 (15–59), 2.168 idosos (60+); placar MVP; ciclos IPSO-H atualizados |
+| v20 | "06/05/2026" | CH_06 detalhado por trajetória escolar: 1.953 nunca foram à escola; 929 saíram analfabetos da rede pública; 1.609 frequentaram sem aprender — total 2.538 passaram por escola e continuam analfabetos |
 
 ---
 
 *Atlas Social de Hortolândia — SMIDS / Maio 2026*
-
+alestra_maio_2026_v20.md…]()
