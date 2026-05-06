@@ -1,6 +1,7 @@
-[palestra_maio_2026_v21.md](https://github.com/user-attachments/files/27451002/palestra_maio_2026_v21.md)[Uploading pale# Palestra — Atlas Social de Hortolândia (v21)
+[palestra_maio_2026_v22.md](https://github.com/user-attachments/files/27451426/palestra_maio_2026_v22.md)
+# Palestra — Atlas Social de Hortolândia (v22)
 
-**Versão:** v21
+**Versão:** v22
 **Data:** Maio/2026
 **Situação:** Duas versões independentes — escolher conforme definição do tempo disponível
 
@@ -92,7 +93,8 @@ Demonstrar que o município já possui os dados necessários — e que o problem
 - Renda per capita ≤ ½ SM + pelo menos um idoso (≥ 60 anos)
 
 **Renda zero:**
-- 6.259 famílias sem nenhuma fonte de renda registrada — nem benefício, nem trabalho
+- 6.259 famílias com renda declarada igual a zero no CadÚnico de dezembro/2025
+- Pode indicar ausência real de renda ou desatualização cadastral
 
 **CH_06 — Analfabetismo:**
 - 8,69% das pessoas com 15 anos ou mais são analfabetas — **4.516 pessoas**
@@ -362,7 +364,7 @@ A partir dela, estruturamos uma primeira camada analítica voltada à leitura da
 8,12% das famílias — aproximadamente **2.465 famílias** — acumulam baixa renda e necessidade de cuidado com idoso.
 
 **Renda zero:**
-**6.259 famílias** não registram nenhuma fonte de renda — nem benefício, nem trabalho.
+**6.259 famílias** com renda declarada igual a zero no CadÚnico de dezembro/2025 — ausência real de renda ou desatualização cadastral.
 
 **CH_06 — Analfabetismo:**
 **4.516 pessoas** com 15 anos ou mais são analfabetas (8,69%).
@@ -515,9 +517,9 @@ para uma gestão baseada em evidências — por loteamento, por família, por pe
 | v18 | "06/05/2026" | Duas versões separadas e independentes: Palestra A (1h) e Palestra B (8 min) |
 | v19 | "06/05/2026" | CH_06 incorporado: 4.516 analfabetos (15+), 2.348 (15–59), 2.168 idosos (60+); placar MVP; ciclos IPSO-H atualizados |
 | v20 | "06/05/2026" | CH_06 detalhado por trajetória escolar: 1.953 nunca foram à escola; 929 saíram analfabetos da rede pública; 1.609 frequentaram sem aprender — total 2.538 passaram por escola e continuam analfabetos |
-| v21 | "06/05/2026" | Ranking territorial do CH_06: Top 10 loteamentos; Jardim Amanda (1.045) + Jardim Boa Vista (231) = 1.276 analfabetos na RP 3 (30% do total); 4.394 de 4.516 com loteamento identificado (97,3%) |
+| v21 | "06/05/2026" | Ranking territorial do CH_06: Top 10 loteamentos; Jardim Amanda (1.045) + Jardim Boa Vista (231) = 1.276 analfabetos na RP 3 (30% do total) |
+| v22 | "06/05/2026" | Correção metodológica: renda zero reformulada — "renda declarada igual a zero" em vez de "sem benefício nem trabalho" |
 
 ---
 
 *Atlas Social de Hortolândia — SMIDS / Maio 2026*
-stra_maio_2026_v21.md…]()
