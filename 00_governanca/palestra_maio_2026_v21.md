@@ -1,7 +1,7 @@
-[palestra_maio_2026_v22.md](https://github.com/user-attachments/files/27451426/palestra_maio_2026_v22.md)
-# Palestra — Atlas Social de Hortolândia (v22)
+[palestra_maio_2026_v23.md](https://github.com/user-attachments/files/27488777/palestra_maio_2026_v23.md)
+# Palestra — Atlas Social de Hortolândia (v23)
 
-**Versão:** v22
+**Versão:** v23
 **Data:** Maio/2026
 **Situação:** Duas versões independentes — escolher conforme definição do tempo disponível
 
@@ -102,6 +102,11 @@ Demonstrar que o município já possui os dados necessários — e que o problem
 - Idosos analfabetos (60+): **2.168 pessoas** — quase metade do total
 - Referência: Brasil 5,3% (PNAD 2024, população geral); Sudeste 2,8%
 
+**Recorte de gênero:**
+- **Mulheres analfabetas: 2.608 — 57,7% do total**
+- Homens analfabetos: 1.912 — 42,3% do total
+- O analfabetismo em Hortolândia tem rosto majoritariamente feminino
+
 **Detalhamento por trajetória escolar:**
 
 | Trajetória | Pessoas |
@@ -134,6 +139,10 @@ Demonstrar que o município já possui os dados necessários — e que o problem
 > Quase metade dos analfabetos no CadÚnico de Hortolândia tem 60 anos ou mais.
 > São 2.168 pessoas que dependem de terceiros para assinar documentos,
 > acessar benefícios e entender comunicados do Estado.
+>
+> E esse analfabetismo tem rosto: 57,7% são mulheres.
+> Mulheres idosas, muitas delas chefes de família,
+> que ao longo da vida foram empurradas para fora da escola.
 >
 > Mas o dado que mais incomoda é outro:
 > 2.538 pessoas passaram por alguma escola — e continuam analfabetas.
@@ -187,7 +196,7 @@ O IVS-H é a aplicação local do modelo IPEA.
 |---|---|---|---|
 | RT_01 | % famílias com renda per capita ≤ ½ SM | ✅ | 58,8% |
 | RT_04 | % famílias com renda ≤ ½ SM e idoso dependente | ✅ | 8,12% (~2.465 famílias) |
-| CH_06 | Taxa de analfabetismo — 15 anos ou mais | ✅ | 8,69% (15+) / 5,87% (15–59) |
+| CH_06 | Taxa de analfabetismo — 15 anos ou mais | ✅ | 8,69% — 57,7% mulheres |
 | CH_05 | % mães chefes sem fund. completo, filho < 15 anos | ⏳ | — |
 | CH_07 | % crianças em domicílios sem morador com fund. completo | ⏳ | — |
 
@@ -368,7 +377,7 @@ A partir dela, estruturamos uma primeira camada analítica voltada à leitura da
 
 **CH_06 — Analfabetismo:**
 **4.516 pessoas** com 15 anos ou mais são analfabetas (8,69%).
-Delas, **2.168 são idosos (60+)** — dependentes de terceiros para assinar documentos, acessar benefícios e entender comunicados do Estado.
+Delas, **2.168 são idosos (60+)** e **57,7% são mulheres** — 2.608 mulheres analfabetas contra 1.912 homens.
 E **2.538 passaram por alguma escola — e saíram sem aprender a ler.**
 
 **Concentração territorial:**
@@ -401,7 +410,7 @@ Granularidade: do nível municipal até o nível de loteamento.
 |---|---|
 | RT_01 — renda baixa | ✅ 58,8% |
 | RT_04 — renda + idoso | ✅ 8,12% |
-| CH_06 — analfabetismo | ✅ 8,69% (15+) / 5,87% (15–59) |
+| CH_06 — analfabetismo | ✅ 8,69% — 57,7% mulheres |
 | CH_05 — mães chefes s/ escolaridade | ⏳ |
 | CH_07 — crianças s/ adulto escolarizado | ⏳ |
 
@@ -515,10 +524,11 @@ para uma gestão baseada em evidências — por loteamento, por família, por pe
 | v16 | Maio/2026 | RT_04 corrigido para 6,35%; dado de renda zero incorporado |
 | v17 | "05/05/2026" | RT_04 atualizado para 8,12%; famílias reestimadas para ~2.465 |
 | v18 | "06/05/2026" | Duas versões separadas e independentes: Palestra A (1h) e Palestra B (8 min) |
-| v19 | "06/05/2026" | CH_06 incorporado: 4.516 analfabetos (15+), 2.348 (15–59), 2.168 idosos (60+); placar MVP; ciclos IPSO-H atualizados |
-| v20 | "06/05/2026" | CH_06 detalhado por trajetória escolar: 1.953 nunca foram à escola; 929 saíram analfabetos da rede pública; 1.609 frequentaram sem aprender — total 2.538 passaram por escola e continuam analfabetos |
-| v21 | "06/05/2026" | Ranking territorial do CH_06: Top 10 loteamentos; Jardim Amanda (1.045) + Jardim Boa Vista (231) = 1.276 analfabetos na RP 3 (30% do total) |
-| v22 | "06/05/2026" | Correção metodológica: renda zero reformulada — "renda declarada igual a zero" em vez de "sem benefício nem trabalho" |
+| v19 | "06/05/2026" | CH_06 incorporado: 4.516 analfabetos (15+), 2.348 (15–59), 2.168 idosos (60+) |
+| v20 | "06/05/2026" | CH_06 detalhado por trajetória escolar: 2.538 passaram por escola e continuam analfabetos |
+| v21 | "06/05/2026" | Ranking territorial Top 10: Jd. Amanda (1.045) + Jd. Boa Vista (231) = 1.276 na RP 3 |
+| v22 | "06/05/2026" | Correção metodológica: renda zero reformulada como "renda declarada igual a zero" |
+| v23 | "07/05/2026" | Recorte de gênero CH_06: 2.608 mulheres (57,7%) e 1.912 homens (42,3%) — incorporado em ambas as versões e na fala crítica |
 
 ---
 
