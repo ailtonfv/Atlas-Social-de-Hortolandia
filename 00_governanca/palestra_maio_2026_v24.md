@@ -1,7 +1,7 @@
-[palestra_maio_2026_v23.md](https://github.com/user-attachments/files/27488777/palestra_maio_2026_v23.md)
-# Palestra — Atlas Social de Hortolândia (v23)
+[palestra_maio_2026_v24.md](https://github.com/user-attachments/files/27491434/palestra_maio_2026_v24.md)
+# Palestra — Atlas Social de Hortolândia (v24)
 
-**Versão:** v23
+**Versão:** v24
 **Data:** Maio/2026
 **Situação:** Duas versões independentes — escolher conforme definição do tempo disponível
 
@@ -134,6 +134,12 @@ Demonstrar que o município já possui os dados necessários — e que o problem
 
 **Nota metodológica:** 4.394 analfabetos com loteamento identificado (97,3% do total). 122 em endereços sem correspondência no cadastro oficial (Jardim Brasil, Jardim Monte Sinai — irregular, e Taquara Branca).
 
+**Cruzamentos de vulnerabilidade — o núcleo crítico:**
+
+- **Analfabetos em famílias com renda zero:** 565 pessoas — 12,5% dos analfabetos acumulam ausência de escolaridade e ausência total de renda
+- **Idosos analfabetos com renda ≤ ½ SM:** 474 pessoas — 21,9% dos idosos analfabetos vivem em famílias pobres
+- **Núcleo mais crítico:** 298 idosos analfabetos, pobres e **sem BPC nem Bolsa Família** — invisíveis à rede de proteção social
+
 **Fala crítica:**
 
 > Quase metade dos analfabetos no CadÚnico de Hortolândia tem 60 anos ou mais.
@@ -144,12 +150,13 @@ Demonstrar que o município já possui os dados necessários — e que o problem
 > Mulheres idosas, muitas delas chefes de família,
 > que ao longo da vida foram empurradas para fora da escola.
 >
-> Mas o dado que mais incomoda é outro:
-> 2.538 pessoas passaram por alguma escola — e continuam analfabetas.
-> Entraram. Saíram. E não aprenderam a ler.
+> Mas o dado que mais preocupa está no cruzamento:
+> 298 idosos são analfabetos, pobres — e não recebem nem BPC nem Bolsa Família.
+> São invisíveis para a rede de proteção social.
+> O Estado não os alcança. E eles não conseguem chegar ao Estado.
 >
-> E agora sabemos onde elas estão:
-> apenas dois loteamentos — Jardim Amanda e Jardim Boa Vista, ambos na Região de Planejamento 3 —
+> E agora sabemos onde estão:
+> apenas dois loteamentos — Jardim Amanda e Jardim Boa Vista, ambos na RP 3 —
 > concentram 1.276 analfabetos. Quase 30% do total municipal.
 >
 > Isso não é ausência de política pública.
@@ -380,6 +387,10 @@ A partir dela, estruturamos uma primeira camada analítica voltada à leitura da
 Delas, **2.168 são idosos (60+)** e **57,7% são mulheres** — 2.608 mulheres analfabetas contra 1.912 homens.
 E **2.538 passaram por alguma escola — e saíram sem aprender a ler.**
 
+**Núcleo mais crítico:**
+- 565 analfabetos vivem em famílias com **renda zero**
+- 298 idosos analfabetos são pobres e **não recebem nem BPC nem Bolsa Família** — invisíveis à rede de proteção social
+
 **Concentração territorial:**
 Apenas dois loteamentos — **Jardim Amanda (1.045)** e **Jardim Boa Vista (231)**, ambos na RP 3 — concentram **1.276 analfabetos**: quase 30% do total municipal.
 
@@ -528,7 +539,8 @@ para uma gestão baseada em evidências — por loteamento, por família, por pe
 | v20 | "06/05/2026" | CH_06 detalhado por trajetória escolar: 2.538 passaram por escola e continuam analfabetos |
 | v21 | "06/05/2026" | Ranking territorial Top 10: Jd. Amanda (1.045) + Jd. Boa Vista (231) = 1.276 na RP 3 |
 | v22 | "06/05/2026" | Correção metodológica: renda zero reformulada como "renda declarada igual a zero" |
-| v23 | "07/05/2026" | Recorte de gênero CH_06: 2.608 mulheres (57,7%) e 1.912 homens (42,3%) — incorporado em ambas as versões e na fala crítica |
+| v23 | "07/05/2026" | Recorte de gênero CH_06: 2.608 mulheres (57,7%) e 1.912 homens (42,3%) |
+| v24 | "07/05/2026" | P02 e P03 incorporados: 565 analfabetos em renda zero; 474 idosos analfabetos pobres; 298 sem BPC/BF — núcleo mais crítico do município |
 
 ---
 
