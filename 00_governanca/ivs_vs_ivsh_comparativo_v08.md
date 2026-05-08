@@ -1,9 +1,9 @@
-[ivs_vs_ivsh_comparativo_v08 (1).md](https://github.com/user-attachments/files/27360642/ivs_vs_ivsh_comparativo_v08.1.md)
+[ivs_vs_ivsh_comparativo_v09.md](https://github.com/user-attachments/files/27520250/ivs_vs_ivsh_comparativo_v09.md)
 # IVS × IVS-H — Comparativo das 16 Variáveis de Vulnerabilidade Social
 
-**Arquivo:** `00_governanca/ivs_vs_ivsh_comparativo_v08.md`
-**Versão:** v08
-**Data:** "04/05/2026"
+**Arquivo:** `00_governanca/ivs_vs_ivsh_comparativo_v09.md`
+**Versão:** v09
+**Data:** "08/05/2026"
 **Responsável:** Ailton Vendramini
 **Repositório:** Atlas-Social-de-Hortolândia
 
@@ -15,7 +15,7 @@ Para o MVP (Fase 1), o IVS-H será calculado com base na metodologia original do
 garantindo comparabilidade nacional e execução imediata.
 
 > ⚠️ Dados do CadÚnico representam apenas a população cadastrada, não a população
-> total do município. Isso não é limitação — toda pessoa flaggada já está dentro
+> total do município. Isso não é limitação — toda pessoa flagada já está dentro
 > do alcance da política municipal.
 
 ---
@@ -81,9 +81,9 @@ Peso IVS-H: **~40–45%** | Peso IPEA: 33%
 | CH_02 | Crianças 0–5 fora da escola | IBGE Censo 2022 — demografia | Fase 2 | pendente (dicionário a mapear) |
 | CH_03 | Crianças 6–14 fora da escola | IBGE Censo 2022 — demografia | Fase 2 | pendente (dicionário a mapear) |
 | CH_04 | Gravidez na adolescência (mães 10–17) | SIM/DATASUS | Fase 2 | pendente — integração Secretaria de Saúde |
-| CH_05 | Mães chefes com baixa escolaridade | **CadÚnico** | **Fase 1** | ✅ variável identificada — aguarda linkage loteamento |
-| CH_06 | Analfabetismo (15+) | **CadÚnico** | **Fase 1** | ✅ variável identificada — aguarda linkage loteamento |
-| CH_07 | Baixa escolaridade no domicílio | **CadÚnico** | **Fase 1** | ✅ variável identificada — aguarda linkage loteamento |
+| CH_05 | Mães chefes com baixa escolaridade | **CadÚnico** | **Fase 1** | ✅ variável identificada — aguarda cálculo |
+| CH_06 | Analfabetismo (15+) | **CadÚnico** | **Fase 1** | ✅ **CALCULADO** — ver Seção de Resultados |
+| CH_07 | Baixa escolaridade no domicílio | **CadÚnico** | **Fase 1** | ✅ variável identificada — aguarda cálculo |
 | CH_08 | Jovens nem-nem com baixa renda | CadÚnico + CAGED | Fase 2 | pendente — requer cruzamento com CAGED |
 
 ---
@@ -98,10 +98,10 @@ Peso IVS-H: **~35–40%** | Peso IPEA: 33%
 
 | Código | Variável | Fonte IVS-H | Fase | Status |
 |--------|----------|-------------|------|--------|
-| RT_01 | Renda per capita ≤ 1/2 SM | **CadÚnico** | **Fase 1** | ✅ calculado — **~60,5%** das famílias cadastradas |
+| RT_01 | Renda per capita ≤ 1/2 SM | **CadÚnico** | **Fase 1** | ✅ **CALCULADO** — **58,8%** das famílias cadastradas |
 | RT_02 | Desocupação | CadÚnico + CAGED | Fase 2 | pendente |
 | RT_03 | Informalidade + baixa escolaridade | CadÚnico + CAGED | Fase 2 | pendente |
-| RT_04 | Baixa renda + presença de idoso (≥60) | **CadÚnico** | **Fase 1** | ✅ variável identificada — aguarda linkage loteamento |
+| RT_04 | Baixa renda + presença de idoso (≥60) | **CadÚnico** | **Fase 1** | ✅ **CALCULADO** — ver Seção de Resultados |
 | RT_05 | Trabalho infantil | CadÚnico / Conselho Tutelar | Fase 2 | pendente |
 
 > **RT_04 — Interpretação:**
@@ -124,14 +124,115 @@ Peso IVS-H: **~35–40%** | Peso IPEA: 33%
 
 | Variável | Cálculo municipal | Cálculo por loteamento |
 |----------|-------------------|------------------------|
-| RT_01 | ✅ **~60,5%** calculado | 🔴 bloqueado — aguarda linkage |
-| RT_04 | ✅ identificada | 🔴 bloqueado — aguarda linkage |
-| CH_05 | ✅ identificada | 🔴 bloqueado — aguarda linkage |
-| CH_06 | ✅ identificada | 🔴 bloqueado — aguarda linkage |
-| CH_07 | ✅ identificada | 🔴 bloqueado — aguarda linkage |
+| RT_01 | ✅ **58,8%** calculado | 🔴 bloqueado — aguarda linkage |
+| RT_04 | ✅ **8,12%** calculado | 🔴 bloqueado — aguarda linkage |
+| CH_05 | ⏳ aguarda cálculo | 🔴 bloqueado — aguarda linkage |
+| CH_06 | ✅ **8,69%** calculado | 🟡 proxy por `d.nom_localidade_fam` disponível — ver nota |
+| CH_07 | ⏳ aguarda cálculo | 🔴 bloqueado — aguarda linkage |
+
+> **Nota CH_06 territorial:** matching fuzzy entre `d.nom_localidade_fam` (CadÚnico) e
+> `descbairro` (loteamentosregiao.xls) produziu ranking por loteamento com 97,3% de cobertura
+> (4.394 de 4.516 analfabetos identificados). Resultado válido como proxy — não substitui
+> o linkage oficial por `cod_loteamento`.
 
 > O cálculo por loteamento é o produto estratégico do IVS-H.
-> O cálculo municipal é apenas referência de validação.
+> O cálculo municipal é referência de validação.
+
+---
+
+## 📋 Resultados Calculados — Fase 1 MVP
+
+### RT_01 — Renda per capita ≤ ½ SM
+
+| Métrica | Valor |
+|---|---|
+| % famílias com renda per capita ≤ R$ 759,00 | **58,8%** |
+| Referência: ½ SM (dez/2025) | R$ 759,00 |
+| Fonte | `d.vlr_renda_media_fam` ≤ 759 |
+| Período | CadÚnico dez/2025 |
+
+**Complemento analítico:**
+- 6.259 famílias com renda declarada igual a zero — desatualização cadastral ou ausência real de renda
+
+---
+
+### RT_04 — Baixa renda + presença de idoso (≥ 60)
+
+| Métrica | Valor |
+|---|---|
+| % famílias com renda ≤ ½ SM e pelo menos um idoso | **8,12%** |
+| Total de famílias estimadas | ~2.465 famílias |
+| Fonte | `d.vlr_renda_media_fam` ≤ 759 + `p.idade_memb` ≥ 60 |
+| Período | CadÚnico dez/2025 |
+
+---
+
+### CH_06 — Analfabetismo (15 anos ou mais)
+
+| Métrica | Valor |
+|---|---|
+| Taxa de analfabetismo 15+ | **8,69%** |
+| Total de analfabetos 15+ | 4.516 pessoas |
+| Total de pessoas 15+ no CadÚnico | 51.983 |
+| Fonte | `p.cod_sabe_ler_escrever_memb` == 2 |
+| Referência nacional (PNAD 2024) | Brasil 5,3% / Sudeste 2,8% |
+| Período | CadÚnico dez/2025 |
+
+**Recorte etário:**
+
+| Faixa | Analfabetos | Taxa |
+|---|---|---|
+| 15–59 anos (produtiva) | 2.348 | 5,87% |
+| 60+ anos (idosos) | 2.168 | — |
+
+**Recorte de gênero:**
+
+| Grupo | Pessoas | % |
+|---|---|---|
+| Mulheres | **2.608** | 57,7% |
+| Homens | 1.912 | 42,3% |
+
+**Trajetória escolar:**
+
+| Trajetória | Pessoas |
+|---|---|
+| Nunca foram à escola | 1.953 |
+| Foram à rede pública e saíram analfabetos | 929 |
+| Foram à rede particular e saíram analfabetos | 25 |
+| Frequentaram mas saíram sem aprender (código 3) | 1.609 |
+| **Total** | **4.516** |
+
+> 2.538 pessoas passaram por alguma escola e continuam analfabetas.
+
+**Distribuição territorial — Top 10 loteamentos (proxy `d.nom_localidade_fam`):**
+
+| Loteamento | Analfabetos | codbairro | RP |
+|---|---|---|---|
+| Jardim Amanda | **1.045** | 351 | 3 |
+| Jardim Boa Vista | 231 | 72 | 3 |
+| Novo Ângulo | 173 | 307 | 5 |
+| Jardim Nova Hortolândia | 140 | 319 | 6 |
+| Jardim Nova Europa | 130 | 360 | 5 |
+| Jardim N. Sra. Auxiliadora | 130 | 321 | 6 |
+| Jardim Primavera | 114 | 372 | 6 |
+| Jardim Santa Clara do Lago | 107 | 317 | 2 |
+| Vila Real Continuação | 100 | 64 | 6 |
+| Jardim Nova América I | 94 | 358 | 5 |
+
+> Jardim Amanda + Jardim Boa Vista (RP 3) = 1.276 analfabetos = 29,1% do total municipal.
+> Cobertura: 4.394 de 4.516 analfabetos com loteamento identificado (97,3%).
+> Não matched: Jardim Brasil, Jardim Monte Sinai (irregular), Taquara Branca — 122 pessoas.
+
+**Cruzamentos de vulnerabilidade:**
+
+| Cruzamento | Pessoas | Interpretação |
+|---|---|---|
+| Analfabetos 15+ em famílias com renda zero | **565** | 12,5% dos analfabetos — dupla invisibilidade |
+| Idosos analfabetos com renda ≤ ½ SM | **474** | 21,9% dos idosos analfabetos |
+| Idosos analfabetos, pobres, sem BPC nem BF | **298** | Núcleo mais crítico — fora da rede de proteção |
+
+> **298 pessoas** — idosas, analfabetas, pobres e sem acesso a nenhum benefício social.
+> O Estado não as alcança. E elas não conseguem chegar ao Estado.
 
 ---
 
@@ -166,4 +267,5 @@ O IVS-H permite:
 |--------|------|------------|
 | v01–v06 | "03/2026" | Versões iniciais — estruturação das variáveis e pesos |
 | v07 | "30/04/2026" | Inclusão da lista completa das 16 variáveis; ajuste RT_04; nota IPST-H; reforço institucional |
-| v08 | "04/05/2026" | Tabela de variáveis expandida — colunas Fonte IVS-H / Fase / Status adicionadas a todas as 3 dimensões; RT_01 com resultado confirmado (~60,5%); estado da Fase 1 MVP formalizado; **arquitetura de três instrumentos** (IVS-H / IPST-H / IPSO-H) — separação metodológica obrigatória, matriz IVS-H × IPST-H, referência ao README_corpus_v1.5.md; conclusão estratégica atualizada. |
+| v08 | "04/05/2026" | Tabela de variáveis expandida; RT_01 confirmado (~60,5%); arquitetura de três instrumentos |
+| v09 | "08/05/2026" | Resultados calculados incorporados: RT_01 (58,8%), RT_04 (8,12% / ~2.465 famílias), CH_06 (8,69% / detalhamento completo por faixa etária, gênero, trajetória escolar, loteamento e cruzamentos de vulnerabilidade); estado do MVP atualizado; núcleo crítico formalizado (298 idosos analfabetos pobres sem BPC/BF); nota sobre proxy territorial CH_06 |
