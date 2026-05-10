@@ -1,4 +1,3 @@
-[README_v06.md](https://github.com/user-attachments/files/27565994/README_v06.md)
 # Atlas Social de Hortolândia
 Arquitetura de Inteligência Social para Políticas Públicas Municipais
 
@@ -16,7 +15,6 @@ O projeto estrutura uma **infraestrutura analítica** capaz de compreender e aco
        alt="Estrutura de diretórios — dados por competência, notebooks parametrizados" 
        width="100%"/>
 </p>
-
 ---
 
 ## Contexto
