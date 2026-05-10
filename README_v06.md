@@ -1,4 +1,4 @@
-[README_v06.md](https://github.com/user-attachments/files/27553070/README_v06.md)
+[README_v06.md](https://github.com/user-attachments/files/27565994/README_v06.md)
 # Atlas Social de Hortolândia
 Arquitetura de Inteligência Social para Políticas Públicas Municipais
 
@@ -8,6 +8,13 @@ O projeto estrutura uma **infraestrutura analítica** capaz de compreender e aco
 
 <p align="center">
   <img src="docs/diagramas/diagrama_sistema.svg" alt="Arquitetura do Atlas Social de Hortolândia — visão geral dos instrumentos, hierarquia territorial, resultados MVP e pipeline de dados" width="100%"/>
+</p>
+
+---
+<p align="center">
+  <img src="docs/diagramas/estrutura_diretorios.svg" 
+       alt="Estrutura de diretórios — dados por competência, notebooks parametrizados" 
+       width="100%"/>
 </p>
 
 ---
@@ -81,32 +88,57 @@ Loteamento (141) → Núcleo CRAS → Região de Planejamento (6 RPs) → Munic�
 
 ## Estrutura do repositório
 
-| Diretório | Conteúdo |
-|---|---|
-| `00_governanca/` | Princípios arquitetônicos, corpus jornalístico (IPSO-H), palestras, fechamentos de sessão |
-| `01_modelagem_conceitual/` | Definição das entidades centrais da política social |
-| `02_modelagem_logica/` | Esquemas de tabelas, dicionários de dados, DDLs, IPST-H |
-| `03_indicadores_mvp/` | Definição dos indicadores estruturantes |
-| `04_documentacao_tecnica/` | Documentação formal da arquitetura analítica |
-| `05_plano_evolutivo/` | Roteiro de evolução do projeto |
-| `06_banco_dados/` | Banco de dados SQLite — instância ativa (não versionado) |
-| `assets/` | Recursos visuais — diagramas e imagens do projeto |
-| `dados/` | Pipeline de dados: `01_bruto/` → `02_limpo/` → `03_curado/` → `04_exportacao/` |
-| `notebooks/cadunico/` | Pipeline analítico CadÚnico (notebooks 01–06) |
-| `notebooks/midia/` | Exploração e análise do corpus jornalístico |
-| `outputs/` | Gráficos, tabelas e exportações analíticas |
-| `utils/` | Funções auxiliares reutilizáveis (`funcoes_gerais.py`) |
+O repositório separa **dados** (varia por competência) de **notebooks** (fixos, parametrizados).
+
+```
+Atlas-Social-de-Hortolandia/
+│
+├── 00_governanca/              # Documentos estratégicos e de governança
+│   ├── corpus_jornalistico/    # Regras de classificação, dicionário, README do corpus
+│   └── *.md / *.pptx           # Palestras, arquitetura, IVS comparativo, legislação
+│
+├── dados/                      # Camada de dados — cresce por competência
+│   ├── bd_externos/
+│   │   ├── series_jornalisticas/   # CSVs diários Tribuna Liberal (IPSO-H)
+│   │   ├── caged/
+│   │   ├── ibge/
+│   │   └── prefeitura_hortolandia/
+│   ├── cadunico/
+│   │   ├── 01_bruto/2025_12/   # ← competência atual
+│   │   ├── 02_limpo/2025_12/
+│   │   ├── 03_curado/
+│   │   └── 04_exportacao/
+│   └── sigas/
+│
+├── notebooks/                  # Camada analítica — fixa, parametrizada
+│   ├── cadunico/               # Pipeline CadÚnico (COMPETENCIA = "2025_12")
+│   │   ├── 02_tratamento_cadunico_v03.ipynb
+│   │   ├── 03_analise_variaveis_cadunico.ipynb
+│   │   ├── 04_analise_temporal_cadunico.ipynb
+│   │   ├── 05_calculo_ivsh_cadunico_v02.ipynb
+│   │   └── 06_perfis_vulnerabilidade.ipynb
+│   └── midia/                  # Pipeline corpus jornalístico (IPSO-H)
+│       ├── Exploração/
+│       │   └── 01_exploracao_cadunico.ipynb
+│       ├── Análise/
+│       └── Estruturacao/
+│
+├── docs/diagramas/             # SVG e diagramas do sistema
+├── outputs/                    # Tabelas e gráficos gerados
+└── utils/                      # Funções auxiliares reutilizáveis
+```
+
+**Regra fundamental:** `dados/` cresce com o tempo — uma pasta por competência. `notebooks/` não cresce — apenas o parâmetro `COMPETENCIA = "XXXX_XX"` muda a cada nova carga.
 
 ---
 
-## Pipeline de notebooks (CadÚnico)
+## Pipeline de notebooks — CadÚnico
 
 | Notebook | RTB | Entrada | Saída | Finalidade |
 |---|---|---|---|---|
-| `01_exploracao_cadunico.ipynb` | RTB_001 | `01_bruto` | — | Exploração inicial da base |
 | `02_tratamento_cadunico_v03.ipynb` | RTB_002 | `01_bruto` | `02_limpo` | Limpeza e padronização |
 | `03_analise_variaveis_cadunico.ipynb` | RTB_003 | `02_limpo` | `03_curado` | Análise exploratória de variáveis |
-| `04_analise_temporal_cadunico.ipynb` | RTB_004 | `02_limpo` | — | Análise temporal (em desenvolvimento) |
+| `04_analise_temporal_cadunico.ipynb` | RTB_004 | `02_limpo` | — | Análise temporal |
 | `05_calculo_ivsh_cadunico_v02.ipynb` | RTB_005 | `02_limpo` | `03_curado` | Cálculo das variáveis IVS-H |
 | `06_perfis_vulnerabilidade.ipynb` | RTB_006 | `02_limpo` | `outputs/` | Perfis de Vulnerabilidade Severa (PVSE) |
 
@@ -116,14 +148,19 @@ Loteamento (141) → Núcleo CRAS → Região de Planejamento (6 RPs) → Munic�
 
 O IPSO-H é construído a partir da classificação sistemática de edições da **Tribuna Liberal** — jornal regional que cobre Hortolândia e municípios vizinhos.
 
-Cada edição é classificada em CSVs estruturados com schema versionado (v10.4), permitindo rastrear ciclos de pressão social ao longo do tempo.
+Cada edição é classificada em CSVs estruturados com schema versionado (**v10.4 — 20 colunas**), armazenados em `dados/bd_externos/series_jornalisticas/`, permitindo rastrear ciclos de pressão social ao longo do tempo.
 
-**Ciclos ativos (maio/2026):**
-- `CH_VIOLENCIA_CRIANCA_2026` — agravamento
-- `CH_VIOLENCIA_GENERO_2025` — monitoramento
-- `IU_AGUA_SABESP_2026` — agravamento
-- `CH_SAUDE_MENTAL_SITUACAO_RUA_2026` — resposta
-- `CH_SUPERLOTACAO_CARCERARIA_2026` — resposta
+**Corpus atual (mai/2026):** 97 edições · 456 eventos classificados · 67 ciclos identificados
+
+**Ciclos ativos:**
+
+| Ciclo | Status |
+|---|---|
+| `CH_VIOLENCIA_CRIANCA_2026` | agravamento |
+| `IU_AGUA_SABESP_2026` | agravamento |
+| `CH_VIOLENCIA_GENERO_2025` | resposta |
+| `CH_SAUDE_MENTAL_SITUACAO_RUA_2026` | resposta |
+| `CH_SUPERLOTACAO_CARCERARIA_2026` | resposta |
 
 ---
 
@@ -164,3 +201,7 @@ Por razões legais e éticas, este repositório **não inclui**:
 ## Licença
 
 Projeto institucional público. Não contém dados pessoais. Segue os princípios da **LGPD** e boas práticas de governança de dados no setor público.
+
+---
+
+*Última atualização: "10/05/2026" — v06*
