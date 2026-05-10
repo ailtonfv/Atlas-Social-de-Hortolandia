@@ -11,6 +11,13 @@ O projeto estrutura uma **infraestrutura analítica** capaz de compreender e aco
 </p>
 
 ---
+<p align="center">
+  <img src="docs/diagramas/estrutura_diretorios.svg" 
+       alt="Estrutura de diretórios — dados por competência, notebooks parametrizados" 
+       width="100%"/>
+</p>
+
+---
 
 ## Contexto
 
