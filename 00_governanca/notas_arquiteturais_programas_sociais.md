@@ -1,9 +1,24 @@
-# NOTAS ARQUITETURAIS — Programas Sociais de Hortolândia
-**Versão:** v02  
-**Data:** "12/03/2026"  
+[notas_arquiteturais_programas_sociais_v03 (1).md](https://github.com/user-attachments/files/27608886/notas_arquiteturais_programas_sociais_v03.1.md)[Uploading notas_# NOTAS ARQUITETURAIS — Programas Sociais de Hortolândia
+**Versão:** v03  
+**Data:** "11/05/2026"  
 **Responsável:** Ailton Vendramini  
-**Repositório:** Atlas-Social-de-Hortolândia / 00_governanca  
-**Origem:** v01 criado em "11/03/2026" — extraído de `dim_programas_sociais_v12.md`
+**Repositório:** Atlas-Social-de-Hortolândia / 00_governanca
+
+---
+
+> **Escopo deste documento:** Laboratório vivo e etnografia operacional da construção do Atlas Social. Registro histórico de fluxos reais, casos documentados, pendências abertas e cronologia de decisões. O conteúdo consolidado e permanente foi extraído para o repositório core — ver seção abaixo.
+
+---
+
+## Conteúdo migrado para o core
+
+| Arquivo no core | Conteúdo extraído deste documento |
+|---|---|
+| `metodologia/modelagem_operacional/fluxos_e_regras_operacionais.md` | Regras de modelagem, pontos cegos estruturais, fluxos institucionais, trajetórias típicas, decisão sobre loteamentos de fronteira, dependência estrutural em IU |
+
+> O repositório core é privado. O conteúdo aqui permanece como registro histórico completo, rastreável e evolutivo.
+
+---
 
 > Este arquivo concentra o conhecimento operacional e institucional do
 > catálogo de programas sociais que **não é cadastro puro**:
@@ -35,8 +50,8 @@
 | 13 | Fatec: dados de matrícula ficam no Centro Paula Souza (operador estadual) | Cruzamento CadÚnico × matrículas Fatec futuro — requer convênio estadual |
 | 14 | Alta Complexidade executada por OSCs — maioria sem `id_orgao_executor` confirmado | Pendência #19: identificar e cadastrar OSCs executoras antes de inserir registros em FATO_ATENDIMENTO |
 | 15 | PEI: dados ficam na Secretaria Estadual de Direitos da PCD | Parceria via Termo de Cooperação Técnica — integração futura requer convênio estadual |
-| 16 | Códigos de Região de Planejamento (1 a 6) são gerados pela Prefeitura de Campinas — gestor do SIG regional | Campo `REGIAO-PLAN` em `loteamentos-regiao.xlsx` é somente leitura para Hortolândia — não renomear, não renumerar, não adaptar. O modelo analítico deve absorver esses códigos como chave externa imutável |
-| 17 | Jardim Ricardo: padrão territorial de vulnerabilidade climática recorrente — duas ativações documentadas em 14 dias ("26/02/2026" e "09-10/03/2026") | Dado prospectivo para `FATO_IVS_LOTEAMENTO` — variável de déficit de drenagem urbana na dimensão `infraestrutura_urbana`; flag de risco climático para `dim_municipio_regioes_loteamentos` |
+| 16 | Códigos de Região de Planejamento (1 a 6) são gerados pela Prefeitura de Campinas — gestor do SIG regional | Campo `REGIAO-PLAN` em `loteamentos-regiao.xlsx` é somente leitura para Hortolândia — não renomear, não renumerar, não adaptar |
+| 17 | Jardim Ricardo: padrão territorial de vulnerabilidade climática recorrente — duas ativações documentadas em 14 dias ("26/02/2026" e "09-10/03/2026") | Flag de risco climático para `dim_municipio_regioes_loteamentos`; variável de déficit de drenagem urbana na dimensão `infraestrutura_urbana` |
 
 ---
 
@@ -51,7 +66,7 @@
 | **Alta Complexidade** | OSCs executoras sem dados integrados ao SIGAS municipal | Todos | Convênio + integração de sistemas (médio prazo) |
 | **Operadores externos** | Banco do Povo, SEBRAE, SINE: dados fora do alcance municipal | RT_02, RT_03 | Convênios e API federais (longo prazo) |
 | **Renda Censo 2022** | Dados de renda por setor censitário ainda não publicados pelo IBGE | RT_01 | CadÚnico como fonte primária — limitação reconhecida |
-| **Drenagem urbana** | Déficit de infraestrutura de drenagem não tem fonte de dados estruturada no município | IU_01 (variável auxiliar) | Série de ativações do EMERGENCIAS como proxy temporal — dois eventos documentados em "26/02/2026" e "09-10/03/2026" |
+| **Drenagem urbana** | Déficit de infraestrutura de drenagem não tem fonte de dados estruturada | IU_01 (variável auxiliar) | Série de ativações do EMERGENCIAS como proxy temporal |
 
 ---
 
@@ -143,48 +158,32 @@ Autonomia
 
 Dois casos documentados pela Tribuna Liberal em "08/03/2026":
 
-- **Caso 1:** violência doméstica → filho do casal encaminhado ao Conselho Tutelar
-  → fluxo CRAM → CT ativado
-- **Caso 2:** companheiro preso em flagrante → vítima buscou medida protetiva
-  → fluxo CRAM → CREAS ativado
+- **Caso 1:** violência doméstica → filho do casal encaminhado ao Conselho Tutelar → fluxo CRAM → CT ativado
+- **Caso 2:** companheiro preso em flagrante → vítima buscou medida protetiva → fluxo CRAM → CREAS ativado
 
-> **Implicação para FATO_ATENDIMENTO:**
-> Modelar campo `id_encaminhamento_destino` como dado estruturado
-> (não texto livre). O fluxo CRAM → CT → CREAS é cadeia operacional
-> real confirmada — não apenas arquitetural.
+> **Implicação para FATO_ATENDIMENTO:** modelar campo `id_encaminhamento_destino` como dado estruturado (não texto livre).
 
 ---
 
 ## 7. Programa EMERGENCIAS — Histórico de Ativações Documentadas
 
-| Ocorrência | Data | Território | Secretarias / Órgãos envolvidos | Famílias afetadas | Fonte |
+| Ocorrência | Data | Território | Órgãos envolvidos | Famílias afetadas | Fonte |
 |---|---|---|---|---|---|
 | 1ª | "26/02/2026" | Jardim Ricardo | SMIDS | 16 famílias desabrigadas | Fechamento "26/02/2026" |
-| 2ª | "09-10/03/2026" | Jardim Ricardo | Defesa Civil + Obras + Serviços Urbanos + Meio Ambiente e Desenvolvimento Sustentável | A confirmar | Tribuna Liberal "12/03/2026", p. 04 |
+| 2ª | "09-10/03/2026" | Jardim Ricardo | Defesa Civil + Obras + Serviços Urbanos + Meio Ambiente | A confirmar | Tribuna Liberal "12/03/2026", p. 04 |
 
-**Detalhes da 2ª ocorrência ("09-10/03/2026"):**
-- Força-tarefa ativada após reunião do Prefeito Zezé Gomes com moradores (dia 9)
+**Detalhes da 2ª ocorrência:**
+- Força-tarefa após reunião do Prefeito Zezé Gomes com moradores (dia 9)
 - Defesa Civil: vistorias residência a residência
-- Secretaria de Obras: licitação aberta para elevação da ponte sobre o córrego (prazo estimado: 2 meses)
+- Secretaria de Obras: licitação aberta para elevação da ponte sobre o córrego (prazo: 2 meses)
 - Concessionária Rodovias do Tietê: obras na SP-101 previstas para agosto/2026
-- Ação social: IPTU prorrogado para "20/03/2026" para moradores atingidos
-- Prefeito orientou moradores a organizar abaixo-assinado para ressarcimento de danos
+- IPTU prorrogado para "20/03/2026" para moradores atingidos
 
-**Implicação arquitetural consolidada:**
-O Jardim Ricardo deixa de ser evento pontual. Duas ativações em 14 dias configuram **padrão territorial de vulnerabilidade climática recorrente** — baixada com déficit estrutural de drenagem urbana.
-
-Impactos futuros no modelo:
-- `FATO_IVS_LOTEAMENTO`: dado para dimensão `infraestrutura_urbana` — série histórica de eventos climáticos por loteamento
-- `dim_municipio_regioes_loteamentos_v01.md`: flag `vulnerabilidade_climatica = TRUE` para o Jardim Ricardo (Região 4, `codbairro` 93)
-- Variável auxiliar a modelar: déficit de drenagem urbana — sem fonte estruturada ainda; série de ativações do EMERGENCIAS como proxy temporal
+> Duas ativações em 14 dias configuram **padrão territorial de vulnerabilidade climática recorrente**.
 
 ---
 
 ## 8. Dados Territoriais — SIG Municipal ("12/03/2026")
-
-Fonte: `loteamentos-regiao.xlsx` — recebido do setor responsável pelo SIG em "12/03/2026".
-
-**Resumo quantitativo:**
 
 | Categoria | Quantidade |
 |---|---|
@@ -192,7 +191,7 @@ Fonte: `loteamentos-regiao.xlsx` — recebido do setor responsável pelo SIG em 
 | Loteamentos em região única | 131 |
 | Loteamentos em fronteira entre regiões | 10 |
 
-**Distribuição por Região de Planejamento (loteamentos de região única):**
+**Distribuição por Região de Planejamento:**
 
 | Região | Loteamentos |
 |---|---|
@@ -203,8 +202,6 @@ Fonte: `loteamentos-regiao.xlsx` — recebido do setor responsável pelo SIG em 
 | 5 | 33 |
 | 6 | 24 |
 | **Total** | **131** |
-
-> O número 131 confirma exatamente o campo "Loteamentos (131 oficiais)" registrado em `arquitetura_sistema.xlsx`.
 
 **Loteamentos em fronteira entre regiões (10):**
 
@@ -221,100 +218,54 @@ Fonte: `loteamentos-regiao.xlsx` — recebido do setor responsável pelo SIG em 
 | 313 | JARDIM CARMEM CRISTINA | 6 – 5 |
 | 67 | PARQUE SÃO MIGUEL | 2 – 1 |
 
-> **Observação territorial:** 5 dos 10 loteamentos de fronteira estão entre as Regiões 5 e 6 — a mesma zona de sobreposição Brasil/Novo Ângulo já identificada como pendência bloqueante. Não é coincidência: o SIG confirma que esse é o perímetro de maior ambiguidade territorial do município.
+> 5 dos 10 loteamentos de fronteira estão entre as Regiões 5 e 6 — zona de maior ambiguidade territorial do município.
 
-**Decisão arquitetural sobre loteamentos de fronteira:**
-Para o MVP, adotar convenção de atribuição à região de menor número, com campo `obs_fronteira` documentando a ambiguidade. Atribuição definitiva por polígono requer shapefile — fora do escopo do MVP.
+**Decisão arquitetural sobre fronteiras:** atribuição à região de menor número para o MVP, com campo `obs_fronteira` documentando a ambiguidade.
 
-**Nota sobre a Região 1:**
-Apenas 3 loteamentos (Jardim das Paineiras, Remanso Campineiro, Vila São Francisco). Verificar se há CRAS de referência para essa região ou se é coberta por CRAS de região adjacente — pendência a incluir na reunião com Cláudia.
+**Nota sobre a Região 1:** apenas 3 loteamentos — verificar cobertura de CRAS (pendência #26).
 
 ---
 
 ## 9. Dependências de Convênio e Integração
 
-| Programa | Dado disponível em | Requisito para integração | Prazo estimado |
+| Programa | Dado disponível em | Requisito | Prazo estimado |
 |---|---|---|---|
-| Banco do Povo | Desenvolve SP (estadual) | Convênio com Desenvolve SP | Médio prazo |
-| SEBRAE Aqui | SEBRAE-SP (estadual) | Convênio com SEBRAE | Médio prazo |
-| SINE / Emprega Brasil | MTE federal | API federal (quando liberada) | Longo prazo |
+| Banco do Povo | Desenvolve SP | Convênio com Desenvolve SP | Médio prazo |
+| SEBRAE Aqui | SEBRAE-SP | Convênio com SEBRAE | Médio prazo |
+| SINE / Emprega Brasil | MTE federal | API federal | Longo prazo |
 | Seguro Desemprego | MTE federal | API federal | Longo prazo |
-| Fatec | Centro Paula Souza (estadual) | Convênio estadual | Dependente de implantação |
-| PEI | Sec. Est. Direitos PCD (estadual) | Extensão do Termo de Cooperação | Curto prazo |
-| Alta Complexidade (OSCs) | Sistemas das OSCs | Convênio de compartilhamento de dados | Médio prazo |
+| Fatec | Centro Paula Souza | Convênio estadual | Dependente de implantação |
+| PEI | Sec. Est. Direitos PCD | Extensão do Termo de Cooperação | Curto prazo |
+| Alta Complexidade (OSCs) | Sistemas das OSCs | Convênio de compartilhamento | Médio prazo |
 | CAGED | MTE federal | Já disponível — extração mensal | Imediato |
 | DATASUS | MS federal | Já disponível — solicitação formal | Imediato |
 
 ---
 
-## 10. Dado de Contexto — Mercado Formal e CadÚnico
+## 10. Contexto — Mercado Formal e CadÚnico
 
 | Indicador | Valor | Fonte |
 |---|---|---|
 | Empregos formais | 49.100 | CAGED jan–mar/2023 |
 | Remuneração média formal | R$ 4.700 | CAGED jan–mar/2023 |
 | Saldo CAGED jan/2026 | +140 vagas (+57,3% vs jan/2025) | CAGED jan/2026 |
-| CadÚnico out/2022 | 29.698 famílias / 70.456 pessoas | CECAD |
 | CadÚnico dez/2025 | ~73.000 pessoas | CECAD |
 | População estimada | ~240.000 habitantes | IBGE |
 | Cobertura CadÚnico/população | ~30% | Estimativa |
 
-> **Tensão analítica central do projeto:** 49.100 empregos formais com
-> R$ 4.700 de remuneração média convivem com ~73.000 pessoas no CadÚnico.
-> Essa tensão é o ponto de partida do IVS-H e da análise de emancipação assistida.
+> **Tensão analítica central:** 49.100 empregos formais com R$ 4.700 de remuneração média convivem com ~73.000 pessoas no CadÚnico. Essa tensão é o ponto de partida do IVS-H e da análise de emancipação assistida.
 
 ---
 
-## 11. Notas sobre Infraestrutura Urbana — Dependência Estrutural
+## 11. Dependência Estrutural em Infraestrutura Urbana
 
-A distribuição dos programas por dimensão IVS revela uma assimetria estratégica:
+A prefeitura tem baixa capacidade de política própria na dimensão IU — os programas dependem majoritariamente de CDHU, MCMV (União), SABESP e Cidade Legal (Estado).
 
-```
-infraestrutura_urbana = 6 programas (9,2% do total)
-```
-
-Isso significa que a prefeitura de Hortolândia tem **baixa capacidade de política própria**
-na dimensão Infraestrutura Urbana — os programas dependem majoritariamente de:
-
-- **CDHU** (Estado de SP) — habitação
-- **União** (MCMV) — habitação
-- **SABESP** — saneamento
-- **Cidade Legal** (Estado) — regularização fundiária
-
-> **Implicação para o IVS-H:** variáveis IU_01 e IU_02 têm baixo poder discriminatório
-> entre territórios de Hortolândia justamente porque a cobertura de saneamento
-> é elevada (~100% água, ~96% esgoto) — resultado dessas parcerias estruturais.
-> Essa dependência é, paradoxalmente, um indicador de desenvolvimento relativo.
->
-> **Exceção emergente:** o déficit de drenagem urbana, documentado pelos eventos
-> climáticos no Jardim Ricardo em "26/02/2026" e "09-10/03/2026", indica que
-> IU_01 pode ter poder discriminatório maior do que aparenta — desde que a
-> variável capture drenagem, não apenas abastecimento e esgoto.
+> **Implicação para o IVS-H:** variáveis IU_01 e IU_02 têm baixo poder discriminatório entre territórios porque a cobertura de saneamento é elevada (~100% água, ~96% esgoto). **Exceção emergente:** o déficit de drenagem urbana documentado no Jardim Ricardo indica que IU_01 pode ter poder discriminatório maior do que aparenta — desde que a variável capture drenagem, não apenas abastecimento e esgoto.
 
 ---
 
-## 12. Fundamento Metodológico IVS / IVS-H
-
-O campo `dimensao_ivs` presente em cada programa está fundamentado no **IVS (Índice de
-Vulnerabilidade Social)**, desenvolvido pelo IPEA em parceria com o IBGE e publicado no
-**Atlas da Vulnerabilidade Social (2015)**. O IVS organiza a vulnerabilidade social em três
-dimensões — **Infraestrutura Urbana**, **Capital Humano** e **Renda e Trabalho**.
-
-O **IVS-H** mantém a estrutura conceitual do IVS nacional, adaptando a escala territorial
-(de setores censitários do Brasil para loteamentos de Hortolândia) e as fontes de dados
-disponíveis no nível municipal (CadÚnico, CAGED, Saúde, Educação municipais).
-
-> A classificação `dimensao_ivs` de cada programa não é arbitrária — ela registra
-> **em qual dimensão do IVS-H o programa atua**, permitindo futuramente cruzar
-> cobertura programática com intensidade de vulnerabilidade territorial.
-
-**Referências:**
-- COSTA, M. A.; MARGUTI, B. O. *Atlas da Vulnerabilidade Social nos Municípios Brasileiros*. IPEA, 2015.
-- NARDO, M. et al. *Handbook on Constructing Composite Indicators*. OECD, 2008.
-
----
-
-## 13. Pendências Abertas
+## 12. Pendências Abertas
 
 | # | Pendência | Prioridade | Arquivo impactado |
 |---|---|---|---|
@@ -336,14 +287,14 @@ disponíveis no nível municipal (CadÚnico, CAGED, Saúde, Educação municipai
 | 16 | Programa Vida Longa: monitorar negociações com o Estado | Média | dim_programa |
 | 17 | Fatec Hortolândia: monitorar evolução do estudo de viabilidade | Alta | dim_programa |
 | 18 | Monte Sinai: confirmar número oficial de famílias beneficiadas (~650) | Média | dim_programa |
-| 19 | Identificar OSCs executoras das 5 modalidades de Alta Complexidade (SAICA, Abrigo Mulheres, Residência Inclusiva, ILPI, República) | Alta | dim_orgao_executor + dim_programa |
+| 19 | Identificar OSCs executoras das 5 modalidades de Alta Complexidade | Alta | dim_orgao_executor + dim_programa |
 | 20 | Confirmar se Aprendiz Social é denominação atual do DECOLA Juventude ou programa distinto | Alta | dim_programa |
 | 21 | Confirmar quais dados de Alta Complexidade vão ao SIGAS e quais ao CadÚnico | Alta | fato_atendimento |
-| 22 | Fatec — conflito de fonte sobre local da reunião de "09/03/2026": TL ("10/03" e "11/03") registra "Câmara Municipal"; v11 corrigiu para "SMIDS" com base em Caio [RH PMH Lima] | Média | dim_programa |
-| 23 | PEI — confirmar `id_orgao_executor` definitivo (DEP_PCD provisório), base legal municipal, critérios de acesso e outros programas do Termo de Cooperação | Alta | dim_programa + dim_orgao_executor |
-| 24 | Verificar se Cooperuni (CNPJ 06.871.886/0001-25) tem vínculo com público CadÚnico e se está registrada no CMAS ou CMDCA | Média | dim_osc |
-| 25 | Jardim Ricardo: confirmar número de famílias afetadas na 2ª ocorrência ("09-10/03/2026") junto à Defesa Civil | Média | FATO_IVS_LOTEAMENTO (futuro) |
-| 26 | Verificar cobertura de CRAS para a Região 1 (apenas 3 loteamentos: Jardim das Paineiras, Remanso Campineiro, Vila São Francisco) — há CRAS de referência ou cobertura por região adjacente? | Alta | dim_orgao_executor + dim_territorio |
+| 22 | Fatec — confirmar local da reunião de "09/03/2026": Câmara Municipal ou SMIDS | Média | dim_programa |
+| 23 | PEI — confirmar `id_orgao_executor` definitivo, base legal municipal e critérios de acesso | Alta | dim_programa + dim_orgao_executor |
+| 24 | Verificar se Cooperuni (CNPJ 06.871.886/0001-25) tem vínculo com público CadÚnico | Média | dim_osc |
+| 25 | Jardim Ricardo: confirmar número de famílias afetadas na 2ª ocorrência junto à Defesa Civil | Média | FATO_IVS_LOTEAMENTO (futuro) |
+| 26 | Verificar cobertura de CRAS para a Região 1 (3 loteamentos) | Alta | dim_orgao_executor + dim_territorio |
 
 ---
 
@@ -351,10 +302,12 @@ disponíveis no nível municipal (CadÚnico, CAGED, Saúde, Educação municipai
 
 | Versão | Data | Alterações |
 |---|---|---|
-| v01 | "11/03/2026" | Criação — extraído de `dim_programas_sociais_v12.md`; 15 notas arquiteturais; 7 pontos cegos; 2 trajetórias típicas; fluxo CRAM confirmado; tabela de dependências de convênio; 23 pendências; nota sobre dependência estrutural em IU |
-| v02 | "12/03/2026" | Nota 16 adicionada: códigos de Região de Planejamento são de Campinas — campo somente leitura. Nota 17 adicionada: Jardim Ricardo como padrão territorial de vulnerabilidade climática recorrente. Seção 7 criada: histórico de ativações do EMERGENCIAS com tabela comparativa. Seção 8 criada: dados territoriais do SIG — 141 loteamentos, 6 regiões, 10 loteamentos de fronteira; decisão arquitetural sobre fronteiras. Ponto cego de drenagem urbana adicionado na Seção 2. Nota sobre drenagem acrescida na Seção 11. Pendências 24, 25 e 26 adicionadas. Convenção de datas entre aspas duplas aplicada em todo o documento. |
+| v01 | "11/03/2026" | Criação — 15 notas arquiteturais; 7 pontos cegos; 2 trajetórias típicas; fluxo CRAM confirmado; 23 pendências |
+| v02 | "12/03/2026" | Notas 16 e 17 adicionadas; Seções 7 e 8 criadas; ponto cego de drenagem; pendências 24–26 |
+| v03 | "11/05/2026" | Cabeçalho de escopo adicionado; seção "Conteúdo migrado para o core" incluída |
 
 ---
 
 *Documento de governança — 00_governanca/*  
 *Atlas Social de Hortolândia — uso interno*
+arquiteturais_programas_sociais_v03 (1).md…]()
