@@ -1,61 +1,43 @@
-[README_00_governanca.md](https://github.com/user-attachments/files/27567011/README_00_governanca.md)
+[README_governanca_publico.md](https://github.com/user-attachments/files/27606010/README_governanca_publico.md)
 # 00_governanca — Governança do Atlas Social de Hortolândia
 
-Pasta de documentos estratégicos, metodológicos e de registro histórico do projeto.
-
-Não contém dados pessoais. Todo o conteúdo é documentação técnica e institucional.
-
----
-
-## Estrutura
-
-```
-00_governanca/
-├── corpus_jornalistico/        # Governança do corpus IPSO-H
-│   ├── regras_de_classificacao_v10.4.md
-│   ├── dicionario_v04.md
-│   └── README_corpus_v1.5.md
-└── *.md / *.pptx               # Documentos estratégicos e técnicos
-```
+**Repositório:** Atlas-Social-de-Hortolandia (público)  
+**Última atualização:** 11/05/2026
 
 ---
 
-## Documentos
+Pasta de documentos estratégicos, metodológicos e de registro histórico do projeto Atlas Social de Hortolândia.
 
-| Arquivo | Descrição | Versão |
-|---|---|---|
-| `diretrizes_estrategicas_v03.md` | Registro de decisões arquitetônicas (staging, pessoa como unidade, controle de duplicação) | v03 |
-| `arquitetura_dados_IVS_IBGE_Horto_v11.md` | Arquitetura de dados IVS × IBGE × CadÚnico | v11 |
-| `ivs_vs_ivsh_comparativo_v09.md` | Comparativo IVS IPEA × IVS-H local — pesos, variáveis, resultados MVP | v09 |
-| `legislacao_assistencia_social_fed_est_mun_v01.md` | Base legal SUAS — federal, estadual e municipal | v01 |
-| `notas_arquiteturais_programas_sociais_v02.md` | Notas sobre programas socioassistenciais municipais | v02 |
-| `Evolucao_Normativa_SUAS_2006_2025.md` | Linha do tempo normativa SUAS 2006–2025 | — |
-| `palestra_abril_2026_v12.md` | Apresentação institucional — abril 2026 | v12 |
-| `palestra_maio_2026_v24.md` | Apresentação institucional — maio 2026 | v24 |
-| `palestra_plan_estrat_07_04_2026_v2_final.pptx` | Planejamento estratégico — slides | v2 |
+Não contém dados pessoais identificáveis. O conteúdo é técnico, metodológico e institucional.
 
 ---
 
-## Subpasta: corpus_jornalistico/
-
-Governança do **IPSO-H** — Índice de Pressão Social Operacional de Hortolândia.
+## Conteúdo desta pasta
 
 | Arquivo | Descrição |
 |---|---|
-| `regras_de_classificacao_v10.4.md` | Schema v10.4 — 20 colunas, regras de classificação dos eventos |
-| `dicionario_v04.md` | Dicionário de campos e valores permitidos |
-| `README_corpus_v1.5.md` | Visão geral do corpus, ciclos ativos e histórico de versões |
-
-Os CSVs classificados ficam em `dados/bd_externos/series_jornalisticas/`.
-
----
-
-## Princípio desta pasta
-
-> Documentos de decisão ficam aqui.
-> Dados ficam em `dados/`.
-> Código fica em `notebooks/`.
+| `diretrizes_estrategicas_v03.md` | Três diretrizes estruturantes: staging, visão por pessoa e controle de subatendimento |
+| `Evolução_Normativa_SUAS_2006_2025_v03.md` | Linha do tempo normativa do SUAS municipal (2006–2025) — referência institucional |
+| `regras_de_classificacao_v10_1.md` | Regras de classificação do corpus jornalístico — schema v10.1 |
+| `dicionario_v04.md` | Dicionário de campos do corpus |
+| `README_corpus_v1_5.md` | Documentação do corpus jornalístico Atlas Social |
 
 ---
 
-*Atlas Social de Hortolândia — SMIDS / "10/05/2026"*
+## O que NÃO está nesta pasta
+
+- Dados pessoais ou registros identificáveis (CadÚnico bruto)
+- Scripts de cálculo e notebooks de execução — estão no repositório core (privado)
+- Outputs intermediários de processamento
+- Apresentações e materiais de comunicação institucional
+
+---
+
+## Relação com o repositório core
+
+O núcleo técnico e metodológico do Atlas Social está em repositório privado separado (`Atlas-Social-de-Hortolandia-core`). Este repositório público preserva a governança, a documentação metodológica e o corpus classificado — sem expor código de processamento ou dados sensíveis.
+
+---
+
+*Atlas Social de Hortolândia — SMIDS / Prefeitura de Hortolândia*  
+*Responsável técnico: Ailton Vendramini*
