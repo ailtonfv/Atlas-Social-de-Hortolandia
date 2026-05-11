@@ -1,11 +1,25 @@
+[legislacao_assistencia_social_v03.md](https://github.com/user-attachments/files/27608065/legislacao_assistencia_social_v03.md)
 # Legislação da Assistência Social — Federal, Estadual e Municipal
-**Arquivo:** `legislacao_assitência_social_fed_est_mun_v02.md`  
-**Pasta:** `00_governança`  
-**Versão:** v02 (atualizada em 09/03/2026)  
-**Versão anterior:** v01 (gerada em 05/03/2026)  
-**Fonte primária:** `dim_norma_juridica_v01.md` (01_modelagem_conceitual)  
-**Cross-reference:** `dim_colegiados_v02.md` · `dim_programas_sociais_v09.md`  
-**Responsável:** Ailton Vendramini / Claude (Anthropic)
+**Arquivo:** `legislacao_assistencia_social_fed_est_mun.md`  
+**Pasta:** `00_governanca`  
+**Versão:** v03 (atualizada em 11/05/2026)  
+**Responsável:** Ailton Vendramini
+
+---
+
+> **Escopo deste documento:** Catálogo legislativo e registro histórico do arcabouço normativo da política socioassistencial de Hortolândia. A lógica relacional e os princípios de governança normativa foram extraídos para o repositório core — ver seção abaixo.
+
+---
+
+## Conteúdo migrado para o core
+
+Os documentos abaixo integram o núcleo metodológico permanente do Atlas Social e estão versionados no repositório `Atlas-Social-de-Hortolandia-core`:
+
+| Arquivo no core | Conteúdo extraído deste documento |
+|---|---|
+| `metodologia/governanca_normativa_modelo_social.md` | Propósito, mapa de conexões normativas, três camadas da norma |
+
+> O repositório core é privado. O conteúdo aqui permanece como catálogo legislativo completo e rastreável.
 
 ---
 
@@ -72,8 +86,8 @@ Sua função no projeto é tripla:
 
 | tipo | número | ano | nome | status | observação |
 |------|---------|-----|------|--------|------------|
-| Lei | 3.911 | 2021 | Instituição do SUAS Municipal | ✅ Confirmada | Lei estruturante local — organiza toda a política municipal |
-| Lei | 3.955 | 2022 | Programa CUIDAR | ✅ Confirmada | Base legal do Programa Cuidar (gestantes) — confirmada em 04/03/2026 |
+| Lei | 3.911 | 2021 | Instituição do SUAS Municipal | ✅ Confirmada | Lei estruturante local |
+| Lei | 3.955 | 2022 | Programa CUIDAR | ✅ Confirmada | Base legal do Programa Cuidar (gestantes) |
 | Decreto | 5.598 | 2025 | Benefícios Eventuais | ✅ Confirmado | Regulamenta concessão de benefícios eventuais |
 | Lei | 4.255 | 2024 | Transposição de dotações — R$ 431.407 | ✅ Confirmada | Inclui reforma do CRAM (contrato 14/2022) |
 | Lei | 4.431 | 2025 | Crédito adicional suplementar — R$ 22,5 mi | ✅ Confirmada | Derivada do PL 44/2025 |
@@ -90,7 +104,7 @@ Sua função no projeto é tripla:
 | CCS — Centro de Convivência Social (Jd. Rosolém) | Ato normativo municipal | A confirmar | Baixa |
 | Casa de Passagem e Abrigo | Portaria ou instrumento de convênio | A confirmar | Baixa |
 
-> **Nota:** O programa ACERTE foi removido desta seção. Trata-se de programa da **Secretaria de Governo** (Ação Cidadã de Requalificação, Trabalho e Educação), não da Secretaria Municipal de Inclusão e Desenvolvimento Social. Não compõe o escopo direto do Atlas Social de Hortolândia.
+> **Nota:** O programa ACERTE foi removido desta seção. Trata-se de programa da **Secretaria de Governo**, não da SMIDS. Não compõe o escopo direto do Atlas Social de Hortolândia.
 
 ---
 
@@ -100,9 +114,8 @@ Sua função no projeto é tripla:
 |---------|------|-------|--------|------------|
 | SAMU (192) | Emergencial | Saúde / SUS | Federal/Municipal | Lei 8.080/1990 |
 | Defesa Civil | Emergencial | Defesa Civil Municipal | Municipal | Lei 12.608/2012 |
-| Defesa Civil — Plantão | Emergencial | Defesa Civil Municipal | Municipal | Lei 12.608/2012 |
 | Corpo de Bombeiros (193) | Emergencial | Corpo de Bombeiros | Estadual | Legislação estadual SP |
-| Guarda Municipal (153) | Segurança | Guarda Civil Municipal | Municipal | Lei 13.022/2014 |
+| Guarda Municipal (153) | Segurança | GCM | Municipal | Lei 13.022/2014 |
 | Patrulha Maria da Penha | Proteção à Mulher | GCM / Rede de Proteção | Municipal | Lei 11.340/2006 |
 | CRAM | Proteção à Mulher | Secretaria Inclusão | Municipal | Lei 11.340/2006 |
 | Conselho Tutelar I | Proteção à Criança | Conselho Tutelar | Municipal | Lei 8.069/1990 (ECA) |
@@ -114,8 +127,8 @@ Sua função no projeto é tripla:
 
 > *Como as normas se relacionam com colegiados e programas no modelo do projeto.*
 
-| norma | vincula → programa (dim_programas_sociais_v09) | vincula → colegiado (dim_colegiados_v02) |
-|-------|-----------------------------------------------|------------------------------------------|
+| norma | vincula → programa | vincula → colegiado |
+|-------|-------------------|---------------------|
 | Lei 8.742/1993 (LOAS) | PAIF, PAEFI, SCFV, Centro POP, benefícios eventuais | CMAS (COL013) |
 | ECA (Lei 8.069/1990) | Apadrinhamento, Medida Socioeducativa, Conselho Tutelar | CMDCA (COL015) |
 | Lei 10.741/2003 | CCMI, Vida Longa, Atendimento Domiciliar | CMI (COL005) |
@@ -146,8 +159,7 @@ Sua função no projeto é tripla:
 └────────────────────────────────────────┘
 ```
 
-O Atlas Social de Hortolândia cruza as três camadas com o CadÚnico.
-Isso é governança real.
+O Atlas Social de Hortolândia cruza as três camadas com o CadÚnico. Isso é governança real.
 
 ---
 
@@ -158,9 +170,18 @@ Isso é governança real.
 | `dim_norma_juridica_v01.md` | `01_modelagem_conceitual` | Fonte técnica deste arquivo |
 | `dim_programas_sociais_v09.md` | `01_modelagem_conceitual` | Vinculação programa ↔ norma |
 | `dim_colegiados_v02.md` | `01_modelagem_conceitual` | Vinculação norma ↔ colegiado |
-| `EVOLUCAO_NORMATIVA_SUAS_2006_2025_v02.md` | `00_governança` | Contexto histórico normativo |
+| `Evolução_Normativa_SUAS_2006_2025.md` | `00_governanca` | Contexto histórico normativo |
 
 ---
 
-*Documento de registro interno — Atlas Social de Hortolândia — março de 2026*  
-*Atualizado em 09/03/2026 (v02): correção do nome do projeto (Atlas Social de Hortolândia), atualização das versões dos arquivos referenciados (dim_colegiados v02, dim_programas_sociais v09), remoção do ACERTE da Seção 3.2 com nota explicativa.*
+## Log de Alterações
+
+| Versão | Data | Alterações |
+|---|---|---|
+| v01 | 05/03/2026 | Criação |
+| v02 | 09/03/2026 | Correção do nome do projeto; atualização de versões referenciadas; remoção do ACERTE |
+| v03 | 11/05/2026 | Cabeçalho de escopo adicionado; seção "Conteúdo migrado para o core" incluída |
+
+---
+
+*Documento de registro interno — Atlas Social de Hortolândia*
