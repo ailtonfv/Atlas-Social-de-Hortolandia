@@ -1,15 +1,34 @@
+[arquitetura_dados_IVS_IBGE_Horto_v12.md](https://github.com/user-attachments/files/27607295/arquitetura_dados_IVS_IBGE_Horto_v12.md)
 [arquitetura_dados_IVS_IBGE_Horto_v11 (1).md](https://github.com/user-attachments/files/27360713/arquitetura_dados_IVS_IBGE_Horto_v11.1.md)
-| v11 | "04/05/2026" | Seção 9 atualizada — status das ações pós-execução do tratamento CadÚnico (RTB_002); CadÚnico 2025_12 confirmado: 72.424 registros, 211 colunas; RT_01 calculado em ~60,5% das famílias cadastradas; bloqueio de linkage endereço→loteamento registrado como dependência crítica (pendência Sandra/Cláudia/Jesus José); nota metodológica sobre RT_01 como proxy de população cadastrada; referência cruzada ao IPST-H como índice complementar ao IVS-H. |
+| v12 | "11/05/2026" | Cabeçalho de escopo adicionado; seção "Conteúdo migrado para o core" incluída; sem alteração de conteúdo. |
 
 *Documento de governança — 00_governanca/*
 *Atlas Social de Hortolândia — uso interno*
 
 # Arquitetura de Obtenção de Dados — IVS / IBGE / Hortolândia
-**Versão:** v11
-**Data:** "04/05/2026"
-**Responsável:** Ailton Vendramini
-**Repositório:** Atlas-Social-de-Hortolândia / 00_governanca
+**Versão:** v12  
+**Data:** "11/05/2026"  
+**Responsável:** Ailton Vendramini  
+**Repositório:** Atlas-Social-de-Hortolândia / 00_governanca  
 **Origem:** Pesquisa documental — `arquitetura_obtencao_de_dados_IVS.docx`
+
+---
+
+> **Escopo deste documento:** Registro histórico, narrativo e institucional da arquitetura de dados do IVS-H. Inclui estado operacional do MVP, pendências, logs de versão e decisões com contexto. O conteúdo arquitetural permanente foi extraído para o repositório core — ver seção abaixo.
+
+---
+
+## Conteúdo migrado para o core
+
+Os documentos abaixo integram o núcleo metodológico permanente do Atlas Social e estão versionados no repositório `Atlas-Social-de-Hortolandia-core`:
+
+| Arquivo no core | Conteúdo extraído deste documento |
+|---|---|
+| `metodologia/arquitetura_dados_ivsh.md` | Função do IVS-H, três instrumentos, escopo territorial, premissas, fontes, fórmula, pesos, Camada 3, decisão temporal |
+
+> O repositório core é privado. O conteúdo aqui permanece como registro histórico completo e rastreável.
+
+---
 
 > Este arquivo documenta **de onde vêm os dados** necessários para construir
 > o IVS-H (Índice de Vulnerabilidade Social de Hortolândia).
@@ -412,9 +431,6 @@ Dados obtidos em "13/03/2026" via Google BigQuery:
 | Rede geral / fossa ligada à rede | 77.858 | **96,4%** |
 | Outros | 2.944 | 3,6% |
 
-> Cobertura adequada: 96,4% no município agregado.
-> Os 2.944 domicílios sem cobertura são o universo prioritário para IU.
-
 ### 6.1.3 Variável IU_lixo — confirmada (Tabela 10109)
 
 | destino | domicílios | % |
@@ -422,15 +438,11 @@ Dados obtidos em "13/03/2026" via Google BigQuery:
 | Coletado (domicílio + caçamba) | 80.774 | **99,9%** |
 | Outros | 28 | 0,03% |
 
-> Praticamente universal — variável não-discriminatória para Hortolândia.
-
 ### 6.1.4 Variável IU_banheiro — confirmada (Tabela 10107)
 
 | indicador | domicílios | % |
 |-----------|-----------|---|
 | Com banheiro de uso exclusivo | 80.773 | **99,96%** |
-
-> Praticamente universal — variável não-discriminatória.
 
 ### 6.1.5 Diagnóstico da população quilombola — Censo 2022
 
@@ -442,11 +454,7 @@ Dados obtidos em "13/03/2026" via Google BigQuery:
 | Território quilombola oficialmente delimitado | nenhum |
 | Taxa de alfabetização quilombola (15+) | 100% |
 
-> Pendência: identificar loteamentos via setores censitários.
-
 ### 6.1.6 Diagnóstico da população indígena — Censo 2022 (Tabela 10340)
-
-**Fonte:** IBGE. *Censo Demográfico 2022*. SIDRA, Tabela 10340. Acesso em "17/03/2026".
 
 | indicador | valor |
 |-----------|-------|
@@ -454,39 +462,8 @@ Dados obtidos em "13/03/2026" via Google BigQuery:
 | Pessoas indígenas — em aglomerados subnormais | **10** (4 homens / 6 mulheres) |
 | Moradores totais do município (base comparativa) | 224.177 |
 | % da população total | **0,11%** |
-| % da população de aglomerados | 0,24% dos 4.223 moradores em aglomerados |
-
-> Os 255 indígenas estão dispersos pelo município sem terra indígena demarcada.
-> São administrativamente invisíveis no CadÚnico (salvo autodeclaração).
-> Perfil racial dos aglomerados subnormais: pretos + pardos = 69,6% vs 50,7% no município geral —
-> concentração racial expressiva nas áreas de vulnerabilidade.
->
-> **Pendência:** identificar distribuição por loteamento via setores censitários.
-
-**Camada 3 — Populações Específicas (estado atual):**
-
-| Grupo | Quantidade | Status administrativo |
-|-------|------------|----------------------|
-| Quilombola | 6 pessoas | Invisível no CadÚnico, sem território |
-| Indígena | **255 pessoas** | Invisível no CadÚnico, sem terra demarcada |
-| TEA | 2.806 pessoas | Diagnóstico médico — CadÚnico parcial |
-
-> **Posicionamento metodológico — Camada 3:**
-> As populações específicas (quilombola, indígena, TEA) **não compõem diretamente
-> o escore do IVS-H**. Funcionam como camada estratégica de interpretação e
-> priorização da política pública territorial: identificam grupos que, independentemente
-> do IVS-H calculado para seu loteamento, demandam atenção especializada e recursos
-> diferenciados. O cruzamento Camada 3 × IVS-H por loteamento (Produto 3) revela
-> territórios com dupla prioridade — vulnerabilidade composta + necessidade específica.
 
 ### 6.1.7 Aglomerados subnormais — IU_esgoto discrimina no território
-
-**Fonte:** IBGE. *Censo Demográfico 2022*. SIDRA, Tabelas 10341, 10344, 10345, 10343. Acesso em "17/03/2026".
-
-> Este dado reverte uma premissa do projeto que merece registro formal.
-
-Os dados de esgotamento sanitário diferem significativamente entre o município
-agregado e os aglomerados subnormais:
 
 | tipo de esgotamento | Aglomerados (%) | Município geral (%) |
 |---------------------|-----------------|---------------------|
@@ -495,10 +472,6 @@ agregado e os aglomerados subnormais:
 | Rio / córrego / mar | **21,01%** | 0,45% |
 | Vala | 0,44% | 0,07% |
 
-> O argumento de que IU_esgoto tem "baixo poder discriminatório" vale para o município
-> **agregado** — mas dentro dos aglomerados (1.366 domicílios, 4.223 moradores),
-> apenas 29% têm rede geral e 21% lançam esgoto diretamente em corpo d'água.
->
 > **Decisão arquitetural:** o peso reduzido de Infraestrutura Urbana (~15-20%) no
 > IVS-H municipal se mantém. Porém, a granularidade por loteamento vai revelar
 > concentração crítica nos aglomerados. A variável IU_esgoto deve permanecer
@@ -513,8 +486,6 @@ agregado e os aglomerados subnormais:
 | Pessoas com TEA | **2.806** (1,2% da população) |
 | Domicílios com pelo menos 1 morador com TEA | **2.347** (2,9% dos domicílios) |
 | Taxa de escolarização TEA — 15-17 anos | **100%** vs 84,5% geral |
-
-> O TEA não integra o cálculo do IVS-H — é camada analítica complementar.
 
 ---
 
@@ -533,28 +504,15 @@ agregado e os aglomerados subnormais:
 ## 8. Decisão Arquitetural — Dimensão Temporal das Tabelas Fato
 
 **Data da decisão:** "17/03/2026"
-**Motivação:** A indisponibilidade dos microdados do Censo 2022 (confirmada pelo IBGE
-sem previsão de liberação) torna evidente que cada cálculo do IVS-H é uma
-**fotografia datada** — e que o modelo precisa guardar isso explicitamente para
-viabilizar série histórica e comparações futuras.
-
-### 8.1 O problema
-
-O IVS-H calculado sobre o CadÚnico de dez/2025 **não é o mesmo indicador** que
-o IVS-H calculado sobre o Censo 2022 ou sobre o CadÚnico de jun/2026.
-São fontes diferentes, populações diferentes, datas diferentes.
-Sem dimensão temporal nas tabelas fato, as comparações futuras serão impossíveis.
 
 ### 8.2 Campos obrigatórios nas tabelas fato
 
-As tabelas `fato_ivs_loteamento` e `fato_ivs_municipio` devem incluir:
-
 ```sql
-data_referencia     DATE        -- data exata ou aproximada do dado base
-ano_referencia      INTEGER     -- ano para agrupamentos e filtros
+data_referencia     DATE
+ano_referencia      INTEGER
 fonte_calculo       TEXT        -- 'CENSO_2022' | 'CADUNICO_202512' | 'SNIS_2020'
 tipo_ivs            TEXT        -- 'IVS_BASE' | 'IVS_H_PARCIAL' | 'IVS_H_COMPLETO'
-versao_calculo      TEXT        -- ex: 'v01' — para versionamento de metodologia
+versao_calculo      TEXT        -- ex: 'v01'
 ```
 
 ### 8.3 Exemplos de registros temporais
@@ -566,28 +524,6 @@ versao_calculo      TEXT        -- ex: 'v01' — para versionamento de metodolog
 | IVS-H Parcial (5 vars CadÚnico) | CADUNICO_202512 | 2025-12-31 | IVS_H_PARCIAL |
 | IVS-H Expandido | CENSO_2022 + CADUNICO_202512 | 2025-12-31 | IVS_H_COMPLETO |
 
-### 8.4 O que isso viabiliza
-
-Com essa estrutura, o modelo responde no futuro:
-
-> *"O IVS-H parcial do loteamento Rosolém em dez/2025 era X.
-> Em jun/2026 passou para Y. A redução foi de Z%."*
-
-Sem esses campos, a série histórica fica impossível e o legado do projeto
-— mostrar que Hortolândia reduziu vulnerabilidade de forma mensurável — não
-pode ser comprovado.
-
-### 8.5 Nota metodológica registrada
-
-> A indisponibilidade dos microdados da amostra do Censo 2022 impede a
-> construção de matrizes origem-destino detalhadas. O modelo IVS-H adota
-> proxies validados de mobilidade (tempo de deslocamento e proporção de
-> trabalhadores fora do município), mantendo robustez analítica e aderência
-> à literatura.
-
-> Fonte: consulta formal ao IBGE realizada em "17/03/2026".
-> Registro paralelo: `dim_dinamica_metropolitana_v03.md`, Seção 6.
-
 ---
 
 ## 9. Próximos Passos
@@ -597,15 +533,15 @@ pode ser comprovado.
 | 1 | Baixar os 7 arquivos IBGE | Ailton (Debian) | ✅ concluído "12/03/2026" |
 | 2 | Obter IVS IPEA 2000/2010 via BigQuery | Ailton (Debian) | ✅ concluído "13/03/2026" |
 | 3 | Aplicar filtro 3519071 e gerar filtrado_hortolandia/ | Ailton (Debian) | ✅ concluído "12/03/2026" |
-| 4 | Carregar e validar CadÚnico 2025_12 (RTB_002) | Ailton (Windows) | ✅ concluído "21/04/2026" — 72.424 registros, 211 colunas |
+| 4 | Carregar e validar CadÚnico 2025_12 (RTB_002) | Ailton (Windows) | ✅ concluído "21/04/2026" |
 | 5 | Calcular RT_01 sobre CadÚnico | Ailton (Windows) | ✅ concluído — ~60,5% das famílias cadastradas |
 | 6 | Resolver linkage endereço → loteamento (DE-PARA CEP → cod_loteamento) | Sandra / Cláudia / Jesus José | 🔴 bloqueio crítico — pendente |
-| 7 | Verificar dicionário domicilio1/2/3 — IU_agua, IU_esgoto, IU_lixo | Ailton + Claude | pendente |
-| 8 | Mapear variáveis IBGE para dim_variavel_IVS_v01r4.md | Ailton + Claude | pendente |
-| 9 | Definir pesos IVS-H em pesos/pesos_IVS_H/ | Ailton + Claude | pendente |
+| 7 | Verificar dicionário domicilio1/2/3 | Ailton + Claude | pendente |
+| 8 | Mapear variáveis IBGE para dim_variavel_IVS | Ailton + Claude | pendente |
+| 9 | Definir pesos IVS-H | Ailton + Claude | pendente |
 | 10 | Popular schema_IVS.sql com dados reais | Ailton (Debian) | aguarda 6 e 7 |
-| 11 | Incluir campos temporais (data_referencia, fonte_calculo, tipo_ivs, versao_calculo) no DDL das tabelas fato | Ailton (Debian) | pendente — aguarda criação das tabelas |
-| 12 | Calcular IVS-H Fase 1 por loteamento (5 variáveis CadÚnico) | Ailton (Windows) | 🔴 bloqueado — depende de #6 |
+| 11 | Incluir campos temporais no DDL das tabelas fato | Ailton (Debian) | pendente |
+| 12 | Calcular IVS-H Fase 1 por loteamento | Ailton (Windows) | 🔴 bloqueado — depende de #6 |
 
 ---
 
@@ -613,17 +549,18 @@ pode ser comprovado.
 
 | versão | data | alterações |
 |--------|------|------------|
-| v01 | "12/03/2026" | Criação — premissas IBGE/IPEA; 5 arquivos mapeados; pipeline; posicionamento IVS × IVS-H; código IBGE corrigido |
-| v02 | "12/03/2026" | Seção 0: escopo territorial. Notas sobre domicilio1/2/3, pipeline, posicionamento estratégico |
-| v03 | "13/03/2026" | Seção 3.5: renda per capita não publicada pelo IBGE — CadÚnico como fonte de RT_01. Seção 5: pastas criadas. Seção 6: IVS IPEA 2000/2010 via BigQuery |
-| v04 | "15/03/2026" | Seção 0.1: contexto Arranjo Populacional de Campinas — índice 0,42 e três implicações para o IVS-H |
-| v05 | "16/03/2026" | Seção 1.3: confirmação BET/IBGE 2024 (código 3519071) |
-| v06 | "16/03/2026" | Seção 6.1: dados SIDRA Censo 2022 — base domiciliar, IU_esgoto, IU_lixo, IU_banheiro, quilombola |
-| v07 | "16/03/2026" | Seção 6.2: diagnóstico TEA — 2.806 pessoas, 2.347 domicílios, escolarização 100% (15-17 anos) |
-| v08 | "17/03/2026" | Seção 6.1.6: população indígena — 255 pessoas (vs 6 quilombolas); 10 em aglomerados; Camada 3 atualizada. Seção 6.1.7 (nova): aglomerados subnormais — IU_esgoto discrimina no território (29% cobertura vs 97,6% municipal); decisão de manter variável com nota de poder discriminatório territorial. Seção 8 (nova): Decisão Arquitetural — Dimensão Temporal das Tabelas Fato; 5 campos obrigatórios nas tabelas fato (data_referencia, ano_referencia, fonte_calculo, tipo_ivs, versao_calculo); nota metodológica sobre microdados Censo 2022 registrada formalmente. Seção 8 anterior renomeada para Seção 9; passo 8 adicionado. |
-| v09 | "17/03/2026" | Seção 1.4 (nova): Função do IVS-H. Seção 5.1 (nova): fórmula formal IVS_H = w1*IU + w2*CH + w3*RT. Seção 0: unidade primária de análise declarada. Seção 6.2: posicionamento TEA reforçado. **Nota:** o log desta versão referenciava uma Seção 3.3.1 que não foi inserida no corpo — inconsistência corrigida na v10. |
-| v10 | "17/03/2026" | Ajuste 1: Seção 2.1 (nova) — mobilidade pendular como variável proxy de RT; inconsistência do log v09 corrigida. Ajuste 2: fórmula da Seção 5.1 corrigida — IU_mobilidade removida de IU; mobilidade consolidada exclusivamente em RT. Ajuste 3: título da Seção 3 ampliado. Ajuste 4: nota metodológica formal sobre Camada 3. |
-| v11 | "04/05/2026" | Seção 1.5 (nova): arquitetura de três instrumentos complementares (IVS-H / IPST-H / IPSO-H) — tabela comparativa, natureza de cada instrumento, separação metodológica obrigatória, matriz IVS-H × IPST-H, referências cruzadas. Seção 3.1 (nova): CadÚnico como fonte primária — estado atual Fase 1 MVP: 72.424 registros confirmados (RTB_002, "21/04/2026"); RT_01 ~60,5%; nota metodológica sobre proxy de população cadastrada; tabela de bloqueios críticos (Sandra / Cláudia / Jesus José). Seção 5: pipeline atualizado — nota de bloqueio em ivsh_loteamento.csv. Seção 5.1: referência ao comparativo atualizada para v08. Seção 9 (Próximos Passos): itens 1–3 marcados como concluídos; itens 4–5 adicionados como concluídos; item 6 marcado como bloqueio crítico; itens 7–11 renumerados; item 12 adicionado como bloqueado. |
+| v01 | "12/03/2026" | Criação |
+| v02 | "12/03/2026" | Seção 0: escopo territorial |
+| v03 | "13/03/2026" | CadÚnico como fonte de RT_01; IVS IPEA via BigQuery |
+| v04 | "15/03/2026" | Contexto Arranjo Populacional de Campinas |
+| v05 | "16/03/2026" | Confirmação BET/IBGE 2024 |
+| v06 | "16/03/2026" | Dados SIDRA Censo 2022 — base domiciliar e IU |
+| v07 | "16/03/2026" | Diagnóstico TEA |
+| v08 | "17/03/2026" | População indígena; aglomerados subnormais; dimensão temporal das tabelas fato |
+| v09 | "17/03/2026" | Função do IVS-H; fórmula formal; unidade primária de análise |
+| v10 | "17/03/2026" | Mobilidade pendular consolidada em RT; correções de consistência |
+| v11 | "04/05/2026" | Três instrumentos complementares (IVS-H / IPST-H / IPSO-H); estado atual Fase 1 MVP; bloqueios críticos |
+| v12 | "11/05/2026" | Cabeçalho de escopo adicionado; seção "Conteúdo migrado para o core" incluída |
 
 ---
 
