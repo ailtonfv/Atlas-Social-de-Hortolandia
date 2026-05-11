@@ -1,11 +1,28 @@
-[ivs_vs_ivsh_comparativo_v09.md](https://github.com/user-attachments/files/27520250/ivs_vs_ivsh_comparativo_v09.md)
+[ivs_vs_ivsh_comparativo_v10.md](https://github.com/user-attachments/files/27607698/ivs_vs_ivsh_comparativo_v10.md)
 # IVS × IVS-H — Comparativo das 16 Variáveis de Vulnerabilidade Social
 
-**Arquivo:** `00_governanca/ivs_vs_ivsh_comparativo_v09.md`
-**Versão:** v09
-**Data:** "08/05/2026"
-**Responsável:** Ailton Vendramini
+**Arquivo:** `00_governanca/ivs_vs_ivsh_comparativo.md`  
+**Versão:** v10  
+**Data:** "11/05/2026"  
+**Responsável:** Ailton Vendramini  
 **Repositório:** Atlas-Social-de-Hortolândia
+
+---
+
+> **Escopo deste documento:** Registro histórico e narrativo da construção metodológica do IVS-H. Inclui resultados operacionais da Fase 1 MVP, pesos hipotéticos e estado das variáveis. O conteúdo permanente foi extraído para o repositório core — ver seção abaixo.
+
+---
+
+## Conteúdo migrado para o core
+
+Os documentos abaixo integram o núcleo metodológico permanente do Atlas Social e estão versionados no repositório `Atlas-Social-de-Hortolandia-core`:
+
+| Arquivo no core | Conteúdo extraído deste documento |
+|---|---|
+| `metodologia/metodologia_ivsh.md` | Ecossistema analítico, 16 variáveis, pesos por dimensão, conclusão estratégica |
+| `outputs_privados/resultados_mvp_2025_12.md` | RT_01, RT_04, CH_06 — resultados calculados sobre CadÚnico dez/2025 |
+
+> O repositório core é privado. O conteúdo aqui permanece como registro histórico completo e rastreável.
 
 ---
 
@@ -45,7 +62,7 @@ o IPSO-H valida qualitativamente o que o IVS-H e o IPST-H medem em bases quantit
 
 > IPST-H: `01_modelagem_conceitual/ipst_h_modelo_v01.md` (a produzir).
 > IPSO-H: `00_governanca/corpus_jornalistico/README_corpus_v1.5.md`.
-> Detalhamento técnico de fontes: `arquitetura_dados_IVS_IBGE_Horto_v11.md`.
+> Detalhamento técnico de fontes: `arquitetura_dados_IVS_IBGE_Horto.md`.
 
 ---
 
@@ -112,7 +129,7 @@ Peso IVS-H: **~35–40%** | Peso IPEA: 33%
 > As variáveis RT_mobilidade_pendular_saida (~62% proxy) e RT_mobilidade_pendular_longa (12,7%)
 > pertencem à dimensão RT — não são variáveis das 16 originais do IPEA, mas complementos
 > metodológicos do IVS-H para capturar a dinâmica metropolitana de Hortolândia.
-> Detalhamento em `arquitetura_dados_IVS_IBGE_Horto_v11.md`, Seção 2.1.
+> Detalhamento em `arquitetura_dados_IVS_IBGE_Horto.md`, Seção 2.1.
 
 ---
 
@@ -134,9 +151,6 @@ Peso IVS-H: **~35–40%** | Peso IPEA: 33%
 > `descbairro` (loteamentosregiao.xls) produziu ranking por loteamento com 97,3% de cobertura
 > (4.394 de 4.516 analfabetos identificados). Resultado válido como proxy — não substitui
 > o linkage oficial por `cod_loteamento`.
-
-> O cálculo por loteamento é o produto estratégico do IVS-H.
-> O cálculo municipal é referência de validação.
 
 ---
 
@@ -266,6 +280,12 @@ O IVS-H permite:
 | Versão | Data | Alterações |
 |--------|------|------------|
 | v01–v06 | "03/2026" | Versões iniciais — estruturação das variáveis e pesos |
-| v07 | "30/04/2026" | Inclusão da lista completa das 16 variáveis; ajuste RT_04; nota IPST-H; reforço institucional |
+| v07 | "30/04/2026" | Inclusão da lista completa das 16 variáveis; ajuste RT_04; nota IPST-H |
 | v08 | "04/05/2026" | Tabela de variáveis expandida; RT_01 confirmado (~60,5%); arquitetura de três instrumentos |
-| v09 | "08/05/2026" | Resultados calculados incorporados: RT_01 (58,8%), RT_04 (8,12% / ~2.465 famílias), CH_06 (8,69% / detalhamento completo por faixa etária, gênero, trajetória escolar, loteamento e cruzamentos de vulnerabilidade); estado do MVP atualizado; núcleo crítico formalizado (298 idosos analfabetos pobres sem BPC/BF); nota sobre proxy territorial CH_06 |
+| v09 | "08/05/2026" | Resultados calculados incorporados: RT_01, RT_04, CH_06 com detalhamento completo; núcleo crítico formalizado (298 idosos analfabetos pobres sem BPC/BF) |
+| v10 | "11/05/2026" | Cabeçalho de escopo adicionado; seção "Conteúdo migrado para o core" incluída; referência ao arquivo de arquitetura atualizada para versão sem sufixo |
+
+---
+
+*Documento de governança — 00_governanca/*
+*Atlas Social de Hortolândia — uso interno*
