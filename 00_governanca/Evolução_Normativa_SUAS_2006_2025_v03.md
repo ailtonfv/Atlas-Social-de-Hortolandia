@@ -1,7 +1,12 @@
+[Evolução_Normativa_SUAS_2006_2025_v03.md](https://github.com/user-attachments/files/27604623/Evolucao_Normativa_SUAS_2006_2025_v03.md)
 # EVOLUÇÃO NORMATIVA DO SUAS MUNICIPAL — HORTOLÂNDIA (2006–2025)
 **Responsável:** Atlas Social de Hortolândia — Arquitetura de Dados Socioassistencial  
 **Data de consolidação:** 03/03/2026  
-**Última atualização:** 09/03/2026 (v02)
+**Última atualização:** 11/05/2026 (v03)
+
+---
+
+> **Escopo deste documento:** Referência institucional e histórica. Consolida o arcabouço jurídico da política socioassistencial municipal. Não contém regras operacionais do framework analítico — estas estão em `impactos_normativos_no_modelo.md` (repositório core).
 
 ---
 
@@ -124,5 +129,10 @@ O Atlas Social de Hortolândia deve refletir explicitamente a **Lei nº 3.911/20
 
 ---
 
-*Documento gerado em 03/03/2026.*  
-*Atualizado em 09/03/2026 (v02): correção do nome do projeto (Atlas Social de Hortolândia), alinhamento dos nomes das dimensões ao modelo vigente, eliminação de "Território" como entidade, inclusão da Lei nº 3.955/2022 na linha do tempo (descrição pendente).*
+## Changelog
+
+| Versão | Data | Alteração |
+|---|---|---|
+| v01 | 03/03/2026 | Criação |
+| v02 | 09/03/2026 | Correção de nomes de dimensões; eliminação de "Território"; inclusão Lei 3.955/2022 |
+| v03 | 11/05/2026 | Adição de cabeçalho de escopo; conteúdo operacional extraído para `impactos_normativos_no_modelo.md` |
