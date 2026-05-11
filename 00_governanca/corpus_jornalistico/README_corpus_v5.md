@@ -1,4 +1,3 @@
-[README_corpus_v1.5.md](https://github.com/user-attachments/files/27318242/README_corpus_v1.5.md)
 # CORPUS JORNALÍSTICO — IPSO-H
 ## Pressão Social Observada em Hortolândia
 
