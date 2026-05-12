@@ -1,7 +1,9 @@
-[README.5.md](https://github.com/user-attachments/files/27650642/README.5.md)[Upload# Atlas Social de Hortolândia
+[README (7).md](https://github.com/user-attachments/files/27651446/README.7.md)[Uploading README # Atlas Social de Hortolândia
 **Arquitetura de Inteligência Social para Políticas Públicas Municipais**
 
 Repositório público do projeto **Atlas Social de Hortolândia** — iniciativa de arquitetura analítica aplicada à política socioassistencial do município de Hortolândia – SP.
+
+![Diagrama do Sistema](docs/diagramas/diagrama_sistema.svg)
 
 O projeto estrutura uma **infraestrutura de inteligência social mínima** capaz de compreender e acompanhar a dinâmica da vulnerabilidade social no território municipal, utilizando dados públicos já existentes e respeitando integralmente a legislação de proteção de dados.
 
@@ -158,4 +160,4 @@ Construir uma **arquitetura de inteligência social replicável para municípios
 Projeto institucional público.
 
 Não contém dados pessoais. Segue os princípios da **Lei Geral de Proteção de Dados (LGPD)** e boas práticas de governança de dados no setor público.
-ing README.5.md…]()
+(7).md…]()
