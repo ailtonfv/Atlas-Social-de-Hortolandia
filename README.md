@@ -1,26 +1,21 @@
-[README (7).md](https://github.com/user-attachments/files/27651446/README.7.md)[Uploading README # Atlas Social de Hortolândia
-**Arquitetura de Inteligência Social para Políticas Públicas Municipais**
-
-Repositório público do projeto **Atlas Social de Hortolândia** — iniciativa de arquitetura analítica aplicada à política socioassistencial do município de Hortolândia – SP.
+[README (8).md](https://github.com/user-attachments/files/27861715/README.8.md)
 
 ![Diagrama do Sistema](docs/diagramas/diagrama_sistema.svg)
 
-O projeto estrutura uma **infraestrutura de inteligência social mínima** capaz de compreender e acompanhar a dinâmica da vulnerabilidade social no território municipal, utilizando dados públicos já existentes e respeitando integralmente a legislação de proteção de dados.
+[Upload# Atlas Social de Hortolândia
+**Sistema de Inteligência Territorial para a Política Socioassistencial**
+
+Repositório do **Atlas Social de Hortolândia** — sistema de análise e monitoramento da vulnerabilidade social do município de Hortolândia – SP, desenvolvido pela Secretaria Municipal de Inclusão e Desenvolvimento Social (SMIDS / DIAE).
 
 ---
 
-## Contexto
+## O problema que este projeto resolve
 
-Hortolândia possui aproximadamente **240 mil habitantes** e cerca de **73 mil pessoas inscritas no Cadastro Único** — quase **1 em cada 3 moradores**.
+Hortolândia possui aproximadamente **240 mil habitantes** e cerca de **72.400 pessoas inscritas no Cadastro Único** — quase **1 em cada 3 moradores**. A rede socioassistencial existe e funciona. O que falta é informação territorializada para orientá-la.
 
-Apesar da escala da política socioassistencial, os dados disponíveis ainda não permitem responder com precisão perguntas fundamentais para a gestão pública:
+O último IVS municipal disponível (IPEA) data de **2010**. São 16 anos sem medição sistemática da vulnerabilidade no nível do loteamento. O Atlas Social nasce para fechar essa lacuna.
 
-- Quem está sendo atendido?
-- Onde estão as famílias que não estão sendo atendidas?
-- Quanto tempo as famílias permanecem em situação de vulnerabilidade?
-- Quantas pessoas conseguem alcançar emancipação social?
-
-Este projeto busca estruturar uma infraestrutura analítica capaz de responder a essas perguntas de forma sistemática, territorial e longitudinal.
+> **O IVS mostra onde está a vulnerabilidade. O IPST-H mostra onde a vulnerabilidade se transforma em pressão sobre o Estado.**
 
 ---
 
@@ -28,105 +23,132 @@ Este projeto busca estruturar uma infraestrutura analítica capaz de responder a
 
 > **A arquitetura de dados deve refletir a política pública — nunca substituí-la.**
 
-A proposta de modelagem:
-
-- não altera fluxos institucionais
-- não cria novos cadastros
-- não redefine competências administrativas
-
-Ela organiza os **dados já existentes**, permitindo leitura estratégica, territorial e longitudinal da política socioassistencial municipal.
-
----
-
-## Cadeia analítica
-
-```
-Pessoa → Família → Domicílio → Loteamento → Programa Social → Serviço → Resultado
-```
-
-A hierarquia territorial adotada é:
-
-```
-Loteamento → Núcleo (área de abrangência CRAS) → Região de Planejamento
-```
-
-Essa estrutura permite compreender a política socioassistencial como um **processo territorial e longitudinal**, e não apenas como registros administrativos isolados.
-
----
-
-## Estrutura deste repositório
-
-Este repositório contém exclusivamente os componentes públicos do projeto:
-
-| Diretório | Conteúdo |
-|---|---|
-| `00_governanca` | Princípios arquitetônicos, governança institucional, LGPD e séries jornalísticas |
-| `01_modelagem_conceitual` | Definição das entidades centrais da política social |
-| `03_indicadores_mvp` | Definição e documentação dos indicadores estruturantes |
-| `04_documento_tecnico` | Documentação formal da arquitetura analítica |
-| `05_plano_evolutivo` | Roteiro de evolução do projeto |
-
-> O ambiente operacional — notebooks, pipelines, staging e processamento de dados — está mantido em repositório separado de acesso restrito, em conformidade com a LGPD e com os princípios de segurança de dados do setor público.
+O projeto não altera fluxos institucionais, não cria novos cadastros e não redefine competências administrativas. Organiza os dados já existentes para permitir leitura estratégica, territorial e longitudinal da política socioassistencial.
 
 ---
 
 ## Dois índices complementares
 
 ### IVS-H — Índice de Vulnerabilidade Social de Hortolândia
-
-Adaptação local do **IVS/IPEA**, mantendo as 16 variáveis originais distribuídas em três dimensões:
-
-| Dimensão | Sigla |
-|---|---|
-| Infraestrutura Urbana | IU |
-| Capital Humano | CH |
-| Renda e Trabalho | RT |
-
-A calibração local reflete as especificidades do município: cobertura de saneamento próxima de 100% e reprodução intergeracional da pobreza como desafio central.
-
-O modelo converge para a incorporação das 16 variáveis do IVS/IPEA à medida que as fontes forem disponibilizadas, preservando a estrutura original do índice.
+Replica as **16 variáveis oficiais do IVS/IPEA** com dados locais (CadÚnico), na granularidade de **loteamento** (141 loteamentos). Permite comparabilidade com qualquer município brasileiro e monitoramento contínuo — sem depender de ciclos censitários.
 
 ### IPST-H — Índice de Pressão Social Territorial de Hortolândia
+Indicador proprietário que mede onde a vulnerabilidade se transforma em **sobrecarga operacional da rede socioassistencial**. Alimentado pelo corpus jornalístico e por registros administrativos. Complementa o IVS-H sem substituí-lo.
 
-Índice proprietário municipal que mede a **pressão exercida sobre o Estado** em cada loteamento — sobrecarga da rede, lacunas de cobertura e intensidade da demanda.
+**Matriz de interpretação conjunta:**
 
-| Combinação | Leitura |
-|---|---|
-| IVS alto + IPST alto | Alta vulnerabilidade e Estado pressionado |
-| IVS alto + IPST baixo | Vulnerabilidade alta, rede ainda absorvendo |
-| IVS baixo + IPST alto | Pressão operacional (fluxo, mobilidade, rede insuficiente) |
-| IVS baixo + IPST baixo | Situação estável |
-
-> **O IVS mostra onde está a vulnerabilidade. O IPST-H mostra onde a vulnerabilidade se transforma em pressão sobre o Estado.**
+| IVS-H | IPST-H | Leitura |
+|---|---|---|
+| Alto | Alto | Alta vulnerabilidade + Estado pressionado |
+| Alto | Baixo | Vulnerabilidade alta, rede ainda absorvendo |
+| Baixo | Alto | Pressão operacional (fluxo / rede insuficiente) |
+| Baixo | Baixo | Situação estável |
 
 ---
 
-## Corpus Jornalístico
+## Resultados — IVS-H Fase 1 MVP
 
-O projeto mantém uma **série jornalística estruturada** a partir do jornal Tribuna Liberal, com classificação sistemática de eventos de vulnerabilidade social, governança e pressão territorial.
+Sete indicadores calculados a partir do CadÚnico (dez/2025), com metodologia compatível com o IVS/IPEA e rastreabilidade completa.
 
-O corpus funciona como **sensor de campo**: registra ciclos de pressão social antes que os dados administrativos os capturem, complementando o IVS-H com evidência empírica de base local.
+| Código | Dimensão | Indicador | Resultado | Universo |
+|---|---|---|---|---|
+| RT_01 | Renda e Trabalho | Renda per capita ≤ ½ SM | **64,66%** | 72.424 pessoas |
+| RT_04 | Renda e Trabalho | Idosos sem proteção previdenciária* | **90,12%** | 11.787 pessoas 60+ |
+| CH_06 | Capital Humano | Analfabetismo 15+ | **8,56%** | 51.492 pessoas 15+ |
+| CH_03 | Capital Humano | Crianças 6–14 fora da escola | **0,97%** | 13.681 crianças |
+| CH_08 | Capital Humano | Jovens 15–24 nem-nem | **9,33%** | 10.667 jovens |
+| CH_05 | Capital Humano | Mães RF sem fundamental, filho < 15 | **8,63%** | 24.663 mulheres RF |
+| CH_07 | Capital Humano | Crianças 0–14 em domicílios sem fundamental | **10,86%** | 20.932 crianças |
 
-Cada evento é classificado segundo:
+*RT_04: proxy via ausência de Bolsa Família — refinamento via CNIS em etapa futura.
 
-- dimensão analítica (infraestrutura urbana, capital humano, renda e trabalho)
-- tipo de camada (IVS, GOVERNANÇA, PRESSÃO SOCIAL, CONTEXTO)
-- papel no ciclo de pressão (emergência, resposta, agravamento, sinal de desfecho)
+> Cada pessoa identificada está cadastrada no CadÚnico e, por definição, ao alcance da atuação municipal. O dado não apenas descreve: **habilita a intervenção**.
+
+---
+
+## Referência histórica IPEA
+
+| Dimensão | IVS 2000 | IVS 2010 | Variação |
+|---|---|---|---|
+| IVS Composto | 0,440 | 0,324 | ▼ −0,116 |
+| Infraestrutura Urbana | 0,405 | 0,411 | ≈ estável |
+| Capital Humano | 0,488 | 0,262 | ▼ −0,226 |
+| Renda e Trabalho | 0,424 | 0,270 | ▼ −0,154 |
+
+A lacuna de 16 anos (2010–2026) sem medição é o argumento central para a existência deste projeto.
+
+---
+
+## Corpus Jornalístico — sensor do IPST-H
+
+O Atlas Social mantém um corpus de classificação de notícias do jornal **Tribuna Liberal**, utilizado como sensor de pressão social territorial. Cada edição é classificada em um CSV estruturado com 21 campos seguindo schema versionado.
+
+Ciclos de pressão ativos monitorados:
+- `IU_ALAGAMENTO_2026` — alagamentos urbanos recorrentes
+- `CH_CRIMINALIDADE_2025` — violência urbana territorial
+- `CH_VIOLENCIA_CRIANCA_2026` — violência contra crianças
+- `CH_EXCLUSAO_DIGITAL_2026` — fricção entre digitalização estatal e populações vulneráveis
+- `RT_DATACENTERS_REGIONAL_2026` — transformação econômica territorial
+
+---
+
+## Hierarquia territorial
+
+```
+Município → Regiões de Planejamento (6 RPs) → Loteamentos (141) → Núcleo CRAS
+```
+
+Chave canônica de integração: `codbairro` da base `loteamentosregiao.xls` (SIG/PMH).
+
+---
+
+## Estrutura do repositório
+
+| Diretório | Conteúdo |
+|---|---|
+| `00_governanca` | Regras de classificação, dicionários, READMEs do corpus jornalístico |
+| `00_governanca/series_jornalisticas` | CSVs diários do corpus Tribuna Liberal |
+| `01_modelagem_conceitual` | Definição das entidades centrais da política social |
+| `02_modelagem_logica` | Esquemas, dicionários e DDLs |
+| `dados/cadunico` | Scripts e outputs agregados (sem dados pessoais) |
+| `dados/bd_externos` | Dados públicos: IPEA, IBGE, corpus jornalístico |
+| `notebooks` | Notebooks Jupyter do pipeline IVS-H |
+| `outputs` | Resultados agregados e painéis |
+| `docs` | Documentação institucional |
+
+**Notebooks do pipeline IVS-H:**
+
+| Notebook | Finalidade |
+|---|---|
+| `02_tratamento_cadunico` | Limpeza e padronização da base CadÚnico |
+| `03_analise_variaveis_cadunico` | Cálculo das variáveis IVS-H |
+| `05_calculo_ivsh_cadunico` | Placar consolidado e cálculo do índice |
+| `06_pvse_hortolandia` | Distribuições territoriais por loteamento |
+
+---
+
+## Tecnologia
+
+| Camada | Tecnologia |
+|---|---|
+| Processamento | Python 3.12 + Pandas + Jupyter Notebook |
+| Ambiente institucional | Debian 12 (máquina da prefeitura) |
+| Ambiente de desenvolvimento | Windows + Anaconda |
+| Versionamento | GitHub (fonte única da verdade) |
+| GIS | QGIS + GeoJSON (em integração) |
+| Banco de dados futuro | PostgreSQL + pipeline ELT |
+| Proteção de dados | LGPD — dados pessoais nunca sobem ao repositório |
 
 ---
 
 ## O que este repositório não contém
 
 Por razões legais e éticas, este repositório **não inclui**:
-
-- dados pessoais
+- dados pessoais ou identificáveis
 - microdados do CadÚnico
-- informações identificáveis de cidadãos
-- dados operacionais de sistemas municipais
-- notebooks de processamento
-- pipelines e lógica incremental
+- informações operacionais de sistemas municipais
 
-O conteúdo disponibilizado inclui apenas estruturas conceituais, dicionários, documentação metodológica e séries analíticas agregadas.
+Contém apenas: estruturas de dados, scripts SQL/Python, metodologia, outputs agregados e documentação.
 
 ---
 
@@ -134,30 +156,26 @@ O conteúdo disponibilizado inclui apenas estruturas conceituais, dicionários, 
 
 | | |
 |---|---|
-| Município | Hortolândia – SP |
-| Secretaria | Inclusão e Desenvolvimento Social (SMIDS) |
-| Setor | DIAE |
+| Município | Hortolândia – SP (código IBGE: 3519071) |
+| Secretaria | SMIDS — Secretaria Municipal de Inclusão e Desenvolvimento Social |
+| Departamento | DIAE — Departamento de Inteligência e Análise Estratégica |
 | Responsável técnico | Ailton Vendramini |
 | Ano de início | 2026 |
-| Fase atual | MVP — validação técnica e estratégica |
+| Fase atual | Fase 1 MVP concluída — 7 indicadores calculados |
 
 ---
 
-## Objetivo de longo prazo
+## Próximos passos
 
-Construir uma **arquitetura de inteligência social replicável para municípios brasileiros**, integrando:
-
-- Cadastro Único
-- rede socioassistencial
-- equipamentos públicos
-- organizações da sociedade civil
-- análise territorial da vulnerabilidade social
+- [ ] Calcular variáveis Fase 2 (CH_02, CH_04, IU_01, IU_02, IU_03...)
+- [ ] Construir linkage CEP → `cod_loteamento` (DE-PARA)
+- [ ] Calcular IVS-H por loteamento (141 loteamentos)
+- [ ] Publicar 4 painéis gerenciais territoriais
+- [ ] Estruturar FATO_CICLO_PRESSAO_SOCIAL a partir do corpus jornalístico
 
 ---
 
 ## Licença
 
-Projeto institucional público.
-
-Não contém dados pessoais. Segue os princípios da **Lei Geral de Proteção de Dados (LGPD)** e boas práticas de governança de dados no setor público.
-(7).md…]()
+Projeto institucional público. Segue os princípios da **LGPD** e boas práticas de governança de dados no setor público.
+ing README (8).md…]()
