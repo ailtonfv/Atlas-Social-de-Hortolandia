@@ -1,9 +1,9 @@
-[README (12).md](https://github.com/user-attachments/files/27862477/README.12.md)
+[README (13).md](https://github.com/user-attachments/files/27862545/README.13.md)[README (12).md](https://github.com/user-attachments/files/27862477/README.12.md)
 
 
 ![Diagrama do Sistema](docs/diagramas/diagrama_sistema.svg)
 
-# Atlas Social de Hortolândia
+[Uploading RE# Atlas Social de Hortolândia
 **Camada Municipal de Inteligência Territorial para a Política Socioassistencial**
 
 > *"O IVS mostra onde está a vulnerabilidade. O IPST-H mostra onde a vulnerabilidade se transforma em pressão sobre o Estado."*
@@ -193,3 +193,36 @@ Ciclos de pressão ativos:
 ## Licença
 
 Projeto institucional público. Segue os princípios da **LGPD** e boas práticas de governança de dados no setor público.
+
+---
+
+## Por que não depender apenas de instrumentos federais
+
+### 1. Defasagem temporal
+
+O IVCAD disponível no Observatório do CadÚnico (MDS) foi calculado com dados de **2022**. Os indicadores do IVS-H foram calculados com dados de **dezembro/2025** — três anos mais recentes.
+
+Nenhum instrumento federal garante atualização contínua no ritmo que a gestão municipal exige.
+
+### 2. Fragilidade da dependência federal
+
+O Observatório do CadÚnico depende de decisão política, orçamento federal e continuidade de governo. Uma mudança de prioridades em Brasília pode descontinuar o acesso a qualquer momento.
+
+O Atlas Social é **soberano municipalmente**: não depende de convênio, de verba federal nem de continuidade política externa para funcionar. O município controla seus próprios dados, seus próprios índices e seu próprio ritmo de atualização.
+
+### 3. O SIGAS — o diferencial que nenhum índice federal possui
+
+O CadÚnico captura **quem é vulnerável**. O SIGAS (sistema municipal) captura **o que acontece depois** — atendimentos, encaminhamentos, acompanhamentos, resultados.
+
+A integração CadÚnico + SIGAS fecha o ciclo completo da política pública:
+
+```
+Quem é vulnerável     →  CadÚnico
+Quem foi atendido     →  SIGAS
+Quem melhorou / permanece / retornou  →  Atlas Social
+```
+
+Nenhum instrumento federal consegue fazer isso. É inteligência longitudinal de política pública — e só o município tem acesso a esse dado.
+
+> O governo federal enxerga o cadastro. O Atlas Social enxerga a trajetória.
+ADME (13).md…]()
