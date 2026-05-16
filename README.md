@@ -2,7 +2,8 @@
 
 ![Diagrama do Sistema](docs/diagramas/diagrama_sistema.svg)
 
-[Upload# Atlas Social de Hortolândia
+[README (9).md](https://github.com/user-attachments/files/27862199/README.9.md)
+# Atlas Social de Hortolândia
 **Sistema de Inteligência Territorial para a Política Socioassistencial**
 
 Repositório do **Atlas Social de Hortolândia** — sistema de análise e monitoramento da vulnerabilidade social do município de Hortolândia – SP, desenvolvido pela Secretaria Municipal de Inclusão e Desenvolvimento Social (SMIDS / DIAE).
@@ -27,15 +28,49 @@ O projeto não altera fluxos institucionais, não cria novos cadastros e não re
 
 ---
 
-## Dois índices complementares
+## Cinco instrumentos analíticos
+
+O Atlas Social opera com um ecossistema de instrumentos complementares. Cada um responde a uma pergunta diferente — e nenhum substitui o outro.
+
+| Instrumento | Pergunta central | Fonte | Escala |
+|---|---|---|---|
+| **IVS** (IPEA) | Onde no Brasil? | IBGE Censo | Nacional / municipal |
+| **IVCAD** (MDS) | Qual o perfil familiar? | CadÚnico federal | Municipal |
+| **IVS-H** ★ | Onde no município? | CadÚnico local | **Loteamento** |
+| **IPST-H** | Onde a vulnerabilidade pressiona o Estado? | Dados administrativos | Loteamento |
+| **IPSO-H** | O que está acontecendo agora? | Corpus jornalístico | Territorial |
+
+*★ contribuição central do projeto*
+
+**PVSE — Perfis de Vulnerabilidade Severa:** camada analítica complementar ao IVS-H que identifica grupos críticos para intervenção direta.
+
+---
+
+### Por que o Atlas Social não é substituído pelo IVCAD?
+
+O **IVCAD** (Índice de Vulnerabilidade das Famílias do CadÚnico) é um índice federal oficial do MDS, calculado a partir de 40 indicadores em 6 dimensões (Necessidade de Cuidados, Primeira Infância, Crianças e Adolescentes, Trabalho, Recursos e Condições Habitacionais). Para Hortolândia, o IVCAD de referência abril/2026 está disponível no Observatório do CadÚnico.
+
+O Atlas Social não compete com o IVCAD — **o complementa**:
+
+- O IVCAD diz que Hortolândia tem vulnerabilidade X. O IVS-H diz que o Jardim Amanda tem vulnerabilidade Y e o Vila Real tem vulnerabilidade Z.
+- O IVCAD é estático (ciclo federal). O IVS-H é atualizado a cada extração local do CadÚnico.
+- O IVCAD não conhece os 141 loteamentos de Hortolândia. O IVS-H foi construído sobre eles.
+- O IPST-H e o IPSO-H não existem em nenhum sistema federal.
+
+> O governo federal vê o município. O Atlas Social vê o loteamento.
+
+---
 
 ### IVS-H — Índice de Vulnerabilidade Social de Hortolândia
 Replica as **16 variáveis oficiais do IVS/IPEA** com dados locais (CadÚnico), na granularidade de **loteamento** (141 loteamentos). Permite comparabilidade com qualquer município brasileiro e monitoramento contínuo — sem depender de ciclos censitários.
 
 ### IPST-H — Índice de Pressão Social Territorial de Hortolândia
-Indicador proprietário que mede onde a vulnerabilidade se transforma em **sobrecarga operacional da rede socioassistencial**. Alimentado pelo corpus jornalístico e por registros administrativos. Complementa o IVS-H sem substituí-lo.
+Indicador proprietário que mede onde a vulnerabilidade se transforma em **sobrecarga operacional da rede socioassistencial**. Alimentado por registros administrativos. Complementa o IVS-H sem substituí-lo.
 
-**Matriz de interpretação conjunta:**
+### IPSO-H — Índice de Pressão Social Observada de Hortolândia
+Derivado exclusivamente do corpus jornalístico. Captura sinais de pressão social em tempo quase real — o que os índices estruturais ainda não conseguem ver.
+
+**Matriz de interpretação IVS-H × IPST-H:**
 
 | IVS-H | IPST-H | Leitura |
 |---|---|---|
@@ -178,4 +213,3 @@ Contém apenas: estruturas de dados, scripts SQL/Python, metodologia, outputs ag
 ## Licença
 
 Projeto institucional público. Segue os princípios da **LGPD** e boas práticas de governança de dados no setor público.
-ing README (8).md…]()
