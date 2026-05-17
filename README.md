@@ -1,4 +1,4 @@
-[README (15).md](https://github.com/user-attachments/files/27900237/README.15.md)
+[README (16).md](https://github.com/user-attachments/files/27900773/README.16.md)
 # Atlas Social de Hortolândia
 **Camada Municipal de Inteligência Territorial para a Política Socioassistencial**
 
@@ -63,6 +63,8 @@ CadÚnico → Tratamento e padronização
          → Leitura territorial integrada + corpus jornalístico
          → Painéis de apoio à decisão
 ```
+
+![Pipeline Analítico — Atlas Social](docs/diagramas/pipeline_atlas.svg)
 
 Hierarquia territorial:
 
