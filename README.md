@@ -1,4 +1,4 @@
-[README (14).md](https://github.com/user-attachments/files/27900070/README.14.md)
+[README (15).md](https://github.com/user-attachments/files/27900237/README.15.md)
 # Atlas Social de Hortolândia
 **Camada Municipal de Inteligência Territorial para a Política Socioassistencial**
 
@@ -73,6 +73,8 @@ Loteamento (141) → Núcleo CRAS → Região de Planejamento (6 RPs) → Munic�
 ---
 
 ## Os cinco instrumentos analíticos
+
+![Ecossistema Analítico — Atlas Social de Hortolândia](docs/diagramas/diagrama_sistema.svg)
 
 Cada instrumento responde a uma pergunta diferente. Nenhum substitui o outro.
 
@@ -171,6 +173,8 @@ O Atlas mantém um corpus de classificação de notícias do jornal **Tribuna Li
 ---
 
 ## Estrutura do repositório
+
+![Estrutura de Diretórios](docs/diagramas/estrutura_diretorios.svg)
 
 | Diretório | Conteúdo |
 |---|---|
