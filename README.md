@@ -217,67 +217,7 @@ Projeto institucional público. Não contém dados pessoais. Segue os princípio
 EADME (17).md…]()
 
 
-
-
-
-
-
-
-
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-[README (16).md](https://github.com/user-attachments/files/27900773/README.16.md)
-# Atlas Social de Hortolândia
-**Camada Municipal de Inteligência Territorial para a Política Socioassistencial**
-
-> *"A arquitetura de dados deve refletir a política pública — nunca substituí-la."*
-
----
-
-## Problema Público
-
-A gestão socioassistencial municipal enfrenta quatro desafios estruturais:
-
-- **Fragmentação dos dados** — informações dispersas entre secretarias sem integração territorial
-- **Ausência de leitura por loteamento** — indicadores disponíveis apenas em nível municipal
-- **Dificuldade de priorização** — sem dados territorizados, a alocação de recursos é por percepção
-- **Lacuna histórica** — o último IVS municipal disponível (IPEA) data de **2010**, 16 anos atrás
-
----
-
-## O que o Atlas resolve
-
-| Pergunta | Antes | Com o Atlas |
-|---|---|---|
-| Quais loteamentos concentram maior vulnerabilidade? | Sem resposta objetiva | IVS-H por loteamento |
-| A cobertura dos CRAS é proporcional à demanda? | Estimativa | Calculável |
-| Onde a rede está sob pressão? | Percepção | IPST-H mensurável |
-| O que está acontecendo no território agora? | Fragmentado | Corpus jornalístico estruturado |
-| Qual a trajetória da família ao longo do tempo? | Invisível | CadÚnico + SIGAS integrados |
-
----
-
-## Princípios
-
-- **Interoperabilidade** — metodologia alinhada a referências federais (IVS/IPEA, IVCAD/MDS)
-- **Transparência** — código-fonte aberto, versionado e auditável
-- **Proteção de dados** — conformidade total com a LGPD; dados pessoais nunca sobem ao repositório
-- **Neutralidade territorial** — o sistema descreve; não julga, não ranqueia politicamente
-- **Governança pública** — produzido dentro da estrutura institucional municipal
-- **Rastreabilidade metodológica** — cada resultado tem script, fonte e data documentados
-- **Incrementalidade** — arquitetura que evolui sem ruptura; cada fase valida antes de expandir
-- **Não substituição da decisão humana** — o dado orienta; a decisão é sempre do gestor
-
----
-
-## O que o Atlas NÃO é
-
-- Não substitui políticas públicas nem decisão humana
-- Não é sistema de vigilância ou monitoramento de cidadãos
-- Não é ranking político de bairros
-- Não é ferramenta eleitoral
-- Não é score secreto ou classificação automática opaca de famílias
-- Não altera fluxos institucionais nem redefine competências administrativas
-- Não depende de convênios federais para seu núcleo analítico
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 ---
 
@@ -292,12 +232,6 @@ CadÚnico → Tratamento e padronização
 ```
 
 ![Pipeline Analítico — Atlas Social](docs/diagramas/pipeline_atlas.svg)
-
-Hierarquia territorial:
-
-```
-Loteamento (141) → Núcleo CRAS → Região de Planejamento (6 RPs) → Município
-```
 
 ---
 
@@ -323,44 +257,7 @@ Cada instrumento responde a uma pergunta diferente. Nenhum substitui o outro.
 
 ---
 
-## Dimensão temporal — o diferencial de longo prazo
-
-O Atlas foi projetado para acumular séries históricas. Cada ciclo de extração do CadÚnico e cada edição classificada do corpus jornalístico ampliam a capacidade analítica do sistema:
-
-- **Evolução da vulnerabilidade** por loteamento ao longo do tempo
-- **Ciclos de pressão social** — emergência, resposta, agravamento, desfecho
-- **Trajetória das famílias** — entrada, permanência, emancipação, reincidência
-- **Resposta estatal** — quando e onde a rede reagiu
-
-Essa dimensão temporal é o que transforma o Atlas de um índice pontual em um **sistema municipal de interpretação social**.
-
----
-
-## Resultados — IVS-H Fase 1 MVP
-
-Sete indicadores calculados a partir do CadÚnico (dez/2025), com metodologia compatível com o IVS/IPEA.
-
-| Código | Indicador | Resultado | Universo |
-|---|---|---|---|
-| RT_01 | Renda per capita ≤ ½ SM | **64,66%** | 72.424 pessoas |
-| RT_04 | Idosos sem proteção previdenciária* | **90,12%** | 11.787 idosos |
-| CH_06 | Analfabetismo 15+ | **8,56%** | 51.492 pessoas |
-| CH_03 | Crianças 6–14 fora da escola | **0,97%** | 13.681 crianças |
-| CH_08 | Jovens 15–24 nem-nem | **9,33%** | 10.667 jovens |
-| CH_05 | Mães RF sem fundamental, filho < 15 | **8,63%** | 24.663 mulheres RF |
-| CH_07 | Crianças 0–14 em domicílios sem fundamental | **10,86%** | 20.932 crianças |
-
-*proxy via ausência de Bolsa Família — refinamento via CNIS em etapa futura.*
-
-> Cada pessoa identificada está cadastrada e ao alcance da atuação municipal. O dado não apenas descreve: **habilita a intervenção**.
-
----
-
-## Referência histórica IPEA
-
-| Dimensão | IVS 2000 | IVS 2010 | Variação |
-|---|---|---|---|
-| IVS Composto | 0,440 | 0,324 | ▼ −0,116 |
+| 0,440 | 0,324 | ▼ −0,116 |
 | Infraestrutura Urbana | 0,405 | 0,411 | ≈ estável |
 | Capital Humano | 0,488 | 0,262 | ▼ −0,226 |
 | Renda e Trabalho | 0,424 | 0,270 | ▼ −0,154 |
@@ -418,32 +315,6 @@ O Atlas mantém um corpus de classificação de notícias do jornal **Tribuna Li
 | `docs` | Documentação institucional |
 
 ---
-
-## Tecnologia
-
-| Camada | Tecnologia |
-|---|---|
-| Processamento | Python 3.12 + Pandas + Jupyter |
-| Ambiente institucional | Debian 12 (prefeitura) |
-| Versionamento | GitHub — fonte única da verdade |
-| GIS | QGIS + GeoJSON (em integração) |
-| Banco de dados futuro | PostgreSQL + pipeline ELT |
-
----
-
-## Próximos passos
-
-- [ ] Calcular CH_02 — crianças 0–5 fora da creche
-- [ ] Calcular CH_04 — mães adolescentes 10–17
-- [ ] Completar linkage CEP → loteamento
-- [ ] Calcular IVS-H por loteamento (141 loteamentos)
-- [ ] Publicar 4 painéis gerenciais territoriais
-- [ ] Estruturar FATO_CICLO_PRESSAO_SOCIAL
-- [ ] Integrar SIGAS ao pipeline analítico
-
----
-
-## Contexto institucional
 
 | | |
 |---|---|
