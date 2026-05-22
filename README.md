@@ -1,4 +1,4 @@
-[README (18).md](https://github.com/user-attachments/files/28151348/README.18.md)
+[README (19).md](https://github.com/user-attachments/files/28151634/README.19.md)
 # Atlas Social de Hortolândia
 **Inteligência de Política Pública Socioassistencial**
 
@@ -10,7 +10,7 @@ O projeto estrutura uma infraestrutura analítica capaz de compreender, territor
 
 ---
 
-![Arquitetura do Sistema — Atlas Social de Hortolândia](docs/diagrama_sistema.svg)
+![Arquitetura do Sistema — Atlas Social de Hortolândia](docs/diagramas/diagrama_sistema.svg)
 
 ---
 
@@ -47,7 +47,9 @@ CadÚnico → Tratamento e padronização
          → Painéis de apoio à decisão
 ```
 
-![Pipeline Analítico — Atlas Social](docs/pipeline_atlas.svg)
+![Pipeline Analítico — Atlas Social](docs/diagramas/pipeline_atlas.svg)
+
+> **Escopo:** o pipeline acima representa o fluxo do **CadÚnico** — fonte primária da Fase 1. Cada nova base de dados incorporada ao Atlas (CAGED, DATASUS, IBGE Censo, SIGAS, SSP-SP) exigirá seu próprio pipeline, com características específicas de extração, frequência de atualização e controle de qualidade. A arquitetura é incremental por design.
 
 ---
 
@@ -162,7 +164,7 @@ O projeto adota o **IVS/IPEA** como referência metodológica nacional e impleme
 
 ## Estrutura do repositório
 
-![Estrutura de Diretórios — Atlas Social de Hortolândia](docs/estrutura_diretorios.svg)
+![Estrutura de Diretórios — Atlas Social de Hortolândia](docs/diagramas/estrutura_diretorios.svg)
 
 | Diretório | Conteúdo |
 |---|---|
