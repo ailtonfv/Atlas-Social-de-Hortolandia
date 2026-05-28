@@ -1,20 +1,21 @@
-
-[matriz_rastreabilidade_operacional_v03.md](https://github.com/user-attachments/files/28312292/matriz_rastreabilidade_operacional_v03.md)
+[matriz_rastreabilidade_operacional_v04 (4).md](https://github.com/user-attachments/files/28348793/matriz_rastreabilidade_operacional_v04.4.md)
 # Matriz de Rastreabilidade Operacional — Atlas Social de Hortolândia
-**Versão:** v03  
-**Data:** "27/05/2026"  
+**Versão:** v04  
+**Data:** 28/05/2026  
 **Pasta:** `04_documentacao_tecnica/`  
 **Leitura obrigatória:** antes de executar qualquer notebook
 
-## Changelog v02 → v03
+## Changelog v03 → v04
 
 | Item | Mudança |
 | --- | --- |
-| Seção 1 | Adicionados RTB_005 a RTB_009 — Camada de Dependência Humana |
-| Seção 2 | Adicionados RTB_015 a RTB_019 — variáveis PcD e rede de apoio |
-| Seção 3 | Adicionados RTB_027 a RTB_031 — outputs da Camada de Dependência Humana |
-| Seção 7 | Adicionadas pendências P07 a P12 |
-| Motivação | Decisão de 27/05/2026: campos CadÚnico de deficiência e rede de apoio revelam camada analítica de vulnerabilidade invisível em indicadores clássicos de renda |
+| Seção 1 | Adicionado RTB_009 — `99_manutencao_corpus.ipynb` |
+| Seção 1 | RTB_005 a RTB_008 atualizados — análise PcD consolidada em `06_pvse_hortolandia_v11.ipynb`, não em notebooks separados |
+| Seção 2 | Adicionado RTB_019b — campo `relevancia_estrategica` no schema do corpus jornalístico |
+| Seção 7 | Adicionadas pendências P13 a P16 |
+| Seção 7 | P07, P08, P10 resolvidas — confirmadas em 28/05/2026 |
+| Data | Atualizada para 28/05/2026 |
+| Motivação | Migração de `relevancia_estrategica` em 116 CSVs do corpus (564 eventos). Notebook de manutenção `99_` criado. PcD consolidado no PVSE v11. |
 
 ---
 
@@ -42,46 +43,55 @@ Se a modificação alterar schema de tabela ou coluna do CadÚnico, registrar ve
 | RTB_002 | `02_tratamento_base.ipynb` | Limpeza, deduplicação, padronização de campos. Gera base tratada para os demais notebooks. | — (pré-cálculo) | — | `STG_CADUNICO_RAW` | `dados/processado.xlsx` | operacional | CadÚnico dez/2025 | `arquitetura_dados_IVS_IBGE_Horto_v10.md` → Camada Trusted |
 | RTB_003 | `03_analises_variaveis.ipynb` | Cálculo das 5 variáveis MVP: CH_05, CH_06, CH_07, RT_01, RT_04. Análise por loteamento. | CH_05, CH_06, CH_07, RT_01, RT_04 | `STG_CADUNICO_RAW` `DIM_LOTEAMENTO` | — | `outputs/tabelas/ivs_variaveis.csv` `outputs/graficos/distribuicao_renda.png` `outputs/graficos/vulnerabilidade_por_familia.png` | analitico / institucional | CadÚnico dez/2025 | `dim_variavel_IVS_v01r7.md` → CH_05, CH_06, CH_07, RT_01, RT_04 |
 | RTB_004 | `04_calculo_ivsh.ipynb` | Composição do IVS-H MVP. Aplicação de pesos. Ranking por loteamento/núcleo. | IVS-H Fase 1 (5 variáveis) | `DIM_LOTEAMENTO` `DIM_NUCLEO` | `FATO_IVS_LOTEAMENTO` | `outputs/tabelas/ivs_resultado_final.csv` `outputs/tabelas/familias_vulneraveis.csv` `outputs/graficos/ivs_por_nucleo.png` | institucional / operacional / institucional | CadÚnico dez/2025 | `dim_variavel_IVS_v01r7.md` `arquitetura_dados_IVS_IBGE_Horto_v10.md` `ipst_h_v02.md` |
-| RTB_005 | `05_pcd_flag_deficiencia.ipynb` | Criar coluna `flag_deficiencia` consolidando todos os campos `ind_def_*`. Contar pessoas e famílias com deficiência. | — (pré-camada) | `STG_CADUNICO_RAW` | — | `outputs/tabelas/pcd_contagem_tipos.csv` | exploratorio | CadÚnico dez/2025 | `dependencia_humana_plano_v01.md` — Fase 1 |
-| RTB_006 | `06_pcd_rede_apoio.ipynb` | Mapear rede de apoio. Calcular PcD sem ajuda. Calcular famílias com PcD sem apoio. Indicador crítico: `ind_def_* == 1` + `ind_ajuda_nao_memb == 1`. | — (camada dependência) | `STG_CADUNICO_RAW` | — | `outputs/tabelas/pcd_sem_apoio.csv` | analitico | CadÚnico dez/2025 | `dependencia_humana_plano_v01.md` — Fase 2 |
-| RTB_007 | `07_pcd_cruzamentos.ipynb` | Cruzar deficiência com: idade (primeira infância / criança / adulto / idoso), escola (CH_03 recorte PcD), renda (RT_01 recorte PcD). | CH_03 RT_01 (recortes PcD) | `STG_CADUNICO_RAW` | — | `outputs/tabelas/pcd_cruzamentos.csv` | analitico | CadÚnico dez/2025 | `dependencia_humana_plano_v01.md` — Fase 4 |
-| RTB_008 | `08_pcd_territorializacao.ipynb` | Cruzar resultado consolidado com loteamento / núcleo / RP. Gerar ranking territorial. Indicador principal: PcD + sem apoio + baixa renda + território. | — (camada dependência territorial) | `STG_CADUNICO_RAW` `DIM_LOTEAMENTO` `DIM_NUCLEO` | `FATO_DEPENDENCIA_LOTEAMENTO` | `outputs/tabelas/pcd_vulnerabilidade_territorial.csv` `outputs/graficos/pcd_por_nucleo.png` | institucional | CadÚnico dez/2025 | `dependencia_humana_plano_v01.md` — Fase 3 |
+| RTB_005 | `06_pvse_hortolandia_v11.ipynb` | ~~`05_pcd_flag_deficiencia.ipynb`~~ **Consolidado no PVSE v11.** Criar `flag_deficiencia` consolidando campos `ind_def_*`. Contar pessoas e famílias com deficiência. | — (pré-camada) | `STG_CADUNICO_RAW` | — | `outputs/tabelas/pcd_contagem_tipos.csv` | exploratorio | CadÚnico dez/2025 | `dependencia_humana_plano_v01.md` — Fase 1 |
+| RTB_006 | `06_pvse_hortolandia_v11.ipynb` | ~~`06_pcd_rede_apoio.ipynb`~~ **Consolidado no PVSE v11.** Mapear rede de apoio. Calcular PcD sem ajuda. Indicador crítico: `ind_def_* == 1` + `ind_ajuda_nao_memb == 1`. | — (camada dependência) | `STG_CADUNICO_RAW` | — | `outputs/tabelas/pcd_sem_apoio.csv` | analitico | CadÚnico dez/2025 | `dependencia_humana_plano_v01.md` — Fase 2 |
+| RTB_007 | `06_pvse_hortolandia_v11.ipynb` | ~~`07_pcd_cruzamentos.ipynb`~~ **Consolidado no PVSE v11.** Cruzar deficiência com idade, escola (CH_03 recorte PcD), renda (RT_01 recorte PcD). | CH_03 RT_01 (recortes PcD) | `STG_CADUNICO_RAW` | — | `outputs/tabelas/pcd_cruzamentos.csv` | analitico | CadÚnico dez/2025 | `dependencia_humana_plano_v01.md` — Fase 4 |
+| RTB_008 | `06_pvse_hortolandia_v11.ipynb` | ~~`08_pcd_territorializacao.ipynb`~~ **Consolidado no PVSE v11.** Indicador composto PcD + sem apoio + baixa renda + território. Ranking por loteamento. | — (camada dependência territorial) | `STG_CADUNICO_RAW` `DIM_LOTEAMENTO` `DIM_NUCLEO` | `FATO_DEPENDENCIA_LOTEAMENTO` | `outputs/tabelas/pcd_vulnerabilidade_territorial.csv` `outputs/graficos/pcd_por_nucleo.png` | institucional | CadÚnico dez/2025 | `dependencia_humana_plano_v01.md` — Fase 3 |
+| RTB_009 | `99_manutencao_corpus.ipynb` | Manutenção e migração dos CSVs do corpus jornalístico. Aplicação retroativa de campos novos. Verificação de integridade do schema. | — (utilitário) | — | — | — | utilitario | Corpus mai/2025–mai/2026 | `regras_de_classificacao_v10.4.md` |
 
 > **⚠️ RTB_001 — output exploratório:** o CSV gerado neste notebook
 > tem finalidade de inspeção e validação, não de consumo analítico
 > oficial. Não deve ser referenciado por outros notebooks.
 > O CSV oficial de variáveis é gerado em RTB_003.
 
-> **⚠️ RTB_005 a RTB_008 — Camada de Dependência Humana:**
-> Esses notebooks NÃO substituem o IVS-H.
-> Produzem camada complementar que captura vulnerabilidade invisível
-> em indicadores clássicos de renda.
-> O indicador de maior impacto institucional é o de RTB_008:
-> **PcD + sem apoio + baixa renda + território**.
+> **⚠️ RTB_005 a RTB_008 — Consolidação no PVSE v11:**
+> A decisão de 28/05/2026 consolidou toda a análise PcD no notebook
+> existente `06_pvse_hortolandia_v11.ipynb` em vez de criar notebooks
+> separados. Os id_rastreabilidade RTB_005 a RTB_008 permanecem válidos
+> e apontam para as seções correspondentes dentro do PVSE v11.
+
+> **⚠️ RTB_009 — notebook utilitário:**
+> Prefixo `99_` sinaliza que não é notebook analítico.
+> Não deve ser referenciado em pipelines de produção.
+> Usar exclusivamente para manutenção e migração de schema.
 
 ---
 
-## 2. Rastreabilidade por Variável IVS-H
+## 2. Rastreabilidade por Variável IVS-H e Schema do Corpus
 
-| id_rastreabilidade | Variável | Definição resumida | Fonte no CadÚnico | Coluna(s) relevante(s) | Risco de schema | Mitigação | Notebook que calcula | Documento de referência |
+| id_rastreabilidade | Variável / Campo | Definição resumida | Fonte | Coluna(s) relevante(s) | Risco de schema | Mitigação | Notebook que calcula | Documento de referência |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | RTB_010 | RT_01 | % famílias renda per capita menor ou igual a 1/2 SM | CadÚnico — renda autodeclarada | `vlr_renda_media_fam` | Alto — dependente de dicionário oficial | Versionar dicionário CadÚnico utilizado (dez/2025) | RTB_001 RTB_003 | `dim_variavel_IVS_v01r7.md` → RT_01 |
 | RTB_011 | RT_04 | % pessoas em domicílios renda menor ou igual a 1/2 SM dependentes de idosos | CadÚnico — composição familiar + renda | `vlr_renda_media_fam` + `dta_nasc_pessoa` | Alto — dependente de dicionário oficial | Versionar dicionário CadÚnico utilizado (dez/2025) | RTB_003 | `dim_variavel_IVS_v01r7.md` → RT_04 |
 | RTB_012 | CH_05 | % mães chefes sem fund. completo, filho menor de 15 anos | CadÚnico — escolaridade + composição | `cod_escola_memb` + `ind_parc_membro_fam` | Alto — dependente de dicionário oficial | Versionar dicionário CadÚnico utilizado (dez/2025) | RTB_003 | `dim_variavel_IVS_v01r7.md` → CH_05 |
 | RTB_013 | CH_06 | Taxa analfabetismo — 15 anos ou mais | CadÚnico — escolaridade | `cod_escola_memb` + `dta_nasc_pessoa` | Alto — dependente de dicionário oficial | Versionar dicionário CadÚnico utilizado (dez/2025) | RTB_003 | `dim_variavel_IVS_v01r7.md` → CH_06 |
 | RTB_014 | CH_07 | % crianças em domicílios sem morador com fund. completo | CadÚnico — escolaridade + composição | `cod_escola_memb` + `dta_nasc_pessoa` | Alto — dependente de dicionário oficial | Versionar dicionário CadÚnico utilizado (dez/2025) | RTB_003 | `dim_variavel_IVS_v01r7.md` → CH_07 |
-| RTB_015 | PcD_flag | Flag consolidada de deficiência — qualquer `ind_def_*` ativo | CadÚnico — campos deficiência por membro | `ind_def_cegueira_memb` `ind_def_baixa_visao_memb` `ind_def_surdez_profunda_memb` `ind_def_surdez_leve_memb` `ind_def_fisica_memb` `ind_def_mental_memb` `ind_def_sindrome_down_memb` `ind_def_transtorno_mental_memb` | Médio — campos binários estáveis | Verificar presença dos campos na carga | RTB_005 | `dependencia_humana_plano_v01.md` |
-| RTB_016 | PcD_sem_apoio | Pessoa com deficiência sem nenhuma rede de apoio | CadÚnico — deficiência + ajuda | `flag_deficiencia == 1` + `ind_ajuda_nao_memb == 1` | Médio | Verificar dicionário `ind_ajuda_*` | RTB_006 | `dependencia_humana_plano_v01.md` |
+| RTB_015 | PcD_flag | Flag consolidada de deficiência — qualquer `ind_def_*` ativo | CadÚnico — campos deficiência por membro | `ind_def_cegueira_memb` `ind_def_baixa_visao_memb` `ind_def_surdez_profunda_memb` `ind_def_surdez_leve_memb` `ind_def_fisica_memb` `ind_def_mental_memb` `ind_def_sindrome_down_memb` `ind_def_transtorno_mental_memb` | Médio — campos binários estáveis | ✅ **Resolvido 28/05/2026** — campos confirmados presentes na base dez/2025 | RTB_005 | `dependencia_humana_plano_v01.md` |
+| RTB_016 | PcD_sem_apoio | Pessoa com deficiência sem nenhuma rede de apoio | CadÚnico — deficiência + ajuda | `flag_deficiencia == 1` + `ind_ajuda_nao_memb == 1` | Médio | ✅ **Resolvido 28/05/2026** — campos `ind_ajuda_*` confirmados presentes | RTB_006 | `dependencia_humana_plano_v01.md` |
 | RTB_017 | PcD_crianca_sem_escola | Criança 6–14 anos com deficiência sem vínculo escolar | CadÚnico — deficiência + idade + escola | `flag_deficiencia == 1` + `dta_nasc_pessoa` (6–14) + `nom_escola_memb` vazio | Alto — campo escola pode ter preenchimento irregular | Tratar vazio vs nulo antes do filtro | RTB_007 | `dependencia_humana_plano_v01.md` |
 | RTB_018 | PcD_baixa_renda | Família com PcD e renda per capita ≤ 1/2 SM | CadÚnico — deficiência + renda familiar | `flag_deficiencia == 1` + `vlr_renda_media_fam` ≤ 759 | Alto — renda autodeclarada | Mesma mitigação RT_01 | RTB_007 | `dependencia_humana_plano_v01.md` |
 | RTB_019 | PcD_vulnerabilidade_critica | Indicador composto: PcD + sem apoio + baixa renda | CadÚnico — cruzamento triplo | `flag_deficiencia == 1` + `ind_ajuda_nao_memb == 1` + `vlr_renda_media_fam` ≤ 759 | Alto — cruzamento múltiplo | Executar RTB_005 e RTB_006 antes | RTB_008 | `dependencia_humana_plano_v01.md` |
+| RTB_019b | `relevancia_estrategica` | Campo do schema do corpus jornalístico — classifica impacto estratégico do evento | Corpus IPSO-H — séries jornalísticas | Campo nos CSVs `series_jornalisticas/*.csv` | Baixo — campo texto controlado | Régua objetiva documentada (ver Seção 7 P13) | RTB_009 | `regras_de_classificacao_v10.4.md` |
 
-> **Nota sobre risco de schema:** todas as colunas listadas acima foram
-> identificadas no dicionário CadÚnico versão dez/2025.
-> Qualquer atualização do Ministério que renomeie ou remova essas colunas
-> invalida os notebooks sem aviso.
-> Mitigação obrigatória: ao iniciar nova carga, verificar versão do
-> dicionário e registrar no cabeçalho do notebook.
+> **Valores válidos para `relevancia_estrategica`:**
+> `estrutural` — fonte primária externa (IPEA, IBGE, FBSP) + dado quantitativo + benchmark  
+> `alta` — decisão de gestão permanente, obra, lei, sede, serviço, programa  
+> `media` — ação programática recorrente, evento institucional sem infraestrutura permanente  
+> `baixa` — ocorrência policial isolada, evento sem nexo territorial estabelecido  
+>
+> **Migração:** aplicada em 28/05/2026 via `99_manutencao_corpus.ipynb`
+> em 116 arquivos / 564 eventos. Distribuição resultante:
+> estrutural=1 · alta=94 · media=464 · baixa=5
 
 ---
 
@@ -145,25 +155,30 @@ Se a modificação alterar schema de tabela ou coluna do CadÚnico, registrar ve
 5. **Se houver conflito entre a matriz e um documento GitHub**, o documento GitHub prevalece.
 6. **Outputs com dados individuais nunca são commitados** — coluna "Pode ser commitado" é definitiva.
 7. **`periodo_referencia` é obrigatório** — nenhuma linha nova sem este campo preenchido.
+8. **Notebooks com prefixo `99_` são utilitários** — não entram em pipelines analíticos nem são referenciados por outros notebooks.
 
 ---
 
 ## 7. Pendências de Mapeamento
 
-| # | Pendência | Impacto na matriz |
-| --- | --- | --- |
-| P01 | Confirmar nomes exatos das colunas CadÚnico para CH_05, CH_06, CH_07, RT_04 | Seção 2 — colunas provisórias |
-| P02 | Produzir carga de `DIM_LOTEAMENTO` e `DIM_NUCLEO` no SQLite | Seção 4 — RTB_034 e RTB_035 |
-| P03 | Vincular endereço CadÚnico ao `id_loteamento` | Notebooks RTB_003 e RTB_004 |
-| P04 | Definir limiar de vulnerabilidade para `familias_vulneraveis.csv` | RTB_023 — output RTB_004 |
-| P05 | Resolver conflito de nome `ivs_variaveis.csv` entre RTB_020 e RTB_021 | Seção 3 — nomes de output |
-| P06 | Formalizar `periodo_referencia` como campo no cabeçalho padrão do notebook | Seção 1 — coluna periodo_referencia |
-| P07 | Confirmar presença e preenchimento dos campos `ind_def_*` na base dez/2025 | RTB_005 — risco de campos vazios ou ausentes |
-| P08 | Confirmar presença e preenchimento dos campos `ind_ajuda_*` na base dez/2025 | RTB_006 — risco de campos vazios ou ausentes |
-| P09 | Tratar vazio vs nulo em `nom_escola_memb` antes de filtrar crianças sem escola | RTB_007 — risco de falso positivo |
-| P10 | Definir faixas etárias operacionais: primeira infância / criança / adulto / idoso | RTB_007 — cruzamento com idade |
-| P11 | Criar documento `dependencia_humana_plano_v01.md` em `01_modelagem_conceitual/` | RTB_046 — documento referenciado ainda não existe |
-| P12 | Decidir nome final do produto analítico: "Atlas da Dependência Humana" vs "Índice de Fragilidade Familiar" vs "Camada de Dependência Humana" | Comunicação institucional — impacto nas secretarias |
+| # | Status | Pendência | Impacto na matriz |
+| --- | --- | --- | --- |
+| P01 | 🔴 aberta | Confirmar nomes exatos das colunas CadÚnico para CH_05, CH_06, CH_07, RT_04 | Seção 2 — colunas provisórias |
+| P02 | 🔴 aberta | Produzir carga de `DIM_LOTEAMENTO` e `DIM_NUCLEO` no SQLite | Seção 4 — RTB_034 e RTB_035 |
+| P03 | 🔴 aberta | Vincular endereço CadÚnico ao `id_loteamento` | Notebooks RTB_003 e RTB_004 |
+| P04 | 🔴 aberta | Definir limiar de vulnerabilidade para `familias_vulneraveis.csv` | RTB_023 — output RTB_004 |
+| P05 | 🔴 aberta | Resolver conflito de nome `ivs_variaveis.csv` entre RTB_020 e RTB_021 | Seção 3 — nomes de output |
+| P06 | 🔴 aberta | Formalizar `periodo_referencia` como campo no cabeçalho padrão do notebook | Seção 1 — coluna periodo_referencia |
+| P07 | ✅ resolvida 28/05/2026 | Confirmar presença dos campos `ind_def_*` na base dez/2025 | RTB_015 — campos confirmados |
+| P08 | ✅ resolvida 28/05/2026 | Confirmar presença dos campos `ind_ajuda_*` na base dez/2025 | RTB_016 — campos confirmados |
+| P09 | 🔴 aberta | Tratar vazio vs nulo em `nom_escola_memb` antes de filtrar crianças sem escola | RTB_007 — risco de falso positivo |
+| P10 | ✅ resolvida 28/05/2026 | Definir faixas etárias operacionais | RTB_007 — faixas: 0–5 / 6–14 / 15–24 / 25–59 / 60+ |
+| P11 | 🔴 aberta | Criar documento `dependencia_humana_plano_v01.md` em `01_modelagem_conceitual/` | RTB_046 — documento referenciado ainda não existe |
+| P12 | 🔴 aberta | Decidir nome final do produto analítico: "Atlas da Dependência Humana" vs "Índice de Fragilidade Familiar" vs "Camada de Dependência Humana" | Comunicação institucional |
+| P13 | ✅ aplicado 28/05/2026 | Campo `relevancia_estrategica` adicionado ao schema do corpus | 116 arquivos / 564 eventos migrados via RTB_009. Régua documentada em RTB_019b. Distribuição: estrutural=1, alta=94, media=464, baixa=5. Revisão da régua recomendada após 30 dias adicionais de coleta. |
+| P14 | 🔴 proposta | `tipo_relacao_variavel = estrutural` para métricas de violência letal | Refinamento avançado — avaliar após acumulação de eventos do tipo Atlas da Violência |
+| P15 | 🔴 proposta | `dimensao_analitica = seguranca_territorial` como dimensão latente | Corpus está revelando organicamente dimensão ausente no IVS original — avaliar com 10+ eventos |
+| P16 | 🔴 proposta | `CH_PROTECAO_INFANTOJUVENIL` como variável latente derivada | Para eventos que atravessam múltiplas dimensões de proteção à criança sem especificidade IVS única |
 
 ---
 
