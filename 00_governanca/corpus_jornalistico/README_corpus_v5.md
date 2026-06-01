@@ -1,23 +1,20 @@
+[README_corpus_v6.md](https://github.com/user-attachments/files/28466613/README_corpus_v6.md)
 # CORPUS JORNALÍSTICO — IPSO-H
 ## Pressão Social Observada em Hortolândia
 
-**Versão:** v1.5  
-**Data:** "03/05/2026"  
+**Versão:** v1.6  
+**Data:** 01/06/2026  
 **Responsável:** Ailton Vendramini  
 **Repositório:** Atlas-Social-de-Hortolandia / 00_governanca/corpus_jornalistico/
 
 ---
 
-## Changelog v1.4 → v1.5
+## Changelog v1.5 → v1.6
 
 | Item | Mudança |
 |---|---|
-| Título | Corpus reposicionado como IPSO-H — instrumento autônomo |
-| Seção 1 | Separação metodológica explícita: IPSO-H ≠ IPST-H |
-| Seção 2 | Arquitetura dos três instrumentos formalizada |
-| Seção 3 | Usos legítimos do IPSO-H detalhados |
-| Seção 4 | Limitação territorial formalizada (loteamento não identificável via jornal) |
-| Motivação | Decisão de 03/05/2026 após 4 meses de coleta: corpus tem valor como inteligência institucional narrativa, não como insumo direto de índices quantitativos |
+| Seção 9 — Governança | Caminho dos CSVs atualizado: `series_jornalisticas/` → `dados/bd_externos/imprensa/tribuna_liberal/` |
+| Motivo | Reorganização arquitetural de 01/06/2026 — bd_externos reestruturado em imprensa/governo/normativa/estatisticas |
 
 ---
 
@@ -170,7 +167,7 @@ Ciclos em aberto são rastreados por `papel_no_ciclo` ao longo do tempo:
 | `regras_de_classificacao_v10.4.md` | Regras operacionais completas |
 | `dicionario_v04.md` | Definições de campos e valores |
 | `fechamento_dia_XX_XX_XXXX.md` | Memória de sessão — continuidade entre conversas |
-| CSVs em `series_jornalisticas/` | Dados classificados por edição |
+| CSVs em `dados/bd_externos/imprensa/tribuna_liberal/` | Dados classificados por edição |
 
 **Fonte primária:** Tribuna Liberal  
 **Frequência de coleta:** por edição disponível  
