@@ -1,12 +1,10 @@
-[README (23).md](https://github.com/user-attachments/files/28644510/README.23.md)
+[README (24).md](https://github.com/user-attachments/files/28652954/README.24.md)
 # Atlas Social de Hortolândia
-Inteligência de Política Pública Socioassistencial
+Sistema Municipal de Inteligência Territorial
 
-Repositório oficial do Atlas Social de Hortolândia — sistema municipal de inteligência territorial desenvolvido pelo DIAE / SMPUGE da Prefeitura de Hortolândia – SP.
+> *O Atlas Social de Hortolândia é um sistema municipal de inteligência territorial — articulado com os princípios da Vigilância Socioassistencial do SUAS e aberto à integração com todas as políticas públicas municipais.*
 
-O projeto estrutura uma infraestrutura analítica capaz de compreender, territorializar e acompanhar a dinâmica da vulnerabilidade social no município, utilizando exclusivamente dados públicos já existentes e respeitando integralmente a LGPD.
-
-> "O IVS mostra onde está a vulnerabilidade. O IPST-H mostra onde a vulnerabilidade se transforma em pressão sobre a Prefeitura."
+Desenvolvido pelo DIAE / SMPUGE da Prefeitura de Hortolândia – SP, o Atlas estrutura uma infraestrutura analítica capaz de compreender, territorializar e acompanhar a dinâmica da vulnerabilidade social no município, utilizando exclusivamente dados públicos já existentes e respeitando integralmente a LGPD.
 
 ---
 
@@ -24,10 +22,10 @@ Em maio de 2026, o município alcançou a 30ª posição nacional no Índice de 
 
 Apesar da escala da política socioassistencial, os dados disponíveis ainda não permitem responder com precisão perguntas fundamentais:
 
+- Onde está a vulnerabilidade — e quem são os casos mais críticos?
 - Quem está sendo atendido — e quem deveria estar e não está?
-- Em qual loteamento estão as famílias mais vulneráveis?
-- Qual a pressão real sobre cada unidade da rede de serviços?
-- As políticas estão de fato mudando a vida das pessoas?
+- O que está acontecendo no território em tempo real?
+- O que de fato mudou na vida das pessoas?
 
 ---
 
@@ -39,34 +37,28 @@ A modelagem proposta não altera fluxos institucionais, não cria novos cadastro
 
 ---
 
-## Como funciona
+## O Atlas como observatório
 
-![Pipeline Analítico — Atlas Social de Hortolândia](https://raw.githubusercontent.com/ailtonfv/Atlas-Social-de-Hortolandia/refs/heads/main/docs/diagramas/pipeline_atlas.svg)
+O Atlas Social não é uma sequência linear de índices. É um **observatório composto por dimensões complementares** — cada uma respondendo a uma pergunta diferente sobre a realidade social do município, de forma simultânea e independente.
 
-**Escopo:** o pipeline acima representa o fluxo do CadÚnico — fonte primária da Fase 1. Cada nova base de dados incorporada ao Atlas (CAGED, DATASUS, IBGE Censo, SIGAS, SSP-SP) exigirá seu próprio pipeline, com características específicas de extração, frequência de atualização e controle de qualidade. A arquitetura é incremental por design.
+A Vigilância Socioassistencial tradicional trabalha principalmente com CadÚnico, Prontuários SUAS, RMA e Censo SUAS. Ela responde bem a duas perguntas: quem precisa e quem recebe. O Atlas amplia esse escopo com mais duas: o que está acontecendo e o que mudou.
 
----
+| Dimensão | Instrumento | Pergunta central | Fonte principal | Status |
+|---|---|---|---|---|
+| **Vulnerabilidade** | IVS (IPEA) | Onde está a vulnerabilidade no Brasil? | IBGE Censo | Referência |
+| **Vulnerabilidade** | IVCAD (MDS) | Qual o perfil das famílias vulneráveis? | CadÚnico Federal | Referência |
+| **Vulnerabilidade** | IVS-H ★ | Onde está a vulnerabilidade em Hortolândia? | CadÚnico Municipal | ✅ Ativo |
+| **Vulnerabilidade** | PVSE ★ | Quem são os casos mais críticos? | CadÚnico Municipal | ✅ Ativo |
+| **Pressão Social** | IPSO-H ★ | O que está acontecendo na cidade? | Jornais + Governo + Normativas | ✅ Ativo |
+| **Pressão Social** | IPST-H ★ | Onde a pressão social se concentra? | IPSO-H territorializado + bases administrativas | ⏳ Evolução |
+| **Cobertura** | IAS-H ★ | Quem está sendo atendido? | SIGAS + Saúde + Educação + OSCs | ⏳ Aguarda integração |
+| **Resultado** | IRS-H ★ | O que mudou ao longo do tempo? | Séries históricas integradas | 🔲 Futuro |
 
-## Os cinco instrumentos analíticos
+**Status:** ✅ Ativo · ⏳ Em desenvolvimento · 🔲 Horizonte · ★ Instrumento desenvolvido pelo Atlas Social de Hortolândia
 
-Cada instrumento responde a uma pergunta diferente. Nenhum substitui o outro.
+**Siglas:** IVS-H = Índice de Vulnerabilidade Social de Hortolândia · PVSE = Perfis de Vulnerabilidade Severa · IPSO-H = Índice de Pressão Social Observada · IPST-H = Índice de Pressão Social Territorial · IAS-H = Índice de Atendimento Social · IRS-H = Índice de Resultado Social
 
-| Instrumento | Pergunta central | Fonte | Escala | Status | Resultado atual |
-|---|---|---|---|---|---|
-| **IVS** (IPEA/Censo) | Onde no Brasil? | IBGE Censo 2010 | Nacional | ✅ Referência | IVS Hortolândia 2010: 0,324 |
-| **IVCAD** (MDS) | Qual o perfil familiar cadastral? | CadÚnico federal 2022 | Municipal | ✅ Referência | IVCAD 2022: 0,262 |
-| **IVS-H** ★ | Onde no município? | CadÚnico local dez/2025 | Loteamento | ✅ Fase 1 calculada | 11 variáveis · 3 dimensões · 141 loteamentos ranqueados |
-| **PVSE** ★ | Quem são os mais críticos? | CadÚnico local dez/2025 | Família | ✅ Calculado | 5 perfis · 369 fam. desconectadas · 1.470 PcD crítica · 256 mães em vulnerabilidade múltipla |
-| **IPST-H** ★ | Onde a vulnerabilidade pressiona a Prefeitura? | Dados administrativos (SIGAS) | Loteamento | ⏳ Aguarda integração | Solicitação de acesso ao SIGAS enviada |
-| **IPSO-H** ★ | O que está acontecendo agora? | Corpus jornalístico | Loteamento | ✅ Ativo | 580 eventos · dez/2025–jun/2026 · 53% governança · 24% pressão social |
-
-**Status:** ✅ Disponível · ⏳ Aguarda integração · ★ Instrumento desenvolvido pelo Atlas Social de Hortolândia
-
-**Siglas:** IVS-H = Índice de Vulnerabilidade Social de Hortolândia · PVSE = Perfis de Vulnerabilidade Severa · IPST-H = Índice de Pressão Social Territorial de Hortolândia · IPSO-H = Índice de Pressão Social Observada de Hortolândia
-
-> **PVSE — Perfis de Vulnerabilidade Severa:** camada complementar que identifica grupos críticos para intervenção direta da Prefeitura.
-
-> *A Prefeitura federal enxerga o cadastro. O Atlas Social enxerga a trajetória no loteamento.*
+> *O Atlas não pressupõe que uma dimensão determina automaticamente a outra. Alta vulnerabilidade com alta cobertura e pouco resultado aponta para problema de método — não de acesso. Alta vulnerabilidade com baixa cobertura e sem pressão aponta para invisibilidade total. A combinação entre dimensões é onde a inteligência de gestão acontece.*
 
 ---
 
@@ -80,15 +72,23 @@ O IVCAD foi calculado com dados de 2022. Os indicadores do IVS-H foram calculado
 
 O Observatório do CadÚnico depende de decisão política e orçamento federal. O Atlas Social não depende de convênio, verba federal nem continuidade política externa. O município controla seus próprios dados e seu próprio ritmo de atualização.
 
-**3. O SIGAS — o ciclo completo**
+**3. O ciclo completo**
 
 ```
-Quem é vulnerável          →  CadÚnico
-Quem foi atendido          →  SIGAS
-Quem melhorou / permanece  →  Atlas Social
+Quem é vulnerável          →  CadÚnico  (IVS-H + PVSE)
+Quem foi atendido          →  SIGAS     (IAS-H — aguarda integração)
+Quem melhorou / permanece  →  Atlas Social (IRS-H — horizonte)
 ```
 
 Nenhum instrumento federal fecha esse ciclo. É inteligência longitudinal que só o município pode construir.
+
+---
+
+## Como funciona
+
+![Pipeline Analítico — Atlas Social de Hortolândia](https://raw.githubusercontent.com/ailtonfv/Atlas-Social-de-Hortolandia/refs/heads/main/docs/diagramas/pipeline_atlas.svg)
+
+**Escopo:** o pipeline acima representa o fluxo do CadÚnico — fonte primária da Fase 1. Cada nova base de dados incorporada ao Atlas (CAGED, DATASUS, IBGE Censo, SIGAS, SSP-SP) exigirá seu próprio pipeline, com características específicas de extração, frequência de atualização e controle de qualidade. A arquitetura é incremental por design.
 
 ---
 
@@ -110,7 +110,7 @@ Onze indicadores calculados a partir do CadÚnico (dez/2025), metodologia compat
 | Infraestrutura Urbana | IU_01 — água/esgoto inadequado | 1,83% | 557 domicílios | 30.362 dom. |
 | Infraestrutura Urbana | IU_02 — coleta de lixo inadequada | 0,11% | 34 domicílios | 30.362 dom. |
 
-¹ Campo autodeclarado — valor representa piso real, não teto. Especialmente subnotificado para meninas (trabalho doméstico não remunerado).  
+¹ Campo autodeclarado — valor representa piso real, não teto.  
 ² Incluindo 642 crianças de 4–5 anos que nunca frequentaram a escola — pré-escola obrigatória por lei.  
 ³ Universo = total de famílias (CH_05 é calculado no nível familiar, não individual).
 
@@ -141,7 +141,7 @@ O IVCAD registra Hortolândia com índice 0,262 — vulnerabilidade moderada. O 
 
 O Atlas mantém uma série histórica estruturada da Tribuna Liberal, classificada em schema padronizado (v10.4), com 21 campos por registro.
 
-O corpus funciona como sensor de pressão social em tempo real, inaugurando ciclos de pressão que os índices estruturais não capturam. Cada edição é processada individualmente, com controle de versão e rastreabilidade completa.
+O IPSO-H funciona como **sensor externo da cidade** — capta o que está se movendo no território em tempo real, antes que qualquer índice estrutural consiga registrar. É uma dimensão autônoma: não depende do IVS-H para operar e não se subordina à lógica de cobertura ou resultado.
 
 **Volume atual:** 580 eventos · dez/2025–jun/2026 · 53% governança · 24% pressão social · 17% contexto
 
@@ -169,9 +169,6 @@ O projeto adota o IVS/IPEA como referência metodológica nacional e implementa 
 | Infraestrutura Urbana | 33% | 15% | Cobertura próxima de 100% (SABESP/SNIS) |
 | Capital Humano | 33% | 42% | Reprodução intergeracional da pobreza |
 | Renda e Trabalho | 33% | 43% | Prioridade declarada da gestão: emprego e renda |
-
-**Fase 1 (atual):** 11 variáveis calculadas com dados CadÚnico dez/2025.  
-**Fase 2 (planejada):** expansão à medida que fontes adicionais forem disponibilizadas, preservando a estrutura original do índice.
 
 > "O modelo converge para a incorporação das 16 variáveis do IVS/IPEA à medida que as fontes forem disponibilizadas, preservando a estrutura original do índice."
 
@@ -233,13 +230,13 @@ O conteúdo disponibilizado inclui apenas estruturas de dados, dicionários, esq
 | Responsável técnico | Ailton Vendramini |
 | Repositório | github.com/ailtonfv/Atlas-Social-de-Hortolandia |
 | Ano de início | 2026 |
-| Fase atual | Fase 1 MVP — 11 indicadores calculados · corpus jornalístico ativo |
+| Fase atual | Observatório ativo — 3 dimensões operacionais · 2 em desenvolvimento · 1 no horizonte |
 
 ---
 
 ## Objetivo de longo prazo
 
-Construir uma arquitetura de dados sociais replicável para municípios brasileiros, integrando:
+Construir um observatório municipal de inteligência territorial replicável para municípios brasileiros, integrando:
 
 - Cadastro Único
 - rede socioassistencial municipal
