@@ -1,0 +1,13 @@
+﻿coluna;significado
+cod_familiar;Codigo familiar do CadUnico (identificador, sem CPF/nome)
+loteamento;Nome da localidade/loteamento (d.nom_localidade_fam)
+qtd_pessoas;Numero de pessoas no domicilio (d.qtd_pessoas_domic_fam)
+renda_per_capita;Renda familiar total dividida pelo n. de pessoas, em R$ (saneada)
+score_vulnerab;Score multidimensional de 0 a 5 (soma das 5 dimensoes D1-D5)
+D1_renda;"1 = renda per capita <= 1/2 SM (RT_01); 0 = nao"
+D2_analfab;"1 = algum membro 15+ nao sabe ler/escrever (CH_06); 0 = nao"
+D3_idoso_desprot;"1 = idoso 60+ sem Bolsa Familia no domicilio (RT_04); 0 = nao"
+D4_pcd_sem_apoio;"1 = pessoa com deficiencia sem rede de apoio; 0 = nao"
+D5_crianca_0_6;"1 = ha crianca de 0 a 6 anos no domicilio; 0 = nao"
+meses_desatual;Meses desde a ultima atualizacao cadastral (ref. 2025-12-31)
+cadastro_vencido_2anos;"1 = cadastro com 24 meses ou mais sem atualizacao; 0 = em dia"
